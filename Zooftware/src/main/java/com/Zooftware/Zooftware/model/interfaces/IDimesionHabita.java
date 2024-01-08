@@ -8,10 +8,9 @@ package com.Zooftware.Zooftware.model.interfaces;
  */
 public interface IDimesionHabita extends IDimesion {
 
-	public int Area;
 
 	public int getArea();
 
-	public void setArea();
+	public void setArea(int Area);
 
 }

@@ -1,6 +1,7 @@
 package com.Zooftware.Zooftware.model.instalaciones;
 
 
+import com.Zooftware.Zooftware.model.comida.AlmacenComida;
 import com.Zooftware.Zooftware.model.interfaces.IFabricaAbsInstalaciones;
 
 /**
@@ -10,14 +11,29 @@ import com.Zooftware.Zooftware.model.interfaces.IFabricaAbsInstalaciones;
  */
 public class FabricaConcretaHabita implements IFabricaAbsInstalaciones {
 
+
 	public FabricaConcretaHabita(){
 
 	}
 
-	public void finalize() throws Throwable {
 
+	public AlmacenComida crearAlmacenComida(){
+		return new AlmacenComida();
 	}
-	public AlmacenComida crearCocina(){
+
+	@Override
+	public Anfibio crearHabitaAnfibio() {
+
+		return new Anfibio(new SueloImpl());
+	}
+
+	@Override
+	public Terrestre crearHabitaTerrestre() {
+		return null;
+	}
+
+	@Override
+	public Acuatico crearHabitaAcuatico() {
 		return null;
 	}
 

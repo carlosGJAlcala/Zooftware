@@ -12,7 +12,7 @@ public interface IComidaBuilder {
 
 	public void calentarComida();
 
-	public void getAlimento();
+	public IAlimentacion getAlimento();
 
 	public void ponerComidaEnUnCubo();
 

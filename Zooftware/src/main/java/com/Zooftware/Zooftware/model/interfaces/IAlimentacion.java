@@ -11,6 +11,6 @@ import com.Zooftware.Zooftware.model.organismos.Animal;
 public interface IAlimentacion {
 
 
-	public void getDescripcion();
+	public String getDescripcion();
 
 }

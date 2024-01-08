@@ -8,10 +8,12 @@ package com.Zooftware.Zooftware.model.interfaces;
  */
 public interface IRecipiente {
 
-	public void getCantidad();
+	public int getCantidad();
 
-	public void IsVacio();
+	public boolean IsVacio();
 
 	public void rellenar();
+
+	public void vaciar();
 
 }

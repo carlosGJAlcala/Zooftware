@@ -10,18 +10,20 @@ import com.Zooftware.Zooftware.model.interfaces.IDimesionHabita;
  */
 public class DimesionImpl implements IDimesionHabita {
 
+	private int Area;
+
 	public DimesionImpl(){
-
+	Area=0;
 	}
 
-	public void finalize() throws Throwable {
-
-	}
 	public int getArea(){
-		return 0;
+		return Area;
 	}
 
-	public void setArea(){
-
+	@Override
+	public void setArea(int Area) {
+		this.Area=Area;
 	}
+
+
 }//end DimesionImpl

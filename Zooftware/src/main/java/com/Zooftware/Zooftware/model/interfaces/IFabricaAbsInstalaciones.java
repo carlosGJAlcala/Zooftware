@@ -1,8 +1,11 @@
 package com.Zooftware.Zooftware.model.interfaces;
 
 
-import com.Zooftware.Zooftware.model.instalaciones.AlmacenComida;
+import com.Zooftware.Zooftware.model.comida.AlmacenComida;
+import com.Zooftware.Zooftware.model.instalaciones.Acuatico;
+import com.Zooftware.Zooftware.model.instalaciones.Anfibio;
 import com.Zooftware.Zooftware.model.instalaciones.HabitaAbs;
+import com.Zooftware.Zooftware.model.instalaciones.Terrestre;
 
 /**
  * @author carlos
@@ -11,8 +14,12 @@ import com.Zooftware.Zooftware.model.instalaciones.HabitaAbs;
  */
 public interface IFabricaAbsInstalaciones {
 
-	public AlmacenComida crearCocina();
+	public AlmacenComida crearAlmacenComida();
 
-	public HabitaAbs crearHabita();
+	public Anfibio crearHabitaAnfibio();
+	public Terrestre crearHabitaTerrestre();
+	public Acuatico crearHabitaAcuatico();
+
+
 
 }

@@ -1,6 +1,7 @@
-package com.Zooftware.Zooftware.model.instalaciones;
+package com.Zooftware.Zooftware.model.comida;
 
 
+import com.Zooftware.Zooftware.model.instalaciones.InstalacionAbs;
 import com.Zooftware.Zooftware.model.interfaces.IComidaBuilder;
 
 /**
@@ -13,13 +14,6 @@ public class AlmacenComida extends InstalacionAbs {
 	private IComidaBuilder ComidaBuilder;
 	public IComidaBuilder m_IComidaBuilder;
 
-	public AlmacenComida(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 	public void crearComida(){
 
 	}

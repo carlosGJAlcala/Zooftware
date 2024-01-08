@@ -1,6 +1,8 @@
-package com.Zooftware.Zooftware.model.instalaciones;
+package com.Zooftware.Zooftware.model.comida;
 
 
+import com.Zooftware.Zooftware.model.comida.ComidaOmnivora;
+import com.Zooftware.Zooftware.model.interfaces.IAlimentacion;
 import com.Zooftware.Zooftware.model.interfaces.IComidaBuilder;
 
 /**
@@ -11,25 +13,23 @@ import com.Zooftware.Zooftware.model.interfaces.IComidaBuilder;
 public class ComidaOmnivoraBuilder implements IComidaBuilder {
 
 	public ComidaOmnivoraBuilder(){
-
+		comida= new ComidaOmnivora();
 	}
+	ComidaOmnivora comida ;
 
-	public void finalize() throws Throwable {
-
-	}
 	public void abrirBolsa(){
 
 	}
 
 	public void calentarComida(){
-
+		comida.setEstado(EstadoComida.HACIENDOSE);
 	}
 
-	public void getAlimento(){
-
+	public IAlimentacion getAlimento(){
+		return comida;
 	}
 
 	public void ponerComidaEnUnCubo(){
-
+		comida.setEstado(EstadoComida.HECHA);
 	}
 }//end ComidaOmnivoraBuilder

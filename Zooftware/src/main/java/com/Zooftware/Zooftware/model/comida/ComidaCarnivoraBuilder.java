@@ -1,6 +1,7 @@
-package com.Zooftware.Zooftware.model.instalaciones;
+package com.Zooftware.Zooftware.model.comida;
 
 
+import com.Zooftware.Zooftware.model.interfaces.IAlimentacion;
 import com.Zooftware.Zooftware.model.interfaces.IComidaBuilder;
 
 /**
@@ -10,26 +11,26 @@ import com.Zooftware.Zooftware.model.interfaces.IComidaBuilder;
  */
 public class ComidaCarnivoraBuilder implements IComidaBuilder {
 
+	ComidaCarnivora comida =new ComidaCarnivora();
 	public ComidaCarnivoraBuilder(){
 
 	}
 
-	public void finalize() throws Throwable {
 
-	}
 	public void abrirBolsa(){
-
+	//to do: meter logger
 	}
+
 
 	public void calentarComida(){
-
+		comida.setEstado(EstadoComida.HACIENDOSE);
 	}
 
-	public void getAlimento(){
-
+	public IAlimentacion getAlimento(){
+		return comida;
 	}
 
 	public void ponerComidaEnUnCubo(){
-
+		comida.setEstado(EstadoComida.HECHA);
 	}
 }//end ComidaCarnivoraBuilder

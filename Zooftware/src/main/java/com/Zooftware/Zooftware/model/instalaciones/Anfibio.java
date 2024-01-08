@@ -11,7 +11,7 @@ import com.Zooftware.Zooftware.model.interfaces.ISuelo;
 public class Anfibio extends HabitaAbs {
 
 	private int NumComedores;
-
+	private int id;
 	public Anfibio(ISuelo tipoSuelo) {
 		super(tipoSuelo);
 		NumComedores=0;
