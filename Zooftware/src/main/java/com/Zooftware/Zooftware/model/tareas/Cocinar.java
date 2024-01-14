@@ -14,9 +14,6 @@ public class Cocinar implements ITarea {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
 	public void ejecutar(){
 
 	}

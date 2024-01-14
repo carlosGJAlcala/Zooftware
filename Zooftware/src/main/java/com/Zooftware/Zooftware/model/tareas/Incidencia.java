@@ -14,9 +14,6 @@ public class Incidencia implements IEstadoMensaje {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
 	public void ejecutar(){
 
 	}

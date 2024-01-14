@@ -1,9 +1,7 @@
 package com.Zooftware.Zooftware.model.interfaces;
 
 
-import com.Zooftware.Zooftware.model.instalaciones.TipoSuelo;
-import com.Zooftware.Zooftware.model.organismos.Planta;
-import com.Zooftware.Zooftware.model.instalaciones.HabitaAbs;
+import com.Zooftware.Zooftware.model.organismos.enums.TipoSuelo;
 
 /**
  * @author carlos

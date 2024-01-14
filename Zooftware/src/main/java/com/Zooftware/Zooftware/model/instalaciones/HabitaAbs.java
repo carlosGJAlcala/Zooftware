@@ -4,7 +4,6 @@ package com.Zooftware.Zooftware.model.instalaciones;
 import com.Zooftware.Zooftware.model.interfaces.IOrganismo;
 import com.Zooftware.Zooftware.model.interfaces.IRecipiente;
 import com.Zooftware.Zooftware.model.interfaces.ISuelo;
-import com.Zooftware.Zooftware.model.organismos.OrganismoAbs;
 
 import java.util.ArrayList;
 import java.util.List;

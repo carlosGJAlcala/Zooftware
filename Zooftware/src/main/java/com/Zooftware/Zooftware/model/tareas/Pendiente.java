@@ -14,9 +14,6 @@ public class Pendiente implements IEstadoMensaje {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
 	public void ejecutar(){
 
 	}

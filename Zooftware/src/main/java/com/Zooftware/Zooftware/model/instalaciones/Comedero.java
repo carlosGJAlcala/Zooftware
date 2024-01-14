@@ -17,21 +17,6 @@ public class Comedero implements IComedero {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
-	public void getCantidad(){
-
-	}
-
-	public void IsVacio(){
-
-	}
-
-	public void rellenar(){
-
-	}
-
 	public void setAlimento(){
 
 	}

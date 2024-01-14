@@ -16,10 +16,13 @@ public class AlmacenComida extends InstalacionAbs {
 	public AlmacenComida(){
 
 	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
+	public String descripcion(){
+		return "";
 	}
+	public String getDescripcion() {
+		return this.descripcion();
+	}
+
 	public void crearComida(){
 
 	}

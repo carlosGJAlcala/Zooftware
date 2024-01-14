@@ -1,8 +1,6 @@
 package com.Zooftware.Zooftware.model.interfaces;
 
 
-import com.Zooftware.Zooftware.model.interfaces.IContacto;
-
 /**
  * @author carlos
  * @version 1.0

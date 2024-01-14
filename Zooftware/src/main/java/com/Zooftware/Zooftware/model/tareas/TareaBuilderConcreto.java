@@ -14,9 +14,6 @@ public class TareaBuilderConcreto implements ITareaBuilder {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
 	public void enCurso(){
 
 	}

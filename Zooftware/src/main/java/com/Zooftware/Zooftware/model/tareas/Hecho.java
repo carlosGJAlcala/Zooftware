@@ -13,10 +13,6 @@ public class Hecho implements IEstadoMensaje {
 	public Hecho(){
 
 	}
-
-	public void finalize() throws Throwable {
-
-	}
 	public void ejecutar(){
 
 	}

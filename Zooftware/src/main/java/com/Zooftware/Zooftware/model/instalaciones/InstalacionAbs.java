@@ -2,7 +2,7 @@ package com.Zooftware.Zooftware.model.instalaciones;
 
 
 import com.Zooftware.Zooftware.model.interfaces.*;
-import com.Zooftware.Zooftware.model.personas.Trabajador;
+import com.Zooftware.Zooftware.model.persona.Trabajador;
 
 import java.util.List;
 

@@ -10,7 +10,7 @@ import com.Zooftware.Zooftware.model.interfaces.IRecipiente;
  */
 public class Bebedero implements IRecipiente {
 
-	public int
+	public int id;
 	public Bebedero(){
 
 	}

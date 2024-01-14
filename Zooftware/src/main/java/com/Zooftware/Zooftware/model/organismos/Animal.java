@@ -4,17 +4,23 @@ package com.Zooftware.Zooftware.model.organismos;
 import com.Zooftware.Zooftware.model.interfaces.IAlimentacion;
 import com.Zooftware.Zooftware.model.interfaces.IDimesion;
 import com.Zooftware.Zooftware.model.interfaces.IEstadoAnimal;
+import jakarta.persistence.*;
 
 /**
  * @author carlos
  * @version 1.0
  * @created 08-ene.-2024 16:49:58
  */
-public class Animal extends OrganismoAbs {
+@Entity
+@Table(name = "animal")
+public class Animal extends Organismo {
 	public enum TipoAnimal
 	{
 		MAMIFERO,ANFIBIO,REPTIL,AVE,PEZ,ANTROPODO,ANELIDOS,MOLUSCO,PORIFERO
 	}
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private IAlimentacion Alimentacion;
 	private IEstadoAnimal EstadoAnimal;
 	private int Hambre;
@@ -24,7 +30,8 @@ public class Animal extends OrganismoAbs {
 	private int Sed;
 	private int Suenio;
 
-	private int id;
+
+
 
 	private TipoAnimal tipo;
 	public IEstadoAnimal m_IEstadoAnimal;
