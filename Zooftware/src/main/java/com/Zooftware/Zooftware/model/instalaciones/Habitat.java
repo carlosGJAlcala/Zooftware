@@ -7,6 +7,9 @@ import com.Zooftware.Zooftware.model.organismos.Organismo;
 import com.Zooftware.Zooftware.model.organismos.SueloImpl;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+import java.util.List;
+
 /**
  * @author carlos
  * @version 1.0
@@ -14,22 +17,23 @@ import jakarta.persistence.*;
  */
 @Entity
 @Table(name = "habitat")
-public class Habitat extends InstalacionAbs {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Habitat extends InstalacionAbs implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@OneToMany
 	@JoinColumn(name = "comedero_id")
-	private Comedero comedero;
+	private List<Comedero> comedero;
 
 	@OneToMany
 	@JoinColumn(name = "bebedero_id")
-	private Bebedero bebedero;
+	private List<Bebedero> bebedero;
 
 	@OneToMany
 	@JoinColumn(name = "organismo_id")
-	private Organismo organismos;
+	private List<Organismo> organismos;
 
 	@Enumerated(EnumType.STRING)
 	private TipoHabitat tipoHabitat;

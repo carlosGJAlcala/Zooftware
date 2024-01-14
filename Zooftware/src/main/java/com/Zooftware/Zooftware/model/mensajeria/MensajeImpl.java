@@ -24,7 +24,7 @@ public class MensajeImpl implements IMensaje {
 	private String Destinario;
 
 	//private IEstadoMensaje Estado;
-	private IInstalacion Instalacion;
+	//private IInstalacion Instalacion;
 	private String Remitente;
 	//private ITarea Tarea;
 	private String Texto;

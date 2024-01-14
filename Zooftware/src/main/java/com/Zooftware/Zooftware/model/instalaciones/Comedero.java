@@ -21,7 +21,7 @@ public class Comedero implements IComedero {
 
 	//pendiente revisar!!
 
-	private IAlimentacion Alimentacion;
+//	private IAlimentacion Alimentacion;
 
 	public Comedero(){
 

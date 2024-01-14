@@ -1,4 +1,4 @@
-package com.Zooftware.Zooftware.model.mensajeria;
+package com.Zooftware.Zooftware.model.mensajeria.abs;
 
 
 import com.Zooftware.Zooftware.model.persona.Trabajador;

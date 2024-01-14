@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.model.mensajeria.patron;
 
 
-import com.Zooftware.Zooftware.model.mensajeria.ManejadorAbs;
+import com.Zooftware.Zooftware.model.mensajeria.abs.ManejadorAbs;
 
 /**
  * @author carlos

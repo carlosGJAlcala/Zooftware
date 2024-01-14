@@ -20,11 +20,14 @@ public class Planta extends Organismo {
 	@JoinColumn(name = "suelo_id")
 	private SueloImpl suelo;
 
-	public Planta(int edad, int id, String nombreEspecie, IDimesion tamanio, SueloImpl suelo) {
-		super(edad, id, nombreEspecie, tamanio);
-		this.suelo = suelo;
-	}
+//	public Planta(int edad, int id, String nombreEspecie, IDimesion tamanio, SueloImpl suelo) {
+//		super(edad, id, nombreEspecie, tamanio);
+//		this.suelo = suelo;
+//	}
 
+	public Planta(){
+
+	}
 	public Planta(int edad, int id, String nombreEspecie, SueloImpl suelo) {
 		super(edad, id, nombreEspecie);
 		this.suelo = suelo;

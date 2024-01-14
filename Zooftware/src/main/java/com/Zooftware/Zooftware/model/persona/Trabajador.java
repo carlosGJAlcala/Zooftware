@@ -6,7 +6,9 @@ import com.Zooftware.Zooftware.model.mensajeria.MensajeImpl;
 import com.Zooftware.Zooftware.model.persona.interfaces.ITrabajador;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author carlos
@@ -16,7 +18,8 @@ import java.util.Date;
 
 @Entity
 @Table(name = "trabajador")
-public class Trabajador implements ITrabajador, IDescripcion {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Trabajador implements ITrabajador, IDescripcion, Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +38,7 @@ public class Trabajador implements ITrabajador, IDescripcion {
 	private Date fechaFinContrato;
 	@OneToMany
 	@JoinColumn(name = "mensaje_id")
-	private MensajeImpl mensaje;
+	private List<MensajeImpl> mensaje;
 	@OneToOne
 	@JoinColumn(name = "empleadoZoo_id")
 	private EmpleadoZoo empleadoZoo;
@@ -45,7 +48,7 @@ public class Trabajador implements ITrabajador, IDescripcion {
 	public Trabajador() {
 	}
 
-	public Trabajador(long numeroSeguridadSocial, boolean activo, Date fechaInicioContrato, Date fechaFinContrato, MensajeImpl mensaje, EmpleadoZoo empleadoZoo, Jefe jefe) {
+	public Trabajador(long numeroSeguridadSocial, boolean activo, Date fechaInicioContrato, Date fechaFinContrato, List<MensajeImpl> mensaje, EmpleadoZoo empleadoZoo, Jefe jefe) {
 		this.numeroSeguridadSocial = numeroSeguridadSocial;
 		this.activo = activo;
 		this.fechaInicioContrato = fechaInicioContrato;
@@ -87,11 +90,11 @@ public class Trabajador implements ITrabajador, IDescripcion {
 		this.fechaFinContrato = fechaFinContrato;
 	}
 
-	public MensajeImpl getMensaje() {
+	public List<MensajeImpl> getMensaje() {
 		return mensaje;
 	}
 
-	public void setMensaje(MensajeImpl mensaje) {
+	public void setMensaje(List<MensajeImpl> mensaje) {
 		this.mensaje = mensaje;
 	}
 

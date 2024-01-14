@@ -17,6 +17,9 @@ public class Comida implements IAlimentacion {
     @Enumerated(EnumType.STRING)
     private TipoComida tipoComida;
 
+    public Comida(){
+
+    }
     public Comida(int id, String nombre, int cantidad, TipoComida tipoComida) {
         this.id = id;
         Nombre = nombre;

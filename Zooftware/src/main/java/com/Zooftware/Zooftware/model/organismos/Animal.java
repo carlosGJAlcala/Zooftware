@@ -36,20 +36,21 @@ public class Animal extends Organismo {
 	@Enumerated(EnumType.STRING)
 	public EstadoAnimal estadoAnimal;
 
-	public Animal(int edad, int id, String nombreEspecie, IDimesion tamanio, Comida comida, EstadoAnimal estadoAnimal, int hambre, String nombre, int numExtremidades, int salud, int sed, int suenio, TipoAnimal tipo) {
-		super(edad, id, nombreEspecie, tamanio);
-		comida = comida;
-		estadoAnimal = estadoAnimal;
-		Hambre = hambre;
-		Nombre = nombre;
-		NumExtremidades = numExtremidades;
-		Salud = salud;
-		Sed = sed;
-		Suenio = suenio;
-		this.id=id;
-		this.tipo = tipo;
-	}
+//	public Animal(int edad, int id, String nombreEspecie, IDimesion tamanio, Comida comida, EstadoAnimal estadoAnimal, int hambre, String nombre, int numExtremidades, int salud, int sed, int suenio, TipoAnimal tipo) {
+//		super(edad, id, nombreEspecie, tamanio);
+//		comida = comida;
+//		estadoAnimal = estadoAnimal;
+//		Hambre = hambre;
+//		Nombre = nombre;
+//		NumExtremidades = numExtremidades;
+//		Salud = salud;
+//		Sed = sed;
+//		Suenio = suenio;
+//		this.id=id;
+//		this.tipo = tipo;
+//	}
 
+	public Animal(){}
 	public Animal(int edad, int id, String nombreEspecie, Comida  comida, EstadoAnimal estadoAnimal, int hambre, String nombre, int numExtremidades, int salud, int sed, int suenio, TipoAnimal tipo, IEstadoAnimal m_IEstadoAnimal) {
 		super(edad, id, nombreEspecie);
 		comida = comida;

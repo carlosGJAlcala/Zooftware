@@ -5,6 +5,8 @@ import com.Zooftware.Zooftware.model.interfaces.IDimesion;
 import com.Zooftware.Zooftware.model.organismos.interfaces.IOrganismo;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 /**
  * @author carlos
  * @version 1.0
@@ -13,15 +15,16 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "organismo")
-public class Organismo implements IOrganismo {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Organismo implements IOrganismo, Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Id;
+	private int id;
 	private int Edad;
 
 	private String NombreEspecie;
-	private IDimesion Tamanio;
+	//private IDimesion Tamanio;
 	@OneToOne
 	@JoinColumn(name = "animal_id")
 	private Animal animal;
@@ -32,15 +35,16 @@ public class Organismo implements IOrganismo {
 	@OneToOne
 	@JoinColumn(name = "dimensionAnimalImpl_id")
 	private DimensionAnimalImpl dimensionAnimal;
-	public Organismo(int edad, int id, String nombreEspecie, IDimesion tamanio) {
-		Edad = edad;
-		Id = id;
-		NombreEspecie = nombreEspecie;
-		Tamanio = tamanio;
-	}
+//	public Organismo(int edad, int id, String nombreEspecie) {
+//		Edad = edad;
+//		id = id;
+//		NombreEspecie = nombreEspecie;
+//		//Tamanio = tamanio;
+//	}
+	public Organismo(){}
 	public Organismo(int edad, int id, String nombreEspecie) {
 		Edad = edad;
-		Id = id;
+		id = id;
 		NombreEspecie = nombreEspecie;
 	}
 }//end OrganismoAbs

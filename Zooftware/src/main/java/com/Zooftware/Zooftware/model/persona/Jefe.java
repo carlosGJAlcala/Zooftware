@@ -3,6 +3,8 @@ package com.Zooftware.Zooftware.model.persona;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 /**
  * @author carlos
  * @version 1.0
@@ -20,7 +22,7 @@ public class Jefe extends Trabajador {
 
 	@OneToMany
 	@JoinColumn(name = "trabajador_id")
-	private Trabajador subordinado;
+	private List<Trabajador> subordinado;
 
 	//Para el patron composite
 	@OneToOne

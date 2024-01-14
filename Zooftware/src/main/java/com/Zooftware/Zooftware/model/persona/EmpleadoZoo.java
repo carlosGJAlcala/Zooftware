@@ -1,8 +1,7 @@
 package com.Zooftware.Zooftware.model.persona;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 /**
  * @author carlos
@@ -13,6 +12,9 @@ import jakarta.persistence.Table;
 @Table(name = "empleado")
 public class EmpleadoZoo extends Trabajador {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	//Pendiente añadir mas atributos
 
 	public EmpleadoZoo(){
