@@ -1,10 +1,11 @@
 package com.Zooftware.Zooftware.model.mensajeria;
 
 
-import com.Zooftware.Zooftware.model.interfaces.IEstadoMensaje;
-import com.Zooftware.Zooftware.model.interfaces.IInstalacion;
-import com.Zooftware.Zooftware.model.interfaces.IMensaje;
+import com.Zooftware.Zooftware.model.instalaciones.interfaces.IInstalacion;
 import com.Zooftware.Zooftware.model.interfaces.ITarea;
+import com.Zooftware.Zooftware.model.mensajeria.interfaces.IEstadoMensaje;
+import com.Zooftware.Zooftware.model.mensajeria.interfaces.IMensaje;
+import com.Zooftware.Zooftware.model.tareas.Tareas;
 import jakarta.persistence.*;
 
 /**
@@ -21,12 +22,17 @@ public class MensajeImpl implements IMensaje {
 	private int id;
 	private String Asunto;
 	private String Destinario;
-	private IEstadoMensaje Estado;
+
+	//private IEstadoMensaje Estado;
 	private IInstalacion Instalacion;
 	private String Remitente;
-	private ITarea Tarea;
+	//private ITarea Tarea;
 	private String Texto;
-	public ITarea m_ITarea;
+	//public ITarea m_ITarea;
+
+	@OneToOne
+	@JoinColumn(name = "tarea_id")
+	private Tareas tareas;
 
 	public MensajeImpl(){
 

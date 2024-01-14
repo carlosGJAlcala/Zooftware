@@ -2,7 +2,7 @@ package com.Zooftware.Zooftware.model.mensajeria.patron;
 
 
 import com.Zooftware.Zooftware.model.interfaces.IMiddleware;
-import com.Zooftware.Zooftware.model.interfaces.IRecipiente;
+import com.Zooftware.Zooftware.model.instalaciones.interfaces.IRecipiente;
 import com.Zooftware.Zooftware.model.interfaces.ISujeto;
 
 /**
@@ -12,7 +12,7 @@ import com.Zooftware.Zooftware.model.interfaces.ISujeto;
  */
 public class SujetoConcreto implements ISujeto {
 
-	private com.Zooftware.Zooftware.model.interfaces.IRecipiente IRecipiente;
+	private com.Zooftware.Zooftware.model.instalaciones.interfaces.IRecipiente IRecipiente;
 	private IMiddleware MidleWare;
 	public IRecipiente m_IRecipiente;
 

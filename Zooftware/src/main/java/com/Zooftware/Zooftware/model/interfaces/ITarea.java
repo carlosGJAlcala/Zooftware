@@ -8,8 +8,6 @@ package com.Zooftware.Zooftware.model.interfaces;
  */
 public interface ITarea {
 
-	public ITareaBuilder m_ITareaBuilder;
-
 	public void ejecutar();
 
 }

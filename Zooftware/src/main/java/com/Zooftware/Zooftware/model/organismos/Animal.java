@@ -1,9 +1,12 @@
 package com.Zooftware.Zooftware.model.organismos;
 
 
-import com.Zooftware.Zooftware.model.interfaces.IAlimentacion;
+import com.Zooftware.Zooftware.model.comida.Comida;
+import com.Zooftware.Zooftware.model.comida.interfaces.IAlimentacion;
 import com.Zooftware.Zooftware.model.interfaces.IDimesion;
-import com.Zooftware.Zooftware.model.interfaces.IEstadoAnimal;
+import com.Zooftware.Zooftware.model.organismos.enums.EstadoAnimal;
+import com.Zooftware.Zooftware.model.organismos.enums.TipoAnimal;
+import com.Zooftware.Zooftware.model.organismos.interfaces.IEstadoAnimal;
 import jakarta.persistence.*;
 
 /**
@@ -14,32 +17,29 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "animal")
 public class Animal extends Organismo {
-	public enum TipoAnimal
-	{
-		MAMIFERO,ANFIBIO,REPTIL,AVE,PEZ,ANTROPODO,ANELIDOS,MOLUSCO,PORIFERO
-	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private IAlimentacion Alimentacion;
-	private IEstadoAnimal EstadoAnimal;
+
+	@OneToOne
+	@JoinColumn(name = "comida_id")
+	private Comida comida;
 	private int Hambre;
 	private String Nombre;
 	private int NumExtremidades;
 	private int Salud;
 	private int Sed;
 	private int Suenio;
-
-
-
-
+	@Enumerated(EnumType.STRING)
 	private TipoAnimal tipo;
-	public IEstadoAnimal m_IEstadoAnimal;
 
-	public Animal(int edad, int id, String nombreEspecie, IDimesion tamanio, IAlimentacion alimentacion, IEstadoAnimal estadoAnimal, int hambre, String nombre, int numExtremidades, int salud, int sed, int suenio, TipoAnimal tipo) {
+	@Enumerated(EnumType.STRING)
+	public EstadoAnimal estadoAnimal;
+
+	public Animal(int edad, int id, String nombreEspecie, IDimesion tamanio, Comida comida, EstadoAnimal estadoAnimal, int hambre, String nombre, int numExtremidades, int salud, int sed, int suenio, TipoAnimal tipo) {
 		super(edad, id, nombreEspecie, tamanio);
-		Alimentacion = alimentacion;
-		EstadoAnimal = estadoAnimal;
+		comida = comida;
+		estadoAnimal = estadoAnimal;
 		Hambre = hambre;
 		Nombre = nombre;
 		NumExtremidades = numExtremidades;
@@ -50,10 +50,10 @@ public class Animal extends Organismo {
 		this.tipo = tipo;
 	}
 
-	public Animal(int edad, int id, String nombreEspecie, IAlimentacion alimentacion, IEstadoAnimal estadoAnimal, int hambre, String nombre, int numExtremidades, int salud, int sed, int suenio, TipoAnimal tipo, IEstadoAnimal m_IEstadoAnimal) {
+	public Animal(int edad, int id, String nombreEspecie, Comida  comida, EstadoAnimal estadoAnimal, int hambre, String nombre, int numExtremidades, int salud, int sed, int suenio, TipoAnimal tipo, IEstadoAnimal m_IEstadoAnimal) {
 		super(edad, id, nombreEspecie);
-		Alimentacion = alimentacion;
-		EstadoAnimal = estadoAnimal;
+		comida = comida;
+		estadoAnimal = estadoAnimal;
 		Hambre = hambre;
 		Nombre = nombre;
 		NumExtremidades = numExtremidades;
@@ -62,23 +62,23 @@ public class Animal extends Organismo {
 		Suenio = suenio;
 		this.tipo = tipo;
 		this.id=id;
-		this.m_IEstadoAnimal = m_IEstadoAnimal;
+		this.estadoAnimal = estadoAnimal;
 	}
 
-	public IAlimentacion getAlimentacion() {
-		return Alimentacion;
+	public IAlimentacion getComida() {
+		return comida;
 	}
 
-	public void setAlimentacion(IAlimentacion alimentacion) {
-		Alimentacion = alimentacion;
+	public void setComida(Comida comida) {
+		comida = comida;
 	}
 
-	public IEstadoAnimal getEstadoAnimal() {
-		return EstadoAnimal;
+	public EstadoAnimal getEstadoAnimal() {
+		return estadoAnimal;
 	}
 
-	public void setEstadoAnimal(IEstadoAnimal estadoAnimal) {
-		EstadoAnimal = estadoAnimal;
+	public void setEstadoAnimal(EstadoAnimal estadoAnimal) {
+		estadoAnimal = estadoAnimal;
 	}
 
 	public int getHambre() {
@@ -137,11 +137,11 @@ public class Animal extends Organismo {
 		this.tipo = tipo;
 	}
 
-	public IEstadoAnimal getM_IEstadoAnimal() {
-		return m_IEstadoAnimal;
+	public EstadoAnimal get_estadoAnimal() {
+		return estadoAnimal;
 	}
 
-	public void setM_IEstadoAnimal(IEstadoAnimal m_IEstadoAnimal) {
-		this.m_IEstadoAnimal = m_IEstadoAnimal;
+	public void set_estadoAnimal(EstadoAnimal estadoAnimal) {
+		this.estadoAnimal = estadoAnimal;
 	}
 }//end Animal

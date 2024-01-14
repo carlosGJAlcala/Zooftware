@@ -1,4 +1,4 @@
-package com.Zooftware.Zooftware.model.instalaciones;
+package com.Zooftware.Zooftware.model.instalaciones.enums;
 
 public enum TipoHabitat {
     ACTUATICO,

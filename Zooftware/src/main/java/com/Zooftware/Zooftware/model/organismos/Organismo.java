@@ -2,10 +2,8 @@ package com.Zooftware.Zooftware.model.organismos;
 
 
 import com.Zooftware.Zooftware.model.interfaces.IDimesion;
-import com.Zooftware.Zooftware.model.interfaces.IOrganismo;
+import com.Zooftware.Zooftware.model.organismos.interfaces.IOrganismo;
 import jakarta.persistence.*;
-
-import javax.print.attribute.standard.MediaSize;
 
 /**
  * @author carlos

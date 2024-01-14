@@ -1,8 +1,7 @@
 package com.Zooftware.Zooftware.model.organismos;
 
 
-import com.Zooftware.Zooftware.model.interfaces.IDimesionHabita;
-import jakarta.persistence.*;
+import com.Zooftware.Zooftware.model.instalaciones.interfaces.IDimesionHabita;
 
 /**
  * @author carlos

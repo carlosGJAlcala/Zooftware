@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.model.instalaciones;
 
 
-import com.Zooftware.Zooftware.model.interfaces.IComidaBuilder;
+import com.Zooftware.Zooftware.model.comida.interfaces.IComidaBuilder;
 
 /**
  * @author carlos

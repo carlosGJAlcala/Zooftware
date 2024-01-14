@@ -1,5 +1,7 @@
-package com.Zooftware.Zooftware.model.interfaces;
+package com.Zooftware.Zooftware.model.instalaciones.interfaces;
 
+
+import com.Zooftware.Zooftware.model.persona.interfaces.ITrabajador;
 
 /**
  * @author carlos

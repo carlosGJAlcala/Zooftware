@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.model.organismos;
 
 
-import com.Zooftware.Zooftware.model.interfaces.ISuelo;
+import com.Zooftware.Zooftware.model.instalaciones.interfaces.ISuelo;
 import com.Zooftware.Zooftware.model.organismos.enums.TipoSuelo;
 import jakarta.persistence.*;
 
@@ -19,6 +19,7 @@ public class SueloImpl implements ISuelo {
 	private int id;
 	private int porcentajeHumedad;
 
+	@Enumerated(EnumType.STRING)
 	private TipoSuelo tipo;
 
 

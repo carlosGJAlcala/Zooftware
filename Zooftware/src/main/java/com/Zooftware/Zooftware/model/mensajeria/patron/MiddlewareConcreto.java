@@ -1,6 +1,8 @@
 package com.Zooftware.Zooftware.model.mensajeria.patron;
 
 
+import com.Zooftware.Zooftware.model.mensajeria.interfaces.IMensaje;
+import com.Zooftware.Zooftware.model.persona.interfaces.ITrabajador;
 import com.Zooftware.Zooftware.model.persona.Trabajador;
 import com.Zooftware.Zooftware.model.interfaces.*;
 

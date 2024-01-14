@@ -1,5 +1,7 @@
-package com.Zooftware.Zooftware.model.interfaces;
+package com.Zooftware.Zooftware.model.instalaciones.interfaces;
 
+
+import com.Zooftware.Zooftware.model.interfaces.IDimesion;
 
 /**
  * @author carlos
@@ -7,9 +9,6 @@ package com.Zooftware.Zooftware.model.interfaces;
  * @created 08-ene.-2024 16:50:00
  */
 public interface IDimesionHabita extends IDimesion {
-
-	public int Area;
-
 	public int getArea();
 
 	public void setArea();

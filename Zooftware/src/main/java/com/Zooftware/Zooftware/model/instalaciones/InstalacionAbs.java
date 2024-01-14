@@ -1,7 +1,10 @@
 package com.Zooftware.Zooftware.model.instalaciones;
 
 
-import com.Zooftware.Zooftware.model.interfaces.*;
+import com.Zooftware.Zooftware.model.instalaciones.interfaces.IDimesionHabita;
+import com.Zooftware.Zooftware.model.instalaciones.interfaces.IInstalacion;
+import com.Zooftware.Zooftware.model.instalaciones.interfaces.IRecipiente;
+import com.Zooftware.Zooftware.model.persona.interfaces.ITrabajador;
 import com.Zooftware.Zooftware.model.persona.Trabajador;
 
 import java.util.List;

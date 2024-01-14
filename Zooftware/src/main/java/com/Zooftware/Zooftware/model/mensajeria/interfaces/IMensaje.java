@@ -1,7 +1,7 @@
-package com.Zooftware.Zooftware.model.interfaces;
+package com.Zooftware.Zooftware.model.mensajeria.interfaces;
 
 
-import com.Zooftware.Zooftware.model.instalaciones.HabitaAbs;
+import com.Zooftware.Zooftware.model.instalaciones.Habitat;
 
 /**
  * @author carlos

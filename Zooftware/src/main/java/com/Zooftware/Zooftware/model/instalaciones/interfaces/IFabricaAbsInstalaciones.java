@@ -1,8 +1,9 @@
-package com.Zooftware.Zooftware.model.interfaces;
+package com.Zooftware.Zooftware.model.instalaciones.interfaces;
 
 
 import com.Zooftware.Zooftware.model.instalaciones.AlmacenComida;
-import com.Zooftware.Zooftware.model.instalaciones.HabitaAbs;
+import com.Zooftware.Zooftware.model.instalaciones.Habitat;
+import com.Zooftware.Zooftware.model.instalaciones.Habitat;
 
 /**
  * @author carlos
@@ -13,6 +14,6 @@ public interface IFabricaAbsInstalaciones {
 
 	public AlmacenComida crearCocina();
 
-	public HabitaAbs crearHabita();
+	public Habitat crearHabita();
 
 }

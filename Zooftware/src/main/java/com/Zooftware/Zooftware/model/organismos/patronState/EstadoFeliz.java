@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.model.organismos.patronState;
 
 
-import com.Zooftware.Zooftware.model.interfaces.IEstadoAnimal;
+import com.Zooftware.Zooftware.model.organismos.interfaces.IEstadoAnimal;
 
 /**
  * @author carlos

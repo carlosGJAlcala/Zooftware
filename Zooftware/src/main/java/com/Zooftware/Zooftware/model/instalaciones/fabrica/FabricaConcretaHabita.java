@@ -2,8 +2,9 @@ package com.Zooftware.Zooftware.model.instalaciones.fabrica;
 
 
 import com.Zooftware.Zooftware.model.instalaciones.AlmacenComida;
-import com.Zooftware.Zooftware.model.instalaciones.HabitaAbs;
-import com.Zooftware.Zooftware.model.interfaces.IFabricaAbsInstalaciones;
+import com.Zooftware.Zooftware.model.instalaciones.Habitat;
+import com.Zooftware.Zooftware.model.instalaciones.Habitat;
+import com.Zooftware.Zooftware.model.instalaciones.interfaces.IFabricaAbsInstalaciones;
 
 /**
  * @author carlos
@@ -20,7 +21,7 @@ public class FabricaConcretaHabita implements IFabricaAbsInstalaciones {
 		return null;
 	}
 
-	public HabitaAbs crearHabita(){
+	public Habitat crearHabita(){
 		return null;
 	}
 }//end FabricaConcretaHabita

@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.model.persona;
 
 
-import com.Zooftware.Zooftware.model.interfaces.IContacto;
+import com.Zooftware.Zooftware.model.persona.interfaces.IContacto;
 import jakarta.persistence.*;
 
 /**

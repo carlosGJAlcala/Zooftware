@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.model.organismos;
 
 
-import com.Zooftware.Zooftware.model.interfaces.IDimensionAnimal;
+import com.Zooftware.Zooftware.model.organismos.interfaces.IDimensionAnimal;
 import jakarta.persistence.*;
 
 /**

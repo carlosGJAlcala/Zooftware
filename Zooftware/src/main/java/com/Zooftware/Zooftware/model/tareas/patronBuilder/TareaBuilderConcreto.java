@@ -1,4 +1,4 @@
-package com.Zooftware.Zooftware.model.tareas;
+package com.Zooftware.Zooftware.model.tareas.patronBuilder;
 
 
 import com.Zooftware.Zooftware.model.interfaces.ITareaBuilder;

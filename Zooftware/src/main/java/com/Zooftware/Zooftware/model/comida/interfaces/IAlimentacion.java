@@ -1,4 +1,4 @@
-package com.Zooftware.Zooftware.model.interfaces;
+package com.Zooftware.Zooftware.model.comida.interfaces;
 
 
 /**

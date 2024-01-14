@@ -1,50 +1,54 @@
 package com.Zooftware.Zooftware.model.instalaciones;
 
 
-import com.Zooftware.Zooftware.model.interfaces.IOrganismo;
-import com.Zooftware.Zooftware.model.interfaces.IRecipiente;
-import com.Zooftware.Zooftware.model.interfaces.ISuelo;
-import com.Zooftware.Zooftware.model.interfaces.ITrabajador;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.Zooftware.Zooftware.model.instalaciones.enums.TipoHabitat;
+import com.Zooftware.Zooftware.model.persona.interfaces.ITrabajador;
+import com.Zooftware.Zooftware.model.organismos.Organismo;
+import com.Zooftware.Zooftware.model.organismos.SueloImpl;
+import jakarta.persistence.*;
 
 /**
  * @author carlos
  * @version 1.0
  * @created 08-ene.-2024 16:50:00
  */
+@Entity
+@Table(name = "habitat")
 public class Habitat extends InstalacionAbs {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 
-	private List< IRecipiente> ListaIRecipientes;
-	private List<IOrganismo> ListaOrganismos;
-	private ISuelo TipoSuelo;
+	@OneToMany
+	@JoinColumn(name = "comedero_id")
+	private Comedero comedero;
 
-	public Habitat(ISuelo tipoSuelo) {
-		TipoSuelo = tipoSuelo;
-		ListaIRecipientes= new ArrayList<IRecipiente>();
-		ListaOrganismos= new ArrayList<IOrganismo>();
+	@OneToMany
+	@JoinColumn(name = "bebedero_id")
+	private Bebedero bebedero;
+
+	@OneToMany
+	@JoinColumn(name = "organismo_id")
+	private Organismo organismos;
+
+	@Enumerated(EnumType.STRING)
+	private TipoHabitat tipoHabitat;
+
+	@OneToOne
+	@JoinColumn(name = "suelo_id")
+	private SueloImpl suelo;
+
+	public Habitat(SueloImpl suelo) {
+		suelo = suelo;
 	}
 	public Habitat(){}
 
-	public void anadirOrganismo(IOrganismo organismo){
-		ListaOrganismos.add(organismo);
-	}
-	public void eliminarOrganismo(IOrganismo organismo){
-		ListaOrganismos.remove(organismo);
-	}
-	public void anadirRecipiente(IRecipiente recipiente){
-		ListaIRecipientes.add(recipiente);
-	}
-	public void eliminarRecipiente(IRecipiente recipiente){
-		ListaIRecipientes.remove(recipiente);
-	}
-	public ISuelo getTipoSuelo() {
-		return TipoSuelo;
+	public SueloImpl getTipoSuelo() {
+		return suelo;
 	}
 
-	public void setTipoSuelo(ISuelo tipoSuelo) {
-		TipoSuelo = tipoSuelo;
+	public void setTipoSuelo(SueloImpl tipoSuelo) {
+		suelo = tipoSuelo;
 	}
 
 	@Override

@@ -1,5 +1,7 @@
-package com.Zooftware.Zooftware.model.interfaces;
+package com.Zooftware.Zooftware.model.organismos.interfaces;
 
+
+import com.Zooftware.Zooftware.model.interfaces.IDimesion;
 
 /**
  * @author carlos

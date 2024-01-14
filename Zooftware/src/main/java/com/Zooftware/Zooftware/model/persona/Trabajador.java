@@ -2,8 +2,8 @@ package com.Zooftware.Zooftware.model.persona;
 
 
 import com.Zooftware.Zooftware.model.interfaces.IDescripcion;
-import com.Zooftware.Zooftware.model.interfaces.ITrabajador;
 import com.Zooftware.Zooftware.model.mensajeria.MensajeImpl;
+import com.Zooftware.Zooftware.model.persona.interfaces.ITrabajador;
 import jakarta.persistence.*;
 
 import java.util.Date;

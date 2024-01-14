@@ -1,4 +1,4 @@
-package com.Zooftware.Zooftware.model.tareas;
+package com.Zooftware.Zooftware.model.tareas.patronStrategy;
 
 
 import com.Zooftware.Zooftware.model.interfaces.ITarea;

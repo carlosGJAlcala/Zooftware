@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.model.persona;
 
 
-import com.Zooftware.Zooftware.model.interfaces.IPersona;
+import com.Zooftware.Zooftware.model.persona.interfaces.IPersona;
 import jakarta.persistence.*;
 
 /**
