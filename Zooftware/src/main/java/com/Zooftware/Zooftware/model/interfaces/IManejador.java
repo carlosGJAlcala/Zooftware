@@ -8,8 +8,6 @@ package com.Zooftware.Zooftware.model.interfaces;
  */
 public interface IManejador {
 
-	public IManejador m_IManejador;
-
 	public void enviar();
 
 }

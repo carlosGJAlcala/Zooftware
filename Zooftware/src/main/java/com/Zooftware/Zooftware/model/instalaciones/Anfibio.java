@@ -1,18 +1,25 @@
 package com.Zooftware.Zooftware.model.instalaciones;
 
 
-import com.Zooftware.Zooftware.model.interfaces.ISuelo;
+import com.Zooftware.Zooftware.model.organismos.SueloImpl;
+import jakarta.persistence.*;
 
 /**
  * @author carlos
  * @version 1.0
  * @created 08-ene.-2024 16:50:01
  */
-public class Anfibio extends HabitaAbs {
+@Entity
+@Table(name = "anfibio")
+public class Anfibio extends Habitat {
 
-	private int NumComedores;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	public Anfibio(ISuelo tipoSuelo) {
+	public Anfibio(){}
+	private int NumComedores;
+
+	public Anfibio(SueloImpl tipoSuelo) {
 		super(tipoSuelo);
 		NumComedores=0;
 	}

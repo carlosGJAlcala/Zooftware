@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.model.interfaces;
 
 
-import com.Zooftware.Zooftware.model.interfaces.IEstadoMensaje;
+import com.Zooftware.Zooftware.model.mensajeria.interfaces.IEstadoMensaje;
 
 /**
  * @author carlos
@@ -9,8 +9,6 @@ import com.Zooftware.Zooftware.model.interfaces.IEstadoMensaje;
  * @created 08-ene.-2024 16:50:09
  */
 public interface ITareaBuilder {
-
-	public IEstadoMensaje m_IEstadoMensaje;
 
 	public void enCurso();
 

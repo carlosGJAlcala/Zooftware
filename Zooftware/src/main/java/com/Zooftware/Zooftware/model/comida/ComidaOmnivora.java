@@ -1,7 +1,8 @@
 package com.Zooftware.Zooftware.model.comida;
 
 
-import com.Zooftware.Zooftware.model.interfaces.IAlimentacion;
+import com.Zooftware.Zooftware.model.comida.enums.EstadoComida;
+import com.Zooftware.Zooftware.model.comida.interfaces.IAlimentacion;
 
 /**
  * @author carlos
@@ -33,6 +34,7 @@ public class ComidaOmnivora implements IAlimentacion {
 	}
 
 	public String getDescripcion(){
-		return "comida Omnivora";
+
+		return null;
 	}
 }//end ComidaOmnivora

@@ -1,8 +1,6 @@
 package com.Zooftware.Zooftware.model.interfaces;
 
 
-import com.Zooftware.Zooftware.model.organismos.OrganismoAbs;
-
 /**
  * @author carlos
  * @version 1.0

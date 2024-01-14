@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.model.instalaciones;
 
 
-import com.Zooftware.Zooftware.model.interfaces.IDimesionHabita;
+import com.Zooftware.Zooftware.model.instalaciones.interfaces.IDimesionHabita;
 
 /**
  * @author carlos

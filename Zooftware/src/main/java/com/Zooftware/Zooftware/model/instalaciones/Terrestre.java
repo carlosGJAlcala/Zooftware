@@ -1,14 +1,23 @@
 package com.Zooftware.Zooftware.model.instalaciones;
 
-import com.Zooftware.Zooftware.model.interfaces.ISuelo;
+import com.Zooftware.Zooftware.model.instalaciones.interfaces.ISuelo;
+import com.Zooftware.Zooftware.model.organismos.SueloImpl;
+import jakarta.persistence.*;
 
-public class Terrestre extends HabitaAbs {
+@Entity
+@Table(name = "terrestre")
+public class Terrestre extends Habitat{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String nombre;
 
     private int NumBebederos;
     private int NumComederos;
 
+    public Terrestre(){}
     public Terrestre(ISuelo tipoSuelo, int numBebederos, int numComederos) {
-        super(tipoSuelo);
+        super((SueloImpl) tipoSuelo);
         NumBebederos = numBebederos;
         NumComederos = numComederos;
 

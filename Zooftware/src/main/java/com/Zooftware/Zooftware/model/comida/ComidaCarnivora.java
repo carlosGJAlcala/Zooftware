@@ -1,7 +1,8 @@
 package com.Zooftware.Zooftware.model.comida;
 
 
-import com.Zooftware.Zooftware.model.interfaces.IAlimentacion;
+import com.Zooftware.Zooftware.model.comida.enums.EstadoComida;
+import com.Zooftware.Zooftware.model.comida.interfaces.IAlimentacion;
 
 /**
  * @author carlos
@@ -16,7 +17,7 @@ public class ComidaCarnivora implements IAlimentacion {
 		estado= EstadoComida.CRUDA;
 	}
 	public String getDescripcion(){
-		return "Carnivora";
+		return null;
 	}
 
 	public int getId() {
