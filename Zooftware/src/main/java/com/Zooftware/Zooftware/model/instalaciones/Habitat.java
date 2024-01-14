@@ -4,6 +4,7 @@ package com.Zooftware.Zooftware.model.instalaciones;
 import com.Zooftware.Zooftware.model.interfaces.IOrganismo;
 import com.Zooftware.Zooftware.model.interfaces.IRecipiente;
 import com.Zooftware.Zooftware.model.interfaces.ISuelo;
+import com.Zooftware.Zooftware.model.interfaces.ITrabajador;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,17 +14,18 @@ import java.util.List;
  * @version 1.0
  * @created 08-ene.-2024 16:50:00
  */
-public abstract class HabitaAbs extends InstalacionAbs {
+public class Habitat extends InstalacionAbs {
 
 	private List< IRecipiente> ListaIRecipientes;
 	private List<IOrganismo> ListaOrganismos;
 	private ISuelo TipoSuelo;
 
-	public HabitaAbs(ISuelo tipoSuelo) {
+	public Habitat(ISuelo tipoSuelo) {
 		TipoSuelo = tipoSuelo;
 		ListaIRecipientes= new ArrayList<IRecipiente>();
 		ListaOrganismos= new ArrayList<IOrganismo>();
 	}
+	public Habitat(){}
 
 	public void anadirOrganismo(IOrganismo organismo){
 		ListaOrganismos.add(organismo);
@@ -45,5 +47,18 @@ public abstract class HabitaAbs extends InstalacionAbs {
 		TipoSuelo = tipoSuelo;
 	}
 
+	@Override
+	public String descripcion() {
+		return null;
+	}
 
+	@Override
+	public String getDescripcion() {
+		return super.getDescripcion();
+	}
+
+	@Override
+	public void anadirEmpleado(ITrabajador trabajador) {
+		super.anadirEmpleado(trabajador);
+	}
 }//end HabitaAbs

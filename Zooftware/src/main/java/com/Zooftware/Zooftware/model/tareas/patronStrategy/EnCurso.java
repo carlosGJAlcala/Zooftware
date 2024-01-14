@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.model.tareas;
 
 
-import com.Zooftware.Zooftware.model.interfaces.IEstadoMensaje;
+import com.Zooftware.Zooftware.model.mensajeria.interfaces.IEstadoMensaje;
 
 /**
  * @author carlos
