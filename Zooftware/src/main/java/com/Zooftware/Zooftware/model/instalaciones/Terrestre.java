@@ -15,6 +15,7 @@ public class Terrestre extends Habitat{
     private int NumBebederos;
     private int NumComederos;
 
+    public Terrestre(){}
     public Terrestre(ISuelo tipoSuelo, int numBebederos, int numComederos) {
         super((SueloImpl) tipoSuelo);
         NumBebederos = numBebederos;

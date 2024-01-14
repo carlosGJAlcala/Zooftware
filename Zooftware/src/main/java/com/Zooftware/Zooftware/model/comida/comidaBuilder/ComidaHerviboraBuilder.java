@@ -1,6 +1,8 @@
 
 package com.Zooftware.Zooftware.model.comida.comidaBuilder;
 
+
+import com.Zooftware.Zooftware.model.comida.ComidaHervibora;
 import com.Zooftware.Zooftware.model.comida.enums.EstadoComida;
 import com.Zooftware.Zooftware.model.comida.interfaces.IAlimentacion;
 import com.Zooftware.Zooftware.model.comida.interfaces.IComidaBuilder;

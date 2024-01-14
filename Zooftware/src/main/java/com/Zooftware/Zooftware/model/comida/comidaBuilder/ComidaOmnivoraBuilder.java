@@ -1,6 +1,8 @@
 package com.Zooftware.Zooftware.model.comida.comidaBuilder;
 
 
+import com.Zooftware.Zooftware.model.comida.ComidaOmnivora;
+import com.Zooftware.Zooftware.model.comida.enums.EstadoComida;
 import com.Zooftware.Zooftware.model.comida.interfaces.IAlimentacion;
 import com.Zooftware.Zooftware.model.comida.interfaces.IComidaBuilder;
 
@@ -11,8 +13,10 @@ import com.Zooftware.Zooftware.model.comida.interfaces.IComidaBuilder;
  */
 public class ComidaOmnivoraBuilder implements IComidaBuilder {
 
-	public ComidaOmnivoraBuilder(){
+	ComidaOmnivora comida;
 
+	public ComidaOmnivoraBuilder(){
+		comida= new ComidaOmnivora();
 	}
 
 
@@ -21,7 +25,7 @@ public class ComidaOmnivoraBuilder implements IComidaBuilder {
 	}
 
 	public void calentarComida(){
-
+		comida.setEstado(EstadoComida.HACIENDOSE);
 	}
 
 	public IAlimentacion getAlimento(){
@@ -30,6 +34,6 @@ public class ComidaOmnivoraBuilder implements IComidaBuilder {
 	}
 
 	public void ponerComidaEnUnCubo(){
-
+		comida.setEstado(EstadoComida.HECHA);
 	}
 }//end ComidaOmnivoraBuilder
