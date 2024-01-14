@@ -58,7 +58,10 @@ public class Comida implements IAlimentacion {
     public void setTipoComida(TipoComida tipoComida) {
         this.tipoComida = tipoComida;
     }
-    public void getDescripcion(){
 
+
+    @Override
+    public String getDescripcion() {
+    return "";
     }
 }

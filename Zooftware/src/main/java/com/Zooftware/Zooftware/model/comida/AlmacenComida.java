@@ -1,7 +1,7 @@
-package com.Zooftware.Zooftware.model.instalaciones;
+package com.Zooftware.Zooftware.model.comida;
 
 
-import com.Zooftware.Zooftware.model.comida.interfaces.IComidaBuilder;
+import com.Zooftware.Zooftware.model.instalaciones.InstalacionAbs;
 import jakarta.persistence.*;
 
 /**

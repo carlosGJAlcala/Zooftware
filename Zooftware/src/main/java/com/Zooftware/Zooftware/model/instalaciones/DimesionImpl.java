@@ -1,4 +1,4 @@
-package com.Zooftware.Zooftware.model.organismos;
+package com.Zooftware.Zooftware.model.instalaciones;
 
 
 import com.Zooftware.Zooftware.model.instalaciones.interfaces.IDimesionHabita;
@@ -8,32 +8,22 @@ import com.Zooftware.Zooftware.model.instalaciones.interfaces.IDimesionHabita;
  * @version 1.0
  * @created 08-ene.-2024 16:50:00
  */
-
 public class DimesionImpl implements IDimesionHabita {
 
-
-	//¿Utilidad de esta clase?
-
-	private int id;
-	private int dim1;
-	private int dim2;
-	private int dim3;
-
+	private int Area;
 
 	public DimesionImpl(){
-
+	Area=0;
 	}
 
 	public int getArea(){
-		return 0;
+		return Area;
 	}
 
 	@Override
 	public void setArea(int Area) {
-
+		this.Area=Area;
 	}
 
-	public void setArea(){
 
-	}
 }//end DimesionImpl

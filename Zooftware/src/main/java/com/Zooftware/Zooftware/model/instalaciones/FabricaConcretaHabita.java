@@ -1,9 +1,9 @@
-package com.Zooftware.Zooftware.model.instalaciones.fabrica;
+package com.Zooftware.Zooftware.model.instalaciones;
 
 
 import com.Zooftware.Zooftware.model.comida.AlmacenComida;
-import com.Zooftware.Zooftware.model.instalaciones.*;
 import com.Zooftware.Zooftware.model.instalaciones.interfaces.IFabricaAbsInstalaciones;
+import com.Zooftware.Zooftware.model.organismos.SueloImpl;
 
 /**
  * @author carlos
@@ -12,22 +12,20 @@ import com.Zooftware.Zooftware.model.instalaciones.interfaces.IFabricaAbsInstala
  */
 public class FabricaConcretaHabita implements IFabricaAbsInstalaciones {
 
+
 	public FabricaConcretaHabita(){
 
 	}
 
-	public AlmacenComida crearCocina(){
-		return null;
-	}
 
-	@Override
-	public AlmacenComida crearAlmacenComida() {
-		return null;
+	public AlmacenComida crearAlmacenComida(){
+		return new AlmacenComida();
 	}
 
 	@Override
 	public Anfibio crearHabitaAnfibio() {
-		return null;
+
+		return new Anfibio(new SueloImpl());
 	}
 
 	@Override

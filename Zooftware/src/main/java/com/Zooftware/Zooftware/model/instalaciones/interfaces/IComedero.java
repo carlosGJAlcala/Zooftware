@@ -8,11 +8,6 @@ package com.Zooftware.Zooftware.model.instalaciones.interfaces;
  */
 public interface IComedero extends IRecipiente {
 
-	public void getCantidad();
-
-	public void IsVacio();
-
-	public void rellenar();
 
 	public void setTipoComida();
 

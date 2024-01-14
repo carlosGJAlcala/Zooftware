@@ -1,7 +1,6 @@
 package com.Zooftware.Zooftware.model.instalaciones;
 
 
-import com.Zooftware.Zooftware.model.comida.interfaces.IAlimentacion;
 import com.Zooftware.Zooftware.model.instalaciones.interfaces.IComedero;
 import jakarta.persistence.*;
 
@@ -35,15 +34,22 @@ public class Comedero implements IComedero {
 
 	}
 
-	public void getCantidad(){
+	public int getCantidad(){
 
+		return 0;
 	}
 
-	public void IsVacio(){
+	public boolean IsVacio(){
 
+		return false;
 	}
 
 	public void rellenar(){
+
+	}
+
+	@Override
+	public void vaciar() {
 
 	}
 }//end Comedero

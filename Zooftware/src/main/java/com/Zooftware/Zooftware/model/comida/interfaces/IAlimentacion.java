@@ -9,6 +9,6 @@ package com.Zooftware.Zooftware.model.comida.interfaces;
 public interface IAlimentacion {
 
 
-	public void getDescripcion();
+	public String getDescripcion();
 
 }

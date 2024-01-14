@@ -20,15 +20,22 @@ public class Bebedero implements IRecipiente {
 	}
 
 
-	public void getCantidad(){
+	public int getCantidad(){
 
+		return 0;
 	}
 
-	public void IsVacio(){
+	public boolean IsVacio(){
 
+		return false;
 	}
 
 	public void rellenar(){
+
+	}
+
+	@Override
+	public void vaciar() {
 
 	}
 }//end Bebedero

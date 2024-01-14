@@ -1,6 +1,7 @@
 package com.Zooftware.Zooftware.model.comida.comidaBuilder;
 
 
+import com.Zooftware.Zooftware.model.comida.interfaces.IAlimentacion;
 import com.Zooftware.Zooftware.model.comida.interfaces.IComidaBuilder;
 
 /**
@@ -23,8 +24,9 @@ public class ComidaOmnivoraBuilder implements IComidaBuilder {
 
 	}
 
-	public void getAlimento(){
+	public IAlimentacion getAlimento(){
 
+		return null;
 	}
 
 	public void ponerComidaEnUnCubo(){
