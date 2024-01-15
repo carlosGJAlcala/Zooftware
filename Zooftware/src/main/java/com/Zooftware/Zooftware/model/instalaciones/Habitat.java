@@ -42,6 +42,20 @@ public class Habitat extends InstalacionAbs implements Serializable {
 	@JoinColumn(name = "suelo_id")
 	private SueloImpl suelo;
 
+	@OneToOne
+	@JoinColumn(name = "dimension_id")
+	private DimensionImpl dimension;
+
+	public Habitat(int id, List<Comedero> comedero, List<Bebedero> bebedero, List<Organismo> organismos, TipoHabitat tipoHabitat, SueloImpl suelo, DimensionImpl dimension) {
+		this.id = id;
+		this.comedero = comedero;
+		this.bebedero = bebedero;
+		this.organismos = organismos;
+		this.tipoHabitat = tipoHabitat;
+		this.suelo = suelo;
+		this.dimension = dimension;
+	}
+
 	public Habitat(SueloImpl suelo) {
 		suelo = suelo;
 	}
@@ -53,6 +67,62 @@ public class Habitat extends InstalacionAbs implements Serializable {
 
 	public void setTipoSuelo(SueloImpl tipoSuelo) {
 		suelo = tipoSuelo;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public List<Comedero> getComedero() {
+		return comedero;
+	}
+
+	public void setComedero(List<Comedero> comedero) {
+		this.comedero = comedero;
+	}
+
+	public List<Bebedero> getBebedero() {
+		return bebedero;
+	}
+
+	public void setBebedero(List<Bebedero> bebedero) {
+		this.bebedero = bebedero;
+	}
+
+	public List<Organismo> getOrganismos() {
+		return organismos;
+	}
+
+	public void setOrganismos(List<Organismo> organismos) {
+		this.organismos = organismos;
+	}
+
+	public TipoHabitat getTipoHabitat() {
+		return tipoHabitat;
+	}
+
+	public void setTipoHabitat(TipoHabitat tipoHabitat) {
+		this.tipoHabitat = tipoHabitat;
+	}
+
+	public SueloImpl getSuelo() {
+		return suelo;
+	}
+
+	public void setSuelo(SueloImpl suelo) {
+		this.suelo = suelo;
+	}
+
+	public DimensionImpl getDimension() {
+		return dimension;
+	}
+
+	public void setDimension(DimensionImpl dimension) {
+		this.dimension = dimension;
 	}
 
 	@Override

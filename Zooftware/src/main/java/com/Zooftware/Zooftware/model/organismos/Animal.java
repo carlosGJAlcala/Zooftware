@@ -51,10 +51,10 @@ public class Animal extends Organismo {
 //	}
 
 	public Animal(){}
-	public Animal(int edad, int id, String nombreEspecie, Comida  comida, EstadoAnimal estadoAnimal, int hambre, String nombre, int numExtremidades, int salud, int sed, int suenio, TipoAnimal tipo, IEstadoAnimal m_IEstadoAnimal) {
-		super(edad, id, nombreEspecie);
-		comida = comida;
-		estadoAnimal = estadoAnimal;
+
+	public Animal(int id, Comida comida, int hambre, String nombre, int numExtremidades, int salud, int sed, int suenio, TipoAnimal tipo, EstadoAnimal estadoAnimal) {
+		this.id = id;
+		this.comida = comida;
 		Hambre = hambre;
 		Nombre = nombre;
 		NumExtremidades = numExtremidades;
@@ -62,7 +62,34 @@ public class Animal extends Organismo {
 		Sed = sed;
 		Suenio = suenio;
 		this.tipo = tipo;
-		this.id=id;
+		this.estadoAnimal = estadoAnimal;
+	}
+
+	public Animal(int edad, int id, String nombreEspecie, int id1, Comida comida, int hambre, String nombre, int numExtremidades, int salud, int sed, int suenio, TipoAnimal tipo, EstadoAnimal estadoAnimal) {
+		super(edad, id, nombreEspecie);
+		this.id = id1;
+		this.comida = comida;
+		Hambre = hambre;
+		Nombre = nombre;
+		NumExtremidades = numExtremidades;
+		Salud = salud;
+		Sed = sed;
+		Suenio = suenio;
+		this.tipo = tipo;
+		this.estadoAnimal = estadoAnimal;
+	}
+
+	public Animal(int id, int edad, String nombreEspecie, Animal animal, Planta planta, DimensionAnimalImpl dimensionAnimal, int id1, Comida comida, int hambre, String nombre, int numExtremidades, int salud, int sed, int suenio, TipoAnimal tipo, EstadoAnimal estadoAnimal) {
+		super(id, edad, nombreEspecie, animal, planta, dimensionAnimal);
+		this.id = id1;
+		this.comida = comida;
+		Hambre = hambre;
+		Nombre = nombre;
+		NumExtremidades = numExtremidades;
+		Salud = salud;
+		Sed = sed;
+		Suenio = suenio;
+		this.tipo = tipo;
 		this.estadoAnimal = estadoAnimal;
 	}
 
@@ -76,6 +103,16 @@ public class Animal extends Organismo {
 
 	public EstadoAnimal getEstadoAnimal() {
 		return estadoAnimal;
+	}
+
+	@Override
+	public int getId() {
+		return id;
+	}
+
+	@Override
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public void setEstadoAnimal(EstadoAnimal estadoAnimal) {

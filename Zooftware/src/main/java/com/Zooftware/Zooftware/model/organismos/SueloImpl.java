@@ -22,6 +22,15 @@ public class SueloImpl implements ISuelo {
 	@Enumerated(EnumType.STRING)
 	private TipoSuelo tipo;
 
+	public SueloImpl(int id, int porcentajeHumedad, TipoSuelo tipo) {
+		this.id = id;
+		this.porcentajeHumedad = porcentajeHumedad;
+		this.tipo = tipo;
+	}
+
+	public SueloImpl() {
+
+	}
 
 	public int getId() {
 		return id;
@@ -34,6 +43,14 @@ public class SueloImpl implements ISuelo {
 	@Override
 	public int getPorcentajeHumedad() {
 		return porcentajeHumedad;
+	}
+
+	public TipoSuelo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoSuelo tipo) {
+		this.tipo = tipo;
 	}
 
 	@Override

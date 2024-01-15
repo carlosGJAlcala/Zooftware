@@ -119,6 +119,15 @@ public class Trabajador implements ITrabajador, IDescripcion, Serializable {
 	public void eliminarSub(){}
 	public void getSalario(){}
 	public void getSalarios(){}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public void setDescripcion(){}
 	public void setZona(){}
 	public void getDescripcion(){}

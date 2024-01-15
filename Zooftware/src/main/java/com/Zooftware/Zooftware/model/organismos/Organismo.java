@@ -33,7 +33,7 @@ public class Organismo implements IOrganismo, Serializable {
 	private Planta planta;
 
 	@OneToOne
-	@JoinColumn(name = "dimensionAnimalImpl_id")
+	@JoinColumn(name = "dimensionAnimal_id")
 	private DimensionAnimalImpl dimensionAnimal;
 //	public Organismo(int edad, int id, String nombreEspecie) {
 //		Edad = edad;
@@ -46,5 +46,62 @@ public class Organismo implements IOrganismo, Serializable {
 		Edad = edad;
 		id = id;
 		NombreEspecie = nombreEspecie;
+	}
+
+	public Organismo(int id, int edad, String nombreEspecie, Animal animal, Planta planta, DimensionAnimalImpl dimensionAnimal) {
+		this.id = id;
+		Edad = edad;
+		NombreEspecie = nombreEspecie;
+		this.animal = animal;
+		this.planta = planta;
+		this.dimensionAnimal = dimensionAnimal;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getEdad() {
+		return Edad;
+	}
+
+	public void setEdad(int edad) {
+		Edad = edad;
+	}
+
+	public String getNombreEspecie() {
+		return NombreEspecie;
+	}
+
+	public void setNombreEspecie(String nombreEspecie) {
+		NombreEspecie = nombreEspecie;
+	}
+
+	public Animal getAnimal() {
+		return animal;
+	}
+
+	public void setAnimal(Animal animal) {
+		this.animal = animal;
+	}
+
+	public Planta getPlanta() {
+		return planta;
+	}
+
+	public void setPlanta(Planta planta) {
+		this.planta = planta;
+	}
+
+	public DimensionAnimalImpl getDimensionAnimal() {
+		return dimensionAnimal;
+	}
+
+	public void setDimensionAnimal(DimensionAnimalImpl dimensionAnimal) {
+		this.dimensionAnimal = dimensionAnimal;
 	}
 }//end OrganismoAbs

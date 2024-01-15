@@ -23,12 +23,34 @@ public class ContactoImpl implements IContacto {
 
 	}
 
+	public ContactoImpl(int id, int correo, int numeroTlf) {
+		this.id = id;
+		Correo = correo;
+		NumeroTlf = numeroTlf;
+	}
+
 	public String getCorreo(){
 		return "";
 	}
 
 	public String getNumeroTlf(){
 		return "";
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setCorreo(int correo) {
+		Correo = correo;
+	}
+
+	public void setNumeroTlf(int numeroTlf) {
+		NumeroTlf = numeroTlf;
 	}
 
 	public void setCorreo(){

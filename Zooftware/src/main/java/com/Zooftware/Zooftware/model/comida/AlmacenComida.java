@@ -23,6 +23,11 @@ public class AlmacenComida extends InstalacionAbs {
 	public AlmacenComida(){
 
 	}
+
+	public AlmacenComida(int id) {
+		this.id = id;
+	}
+
 	public String descripcion(){
 		return "";
 	}
@@ -36,6 +41,14 @@ public class AlmacenComida extends InstalacionAbs {
 
 	public void getComida(){
 
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public void setComidaBuilder(){
