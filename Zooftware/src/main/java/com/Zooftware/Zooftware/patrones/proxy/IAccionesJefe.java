@@ -8,7 +8,6 @@ package com.Zooftware.Zooftware.patrones.proxy;
  */
 public interface IAccionesJefe extends IAccionesEmpleado {
 
-	public void cargarZoo();
 
 	public void comprarAnimal();
 
