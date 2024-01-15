@@ -19,6 +19,9 @@ public class Bebedero implements IRecipiente {
 
 	}
 
+	public Bebedero(int id) {
+		this.id = id;
+	}
 
 	public int getCantidad(){
 
@@ -28,6 +31,14 @@ public class Bebedero implements IRecipiente {
 	public boolean IsVacio(){
 
 		return false;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public void rellenar(){

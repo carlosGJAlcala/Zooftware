@@ -1,9 +1,13 @@
 package com.Zooftware.Zooftware.model.instalaciones;
 
 
+import com.Zooftware.Zooftware.model.instalaciones.enums.TipoHabitat;
 import com.Zooftware.Zooftware.model.instalaciones.interfaces.ISuelo;
+import com.Zooftware.Zooftware.model.organismos.Organismo;
 import com.Zooftware.Zooftware.model.organismos.SueloImpl;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 /**
  * @author carlos
@@ -22,6 +26,23 @@ public class Acuatico extends Habitat {
 		super(tipoSuelo);
 	}
 
+	public Acuatico(int id, List<Comedero> comedero, List<Bebedero> bebedero, List<Organismo> organismos, TipoHabitat tipoHabitat, SueloImpl suelo, DimensionImpl dimension, int id1, TipoAgua tipoAgua) {
+		super(id, comedero, bebedero, organismos, tipoHabitat, suelo, dimension);
+		this.id = id1;
+		this.tipoAgua = tipoAgua;
+	}
+
+	public Acuatico(SueloImpl suelo, int id, TipoAgua tipoAgua) {
+		super(suelo);
+		this.id = id;
+		this.tipoAgua = tipoAgua;
+	}
+
+	public Acuatico(int id, TipoAgua tipoAgua) {
+		this.id = id;
+		this.tipoAgua = tipoAgua;
+	}
+
 	@Override
 	public String descripcion() {
 		return "Acuatico";
@@ -31,6 +52,21 @@ public class Acuatico extends Habitat {
 
 	private TipoAgua tipoAgua;
 
+	@Override
+	public int getId() {
+		return id;
+	}
 
+	@Override
+	public void setId(int id) {
+		this.id = id;
+	}
 
+	public TipoAgua getTipoAgua() {
+		return tipoAgua;
+	}
+
+	public void setTipoAgua(TipoAgua tipoAgua) {
+		this.tipoAgua = tipoAgua;
+	}
 }//end Acuatico

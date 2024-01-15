@@ -10,7 +10,7 @@ import jakarta.persistence.*;
  * @created 08-ene.-2024 16:49:59
  */
 @Entity
-@Table(name = "dimension")
+@Table(name = "dimensionAnimal")
 public class DimensionAnimalImpl implements IDimensionAnimal {
 
 	@Id
@@ -18,6 +18,12 @@ public class DimensionAnimalImpl implements IDimensionAnimal {
 	private int id;
 	private float Altura;
 	private float Peso;
+
+	public DimensionAnimalImpl(int id, float altura, float peso) {
+		this.id = id;
+		Altura = altura;
+		Peso = peso;
+	}
 
 	public void setAltura(float altura) {
 		Altura = altura;
@@ -35,5 +41,11 @@ public class DimensionAnimalImpl implements IDimensionAnimal {
 		Peso = peso;
 	}
 
+	public float getAltura() {
+		return Altura;
+	}
 
+	public float getPeso() {
+		return Peso;
+	}
 }//end DimensionAnimalImpl

@@ -28,8 +28,31 @@ public class Planta extends Organismo {
 	public Planta(){
 
 	}
-	public Planta(int edad, int id, String nombreEspecie, SueloImpl suelo) {
+
+	public Planta(int id, SueloImpl suelo) {
+		this.id = id;
+		this.suelo = suelo;
+	}
+
+	public Planta(int edad, int id, String nombreEspecie, int id1, SueloImpl suelo) {
 		super(edad, id, nombreEspecie);
+		this.id = id1;
+		this.suelo = suelo;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public SueloImpl getSuelo() {
+		return suelo;
+	}
+
+	public void setSuelo(SueloImpl suelo) {
 		this.suelo = suelo;
 	}
 }//end Planta

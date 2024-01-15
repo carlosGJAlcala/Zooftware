@@ -1,11 +1,8 @@
 package com.Zooftware.Zooftware.model.mensajeria;
 
 
-import com.Zooftware.Zooftware.model.instalaciones.interfaces.IInstalacion;
-import com.Zooftware.Zooftware.model.interfaces.ITarea;
-import com.Zooftware.Zooftware.model.mensajeria.interfaces.IEstadoMensaje;
 import com.Zooftware.Zooftware.model.mensajeria.interfaces.IMensaje;
-import com.Zooftware.Zooftware.model.tareas.Tareas;
+import com.Zooftware.Zooftware.model.tareas.Tarea;
 import jakarta.persistence.*;
 
 /**
@@ -32,7 +29,16 @@ public class MensajeImpl implements IMensaje {
 
 	@OneToOne
 	@JoinColumn(name = "tarea_id")
-	private Tareas tareas;
+	private Tarea tareas;
+
+	public MensajeImpl(int id, String asunto, String destinario, String remitente, String texto, Tarea tareas) {
+		this.id = id;
+		Asunto = asunto;
+		Destinario = destinario;
+		Remitente = remitente;
+		Texto = texto;
+		this.tareas = tareas;
+	}
 
 	public MensajeImpl(){
 
@@ -47,6 +53,50 @@ public class MensajeImpl implements IMensaje {
 
 	public void setRemitente(){
 
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getAsunto() {
+		return Asunto;
+	}
+
+	public void setAsunto(String asunto) {
+		Asunto = asunto;
+	}
+
+	public String getDestinario() {
+		return Destinario;
+	}
+
+	public void setDestinario(String destinario) {
+		Destinario = destinario;
+	}
+
+	public void setRemitente(String remitente) {
+		Remitente = remitente;
+	}
+
+	public String getTexto() {
+		return Texto;
+	}
+
+	public void setTexto(String texto) {
+		Texto = texto;
+	}
+
+	public Tarea getTareas() {
+		return tareas;
+	}
+
+	public void setTareas(Tarea tareas) {
+		this.tareas = tareas;
 	}
 
 	public void setTarea(){

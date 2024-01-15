@@ -17,14 +17,29 @@ public class Comida implements IAlimentacion {
     @Enumerated(EnumType.STRING)
     private TipoComida tipoComida;
 
+    @OneToOne
+    @JoinColumn(name = "comidaCarnivora_id")
+    private ComidaCarnivora comidaCarnivora;
+    @OneToOne
+    @JoinColumn(name = "comidaHervibora_id")
+    private ComidaHervibora comidaHervibora;
+    @OneToOne
+    @JoinColumn(name = "comidaOmnivora_id")
+    private ComidaOmnivora comidaOmnivora;
+
+
     public Comida(){
 
     }
-    public Comida(int id, String nombre, int cantidad, TipoComida tipoComida) {
+
+    public Comida(int id, String nombre, int cantidad, TipoComida tipoComida, ComidaCarnivora comidaCarnivora, ComidaHervibora comidaHervibora, ComidaOmnivora comidaOmnivora) {
         this.id = id;
         Nombre = nombre;
         this.cantidad = cantidad;
         this.tipoComida = tipoComida;
+        this.comidaCarnivora = comidaCarnivora;
+        this.comidaHervibora = comidaHervibora;
+        this.comidaOmnivora = comidaOmnivora;
     }
 
     public int getId() {
@@ -59,6 +74,29 @@ public class Comida implements IAlimentacion {
         this.tipoComida = tipoComida;
     }
 
+    public ComidaCarnivora getComidaCarnivora() {
+        return comidaCarnivora;
+    }
+
+    public void setComidaCarnivora(ComidaCarnivora comidaCarnivora) {
+        this.comidaCarnivora = comidaCarnivora;
+    }
+
+    public ComidaHervibora getComidaHervibora() {
+        return comidaHervibora;
+    }
+
+    public void setComidaHervibora(ComidaHervibora comidaHervibora) {
+        this.comidaHervibora = comidaHervibora;
+    }
+
+    public ComidaOmnivora getComidaOmnivora() {
+        return comidaOmnivora;
+    }
+
+    public void setComidaOmnivora(ComidaOmnivora comidaOmnivora) {
+        this.comidaOmnivora = comidaOmnivora;
+    }
 
     @Override
     public String getDescripcion() {

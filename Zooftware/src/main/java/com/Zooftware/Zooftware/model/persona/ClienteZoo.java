@@ -23,7 +23,47 @@ public class ClienteZoo implements IDescripcion {
 
 	public ClienteZoo(){
 	}
+
+	public ClienteZoo(int id, int numVisitas, Date fechaRegistro, Date fechaUltimaVisita) {
+		this.id = id;
+		this.numVisitas = numVisitas;
+		this.fechaRegistro = fechaRegistro;
+		this.fechaUltimaVisita = fechaUltimaVisita;
+	}
+
 	public void descripcion(){
 
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getNumVisitas() {
+		return numVisitas;
+	}
+
+	public void setNumVisitas(int numVisitas) {
+		this.numVisitas = numVisitas;
+	}
+
+	public Date getFechaRegistro() {
+		return fechaRegistro;
+	}
+
+	public void setFechaRegistro(Date fechaRegistro) {
+		this.fechaRegistro = fechaRegistro;
+	}
+
+	public Date getFechaUltimaVisita() {
+		return fechaUltimaVisita;
+	}
+
+	public void setFechaUltimaVisita(Date fechaUltimaVisita) {
+		this.fechaUltimaVisita = fechaUltimaVisita;
 	}
 }//end ClienteZoo

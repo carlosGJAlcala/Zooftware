@@ -48,6 +48,42 @@ public class Persona implements IPersona {
 	public void setApellido(){
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getApellidos() {
+		return Apellidos;
+	}
+
+	public void setApellidos(String apellidos) {
+		Apellidos = apellidos;
+	}
+
+	public void setDni(String dni) {
+		Dni = dni;
+	}
+
+	public void setEdad(int edad) {
+		Edad = edad;
+	}
+
+	public void setNombre(String nombre) {
+		Nombre = nombre;
+	}
+
+	public ContactoImpl getContactoImp() {
+		return contactoImp;
+	}
+
+	public void setContactoImp(ContactoImpl contactoImp) {
+		this.contactoImp = contactoImp;
+	}
+
 	public void getDni(){
 	}
 	public void setDni(){
