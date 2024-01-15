@@ -14,9 +14,9 @@ public class Zooftware implements IAccionesJefe {
 
 	}
 
-	public void cargarZoo(){
-
-	}
+//	public void cargarZoo(){
+//
+//	}
 
 	public void comprarAnimal(){
 

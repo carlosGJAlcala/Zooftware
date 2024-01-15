@@ -14,9 +14,6 @@ public class ProxyCliente implements IAccionesCliente {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
 	public void verAnimales(){
 
 	}

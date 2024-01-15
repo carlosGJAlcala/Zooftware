@@ -1,6 +1,7 @@
 package com.Zooftware.Zooftware.model.persona;
 
 
+import com.Zooftware.Zooftware.model.persona.enums.Rol;
 import com.Zooftware.Zooftware.model.persona.interfaces.IPersona;
 import jakarta.persistence.*;
 
@@ -21,6 +22,13 @@ public class Persona implements IPersona {
 	private String Dni;
 	private int Edad;
 	private String Nombre;
+
+	private String username;
+	private String password;
+
+	@Enumerated(EnumType.STRING)
+	private Rol rol;
+
 	@OneToOne
 	@JoinColumn(name = "contacto_id")
 	private ContactoImpl contactoImp;
@@ -33,14 +41,42 @@ public class Persona implements IPersona {
 	public Persona(){
 	}
 
-	public Persona(String apellidos, String dni, int edad, String nombre, ContactoImpl contactoImp, Trabajador trabajador, ClienteZoo clienteZoo) {
+	public Persona(int id, String apellidos, String dni, int edad, String nombre, String username, String password, Rol rol, ContactoImpl contactoImp, Trabajador trabajador, ClienteZoo clienteZoo) {
+		this.id = id;
 		Apellidos = apellidos;
 		Dni = dni;
 		Edad = edad;
 		Nombre = nombre;
+		this.username = username;
+		this.password = password;
+		this.rol = rol;
 		this.contactoImp = contactoImp;
 		this.trabajador = trabajador;
 		this.clienteZoo = clienteZoo;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Rol getRol() {
+		return rol;
+	}
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
 	}
 
 	public void getApellido(){

@@ -14,9 +14,6 @@ public class ProxyEmpleado implements IAccionesEmpleado {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
 	public void mandarMensajes(){
 
 	}
