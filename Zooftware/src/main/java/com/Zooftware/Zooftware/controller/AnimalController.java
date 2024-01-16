@@ -14,19 +14,19 @@ public class AnimalController {
 
     @GetMapping("/mostrarTablaAnimalJefe")
     public ModelAndView mostrarLogin(){
-        ModelAndView modelAndView = new ModelAndView("tablaInstalacionJefe");
+        ModelAndView modelAndView = new ModelAndView("tablaAnimalJefe");
         return modelAndView;
     }
 
     @GetMapping("/mostrarTablaAnimalEmpleado")
     public ModelAndView mostrarTablaAnimalEmpleado(){
-        ModelAndView modelAndView = new ModelAndView("tablaInstalacionEmpleado");
+        ModelAndView modelAndView = new ModelAndView("tablaAnimalEmpleado");
         return modelAndView;
     }
 
     @GetMapping("/mostrarTablaAnimalCliente")
     public ModelAndView mostrarTablaAnimalCliente(){
-        ModelAndView modelAndView = new ModelAndView("tablaInstalacionCliente");
+        ModelAndView modelAndView = new ModelAndView("tablaAnimalCliente");
         return modelAndView;
     }
 
