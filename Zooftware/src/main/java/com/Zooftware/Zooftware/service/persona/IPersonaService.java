@@ -1,5 +1,6 @@
 package com.Zooftware.Zooftware.service.persona;
 
+import com.Zooftware.Zooftware.modelDTO.PersonaEntityDto;
 import com.Zooftware.Zooftware.modelJPA.PersonaEntity;
 import com.Zooftware.Zooftware.modelJPA.enums.Rol;
 
@@ -9,7 +10,7 @@ public interface IPersonaService {
     public String tipoPersona(String username);
     public List<PersonaEntity> buscarTodas();
 
-    PersonaEntity getPersonaByUsername(String username);
+    PersonaEntityDto getPersonaByUsername(String username);
     public boolean existePersona(String username, String password);
 
     public void modificarRol(Rol rol, String username);

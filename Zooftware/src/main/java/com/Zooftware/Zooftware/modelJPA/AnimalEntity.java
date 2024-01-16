@@ -1,5 +1,6 @@
 package com.Zooftware.Zooftware.modelJPA;
 
+import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoAnimal;
 import jakarta.persistence.*;
 
@@ -24,9 +25,8 @@ public class AnimalEntity {
     @Basic
     @Column(name = "suenio")
     private int suenio;
-    @Basic
-    @Column(name = "estado_animal")
-    private Object estadoAnimal;
+    @Enumerated(EnumType.STRING)
+    private EstadoAnimal estadoAnimal;
     @Basic
     @Column(name = "tipo")
     private TipoAnimal tipo;
@@ -86,11 +86,11 @@ public class AnimalEntity {
         this.suenio = suenio;
     }
 
-    public Object getEstadoAnimal() {
+    public EstadoAnimal getEstadoAnimal() {
         return estadoAnimal;
     }
 
-    public void setEstadoAnimal(Object estadoAnimal) {
+    public void setEstadoAnimal(EstadoAnimal estadoAnimal) {
         this.estadoAnimal = estadoAnimal;
     }
 

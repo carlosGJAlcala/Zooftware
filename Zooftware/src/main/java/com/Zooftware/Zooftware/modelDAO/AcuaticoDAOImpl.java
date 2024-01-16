@@ -16,12 +16,16 @@ import java.util.stream.Collectors;
 public class AcuaticoDAOImpl implements IAcuaticoDAO {
     @Autowired
     AcuaticoEntityRepository acuariojpa;
-    private AcuaticoEntityMapper mapper= Mappers.getMapper(AcuaticoEntityMapper.class);
+//    @Autowired
+//    AcuaticoEntityMapper mapper;
+//
+//    @Autowired
+
     @Override
     public AcuaticoEntityDto buscarPorId(Integer id) {
         Optional<AcuaticoEntity> optional = acuariojpa.findById(id);
         if (optional.isPresent()) {
-            AcuaticoEntityDto acuarioDTO= mapper.toDto((optional.get()));
+            AcuaticoEntityDto acuarioDTO= AcuaticoEntityMapper.INSTANCE.toDto((optional.get()));
             return acuarioDTO;
         }
 
@@ -33,21 +37,21 @@ public class AcuaticoDAOImpl implements IAcuaticoDAO {
     public List<AcuaticoEntityDto> buscarPorTipoAgua(TipoAgua tipoAgua) {
         List<AcuaticoEntity> lista = acuariojpa.findByTipoAgua(tipoAgua);
 
-        return lista.stream().map(mapper::toDto).collect(Collectors.toList());
+        return lista.stream().map(AcuaticoEntityMapper.INSTANCE::toDto).collect(Collectors.toList());
     }
 
 
     @Override
     public void actualizar(AcuaticoEntityDto acuario) {
         acuariojpa.deleteById(acuario.getId());
-        AcuaticoEntity acuaticoEntity=mapper.toEntity(acuario);
+        AcuaticoEntity acuaticoEntity=AcuaticoEntityMapper.INSTANCE.toEntity(acuario);
         acuariojpa.save(acuaticoEntity);
 
     }
 
     @Override
     public void guardarAcuario(AcuaticoEntityDto acuario) {
-        AcuaticoEntity acuaticoEntity=mapper.toEntity(acuario);
+        AcuaticoEntity acuaticoEntity=AcuaticoEntityMapper.INSTANCE.toEntity(acuario);
         acuariojpa.save(acuaticoEntity);
 
     }

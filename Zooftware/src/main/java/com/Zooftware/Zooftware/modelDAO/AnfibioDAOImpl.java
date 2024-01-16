@@ -15,7 +15,7 @@ import java.util.Optional;
 @Repository
 public class AnfibioDAOImpl implements IAnfibioDAO {
 
-    private AnfibioEntityMapper mapper= Mappers.getMapper(AnfibioEntityMapper.class);
+
 
     @Autowired
     AnfibioEntityRepository repository;
@@ -24,7 +24,7 @@ public class AnfibioDAOImpl implements IAnfibioDAO {
 
         Optional<AnfibioEntity> optional = repository.findById(id);
         if (optional.isPresent()) {
-            AnfibioEntityDto anfibio= mapper.toDto((optional.get()));
+            AnfibioEntityDto anfibio= AnfibioEntityMapper.INSTANCE.toDto((optional.get()));
             return anfibio;
         }
 

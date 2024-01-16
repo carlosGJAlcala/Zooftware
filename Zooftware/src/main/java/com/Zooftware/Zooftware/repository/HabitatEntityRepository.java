@@ -11,6 +11,6 @@ public interface HabitatEntityRepository extends JpaRepository<HabitatEntity, In
     @Override
     Optional<HabitatEntity> findById(Integer integer);
 
-    List<HabitatEntity> findByTipoHabitat(Object tipoHabitat);
+    List<HabitatEntity> findByTipoHabitat(String tipoHabitat);
 
 }
