@@ -12,7 +12,7 @@ public interface TareaEntityRepository extends JpaRepository<TareaEntity, Intege
     @Override
     Optional<TareaEntity> findById(Integer integer);
 
-    List<TareaEntity> findByTipoTarea(Object tipoTarea);
+    List<TareaEntity> findByTipoTarea(String tipoTarea);
 
 
 

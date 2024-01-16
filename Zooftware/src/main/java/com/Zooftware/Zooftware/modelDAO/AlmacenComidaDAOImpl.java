@@ -16,14 +16,14 @@ public class AlmacenComidaDAOImpl implements IAlmacenComidaDAO{
 
     @Autowired
     AlmacenComidaEntityRepository repository;
-    private AlmacenComidaEntityMapper mapper= Mappers.getMapper(AlmacenComidaEntityMapper.class);
+
 
     @Override
     public AlmacenComidaEntityDto encontrarPorId(Integer id) {
 
         Optional<AlmacenComidaEntity> optional = repository.findById(id);
         if (optional.isPresent()) {
-            AlmacenComidaEntityDto almacenDTO= mapper.toDto((optional.get()));
+            AlmacenComidaEntityDto almacenDTO= AlmacenComidaEntityMapper.INSTANCE.toDto((optional.get()));
             return almacenDTO;
         }
 

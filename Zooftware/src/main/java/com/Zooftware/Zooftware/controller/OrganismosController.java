@@ -1,4 +1,4 @@
-package com.Zooftware.Zooftware.controller.controller;
+package com.Zooftware.Zooftware.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/jefe/home")
-public class JefeController {
+@RequestMapping("/organismo")
+public class OrganismosController {
 
 
     @GetMapping("/mostrar")
     public ModelAndView mostrarLogin(){
-        ModelAndView modelAndView = new ModelAndView("jefeHome");
+        ModelAndView modelAndView = new ModelAndView("gestionOrganismo");
         return modelAndView;
     }
 
@@ -23,6 +23,7 @@ public class JefeController {
         modelAndView.addObject("mensajeError",exception.getMessage());
         return modelAndView;
     }
+
 
 
 

@@ -25,8 +25,7 @@ public class PersonaEntity {
     @Basic
     @Column(name = "password")
     private String password;
-    @Basic
-    @Column(name = "rol")
+    @Enumerated(EnumType.STRING)
     private Rol rol;
     @Basic
     @Column(name = "username")

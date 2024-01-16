@@ -10,8 +10,7 @@ public class HabitatEntity {
     @Id
     @Column(name = "id")
     private int id;
-    @Basic
-    @Column(name = "tipo_habitat")
+    @Enumerated(EnumType.STRING)
     private TipoHabitat tipoHabitat;
     @Basic
     @Column(name = "dimension_id")

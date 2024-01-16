@@ -12,7 +12,7 @@ public interface ComidaCarnivoraEntityRepository extends JpaRepository<ComidaCar
     @Override
     Optional<ComidaCarnivoraEntity> findById(Integer integer);
 
-    List<ComidaCarnivoraEntity> findByEstado(Object estado);
+    List<ComidaCarnivoraEntity> findByEstado(String estado);
 
 
 }

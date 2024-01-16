@@ -2,6 +2,9 @@ package com.Zooftware.Zooftware.service.persona;
 
 import com.Zooftware.Zooftware.exceptions.PersonaNotFoundException;
 
+import com.Zooftware.Zooftware.modelDAO.IPersonaDAO;
+import com.Zooftware.Zooftware.modelDAO.PersonaDAOImp;
+import com.Zooftware.Zooftware.modelDTO.PersonaEntityDto;
 import com.Zooftware.Zooftware.modelJPA.PersonaEntity;
 import com.Zooftware.Zooftware.modelJPA.enums.Rol;
 import com.Zooftware.Zooftware.repository.PersonaEntityRepository;
@@ -12,9 +15,14 @@ import java.util.List;
 
 @Service
 public class PersonaService implements IPersonaService {
+
+    @Autowired
+    IPersonaDAO iPersonaDAO;
+
     @Override
     public String tipoPersona(String username) {
-        return null;
+
+        return getPersonaByUsername(username).getRol().toString();
     }
 
     @Override
@@ -23,13 +31,13 @@ public class PersonaService implements IPersonaService {
     }
 
     @Override
-    public PersonaEntity getPersonaByUsername(String username) {
-        return null;
+    public PersonaEntityDto getPersonaByUsername(String username) {
+        return iPersonaDAO.getPersonaByUsername(username);
     }
 
     @Override
     public boolean existePersona(String username, String password) {
-        return false;
+        return iPersonaDAO.existePersona(username,password);
     }
 
     @Override

@@ -13,8 +13,7 @@ public class TareaEntity {
     @Basic
     @Column(name = "descripcion")
     private String descripcion;
-    @Basic
-    @Column(name = "tipo_tarea")
+    @Enumerated(EnumType.STRING)
     private TipoTarea tipoTarea;
 
     public int getId() {

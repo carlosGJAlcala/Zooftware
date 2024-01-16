@@ -15,7 +15,7 @@ public interface AnimalEntityRepository extends JpaRepository<AnimalEntity, Inte
 
     List<AnimalEntity> findByNombre(String nombre);
 
-    List<AnimalEntity> findByEstadoAnimal(Object estadoAnimal);
+    List<AnimalEntity> findByEstadoAnimal(String estadoAnimal);
 
 
 

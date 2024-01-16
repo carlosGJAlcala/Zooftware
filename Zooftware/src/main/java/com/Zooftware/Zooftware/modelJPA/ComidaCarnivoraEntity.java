@@ -1,5 +1,6 @@
 package com.Zooftware.Zooftware.modelJPA;
 
+import com.Zooftware.Zooftware.modelJPA.enums.EstadoComida;
 import jakarta.persistence.*;
 
 @Entity
@@ -9,9 +10,9 @@ public class ComidaCarnivoraEntity {
     @Id
     @Column(name = "id")
     private int id;
-    @Basic
-    @Column(name = "estado")
-    private Object estado;
+
+    @Enumerated(EnumType.STRING)
+    private EstadoComida estado;
 
     public int getId() {
         return id;
@@ -21,11 +22,11 @@ public class ComidaCarnivoraEntity {
         this.id = id;
     }
 
-    public Object getEstado() {
+    public EstadoComida getEstado() {
         return estado;
     }
 
-    public void setEstado(Object estado) {
+    public void setEstado(EstadoComida estado) {
         this.estado = estado;
     }
 
