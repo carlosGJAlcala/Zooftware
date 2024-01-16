@@ -8,15 +8,15 @@ package com.Zooftware.Zooftware.model.persona.interfaces;
  */
 public interface IPersona {
 
-	public void getApellido();
+	public String getApellido();
 
 	public IContacto getContacto();
 
-	public void getDni();
+	public String getDni();
 
 	public void getEdad();
 
-	public void getNombre();
+	public String getNombre();
 
 	public void setApellido();
 

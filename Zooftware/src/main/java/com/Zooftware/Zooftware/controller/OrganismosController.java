@@ -7,14 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/empleado/home")
-public class EmpleadoController {
-
+@RequestMapping("/organismo")
+public class OrganismosController {
 
 
     @GetMapping("/mostrar")
     public ModelAndView mostrarLogin(){
-        ModelAndView modelAndView = new ModelAndView("empleadoHome");
+        ModelAndView modelAndView = new ModelAndView("gestionOrganismo");
         return modelAndView;
     }
 
@@ -24,6 +23,8 @@ public class EmpleadoController {
         modelAndView.addObject("mensajeError",exception.getMessage());
         return modelAndView;
     }
+
+
 
 
 }

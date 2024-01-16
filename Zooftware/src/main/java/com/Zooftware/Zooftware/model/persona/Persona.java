@@ -2,6 +2,7 @@ package com.Zooftware.Zooftware.model.persona;
 
 
 import com.Zooftware.Zooftware.model.persona.enums.Rol;
+import com.Zooftware.Zooftware.model.persona.interfaces.IContacto;
 import com.Zooftware.Zooftware.model.persona.interfaces.IPersona;
 import jakarta.persistence.*;
 
@@ -18,10 +19,10 @@ public class Persona implements IPersona {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String Apellidos;
-	private String Dni;
-	private int Edad;
-	private String Nombre;
+	private String apellidos;
+	private String dni;
+	private int edad;
+	private String nombre;
 
 	private String username;
 	private String password;
@@ -43,10 +44,10 @@ public class Persona implements IPersona {
 
 	public Persona(int id, String apellidos, String dni, int edad, String nombre, String username, String password, Rol rol, ContactoImpl contactoImp, Trabajador trabajador, ClienteZoo clienteZoo) {
 		this.id = id;
-		Apellidos = apellidos;
-		Dni = dni;
-		Edad = edad;
-		Nombre = nombre;
+		this.apellidos = apellidos;
+		this.dni = dni;
+		this.edad = edad;
+		this.nombre = nombre;
 		this.username = username;
 		this.password = password;
 		this.rol = rol;
@@ -79,11 +80,6 @@ public class Persona implements IPersona {
 		this.rol = rol;
 	}
 
-	public void getApellido(){
-	}
-	public void setApellido(){
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -93,24 +89,74 @@ public class Persona implements IPersona {
 	}
 
 	public String getApellidos() {
-		return Apellidos;
+		return apellidos;
 	}
 
 	public void setApellidos(String apellidos) {
-		Apellidos = apellidos;
+		apellidos = apellidos;
 	}
 
 	public void setDni(String dni) {
-		Dni = dni;
+		dni = dni;
 	}
 
 	public void setEdad(int edad) {
-		Edad = edad;
+		edad = edad;
 	}
 
 	public void setNombre(String nombre) {
-		Nombre = nombre;
+		this.nombre = nombre;
 	}
+
+	@Override
+	public String getApellido() {
+		return null;
+	}
+
+	@Override
+	public IContacto getContacto() {
+		return null;
+	}
+
+	@Override
+	public String getDni() {
+		return null;
+	}
+
+	@Override
+	public void getEdad() {
+
+	}
+
+	public String getNombre() {
+		return this.nombre;
+	}
+
+	@Override
+	public void setApellido() {
+
+	}
+
+	@Override
+	public void setContacto() {
+
+	}
+
+	@Override
+	public void setDni() {
+
+	}
+
+	@Override
+	public void setEdad() {
+
+	}
+
+	@Override
+	public void setNombre() {
+
+	}
+
 
 	public ContactoImpl getContactoImp() {
 		return contactoImp;
@@ -120,23 +166,6 @@ public class Persona implements IPersona {
 		this.contactoImp = contactoImp;
 	}
 
-	public void getDni(){
-	}
-	public void setDni(){
-	}
-	public void getEdad(){
-	}
-	public void setEdad(){
-	}
-	public void getNombre(){
-	}
-	public void setNombre(){
-	}
-	public ContactoImpl getContacto(){
-		return null;
-	}
-	public void setContacto(){
-	}
 	public Trabajador getTrabajador() {	return trabajador;}
 	public void setTrabajador(Trabajador trabajador) {
 		this.trabajador = trabajador;

@@ -7,28 +7,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/animal")
-public class AnimalController {
+@RequestMapping("/instalacion")
+public class InstalacionesController {
 
-
-
-    @GetMapping("/mostrarTablaAnimalJefe")
+    @GetMapping("/mostrar")
     public ModelAndView mostrarLogin(){
+        ModelAndView modelAndView = new ModelAndView("gestionInstalacion");
+        return modelAndView;
+    }
+
+    @GetMapping("/mostrarTablaInstalacionesJefe")
+    public ModelAndView mostrarTablaInstalaciones(){
         ModelAndView modelAndView = new ModelAndView("tablaInstalacionJefe");
         return modelAndView;
     }
 
-    @GetMapping("/mostrarTablaAnimalEmpleado")
-    public ModelAndView mostrarTablaAnimalEmpleado(){
+    @GetMapping("/mostrarTablaInstalacionesEmpleado")
+    public ModelAndView mostrarTablaInstalacionesEmpleado(){
         ModelAndView modelAndView = new ModelAndView("tablaInstalacionEmpleado");
         return modelAndView;
     }
 
-    @GetMapping("/mostrarTablaAnimalCliente")
-    public ModelAndView mostrarTablaAnimalCliente(){
+    @GetMapping("/mostrarTablaInstalacionesCliente")
+    public ModelAndView mostrarTablaInstalacionesCliente(){
         ModelAndView modelAndView = new ModelAndView("tablaInstalacionCliente");
         return modelAndView;
     }
+
 
 
 
@@ -38,6 +43,13 @@ public class AnimalController {
         modelAndView.addObject("mensajeError",exception.getMessage());
         return modelAndView;
     }
+
+
+
+
+
+
+
 
 
 

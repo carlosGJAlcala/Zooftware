@@ -7,16 +7,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/empleado/home")
-public class EmpleadoController {
+@RequestMapping("/mensaje")
+public class MensajeController {
 
 
 
-    @GetMapping("/mostrar")
-    public ModelAndView mostrarLogin(){
-        ModelAndView modelAndView = new ModelAndView("empleadoHome");
+    @GetMapping("/mostrarGestionMensajeJefe")
+    public ModelAndView mostrarGestionMensajeJefe(){
+        ModelAndView modelAndView = new ModelAndView("gestionMensajeJefe");
         return modelAndView;
     }
+
+    @GetMapping("/mostrarGestionMensajeEmpleado")
+    public ModelAndView mostrarGestionMensajeEmpleado(){
+        ModelAndView modelAndView = new ModelAndView("gestionMensajeEmpleado");
+        return modelAndView;
+    }
+
+
 
     @ExceptionHandler(Exception.class)
     public ModelAndView excepcion(Exception exception){
@@ -24,6 +32,8 @@ public class EmpleadoController {
         modelAndView.addObject("mensajeError",exception.getMessage());
         return modelAndView;
     }
+
+
 
 
 }

@@ -16,14 +16,14 @@ public class ContactoImpl implements IContacto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	private int Correo;
+	private String Correo;
 	private int NumeroTlf;
 
 	public ContactoImpl(){
 
 	}
 
-	public ContactoImpl(int id, int correo, int numeroTlf) {
+	public ContactoImpl(int id, String correo, int numeroTlf) {
 		this.id = id;
 		Correo = correo;
 		NumeroTlf = numeroTlf;
@@ -45,7 +45,7 @@ public class ContactoImpl implements IContacto {
 		this.id = id;
 	}
 
-	public void setCorreo(int correo) {
+	public void setCorreo(String correo) {
 		Correo = correo;
 	}
 
