@@ -1,16 +1,19 @@
 package com.Zooftware.Zooftware.modelDTO;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 /**
  * DTO for {@link com.Zooftware.Zooftware.modelJPA.EmpleadoEntity}
  */
-public class EmpleadoEntityDto implements Serializable {
+public class EmpleadoEntityDto extends  TrabajadorEntityDto implements Serializable {
     private final int id;
 
-    public EmpleadoEntityDto(int id) {
-        this.id = id;
+
+    public EmpleadoEntityDto(int id, boolean activo, Timestamp fechaFinContrato, Timestamp fechaInicioContrato, long numeroSeguridadSocial, Integer empleadoZooId, Integer jefeId, Integer trabajadorId, double salario, String puesto, int id1) {
+        super(id, activo, fechaFinContrato, fechaInicioContrato, numeroSeguridadSocial, empleadoZooId, jefeId, trabajadorId, salario, puesto);
+        this.id = id1;
     }
 
     public int getId() {
@@ -34,5 +37,25 @@ public class EmpleadoEntityDto implements Serializable {
     public String toString() {
         return getClass().getSimpleName() + "(" +
                 "id = " + id + ")";
+    }
+
+    @Override
+    public void aniadirSubordinado(TrabajadorEntityDto t) {
+
+    }
+
+    @Override
+    public void eliminarSubordinado(TrabajadorEntityDto t) {
+
+    }
+
+    @Override
+    public double getSalarios() {
+        return 0;
+    }
+
+    @Override
+    public String getDescripcion() {
+        return null;
     }
 }

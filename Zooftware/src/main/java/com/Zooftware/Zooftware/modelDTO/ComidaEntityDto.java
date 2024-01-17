@@ -1,5 +1,6 @@
 package com.Zooftware.Zooftware.modelDTO;
 
+import com.Zooftware.Zooftware.modelJPA.enums.EstadoComida;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
 
 import java.io.Serializable;
@@ -9,13 +10,18 @@ import java.util.Objects;
  * DTO for {@link com.Zooftware.Zooftware.modelJPA.ComidaEntity}
  */
 public class ComidaEntityDto implements Serializable {
-    private final int id;
-    private final String nombre;
-    private final int cantidad;
-    private final TipoComida tipoComida;
-    private final Integer comidaCarnivoraId;
-    private final Integer comidaHerviboraId;
-    private final Integer comidaOmnivoraId;
+    private  int id;
+    private  String nombre;
+    private  int cantidad;
+    private  TipoComida tipoComida;
+    private  Integer comidaCarnivoraId;
+    private  Integer comidaHerviboraId;
+    private  Integer comidaOmnivoraId;
+    private EstadoComida estadoComida;
+
+
+
+    private String IngredientePrincipal,IngredienteSecundario;
 
     public ComidaEntityDto(int id, String nombre, int cantidad, TipoComida tipoComida, Integer comidaCarnivoraId, Integer comidaHerviboraId, Integer comidaOmnivoraId) {
         this.id = id;
@@ -25,6 +31,9 @@ public class ComidaEntityDto implements Serializable {
         this.comidaCarnivoraId = comidaCarnivoraId;
         this.comidaHerviboraId = comidaHerviboraId;
         this.comidaOmnivoraId = comidaOmnivoraId;
+    }
+
+    public ComidaEntityDto() {
     }
 
     public int getId() {
@@ -84,5 +93,45 @@ public class ComidaEntityDto implements Serializable {
                 "comidaCarnivoraId = " + comidaCarnivoraId + ", " +
                 "comidaHerviboraId = " + comidaHerviboraId + ", " +
                 "comidaOmnivoraId = " + comidaOmnivoraId + ")";
+    }
+    public void setEstadoComida(EstadoComida estadoComida) {
+        this.estadoComida = estadoComida;
+    }
+
+
+    public void setIngredientePrincipal(String ingredientePrincipal) {
+        IngredientePrincipal = ingredientePrincipal;
+    }
+
+    public void setIngredienteSecundario(String ingredienteSecundario) {
+        IngredienteSecundario = ingredienteSecundario;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setTipoComida(TipoComida tipoComida) {
+        this.tipoComida = tipoComida;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public void setComidaCarnivoraId(Integer comidaCarnivoraId) {
+        this.comidaCarnivoraId = comidaCarnivoraId;
+    }
+
+    public void setComidaHerviboraId(Integer comidaHerviboraId) {
+        this.comidaHerviboraId = comidaHerviboraId;
+    }
+
+    public void setComidaOmnivoraId(Integer comidaOmnivoraId) {
+        this.comidaOmnivoraId = comidaOmnivoraId;
     }
 }
