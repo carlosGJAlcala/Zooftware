@@ -9,10 +9,9 @@ public interface IComidaDAO {
     public List<ComidaEntityDto> buscarPorTipoComida(String tipoComida);
     public int obtenerCantidadComida(int id);
     public ComidaEntityDto buscarPorNombre(String nombre);
-
-    public ContactoEntityDto buscarPorId(Integer id);
-    void actualizarContacto(ContactoEntityDto contacto);
-    void guardarContacto(ContactoEntityDto contacto);
-    public void eliminarContacto(Integer id);
+    public ComidaEntityDto buscarPorId(Integer id);
+    void actualizarComida(ComidaEntityDto comida);
+    void guardarComida(ComidaEntityDto comida);
+    public void eliminarComida(Integer id);
 
 }

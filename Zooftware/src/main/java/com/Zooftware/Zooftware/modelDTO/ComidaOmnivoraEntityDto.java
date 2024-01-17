@@ -1,5 +1,7 @@
 package com.Zooftware.Zooftware.modelDTO;
 
+import com.Zooftware.Zooftware.modelJPA.enums.EstadoComida;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -8,9 +10,9 @@ import java.util.Objects;
  */
 public class ComidaOmnivoraEntityDto implements Serializable {
     private final int id;
-    private final Object estado;
+    private final EstadoComida estado;
 
-    public ComidaOmnivoraEntityDto(int id, Object estado) {
+    public ComidaOmnivoraEntityDto(int id, EstadoComida estado) {
         this.id = id;
         this.estado = estado;
     }
@@ -19,7 +21,7 @@ public class ComidaOmnivoraEntityDto implements Serializable {
         return id;
     }
 
-    public Object getEstado() {
+    public EstadoComida getEstado() {
         return estado;
     }
 

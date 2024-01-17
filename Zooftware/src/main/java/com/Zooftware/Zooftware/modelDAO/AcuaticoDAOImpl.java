@@ -28,8 +28,6 @@ public class AcuaticoDAOImpl implements IAcuaticoDAO {
             AcuaticoEntityDto acuarioDTO= AcuaticoEntityMapper.INSTANCE.toDto((optional.get()));
             return acuarioDTO;
         }
-
-
         return null;
     }
 
