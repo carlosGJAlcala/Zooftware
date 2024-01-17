@@ -5,7 +5,7 @@ import com.Zooftware.Zooftware.modelJPA.AcuaticoEntity;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+@Mapper
 public interface AcuaticoEntityMapper {
     AcuaticoEntityMapper INSTANCE = Mappers.getMapper(AcuaticoEntityMapper.class);
     AcuaticoEntity toEntity(AcuaticoEntityDto acuaticoEntityDto);

@@ -2,6 +2,7 @@ package com.Zooftware.Zooftware.repository;
 
 import com.Zooftware.Zooftware.modelDTO.AnimalEntityDto;
 import com.Zooftware.Zooftware.modelJPA.AnimalEntity;
+import com.Zooftware.Zooftware.modelJPA.enums.TipoAnimal;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public interface AnimalEntityRepository extends JpaRepository<AnimalEntity, Inte
 
     List<AnimalEntity> findByEstadoAnimal(String estadoAnimal);
 
-
+    List<AnimalEntity> findByTipo(String tipo);
 
 
 }
