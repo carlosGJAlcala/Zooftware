@@ -15,14 +15,13 @@ public class PersonaDAOImp implements IPersonaDAO{
 
     @Autowired
     PersonaEntityRepository personajpa;
-
+    PersonaEntityMapper persona;
 
 
     public PersonaEntityDto getPersonaByUsername(String username){
         Optional<PersonaEntity> optional = personajpa.findPersonaByUsername(username);
         if (optional.isPresent()) {
-            PersonaEntityDto personaEntityDto= PersonaEntityMapper.INSTANCE.toDto((optional.get()));
-            return personaEntityDto;
+            return persona.mapper.toDto(optional.get());
         }
         return null;
     }
