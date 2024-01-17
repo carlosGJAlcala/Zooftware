@@ -11,6 +11,7 @@ public interface TrabajadorEntityRepository extends JpaRepository<TrabajadorEnti
     @Override
     Optional<TrabajadorEntity> findById(Integer integer);
 
-    List<TrabajadorEntity> findByActivo(boolean activo);
+    List<TrabajadorEntity> findByActivoTrue();
+
 
 }
