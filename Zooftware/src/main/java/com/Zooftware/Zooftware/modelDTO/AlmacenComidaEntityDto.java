@@ -1,6 +1,10 @@
 package com.Zooftware.Zooftware.modelDTO;
 
+import com.Zooftware.Zooftware.patrones.builder.IComidaBuilder;
+
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -9,8 +13,15 @@ import java.util.Objects;
 public class AlmacenComidaEntityDto implements Serializable {
     private final int id;
 
+    private IComidaBuilder comidadbuilder;
+
+
+
+    private List<ComidaEntityDto> provisiones ;
+
     public AlmacenComidaEntityDto(int id) {
         this.id = id;
+        provisiones=new ArrayList<>();
     }
 
     public int getId() {
@@ -39,5 +50,29 @@ public class AlmacenComidaEntityDto implements Serializable {
     /**
      * DTO for {@link com.Zooftware.Zooftware.modelJPA.AlmacenComidaEntity}
      */
+    public void setProvisiones(List<ComidaEntityDto> provisiones) {
+        this.provisiones = provisiones;
+    }
+    public ComidaEntityDto getPizza() {
+        return comidadbuilder.getAlimento();
+    }
+
+    /**
+     * Construye el producto Pizza paso a paso.
+     */
+    public void crearPizza() {
+        if(comidadbuilder.abrirbolsa(provisiones)){
+            comidadbuilder.mezclarTopics();
+            comidadbuilder.calentarComida();
+            comidadbuilder.ponerComidaEnCubo();
+        }else {
+            System.out.println("No quedan provisiones");
+
+        }
+
+    }
+    public void setComidadbuilder(IComidaBuilder comidadbuilder) {
+        this.comidadbuilder = comidadbuilder;
+    }
 
 }

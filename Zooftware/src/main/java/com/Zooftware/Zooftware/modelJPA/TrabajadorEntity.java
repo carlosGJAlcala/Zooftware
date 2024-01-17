@@ -33,6 +33,28 @@ public class TrabajadorEntity {
     @Column(name = "trabajador_id")
     private Integer trabajadorId;
 
+    @Column(name = "salario", nullable = false)
+    private double salario;
+
+    @Column(name = "puesto")
+    private String puesto;
+
+    public String getPuesto() {
+        return puesto;
+    }
+
+    public void setPuesto(String puesto) {
+        this.puesto = puesto;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
     public int getId() {
         return id;
     }

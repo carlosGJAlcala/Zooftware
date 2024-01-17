@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * DTO for {@link com.Zooftware.Zooftware.modelJPA.TrabajadorEntity}
  */
-public class TrabajadorEntityDto implements Serializable {
+public abstract class TrabajadorEntityDto implements Serializable {
     private final int id;
     private final boolean activo;
     private final Timestamp fechaFinContrato;
@@ -17,7 +17,12 @@ public class TrabajadorEntityDto implements Serializable {
     private final Integer jefeId;
     private final Integer trabajadorId;
 
-    public TrabajadorEntityDto(int id, boolean activo, Timestamp fechaFinContrato, Timestamp fechaInicioContrato, long numeroSeguridadSocial, Integer empleadoZooId, Integer jefeId, Integer trabajadorId) {
+    private double salario;
+
+    private String puesto;
+
+
+    public TrabajadorEntityDto(int id, boolean activo, Timestamp fechaFinContrato, Timestamp fechaInicioContrato, long numeroSeguridadSocial, Integer empleadoZooId, Integer jefeId, Integer trabajadorId, double salario, String puesto) {
         this.id = id;
         this.activo = activo;
         this.fechaFinContrato = fechaFinContrato;
@@ -26,8 +31,9 @@ public class TrabajadorEntityDto implements Serializable {
         this.empleadoZooId = empleadoZooId;
         this.jefeId = jefeId;
         this.trabajadorId = trabajadorId;
+        this.salario = salario;
+        this.puesto = puesto;
     }
-
     public int getId() {
         return id;
     }
@@ -80,6 +86,7 @@ public class TrabajadorEntityDto implements Serializable {
         return Objects.hash(id, activo, fechaFinContrato, fechaInicioContrato, numeroSeguridadSocial, empleadoZooId, jefeId, trabajadorId);
     }
 
+
     @Override
     public String toString() {
         return getClass().getSimpleName() + "(" +
@@ -91,5 +98,25 @@ public class TrabajadorEntityDto implements Serializable {
                 "empleadoZooId = " + empleadoZooId + ", " +
                 "jefeId = " + jefeId + ", " +
                 "trabajadorId = " + trabajadorId + ")";
+    }
+
+    public abstract void aniadirSubordinado(TrabajadorEntityDto t);
+
+    public abstract void eliminarSubordinado(TrabajadorEntityDto t);
+
+    public abstract double getSalarios();
+
+    public abstract String getDescripcion();
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public String getPuesto() {
+        return puesto;
     }
 }
