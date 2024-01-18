@@ -7,10 +7,11 @@ import java.util.List;
 public interface IAnimalDAO {
     AnimalEntityDto buscarPorId(Integer id);
     List<AnimalEntityDto> buscarPorNombre(String nombre);
-    List<AnimalEntityDto> buscarPorEstado (Object estadoAnimal);
+    List<AnimalEntityDto> buscarPorEstado (String estadoAnimal);
+    List<AnimalEntityDto> buscarPorTipo (String estadoAnimal);
 
     void guardarAnimal(AnimalEntityDto animal);
-    void eliminarAnimal(AnimalEntityDto animal);
+    void eliminarAnimalPorId(int id);
     void actualizarAnimal(AnimalEntityDto animal);
 
 }

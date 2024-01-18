@@ -1,5 +1,6 @@
 package com.Zooftware.Zooftware.modelDTO;
 
+import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoAnimal;
 import com.Zooftware.Zooftware.patrones.state.Estado;
 import com.Zooftware.Zooftware.patrones.state.EstadoComida;
@@ -19,7 +20,7 @@ public class AnimalEntityDto implements Serializable {
     private  int salud;
     private  int comida;
     private  int suenio;
-    private final Object estadoAnimal;
+    private final EstadoAnimal estadoAnimal;
     private final TipoAnimal tipo;
     private final int id;
     private final Integer comidaId;
@@ -29,7 +30,7 @@ public class AnimalEntityDto implements Serializable {
 
 
 
-    public AnimalEntityDto(int hambre, String nombre, int numExtremidades, Object estadoAnimal, TipoAnimal tipo, int id, Integer comidaId) {
+    public AnimalEntityDto(int hambre, String nombre, int numExtremidades, EstadoAnimal estadoAnimal, TipoAnimal tipo, int id, Integer comidaId) {
         this.hambre = hambre;
         this.nombre = nombre;
         this.numExtremidades = numExtremidades;
@@ -66,7 +67,7 @@ public class AnimalEntityDto implements Serializable {
         return suenio;
     }
 
-    public Object getEstadoAnimal() {
+    public EstadoAnimal getEstadoAnimal() {
         return estadoAnimal;
     }
 

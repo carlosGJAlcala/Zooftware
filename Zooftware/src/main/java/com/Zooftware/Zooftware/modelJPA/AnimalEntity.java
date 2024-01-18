@@ -27,8 +27,7 @@ public class AnimalEntity {
     private int suenio;
     @Enumerated(EnumType.STRING)
     private EstadoAnimal estadoAnimal;
-    @Basic
-    @Column(name = "tipo")
+    @Enumerated(EnumType.STRING)
     private TipoAnimal tipo;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -94,7 +93,7 @@ public class AnimalEntity {
         this.estadoAnimal = estadoAnimal;
     }
 
-    public Object getTipo() {
+    public TipoAnimal getTipo() {
         return tipo;
     }
 
