@@ -10,6 +10,9 @@ public class BebederoEntityDto implements Serializable {
     private final int id;
     private final Integer bebederoId;
 
+    private int cantidad;
+
+
     public BebederoEntityDto(int id, Integer bebederoId) {
         this.id = id;
         this.bebederoId = bebederoId;
@@ -42,5 +45,13 @@ public class BebederoEntityDto implements Serializable {
         return getClass().getSimpleName() + "(" +
                 "id = " + id + ", " +
                 "bebederoId = " + bebederoId + ")";
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 }

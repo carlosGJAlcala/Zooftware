@@ -1,6 +1,8 @@
 package com.Zooftware.Zooftware.modelDTO;
 
 import com.Zooftware.Zooftware.modelJPA.ComederoEntity;
+import com.Zooftware.Zooftware.modelJPA.ComidaEntity;
+import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -13,10 +15,19 @@ public class ComederoEntityDto implements Serializable {
     private final Integer idHabita;
     private final Integer cantidad;
 
-    public ComederoEntityDto(int id, Integer idHabita, Integer cantidad) {
+
+    private ComidaEntityDto comida;
+    private TipoComida tipo;
+
+    public TipoComida getTipo() {
+        return tipo;
+    }
+
+    public ComederoEntityDto(int id, Integer idHabita, Integer cantidad, TipoComida tipo) {
         this.id = id;
         this.idHabita = idHabita;
         this.cantidad = cantidad;
+        this.tipo = tipo;
     }
 
     public int getId() {
@@ -52,5 +63,17 @@ public class ComederoEntityDto implements Serializable {
                 "id = " + id + ", " +
                 "idHabita = " + idHabita + ", " +
                 "cantidad = " + cantidad + ")";
+    }
+
+    public ComidaEntityDto getComida() {
+        return comida;
+    }
+
+    public void setComida(ComidaEntityDto comida) {
+        this.comida = comida;
+    }
+
+    public void setTipo(TipoComida tipo) {
+        this.tipo = tipo;
     }
 }

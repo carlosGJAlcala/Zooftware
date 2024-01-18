@@ -1,8 +1,10 @@
 package com.Zooftware.Zooftware.modelDTO;
 
 import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
+import com.Zooftware.Zooftware.patrones.builder.Cocinero;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -14,11 +16,31 @@ public class HabitatEntityDto implements Serializable {
     private final Integer dimensionId;
     private final Integer sueloId;
 
+    private List<BebederoEntityDto> bebederos;
+    private List<ComederoEntityDto> comederos;
+
     public HabitatEntityDto(int id, TipoHabitat tipoHabitat, Integer dimensionId, Integer sueloId) {
         this.id = id;
         this.tipoHabitat = tipoHabitat;
         this.dimensionId = dimensionId;
         this.sueloId = sueloId;
+    }
+
+    public HabitatEntityDto(int id, TipoHabitat tipoHabitat, Integer dimensionId, Integer sueloId, List<BebederoEntityDto> bebederos, List<ComederoEntityDto> comederos) {
+        this.id = id;
+        this.tipoHabitat = tipoHabitat;
+        this.dimensionId = dimensionId;
+        this.sueloId = sueloId;
+        this.bebederos = bebederos;
+        this.comederos = comederos;
+    }
+
+    public List<BebederoEntityDto> getBebederos() {
+        return bebederos;
+    }
+
+    public List<ComederoEntityDto> getComederos() {
+        return comederos;
     }
 
     public int getId() {
@@ -61,4 +83,8 @@ public class HabitatEntityDto implements Serializable {
                 "dimensionId = " + dimensionId + ", " +
                 "sueloId = " + sueloId + ")";
     }
+
+
+
+
 }

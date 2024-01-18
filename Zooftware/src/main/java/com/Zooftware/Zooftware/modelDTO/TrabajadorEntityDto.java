@@ -1,5 +1,7 @@
 package com.Zooftware.Zooftware.modelDTO;
 
+import com.Zooftware.Zooftware.patrones.mediator.Mediator;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -21,6 +23,13 @@ public abstract class TrabajadorEntityDto implements Serializable {
 
     private String puesto;
 
+    public void setMediador(Mediator mediador) {
+        this.mediador = mediador;
+    }
+
+
+
+    private Mediator mediador;
 
     public TrabajadorEntityDto(int id, boolean activo, Timestamp fechaFinContrato, Timestamp fechaInicioContrato, long numeroSeguridadSocial, Integer empleadoZooId, Integer jefeId, Integer trabajadorId, double salario, String puesto) {
         this.id = id;
@@ -100,6 +109,9 @@ public abstract class TrabajadorEntityDto implements Serializable {
                 "trabajadorId = " + trabajadorId + ")";
     }
 
+
+
+
     public abstract void aniadirSubordinado(TrabajadorEntityDto t);
 
     public abstract void eliminarSubordinado(TrabajadorEntityDto t);
@@ -118,5 +130,18 @@ public abstract class TrabajadorEntityDto implements Serializable {
 
     public String getPuesto() {
         return puesto;
+    }
+
+    public Mediator getMediador() {
+        return mediador;
+    }
+
+    public void enviar(MensajeEntityDto mensaje, int id) {
+        this.getMediador().enviar(mensaje, id);
+    }
+
+
+    public void recibir(MensajeEntityDto mensaje) {
+        System.out.println("# ColegaConcreto " + getId() + " ha recibido el mensaje:\n" + mensaje);
     }
 }
