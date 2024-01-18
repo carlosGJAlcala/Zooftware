@@ -11,9 +11,8 @@ import java.util.Objects;
  * DTO for {@link TerrestreEntity}
  */
 public class TerrestreEntityDto extends HabitatEntityDto implements Serializable {
-    private final int numBebederos;
-    private final int numComederos;
-
+    private int numBebederos;
+    private int numComederos;
     private final int id;
 
     public TerrestreEntityDto(int id, int numBebederos, int numComederos, int id1) {
@@ -30,11 +29,19 @@ public class TerrestreEntityDto extends HabitatEntityDto implements Serializable
         return numBebederos;
     }
 
+    public void setNumBebederos(int numBebederos) {
+        this.numBebederos = numBebederos;
+    }
+
     public int getNumComederos() {
         return numComederos;
     }
 
+    public void setNumComederos(int numComederos) {
+        this.numComederos = numComederos;
+    }
 
+    @Override
     public int getId() {
         return id;
     }
@@ -46,7 +53,6 @@ public class TerrestreEntityDto extends HabitatEntityDto implements Serializable
         TerrestreEntityDto entity = (TerrestreEntityDto) o;
         return Objects.equals(this.numBebederos, entity.numBebederos) &&
                 Objects.equals(this.numComederos, entity.numComederos) &&
-
                 Objects.equals(this.id, entity.id);
     }
 

@@ -26,11 +26,12 @@ public class TrabajadorEntity {
     @JoinColumn(name = "jefe_id")
     private JefeEntity jefe;
 
+    private double salario;
 
     public TrabajadorEntity() {
     }
 
-    public TrabajadorEntity(int id, long numeroSeguridadSocial, boolean activo, Date fechaInicioContrato, Date fechaFinContrato, List<MensajeEntity> mensaje, EmpleadoEntity empleadoZoo, JefeEntity jefe) {
+    public TrabajadorEntity(int id, long numeroSeguridadSocial, boolean activo, Date fechaInicioContrato, Date fechaFinContrato, List<MensajeEntity> mensaje, EmpleadoEntity empleadoZoo, JefeEntity jefe, double salario) {
         this.id = id;
         this.numeroSeguridadSocial = numeroSeguridadSocial;
         this.activo = activo;
@@ -39,6 +40,15 @@ public class TrabajadorEntity {
         this.mensaje = mensaje;
         this.empleadoZoo = empleadoZoo;
         this.jefe = jefe;
+        this.salario = salario;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
     }
 
     public int getId() {

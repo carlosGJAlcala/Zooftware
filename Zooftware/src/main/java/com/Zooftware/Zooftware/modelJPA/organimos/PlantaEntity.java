@@ -9,11 +9,11 @@ public class PlantaEntity {
     @Id
     @Column(name = "id")
     private int id;
-    private String Nombre;
+    private String nombre;
 
     public PlantaEntity(int id, String nombre) {
         this.id = id;
-        Nombre = nombre;
+        this.nombre = nombre;
     }
 
     public PlantaEntity() {
@@ -28,10 +28,10 @@ public class PlantaEntity {
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
-        Nombre = nombre;
+        this.nombre = nombre;
     }
 }

@@ -24,7 +24,7 @@ public class AlmacenComidaDAOImpl implements IAlmacenComidaDAO{
 
         Optional<AlmacenComidaEntity> optional = repository.findById(id);
         if (optional.isPresent()) {
-            AlmacenComidaEntityDto almacenDTO= AlmacenComidaEntityMapper.INSTANCE.toDto((optional.get()));
+            AlmacenComidaEntityDto almacenDTO= AlmacenComidaEntityMapper.mapper.toDto((optional.get()));
             return almacenDTO;
         }
 

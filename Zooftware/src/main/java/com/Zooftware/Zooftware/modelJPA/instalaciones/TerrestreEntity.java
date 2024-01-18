@@ -11,16 +11,14 @@ public class TerrestreEntity {
     private int id;
     private int numBebederos;
     private int numComederos;
-    private String nombre;
 
 
     public TerrestreEntity() {
     }
 
-    public TerrestreEntity(int numBebederos, int numComederos, String nombre, int id) {
+    public TerrestreEntity(int numBebederos, int numComederos, int id) {
         this.numBebederos = numBebederos;
         this.numComederos = numComederos;
-        this.nombre = nombre;
         this.id = id;
     }
 
@@ -38,14 +36,6 @@ public class TerrestreEntity {
 
     public void setNumComederos(int numComederos) {
         this.numComederos = numComederos;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public int getId() {

@@ -9,11 +9,11 @@ import java.util.Objects;
  * DTO for {@link ContactoEntity}
  */
 public class ContactoEntityDto implements Serializable {
-    private final int id;
-    private final String correo;
-    private final String numeroTlf;
+    private int id;
+    private String correo;
+    private int numeroTlf;
 
-    public ContactoEntityDto(int id, String correo, String numeroTlf) {
+    public ContactoEntityDto(int id, String correo, int numeroTlf) {
         this.id = id;
         this.correo = correo;
         this.numeroTlf = numeroTlf;
@@ -27,7 +27,7 @@ public class ContactoEntityDto implements Serializable {
         return correo;
     }
 
-    public String getNumeroTlf() {
+    public int getNumeroTlf() {
         return numeroTlf;
     }
 

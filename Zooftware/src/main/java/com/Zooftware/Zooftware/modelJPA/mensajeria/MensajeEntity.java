@@ -8,10 +8,10 @@ public class MensajeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String Asunto;
-    private String Destinario;
-    private String Remitente;
-    private String Texto;
+    private String asunto;
+    private String destinario;
+    private String remitente;
+    private String texto;
 
 
     public MensajeEntity() {
@@ -19,10 +19,10 @@ public class MensajeEntity {
 
     public MensajeEntity(int id, String asunto, String destinario, String remitente, String texto) {
         this.id = id;
-        Asunto = asunto;
-        Destinario = destinario;
-        Remitente = remitente;
-        Texto = texto;
+        this.asunto = asunto;
+        this.destinario = destinario;
+        this.remitente = remitente;
+        this.texto = texto;
     }
 
     public int getId() {
@@ -34,34 +34,34 @@ public class MensajeEntity {
     }
 
     public String getAsunto() {
-        return Asunto;
+        return asunto;
     }
 
     public void setAsunto(String asunto) {
-        Asunto = asunto;
+        this.asunto = asunto;
     }
 
     public String getDestinario() {
-        return Destinario;
+        return destinario;
     }
 
     public void setDestinario(String destinario) {
-        Destinario = destinario;
+        this.destinario = destinario;
     }
 
     public String getRemitente() {
-        return Remitente;
+        return remitente;
     }
 
     public void setRemitente(String remitente) {
-        Remitente = remitente;
+        this.remitente = remitente;
     }
 
     public String getTexto() {
-        return Texto;
+        return texto;
     }
 
     public void setTexto(String texto) {
-        Texto = texto;
+        this.texto = texto;
     }
 }

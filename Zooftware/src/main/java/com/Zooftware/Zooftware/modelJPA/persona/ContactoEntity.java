@@ -9,13 +9,13 @@ public class ContactoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private int Correo;
-    private int NumeroTlf;
+    private String correo;
+    private int numeroTlf;
 
-    public ContactoEntity(int id, int correo, int numeroTlf, String numeroTlf1) {
+    public ContactoEntity(int id, String correo, int numeroTlf) {
         this.id = id;
-        Correo = correo;
-        NumeroTlf = numeroTlf;
+        this.correo = correo;
+        this.numeroTlf = numeroTlf;
     }
 
     public ContactoEntity() {
@@ -29,20 +29,20 @@ public class ContactoEntity {
         this.id = id;
     }
 
-    public int getCorreo() {
-        return Correo;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setCorreo(int correo) {
-        Correo = correo;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public int getNumeroTlf() {
-        return NumeroTlf;
+        return numeroTlf;
     }
 
 
     public void setNumeroTlf(int numeroTlf) {
-        NumeroTlf = numeroTlf;
+        this.numeroTlf = numeroTlf;
     }
 }

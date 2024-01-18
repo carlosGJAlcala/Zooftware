@@ -5,9 +5,9 @@ import com.Zooftware.Zooftware.modelJPA.instalaciones.AlmacenComidaEntity;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+@Mapper
 public interface AlmacenComidaEntityMapper {
-    AlmacenComidaEntityMapper INSTANCE= Mappers.getMapper(AlmacenComidaEntityMapper.class);
+    AlmacenComidaEntityMapper mapper= Mappers.getMapper(AlmacenComidaEntityMapper.class);
     AlmacenComidaEntity toEntity(AlmacenComidaEntityDto almacenComidaEntityDto);
 
     AlmacenComidaEntityDto toDto(AlmacenComidaEntity almacenComidaEntity);

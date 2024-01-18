@@ -10,16 +10,20 @@ import java.util.Objects;
  * DTO for {@link EmpleadoEntity}
  */
 public class EmpleadoEntityDto extends  TrabajadorEntityDto implements Serializable {
-    private final int id;
+    private int id;
 
-
-    public EmpleadoEntityDto(int id, boolean activo, Timestamp fechaFinContrato, Timestamp fechaInicioContrato, long numeroSeguridadSocial, Integer empleadoZooId, Integer jefeId, Integer trabajadorId, double salario, String puesto, int id1) {
-        super(id, activo, fechaFinContrato, fechaInicioContrato, numeroSeguridadSocial, empleadoZooId, jefeId, trabajadorId, salario, puesto);
-        this.id = id1;
+    public EmpleadoEntityDto(int id, boolean activo, Timestamp fechaFinContrato, Timestamp fechaInicioContrato, long numeroSeguridadSocial, EmpleadoEntityDto empleadoZooId, JefeEntityDto jefeId, double salario, int id2) {
+        super(id, activo, fechaFinContrato, fechaInicioContrato, numeroSeguridadSocial, empleadoZooId, jefeId, salario);
+        this.id=id2;
     }
+
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
