@@ -1,18 +1,24 @@
 package com.Zooftware.Zooftware.modelDTO;
 
+import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
+import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.AnfibioEntity;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * DTO for {@link com.Zooftware.Zooftware.modelJPA.AnfibioEntity}
+ * DTO for {@link AnfibioEntity}
  */
-public class AnfibioEntityDto implements Serializable {
+public class AnfibioEntityDto  extends HabitatEntityDto implements Serializable {
     private final int numComedores;
     private final int id;
 
-    public AnfibioEntityDto(int numComedores, int id) {
+    public AnfibioEntityDto(int id, int numComedores, int id1) {
+        super(id, TipoHabitat.ANFIBIO);
         this.numComedores = numComedores;
-        this.id = id;
+        this.id = id1;
+        super.crearComederos(numComedores, TipoComida.OMNIVORA);
     }
 
     public int getNumComedores() {

@@ -1,15 +1,13 @@
 package com.Zooftware.Zooftware.modelDAO;
 
-import com.Zooftware.Zooftware.modelDTO.ClienteEntityDto;
 import com.Zooftware.Zooftware.modelDTO.ComederoEntityDto;
-import com.Zooftware.Zooftware.modelJPA.ClienteEntity;
-import com.Zooftware.Zooftware.modelJPA.ComederoEntity;
-import com.Zooftware.Zooftware.repository.ClienteEntityRepository;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.ComederoEntity;
 import com.Zooftware.Zooftware.repository.ComederoEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
-
+@Repository
 public class ComederoDAOImp implements IComederoDAO{
     @Autowired
     ComederoEntityRepository comederoJPA;

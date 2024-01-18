@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.ComidaEntityDto;
-import com.Zooftware.Zooftware.modelJPA.ComidaEntity;
+import com.Zooftware.Zooftware.modelJPA.comida.ComidaEntity;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 

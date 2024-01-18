@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.JefeEntityDto;
-import com.Zooftware.Zooftware.modelJPA.JefeEntity;
+import com.Zooftware.Zooftware.modelJPA.persona.JefeEntity;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 

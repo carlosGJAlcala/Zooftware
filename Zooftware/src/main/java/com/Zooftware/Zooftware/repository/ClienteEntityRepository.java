@@ -1,6 +1,6 @@
 package com.Zooftware.Zooftware.repository;
 
-import com.Zooftware.Zooftware.modelJPA.ClienteEntity;
+import com.Zooftware.Zooftware.modelJPA.persona.ClienteEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

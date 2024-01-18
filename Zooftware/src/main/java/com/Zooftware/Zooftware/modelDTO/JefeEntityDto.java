@@ -1,5 +1,7 @@
 package com.Zooftware.Zooftware.modelDTO;
 
+import com.Zooftware.Zooftware.modelJPA.persona.JefeEntity;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -7,21 +9,24 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * DTO for {@link com.Zooftware.Zooftware.modelJPA.JefeEntity}
+ * DTO for {@link JefeEntity}
  */
 public class JefeEntityDto  extends  TrabajadorEntityDto implements Serializable {
-    private final int id;
+    private int id;
 
     private List<TrabajadorEntityDto> subordinados;
 
 
 
-    public JefeEntityDto(int id, boolean activo, Timestamp fechaFinContrato, Timestamp fechaInicioContrato, long numeroSeguridadSocial, Integer empleadoZooId, Integer jefeId, Integer trabajadorId, double salario, String puesto, int id1) {
-        super(id, activo, fechaFinContrato, fechaInicioContrato, numeroSeguridadSocial, empleadoZooId, jefeId, trabajadorId, salario, puesto);
+    public JefeEntityDto(int id, boolean activo, Timestamp fechaFinContrato, Timestamp fechaInicioContrato, long numeroSeguridadSocial, EmpleadoEntityDto empleadoZoo, JefeEntityDto jefe,  double salario,  int id1) {
+        super(id, activo, fechaFinContrato, fechaInicioContrato, numeroSeguridadSocial, empleadoZoo, jefe,  salario);
         this.id = id1;
         subordinados=new ArrayList<>();
     }
 
+    public void setId(int id){
+        this.id=id;
+    }
     public int getId() {
         return id;
     }

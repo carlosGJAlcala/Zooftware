@@ -1,10 +1,12 @@
 package com.Zooftware.Zooftware.modelDTO;
 
+import com.Zooftware.Zooftware.modelJPA.instalaciones.BebederoEntity;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * DTO for {@link com.Zooftware.Zooftware.modelJPA.BebederoEntity}
+ * DTO for {@link BebederoEntity}
  */
 public class BebederoEntityDto implements Serializable {
     private final int id;
@@ -16,6 +18,12 @@ public class BebederoEntityDto implements Serializable {
     public BebederoEntityDto(int id, Integer bebederoId) {
         this.id = id;
         this.bebederoId = bebederoId;
+    }
+    @Default
+    public BebederoEntityDto(int id, Integer bebederoId, int cantidad) {
+        this.id = id;
+        this.bebederoId = bebederoId;
+        this.cantidad = cantidad;
     }
 
     public int getId() {

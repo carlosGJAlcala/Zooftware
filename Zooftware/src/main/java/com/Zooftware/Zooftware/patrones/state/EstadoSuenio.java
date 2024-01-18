@@ -4,7 +4,7 @@ import com.Zooftware.Zooftware.modelDTO.AnimalEntityDto;
 
 public class EstadoSuenio implements Estado{
     @Override
-    public void ejecutar(AnimalEntityDto t) {
+    public void ejecutar(Animal t) {
 
         Estado feliz = new EstadoFeliz();
         Estado triste = new EstadoTriste();

@@ -3,7 +3,7 @@ package com.Zooftware.Zooftware.modelDAO;
 import com.Zooftware.Zooftware.modelDTO.EmpleadoEntityDto;
 import com.Zooftware.Zooftware.modelDTO.JefeEntityDto;
 import com.Zooftware.Zooftware.modelDTO.TrabajadorEntityDto;
-import com.Zooftware.Zooftware.modelJPA.TrabajadorEntity;
+import com.Zooftware.Zooftware.modelJPA.persona.TrabajadorEntity;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 

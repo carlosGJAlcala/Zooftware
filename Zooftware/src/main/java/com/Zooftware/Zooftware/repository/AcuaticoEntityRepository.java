@@ -1,8 +1,7 @@
 package com.Zooftware.Zooftware.repository;
 
-import com.Zooftware.Zooftware.modelJPA.AcuaticoEntity;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.AcuaticoEntity;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoAgua;
-import com.Zooftware.Zooftware.modelJPA.enums.TipoAnimal;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

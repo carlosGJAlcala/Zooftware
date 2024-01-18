@@ -1,13 +1,9 @@
 package com.Zooftware.Zooftware.service.persona;
 
-import com.Zooftware.Zooftware.exceptions.PersonaNotFoundException;
-
 import com.Zooftware.Zooftware.modelDAO.IPersonaDAO;
-import com.Zooftware.Zooftware.modelDAO.PersonaDAOImp;
 import com.Zooftware.Zooftware.modelDTO.PersonaEntityDto;
-import com.Zooftware.Zooftware.modelJPA.PersonaEntity;
+import com.Zooftware.Zooftware.modelJPA.persona.PersonaEntity;
 import com.Zooftware.Zooftware.modelJPA.enums.Rol;
-import com.Zooftware.Zooftware.repository.PersonaEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

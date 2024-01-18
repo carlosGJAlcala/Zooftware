@@ -1,27 +1,31 @@
 package com.Zooftware.Zooftware.modelDTO;
 
 import com.Zooftware.Zooftware.modelJPA.enums.Rol;
+import com.Zooftware.Zooftware.modelJPA.persona.ClienteEntity;
+import com.Zooftware.Zooftware.modelJPA.persona.ContactoEntity;
+import com.Zooftware.Zooftware.modelJPA.persona.PersonaEntity;
+import com.Zooftware.Zooftware.modelJPA.persona.TrabajadorEntity;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * DTO for {@link com.Zooftware.Zooftware.modelJPA.PersonaEntity}
+ * DTO for {@link PersonaEntity}
  */
 public class PersonaEntityDto implements Serializable {
-    private final int id;
-    private final String apellidos;
-    private final String dni;
-    private final int edad;
-    private final String nombre;
-    private final String password;
-    private final Rol rol;
-    private final String username;
-    private final Integer clienteZooId;
-    private final Integer contactoId;
-    private final Integer trabajadorId;
+    private int id;
+    private String apellidos;
+    private String dni;
+    private int edad;
+    private String nombre;
+    private String password;
+    private Rol rol;
+    private String username;
+    private ClienteEntityDto clienteZooId;
+    private ContactoEntityDto contactoId;
+    private TrabajadorEntityDto trabajadorId;
 
-    public PersonaEntityDto(int id, String apellidos, String dni, int edad, String nombre, String password, Rol rol, String username, Integer clienteZooId, Integer contactoId, Integer trabajadorId) {
+    public PersonaEntityDto(int id, String apellidos, String dni, int edad, String nombre, String password, Rol rol, String username, ClienteEntityDto clienteZooId, ContactoEntityDto contactoId, TrabajadorEntityDto trabajadorId) {
         this.id = id;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -39,82 +43,87 @@ public class PersonaEntityDto implements Serializable {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getApellidos() {
         return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public String getDni() {
         return dni;
     }
 
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
     public int getEdad() {
         return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
     public String getNombre() {
         return nombre;
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Rol getRol() {
         return rol;
     }
 
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
     public String getUsername() {
         return username;
     }
 
-    public Integer getClienteZooId() {
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public ClienteEntityDto getClienteZooId() {
         return clienteZooId;
     }
 
-    public Integer getContactoId() {
+    public void setClienteZooId(ClienteEntityDto clienteZooId) {
+        this.clienteZooId = clienteZooId;
+    }
+
+    public ContactoEntityDto getContactoId() {
         return contactoId;
     }
 
-    public Integer getTrabajadorId() {
+    public void setContactoId(ContactoEntityDto contactoId) {
+        this.contactoId = contactoId;
+    }
+
+    public TrabajadorEntityDto getTrabajadorId() {
         return trabajadorId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PersonaEntityDto entity = (PersonaEntityDto) o;
-        return Objects.equals(this.id, entity.id) &&
-                Objects.equals(this.apellidos, entity.apellidos) &&
-                Objects.equals(this.dni, entity.dni) &&
-                Objects.equals(this.edad, entity.edad) &&
-                Objects.equals(this.nombre, entity.nombre) &&
-                Objects.equals(this.password, entity.password) &&
-                Objects.equals(this.rol, entity.rol) &&
-                Objects.equals(this.username, entity.username) &&
-                Objects.equals(this.clienteZooId, entity.clienteZooId) &&
-                Objects.equals(this.contactoId, entity.contactoId) &&
-                Objects.equals(this.trabajadorId, entity.trabajadorId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, apellidos, dni, edad, nombre, password, rol, username, clienteZooId, contactoId, trabajadorId);
-    }
-
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + "(" +
-                "id = " + id + ", " +
-                "apellidos = " + apellidos + ", " +
-                "dni = " + dni + ", " +
-                "edad = " + edad + ", " +
-                "nombre = " + nombre + ", " +
-                "password = " + password + ", " +
-                "rol = " + rol + ", " +
-                "username = " + username + ", " +
-                "clienteZooId = " + clienteZooId + ", " +
-                "contactoId = " + contactoId + ", " +
-                "trabajadorId = " + trabajadorId + ")";
+    public void setTrabajadorId(TrabajadorEntityDto trabajadorId) {
+        this.trabajadorId = trabajadorId;
     }
 }

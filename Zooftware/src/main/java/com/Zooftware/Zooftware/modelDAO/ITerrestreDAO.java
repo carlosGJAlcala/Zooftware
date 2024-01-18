@@ -1,6 +1,5 @@
 package com.Zooftware.Zooftware.modelDAO;
 
-import com.Zooftware.Zooftware.modelDTO.TareaEntityDto;
 import com.Zooftware.Zooftware.modelDTO.TerrestreEntityDto;
 
 public interface ITerrestreDAO {

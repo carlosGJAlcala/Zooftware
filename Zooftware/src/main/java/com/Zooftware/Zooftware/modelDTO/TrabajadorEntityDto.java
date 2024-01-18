@@ -1,27 +1,28 @@
 package com.Zooftware.Zooftware.modelDTO;
 
+import com.Zooftware.Zooftware.modelJPA.mensajeria.MensajeEntity;
+import com.Zooftware.Zooftware.modelJPA.persona.TrabajadorEntity;
 import com.Zooftware.Zooftware.patrones.mediator.Mediator;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
 /**
- * DTO for {@link com.Zooftware.Zooftware.modelJPA.TrabajadorEntity}
+ * DTO for {@link TrabajadorEntity}
  */
 public abstract class TrabajadorEntityDto implements Serializable {
-    private final int id;
-    private final boolean activo;
-    private final Timestamp fechaFinContrato;
-    private final Timestamp fechaInicioContrato;
-    private final long numeroSeguridadSocial;
-    private final Integer empleadoZooId;
-    private final Integer jefeId;
-    private final Integer trabajadorId;
-
+    private int id;
+    private boolean activo;
+    private Timestamp fechaFinContrato;
+    private Timestamp fechaInicioContrato;
+    private long numeroSeguridadSocial;
+    private EmpleadoEntityDto empleadoZoo;
+    private JefeEntityDto jefeId;
+    private List<MensajeEntityDto> mensajes;
     private double salario;
 
-    private String puesto;
 
     public void setMediador(Mediator mediador) {
         this.mediador = mediador;
@@ -31,17 +32,15 @@ public abstract class TrabajadorEntityDto implements Serializable {
 
     private Mediator mediador;
 
-    public TrabajadorEntityDto(int id, boolean activo, Timestamp fechaFinContrato, Timestamp fechaInicioContrato, long numeroSeguridadSocial, Integer empleadoZooId, Integer jefeId, Integer trabajadorId, double salario, String puesto) {
+    public TrabajadorEntityDto(int id, boolean activo, Timestamp fechaFinContrato, Timestamp fechaInicioContrato, long numeroSeguridadSocial, EmpleadoEntityDto empleadoZooId, JefeEntityDto jefeId, double salario) {
         this.id = id;
         this.activo = activo;
         this.fechaFinContrato = fechaFinContrato;
         this.fechaInicioContrato = fechaInicioContrato;
         this.numeroSeguridadSocial = numeroSeguridadSocial;
-        this.empleadoZooId = empleadoZooId;
+        this.empleadoZoo = empleadoZooId;
         this.jefeId = jefeId;
-        this.trabajadorId = trabajadorId;
         this.salario = salario;
-        this.puesto = puesto;
     }
     public int getId() {
         return id;
@@ -63,17 +62,14 @@ public abstract class TrabajadorEntityDto implements Serializable {
         return numeroSeguridadSocial;
     }
 
-    public Integer getEmpleadoZooId() {
-        return empleadoZooId;
+    public EmpleadoEntityDto getEmpleadoZooId() {
+        return empleadoZoo;
     }
 
-    public Integer getJefeId() {
+    public JefeEntityDto getJefeId() {
         return jefeId;
     }
 
-    public Integer getTrabajadorId() {
-        return trabajadorId;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -85,14 +81,13 @@ public abstract class TrabajadorEntityDto implements Serializable {
                 Objects.equals(this.fechaFinContrato, entity.fechaFinContrato) &&
                 Objects.equals(this.fechaInicioContrato, entity.fechaInicioContrato) &&
                 Objects.equals(this.numeroSeguridadSocial, entity.numeroSeguridadSocial) &&
-                Objects.equals(this.empleadoZooId, entity.empleadoZooId) &&
-                Objects.equals(this.jefeId, entity.jefeId) &&
-                Objects.equals(this.trabajadorId, entity.trabajadorId);
+                Objects.equals(this.empleadoZoo, entity.empleadoZoo) &&
+                Objects.equals(this.jefeId, entity.jefeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, activo, fechaFinContrato, fechaInicioContrato, numeroSeguridadSocial, empleadoZooId, jefeId, trabajadorId);
+        return Objects.hash(id, activo, fechaFinContrato, fechaInicioContrato, numeroSeguridadSocial, empleadoZoo, jefeId);
     }
 
 
@@ -104,9 +99,8 @@ public abstract class TrabajadorEntityDto implements Serializable {
                 "fechaFinContrato = " + fechaFinContrato + ", " +
                 "fechaInicioContrato = " + fechaInicioContrato + ", " +
                 "numeroSeguridadSocial = " + numeroSeguridadSocial + ", " +
-                "empleadoZooId = " + empleadoZooId + ", " +
-                "jefeId = " + jefeId + ", " +
-                "trabajadorId = " + trabajadorId + ")";
+                "empleadoZooId = " + empleadoZoo + ", " +
+                "jefeId = " + jefeId + ")";
     }
 
 
@@ -128,9 +122,6 @@ public abstract class TrabajadorEntityDto implements Serializable {
         return salario;
     }
 
-    public String getPuesto() {
-        return puesto;
-    }
 
     public Mediator getMediador() {
         return mediador;

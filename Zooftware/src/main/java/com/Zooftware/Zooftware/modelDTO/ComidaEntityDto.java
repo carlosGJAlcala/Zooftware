@@ -7,30 +7,28 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * DTO for {@link com.Zooftware.Zooftware.modelJPA.ComidaEntity}
+ * DTO for {@link com.Zooftware.Zooftware.modelJPA.comida.ComidaEntity}
  */
 public class ComidaEntityDto implements Serializable {
     private  int id;
     private  String nombre;
     private  int cantidad;
     private  TipoComida tipoComida;
-    private  Integer comidaCarnivoraId;
-    private  Integer comidaHerviboraId;
-    private  Integer comidaOmnivoraId;
+
     private EstadoComida estadoComida;
 
 
 
     private String IngredientePrincipal,IngredienteSecundario;
 
-    public ComidaEntityDto(int id, String nombre, int cantidad, TipoComida tipoComida, Integer comidaCarnivoraId, Integer comidaHerviboraId, Integer comidaOmnivoraId) {
+    public ComidaEntityDto(int id, String nombre, int cantidad, TipoComida tipoComida, EstadoComida estadoComida, String ingredientePrincipal, String ingredienteSecundario) {
         this.id = id;
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.tipoComida = tipoComida;
-        this.comidaCarnivoraId = comidaCarnivoraId;
-        this.comidaHerviboraId = comidaHerviboraId;
-        this.comidaOmnivoraId = comidaOmnivoraId;
+        this.estadoComida = estadoComida;
+        IngredientePrincipal = ingredientePrincipal;
+        IngredienteSecundario = ingredienteSecundario;
     }
 
     public ComidaEntityDto() {
@@ -52,17 +50,7 @@ public class ComidaEntityDto implements Serializable {
         return tipoComida;
     }
 
-    public Integer getComidaCarnivoraId() {
-        return comidaCarnivoraId;
-    }
 
-    public Integer getComidaHerviboraId() {
-        return comidaHerviboraId;
-    }
-
-    public Integer getComidaOmnivoraId() {
-        return comidaOmnivoraId;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -72,15 +60,12 @@ public class ComidaEntityDto implements Serializable {
         return Objects.equals(this.id, entity.id) &&
                 Objects.equals(this.nombre, entity.nombre) &&
                 Objects.equals(this.cantidad, entity.cantidad) &&
-                Objects.equals(this.tipoComida, entity.tipoComida) &&
-                Objects.equals(this.comidaCarnivoraId, entity.comidaCarnivoraId) &&
-                Objects.equals(this.comidaHerviboraId, entity.comidaHerviboraId) &&
-                Objects.equals(this.comidaOmnivoraId, entity.comidaOmnivoraId);
+                Objects.equals(this.tipoComida, entity.tipoComida);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, cantidad, tipoComida, comidaCarnivoraId, comidaHerviboraId, comidaOmnivoraId);
+        return Objects.hash(id, nombre, cantidad, tipoComida);
     }
 
     @Override
@@ -89,10 +74,7 @@ public class ComidaEntityDto implements Serializable {
                 "id = " + id + ", " +
                 "nombre = " + nombre + ", " +
                 "cantidad = " + cantidad + ", " +
-                "tipoComida = " + tipoComida + ", " +
-                "comidaCarnivoraId = " + comidaCarnivoraId + ", " +
-                "comidaHerviboraId = " + comidaHerviboraId + ", " +
-                "comidaOmnivoraId = " + comidaOmnivoraId + ")";
+                "tipoComida = " + tipoComida ;
     }
     public void setEstadoComida(EstadoComida estadoComida) {
         this.estadoComida = estadoComida;
@@ -123,15 +105,5 @@ public class ComidaEntityDto implements Serializable {
         this.cantidad = cantidad;
     }
 
-    public void setComidaCarnivoraId(Integer comidaCarnivoraId) {
-        this.comidaCarnivoraId = comidaCarnivoraId;
-    }
 
-    public void setComidaHerviboraId(Integer comidaHerviboraId) {
-        this.comidaHerviboraId = comidaHerviboraId;
-    }
-
-    public void setComidaOmnivoraId(Integer comidaOmnivoraId) {
-        this.comidaOmnivoraId = comidaOmnivoraId;
-    }
 }

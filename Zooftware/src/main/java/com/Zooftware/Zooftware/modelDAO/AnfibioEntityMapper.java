@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.AnfibioEntityDto;
-import com.Zooftware.Zooftware.modelJPA.AnfibioEntity;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.AnfibioEntity;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 

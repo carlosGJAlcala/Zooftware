@@ -1,7 +1,6 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.AcuaticoEntityDto;
-import com.Zooftware.Zooftware.modelJPA.AcuaticoEntity;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoAgua;
 
 import java.util.List;

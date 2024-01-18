@@ -1,10 +1,8 @@
 package com.Zooftware.Zooftware.modelDAO;
 
-import com.Zooftware.Zooftware.modelDTO.AcuaticoEntityDto;
 import com.Zooftware.Zooftware.modelDTO.PersonaEntityDto;
-import com.Zooftware.Zooftware.modelJPA.PersonaEntity;
+import com.Zooftware.Zooftware.modelJPA.persona.PersonaEntity;
 import com.Zooftware.Zooftware.repository.PersonaEntityRepository;
-import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

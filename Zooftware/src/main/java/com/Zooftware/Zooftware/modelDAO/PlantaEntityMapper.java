@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.PlantaEntityDto;
-import com.Zooftware.Zooftware.modelJPA.PlantaEntity;
+import com.Zooftware.Zooftware.modelJPA.organimos.PlantaEntity;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
