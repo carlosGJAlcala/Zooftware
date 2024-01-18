@@ -13,7 +13,7 @@ public class ComidaOmnivoraBuilder implements IComidaBuilder{
     @Override
     public boolean abrirbolsa(List<ComidaEntityDto> provisiones) {
         if (!provisiones.isEmpty()){
-            comida=provisiones.getFirst();
+            comida=provisiones.get(0);
             comida.setNombre("SalteadoDeVerduraConPavo");
             comida.setEstadoComida(EstadoComida.CRUDA);
             comida.setTipoComida(TipoComida.OMNIVORA);

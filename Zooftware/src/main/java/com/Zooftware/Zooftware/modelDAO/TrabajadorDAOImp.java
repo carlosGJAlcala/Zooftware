@@ -22,7 +22,7 @@ public class TrabajadorDAOImp implements ITrabajadorDAO{
 
         Optional<TrabajadorEntity> optional = trabajadorjpa.findById(id);
         if (optional.isPresent()) {
-            return trabajadorEntityMapper.mapper.toDto(optional.get());
+            return trabajadorEntityMapper.mapper.toDtoEmpleado(optional.get());
         }
         return null;
     }
@@ -30,7 +30,7 @@ public class TrabajadorDAOImp implements ITrabajadorDAO{
     @Override
     public List<TrabajadorEntityDto> buscarActivos() {
         List<TrabajadorEntity> listTrabajadoresActivos = trabajadorjpa.findByActivoTrue();
-        return listTrabajadoresActivos.stream().map(trabajadorEntityMapper.mapper::toDto).collect(Collectors.toList());
+        return listTrabajadoresActivos.stream().map(trabajadorEntityMapper.mapper::toDtoEmpleado).collect(Collectors.toList());
     }
 
     @Override

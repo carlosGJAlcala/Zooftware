@@ -19,6 +19,7 @@ public class HabitatEntityDto implements Serializable {
     private List<BebederoEntityDto> bebederos;
     private List<ComederoEntityDto> comederos;
 
+    @Default
     public HabitatEntityDto(int id, TipoHabitat tipoHabitat, Integer dimensionId, Integer sueloId) {
         this.id = id;
         this.tipoHabitat = tipoHabitat;

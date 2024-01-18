@@ -13,7 +13,7 @@ public class ComidaHerviboraBuilder implements IComidaBuilder{
     @Override
     public boolean abrirbolsa(List<ComidaEntityDto> provisiones) {
         if (!provisiones.isEmpty()){
-            comida=provisiones.getFirst();
+            comida=provisiones.get(0);
             comida.setNombre("Coles de Bruselas con guisantes");
             comida.setEstadoComida(EstadoComida.CRUDA);
             comida.setTipoComida(TipoComida.HERVIBORA);

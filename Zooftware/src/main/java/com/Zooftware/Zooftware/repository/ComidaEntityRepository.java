@@ -16,7 +16,7 @@ public interface ComidaEntityRepository extends JpaRepository<ComidaEntity, Inte
 
     Optional<ComidaEntity> findByNombre(String nombre);
 
-    List<ComidaEntity> findByTipoComida(String tipoComida);
+    List<ComidaEntity> findByTipoComida(TipoComida tipoComida);
 
 
 }

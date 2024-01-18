@@ -6,6 +6,7 @@ import com.Zooftware.Zooftware.modelDTO.ContactoEntityDto;
 import com.Zooftware.Zooftware.modelJPA.AcuaticoEntity;
 import com.Zooftware.Zooftware.modelJPA.ComidaEntity;
 import com.Zooftware.Zooftware.modelJPA.DimensionAnimalEntity;
+import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
 import com.Zooftware.Zooftware.repository.ComidaEntityRepository;
 import com.Zooftware.Zooftware.repository.DimensionAnimalEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class ComidaDAOImp implements IComidaDAO{
     ComidaEntityMapper comidaEntityMapper;
 
     @Override
-    public List<ComidaEntityDto> buscarPorTipoComida(String tipoComida) {
+    public List<ComidaEntityDto> buscarPorTipoComida(TipoComida tipoComida) {
         List<ComidaEntity> lista = comidaEntityJPA.findByTipoComida(tipoComida);
 
         return lista.stream().map(comidaEntityMapper.mapper::toDto).collect(Collectors.toList());
