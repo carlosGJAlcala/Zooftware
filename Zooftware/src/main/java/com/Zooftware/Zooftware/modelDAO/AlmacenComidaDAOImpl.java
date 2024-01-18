@@ -9,13 +9,17 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Repository
 public class AlmacenComidaDAOImpl implements IAlmacenComidaDAO{
 
     @Autowired
     AlmacenComidaEntityRepository repository;
+    @Autowired
+    private AlmacenComidaEntityMapper almacenComidaEntityMapper;
 
 
     @Override
@@ -29,5 +33,28 @@ public class AlmacenComidaDAOImpl implements IAlmacenComidaDAO{
 
 
         return null;
+    }
+
+    @Override
+    public List<AlmacenComidaEntityDto> buscarAlmacenes() {
+        List<AlmacenComidaEntity>optional = repository.encontrarAlmacenes();
+
+
+        return optional.stream().map(almacenComidaEntityMapper::toDto).collect(Collectors.toList());
+    }
+
+    @Override
+    public void actualizar(AlmacenComidaEntityDto acuario) {
+
+    }
+
+    @Override
+    public void guardar(AlmacenComidaEntityDto acuario) {
+
+    }
+
+    @Override
+    public void eliminar(AlmacenComidaEntityDto id) {
+
     }
 }

@@ -5,16 +5,20 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "contacto", schema = "testbbdd", catalog = "")
 public class ContactoEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Basic
-    @Column(name = "correo")
-    private String correo;
-    @Basic
-    @Column(name = "numero_tlf")
+
+    private int Correo;
+    private int NumeroTlf;
     private String numeroTlf;
+
+    public ContactoEntity(int id, int correo, int numeroTlf, String numeroTlf1) {
+        this.id = id;
+        Correo = correo;
+        NumeroTlf = numeroTlf;
+        this.numeroTlf = numeroTlf1;
+    }
 
     public int getId() {
         return id;
@@ -24,38 +28,23 @@ public class ContactoEntity {
         this.id = id;
     }
 
-    public String getCorreo() {
-        return correo;
+    public int getCorreo() {
+        return Correo;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setCorreo(int correo) {
+        Correo = correo;
     }
 
-    public String getNumeroTlf() {
-        return numeroTlf;
+    public int getNumeroTlf() {
+        return NumeroTlf;
     }
 
     public void setNumeroTlf(String numeroTlf) {
         this.numeroTlf = numeroTlf;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ContactoEntity that = (ContactoEntity) o;
-
-        if (id != that.id) return false;
-        if (correo != that.correo) return false;
-        if (numeroTlf != that.numeroTlf) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
+    public void setNumeroTlf(int numeroTlf) {
+        NumeroTlf = numeroTlf;
     }
 }

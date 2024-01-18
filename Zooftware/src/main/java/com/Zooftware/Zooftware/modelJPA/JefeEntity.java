@@ -2,13 +2,34 @@ package com.Zooftware.Zooftware.modelJPA;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "jefe", schema = "testbbdd", catalog = "")
 public class JefeEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //Pendiente añadir mas atributos
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    //ejemplo composite
+
+    @OneToMany
+    @JoinColumn(name = "trabajador_id")
+    private List<TrabajadorEntity> subordinado;
+
+    //Para el patron composite
+//	@OneToOne
+//	@JoinColumn(name = "trabajador_id")
+//	public Trabajador m_Trabajador;
+
+
+    public JefeEntity(int id, List<TrabajadorEntity> subordinado) {
+        this.id = id;
+        this.subordinado = subordinado;
+    }
+
+    public JefeEntity() {
+    }
 
     public int getId() {
         return id;
@@ -18,20 +39,11 @@ public class JefeEntity {
         this.id = id;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        JefeEntity that = (JefeEntity) o;
-
-        if (id != that.id) return false;
-
-        return true;
+    public List<TrabajadorEntity> getSubordinado() {
+        return subordinado;
     }
 
-    @Override
-    public int hashCode() {
-        return id;
+    public void setSubordinado(List<TrabajadorEntity> subordinado) {
+        this.subordinado = subordinado;
     }
 }

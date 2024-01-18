@@ -4,7 +4,7 @@ import com.Zooftware.Zooftware.modelDTO.AnimalEntityDto;
 
 public class EstadoComida implements Estado {
     @Override
-    public void ejecutar(AnimalEntityDto t) {
+    public void ejecutar(Animal t) {
         Estado feliz = new EstadoFeliz();
         Estado triste = new EstadoTriste();
         System.out.println("Estado Comida: " + t.toString());

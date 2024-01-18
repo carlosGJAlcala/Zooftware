@@ -1,14 +1,9 @@
 package com.Zooftware.Zooftware.modelDAO;
 
-import com.Zooftware.Zooftware.modelDTO.AcuaticoEntityDto;
 import com.Zooftware.Zooftware.modelDTO.ComidaEntityDto;
-import com.Zooftware.Zooftware.modelDTO.ContactoEntityDto;
-import com.Zooftware.Zooftware.modelJPA.AcuaticoEntity;
 import com.Zooftware.Zooftware.modelJPA.ComidaEntity;
-import com.Zooftware.Zooftware.modelJPA.DimensionAnimalEntity;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
 import com.Zooftware.Zooftware.repository.ComidaEntityRepository;
-import com.Zooftware.Zooftware.repository.DimensionAnimalEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

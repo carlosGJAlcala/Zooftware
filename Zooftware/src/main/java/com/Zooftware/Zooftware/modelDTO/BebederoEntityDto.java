@@ -17,6 +17,12 @@ public class BebederoEntityDto implements Serializable {
         this.id = id;
         this.bebederoId = bebederoId;
     }
+    @Default
+    public BebederoEntityDto(int id, Integer bebederoId, int cantidad) {
+        this.id = id;
+        this.bebederoId = bebederoId;
+        this.cantidad = cantidad;
+    }
 
     public int getId() {
         return id;

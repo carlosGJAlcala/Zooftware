@@ -7,21 +7,13 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "animal", schema = "testbbdd", catalog = "")
 public class AnimalEntity {
-    @Basic
-    @Column(name = "hambre")
-    private int hambre;
+
     @Basic
     @Column(name = "nombre")
     private String nombre;
     @Basic
-    @Column(name = "num_extremidades")
-    private int numExtremidades;
-    @Basic
     @Column(name = "salud")
     private int salud;
-    @Basic
-    @Column(name = "sed")
-    private int sed;
     @Basic
     @Column(name = "suenio")
     private int suenio;
@@ -33,16 +25,29 @@ public class AnimalEntity {
     @Id
     @Column(name = "id")
     private int id;
-    @Basic
-    @Column(name = "comida_id")
-    private Integer comidaId;
+    @OneToOne
+    @JoinColumn(name = "comida_id")
+    @Column(name = "comida", nullable = false)
+    private int comida;
 
-    public int getHambre() {
-        return hambre;
+    @Enumerated(EnumType.STRING)
+
+    private EstadoAnimal estadoActual;
+
+    public EstadoAnimal getEstadoActual() {
+        return estadoActual;
     }
 
-    public void setHambre(int hambre) {
-        this.hambre = hambre;
+    public void setEstadoActual(EstadoAnimal estadoActual) {
+        this.estadoActual = estadoActual;
+    }
+
+    public int getComida() {
+        return comida;
+    }
+
+    public void setComida(int comida) {
+        this.comida = comida;
     }
 
     public String getNombre() {
@@ -53,13 +58,7 @@ public class AnimalEntity {
         this.nombre = nombre;
     }
 
-    public int getNumExtremidades() {
-        return numExtremidades;
-    }
 
-    public void setNumExtremidades(int numExtremidades) {
-        this.numExtremidades = numExtremidades;
-    }
 
     public int getSalud() {
         return salud;
@@ -69,13 +68,7 @@ public class AnimalEntity {
         this.salud = salud;
     }
 
-    public int getSed() {
-        return sed;
-    }
 
-    public void setSed(int sed) {
-        this.sed = sed;
-    }
 
     public int getSuenio() {
         return suenio;
@@ -109,13 +102,7 @@ public class AnimalEntity {
         this.id = id;
     }
 
-    public Integer getComidaId() {
-        return comidaId;
-    }
 
-    public void setComidaId(Integer comidaId) {
-        this.comidaId = comidaId;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -124,32 +111,25 @@ public class AnimalEntity {
 
         AnimalEntity that = (AnimalEntity) o;
 
-        if (hambre != that.hambre) return false;
-        if (numExtremidades != that.numExtremidades) return false;
         if (salud != that.salud) return false;
-        if (sed != that.sed) return false;
         if (suenio != that.suenio) return false;
         if (id != that.id) return false;
         if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
         if (estadoAnimal != null ? !estadoAnimal.equals(that.estadoAnimal) : that.estadoAnimal != null) return false;
         if (tipo != null ? !tipo.equals(that.tipo) : that.tipo != null) return false;
-        if (comidaId != null ? !comidaId.equals(that.comidaId) : that.comidaId != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = hambre;
+        int result = 0;
         result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
-        result = 31 * result + numExtremidades;
         result = 31 * result + salud;
-        result = 31 * result + sed;
         result = 31 * result + suenio;
         result = 31 * result + (estadoAnimal != null ? estadoAnimal.hashCode() : 0);
         result = 31 * result + (tipo != null ? tipo.hashCode() : 0);
         result = 31 * result + id;
-        result = 31 * result + (comidaId != null ? comidaId.hashCode() : 0);
         return result;
     }
 }

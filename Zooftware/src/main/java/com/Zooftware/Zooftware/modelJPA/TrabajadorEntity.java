@@ -3,57 +3,36 @@ package com.Zooftware.Zooftware.modelJPA;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "trabajador", schema = "testbbdd", catalog = "")
 public class TrabajadorEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Basic
-    @Column(name = "activo")
-    private boolean activo;
-    @Basic
-    @Column(name = "fecha_fin_contrato")
-    private Timestamp fechaFinContrato;
-    @Basic
-    @Column(name = "fecha_inicio_contrato")
-    private Timestamp fechaInicioContrato;
-    @Basic
-    @Column(name = "numero_seguridad_social")
+
+    //Añadir caracteristicas propias de los trabajadores:
+//	numero seguridad social
+//	fecha inicio contrato
+//	fecha fin contrato
+//	fecha Borrado
+//	Activo
+//
     private long numeroSeguridadSocial;
-    @Basic
-    @Column(name = "empleado_zoo_id")
-    private Integer empleadoZooId;
-    @Basic
-    @Column(name = "jefe_id")
-    private Integer jefeId;
-    @Basic
-    @Column(name = "trabajador_id")
-    private Integer trabajadorId;
-
-    @Column(name = "salario", nullable = false)
-    private double salario;
-
-    @Column(name = "puesto")
-    private String puesto;
-
-    public String getPuesto() {
-        return puesto;
-    }
-
-    public void setPuesto(String puesto) {
-        this.puesto = puesto;
-    }
-
-    public double getSalario() {
-        return salario;
-    }
-
-    public void setSalario(double salario) {
-        this.salario = salario;
-    }
+    private boolean activo;
+    private Date fechaInicioContrato;
+    private Date fechaFinContrato;
+    @OneToMany
+    @JoinColumn(name = "mensaje_id")
+    private List<MensajeEntity> mensaje;
+    @OneToOne
+    @JoinColumn(name = "empleadoZoo_id")
+    private EmpleadoEntity empleadoZoo;
+    @OneToOne
+    @JoinColumn(name = "jefe_id")
+    private JefeEntity jefe;
 
     public int getId() {
         return id;
@@ -61,30 +40,6 @@ public class TrabajadorEntity {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public boolean isActivo() {
-        return activo;
-    }
-
-    public void setActivo(boolean activo) {
-        this.activo = activo;
-    }
-
-    public Timestamp getFechaFinContrato() {
-        return fechaFinContrato;
-    }
-
-    public void setFechaFinContrato(Timestamp fechaFinContrato) {
-        this.fechaFinContrato = fechaFinContrato;
-    }
-
-    public Timestamp getFechaInicioContrato() {
-        return fechaInicioContrato;
-    }
-
-    public void setFechaInicioContrato(Timestamp fechaInicioContrato) {
-        this.fechaInicioContrato = fechaInicioContrato;
     }
 
     public long getNumeroSeguridadSocial() {
@@ -95,62 +50,51 @@ public class TrabajadorEntity {
         this.numeroSeguridadSocial = numeroSeguridadSocial;
     }
 
-    public Integer getEmpleadoZooId() {
-        return empleadoZooId;
+    public boolean isActivo() {
+        return activo;
     }
 
-    public void setEmpleadoZooId(Integer empleadoZooId) {
-        this.empleadoZooId = empleadoZooId;
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
-    public Integer getJefeId() {
-        return jefeId;
+    public Date getFechaInicioContrato() {
+        return fechaInicioContrato;
     }
 
-    public void setJefeId(Integer jefeId) {
-        this.jefeId = jefeId;
+    public void setFechaInicioContrato(Date fechaInicioContrato) {
+        this.fechaInicioContrato = fechaInicioContrato;
     }
 
-    public Integer getTrabajadorId() {
-        return trabajadorId;
+    public Date getFechaFinContrato() {
+        return fechaFinContrato;
     }
 
-    public void setTrabajadorId(Integer trabajadorId) {
-        this.trabajadorId = trabajadorId;
+    public void setFechaFinContrato(Date fechaFinContrato) {
+        this.fechaFinContrato = fechaFinContrato;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        TrabajadorEntity that = (TrabajadorEntity) o;
-
-        if (id != that.id) return false;
-        if (activo != that.activo) return false;
-        if (numeroSeguridadSocial != that.numeroSeguridadSocial) return false;
-        if (fechaFinContrato != null ? !fechaFinContrato.equals(that.fechaFinContrato) : that.fechaFinContrato != null)
-            return false;
-        if (fechaInicioContrato != null ? !fechaInicioContrato.equals(that.fechaInicioContrato) : that.fechaInicioContrato != null)
-            return false;
-        if (empleadoZooId != null ? !empleadoZooId.equals(that.empleadoZooId) : that.empleadoZooId != null)
-            return false;
-        if (jefeId != null ? !jefeId.equals(that.jefeId) : that.jefeId != null) return false;
-        if (trabajadorId != null ? !trabajadorId.equals(that.trabajadorId) : that.trabajadorId != null) return false;
-
-        return true;
+    public List<MensajeEntity> getMensaje() {
+        return mensaje;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (activo ? 1 : 0);
-        result = 31 * result + (fechaFinContrato != null ? fechaFinContrato.hashCode() : 0);
-        result = 31 * result + (fechaInicioContrato != null ? fechaInicioContrato.hashCode() : 0);
-        result = 31 * result + (int) (numeroSeguridadSocial ^ (numeroSeguridadSocial >>> 32));
-        result = 31 * result + (empleadoZooId != null ? empleadoZooId.hashCode() : 0);
-        result = 31 * result + (jefeId != null ? jefeId.hashCode() : 0);
-        result = 31 * result + (trabajadorId != null ? trabajadorId.hashCode() : 0);
-        return result;
+    public void setMensaje(List<MensajeEntity> mensaje) {
+        this.mensaje = mensaje;
+    }
+
+    public EmpleadoEntity getEmpleadoZoo() {
+        return empleadoZoo;
+    }
+
+    public void setEmpleadoZoo(EmpleadoEntity empleadoZoo) {
+        this.empleadoZoo = empleadoZoo;
+    }
+
+    public JefeEntity getJefe() {
+        return jefe;
+    }
+
+    public void setJefe(JefeEntity jefe) {
+        this.jefe = jefe;
     }
 }

@@ -6,39 +6,43 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "persona", schema = "testbbdd", catalog = "")
 public class PersonaEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Basic
-    @Column(name = "apellidos")
-    private String apellidos;
-    @Basic
-    @Column(name = "dni")
-    private String dni;
-    @Basic
-    @Column(name = "edad")
-    private int edad;
-    @Basic
-    @Column(name = "nombre")
-    private String nombre;
-    @Basic
-    @Column(name = "password")
+    private String Apellidos;
+    private String Dni;
+    private int Edad;
+    private String Nombre;
+
+    private String username;
     private String password;
+
     @Enumerated(EnumType.STRING)
     private Rol rol;
-    @Basic
-    @Column(name = "username")
-    private String username;
-    @Basic
-    @Column(name = "cliente_zoo_id")
-    private Integer clienteZooId;
-    @Basic
-    @Column(name = "contacto_id")
-    private Integer contactoId;
-    @Basic
-    @Column(name = "trabajador_id")
-    private Integer trabajadorId;
+
+    @OneToOne
+    @JoinColumn(name = "contacto_id")
+    private ContactoEntity contactoImp;
+    @OneToOne
+    @JoinColumn(name = "trabajador_id")
+    private TrabajadorEntity trabajador;
+    @OneToOne
+    @JoinColumn(name = "clienteZoo_id")
+    private ClienteEntity clienteZoo;
+
+    public PersonaEntity(int id, String apellidos, String dni, int edad, String nombre, String username, String password, Rol rol, ContactoEntity contactoImp, TrabajadorEntity trabajador, ClienteEntity clienteZoo) {
+        this.id = id;
+        Apellidos = apellidos;
+        Dni = dni;
+        Edad = edad;
+        Nombre = nombre;
+        this.username = username;
+        this.password = password;
+        this.rol = rol;
+        this.contactoImp = contactoImp;
+        this.trabajador = trabajador;
+        this.clienteZoo = clienteZoo;
+    }
 
     public int getId() {
         return id;
@@ -49,35 +53,43 @@ public class PersonaEntity {
     }
 
     public String getApellidos() {
-        return apellidos;
+        return Apellidos;
     }
 
     public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+        Apellidos = apellidos;
     }
 
     public String getDni() {
-        return dni;
+        return Dni;
     }
 
     public void setDni(String dni) {
-        this.dni = dni;
+        Dni = dni;
     }
 
     public int getEdad() {
-        return edad;
+        return Edad;
     }
 
     public void setEdad(int edad) {
-        this.edad = edad;
+        Edad = edad;
     }
 
     public String getNombre() {
-        return nombre;
+        return Nombre;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        Nombre = nombre;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -96,73 +108,27 @@ public class PersonaEntity {
         this.rol = rol;
     }
 
-    public String getUsername() {
-        return username;
+    public ContactoEntity getContactoImp() {
+        return contactoImp;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setContactoImp(ContactoEntity contactoImp) {
+        this.contactoImp = contactoImp;
     }
 
-    public Integer getClienteZooId() {
-        return clienteZooId;
+    public TrabajadorEntity getTrabajador() {
+        return trabajador;
     }
 
-    public void setClienteZooId(Integer clienteZooId) {
-        this.clienteZooId = clienteZooId;
+    public void setTrabajador(TrabajadorEntity trabajador) {
+        this.trabajador = trabajador;
     }
 
-    public Integer getContactoId() {
-        return contactoId;
+    public ClienteEntity getClienteZoo() {
+        return clienteZoo;
     }
 
-    public void setContactoId(Integer contactoId) {
-        this.contactoId = contactoId;
-    }
-
-    public Integer getTrabajadorId() {
-        return trabajadorId;
-    }
-
-    public void setTrabajadorId(Integer trabajadorId) {
-        this.trabajadorId = trabajadorId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        PersonaEntity that = (PersonaEntity) o;
-
-        if (id != that.id) return false;
-        if (edad != that.edad) return false;
-        if (apellidos != null ? !apellidos.equals(that.apellidos) : that.apellidos != null) return false;
-        if (dni != null ? !dni.equals(that.dni) : that.dni != null) return false;
-        if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
-        if (password != null ? !password.equals(that.password) : that.password != null) return false;
-        if (rol != null ? !rol.equals(that.rol) : that.rol != null) return false;
-        if (username != null ? !username.equals(that.username) : that.username != null) return false;
-        if (clienteZooId != null ? !clienteZooId.equals(that.clienteZooId) : that.clienteZooId != null) return false;
-        if (contactoId != null ? !contactoId.equals(that.contactoId) : that.contactoId != null) return false;
-        if (trabajadorId != null ? !trabajadorId.equals(that.trabajadorId) : that.trabajadorId != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (apellidos != null ? apellidos.hashCode() : 0);
-        result = 31 * result + (dni != null ? dni.hashCode() : 0);
-        result = 31 * result + edad;
-        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (rol != null ? rol.hashCode() : 0);
-        result = 31 * result + (username != null ? username.hashCode() : 0);
-        result = 31 * result + (clienteZooId != null ? clienteZooId.hashCode() : 0);
-        result = 31 * result + (contactoId != null ? contactoId.hashCode() : 0);
-        result = 31 * result + (trabajadorId != null ? trabajadorId.hashCode() : 0);
-        return result;
+    public void setClienteZoo(ClienteEntity clienteZoo) {
+        this.clienteZoo = clienteZoo;
     }
 }

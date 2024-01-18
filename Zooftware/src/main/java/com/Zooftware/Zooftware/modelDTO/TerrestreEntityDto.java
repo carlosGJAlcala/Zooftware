@@ -1,22 +1,28 @@
 package com.Zooftware.Zooftware.modelDTO;
 
+import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
+import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * DTO for {@link com.Zooftware.Zooftware.modelJPA.TerrestreEntity}
  */
-public class TerrestreEntityDto implements Serializable {
+public class TerrestreEntityDto extends HabitatEntityDto implements Serializable {
     private final int numBebederos;
     private final int numComederos;
-    private final String nombre;
+
     private final int id;
 
-    public TerrestreEntityDto(int numBebederos, int numComederos, String nombre, int id) {
+    public TerrestreEntityDto(int id, int numBebederos, int numComederos, int id1) {
+        super(id, TipoHabitat.TERRESTRE);
         this.numBebederos = numBebederos;
         this.numComederos = numComederos;
-        this.nombre = nombre;
-        this.id = id;
+        super.crearBebederos(numBebederos);
+        super.crearComederos(numComederos, TipoComida.OMNIVORA);
+
+        this.id = id1;
     }
 
     public int getNumBebederos() {
@@ -27,9 +33,6 @@ public class TerrestreEntityDto implements Serializable {
         return numComederos;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
 
     public int getId() {
         return id;
@@ -42,13 +45,13 @@ public class TerrestreEntityDto implements Serializable {
         TerrestreEntityDto entity = (TerrestreEntityDto) o;
         return Objects.equals(this.numBebederos, entity.numBebederos) &&
                 Objects.equals(this.numComederos, entity.numComederos) &&
-                Objects.equals(this.nombre, entity.nombre) &&
+
                 Objects.equals(this.id, entity.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(numBebederos, numComederos, nombre, id);
+        return Objects.hash(numBebederos, numComederos, id);
     }
 
     @Override
@@ -56,7 +59,6 @@ public class TerrestreEntityDto implements Serializable {
         return getClass().getSimpleName() + "(" +
                 "numBebederos = " + numBebederos + ", " +
                 "numComederos = " + numComederos + ", " +
-                "nombre = " + nombre + ", " +
                 "id = " + id + ")";
     }
 }

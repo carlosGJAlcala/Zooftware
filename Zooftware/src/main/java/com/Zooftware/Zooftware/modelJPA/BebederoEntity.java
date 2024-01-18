@@ -13,6 +13,17 @@ public class BebederoEntity {
     @Column(name = "bebedero_id")
     private Integer bebederoId;
 
+    @Column(name = "cantidad", nullable = false)
+    private int cantidad;
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
     public int getId() {
         return id;
     }

@@ -9,9 +9,12 @@ public class PlantaEntity {
     @Id
     @Column(name = "id")
     private int id;
-    @Basic
-    @Column(name = "suelo_id")
-    private Integer sueloId;
+    private String Nombre;
+
+    public PlantaEntity(int id, String nombre) {
+        this.id = id;
+        Nombre = nombre;
+    }
 
     public int getId() {
         return id;
@@ -21,31 +24,11 @@ public class PlantaEntity {
         this.id = id;
     }
 
-    public Integer getSueloId() {
-        return sueloId;
+    public String getNombre() {
+        return Nombre;
     }
 
-    public void setSueloId(Integer sueloId) {
-        this.sueloId = sueloId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        PlantaEntity that = (PlantaEntity) o;
-
-        if (id != that.id) return false;
-        if (sueloId != null ? !sueloId.equals(that.sueloId) : that.sueloId != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (sueloId != null ? sueloId.hashCode() : 0);
-        return result;
+    public void setNombre(String nombre) {
+        Nombre = nombre;
     }
 }
