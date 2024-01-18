@@ -1,5 +1,6 @@
 package com.Zooftware.Zooftware.modelJPA.instalaciones;
 
+import com.Zooftware.Zooftware.modelDTO.ComidaEntityDto;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
 import jakarta.persistence.*;
 
@@ -10,6 +11,8 @@ public class ComederoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+
+
     private Integer cantidad;
 
     @Enumerated(EnumType.STRING)

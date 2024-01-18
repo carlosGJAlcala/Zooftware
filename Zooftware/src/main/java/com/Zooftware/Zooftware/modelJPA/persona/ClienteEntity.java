@@ -2,6 +2,7 @@ package com.Zooftware.Zooftware.modelJPA.persona;
 
 import jakarta.persistence.*;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
@@ -10,16 +11,16 @@ public class ClienteEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private Timestamp fechaRegistro;
+    private Date fechaRegistro;
 
-    private Timestamp fechaUltimaVisita;
+    private Date fechaUltimaVisita;
 
     private int numVisitas;
 
     public ClienteEntity() {
     }
 
-    public ClienteEntity(int id, Timestamp fechaRegistro, Timestamp fechaUltimaVisita, int numVisitas) {
+    public ClienteEntity(int id, Date fechaRegistro, Date fechaUltimaVisita, int numVisitas) {
         this.id = id;
         this.fechaRegistro = fechaRegistro;
         this.fechaUltimaVisita = fechaUltimaVisita;
@@ -34,19 +35,19 @@ public class ClienteEntity {
         this.id = id;
     }
 
-    public Timestamp getFechaRegistro() {
+    public Date getFechaRegistro() {
         return fechaRegistro;
     }
 
-    public void setFechaRegistro(Timestamp fechaRegistro) {
+    public void setFechaRegistro(Date fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
 
-    public Timestamp getFechaUltimaVisita() {
+    public Date getFechaUltimaVisita() {
         return fechaUltimaVisita;
     }
 
-    public void setFechaUltimaVisita(Timestamp fechaUltimaVisita) {
+    public void setFechaUltimaVisita(Date fechaUltimaVisita) {
         this.fechaUltimaVisita = fechaUltimaVisita;
     }
 

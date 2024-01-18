@@ -9,11 +9,11 @@ public class AnfibioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int NumComedores;
+    private int numComedores;
 
     public AnfibioEntity(int id, int numComedores) {
         this.id = id;
-        NumComedores = numComedores;
+        numComedores = numComedores;
     }
 
     public AnfibioEntity() {
@@ -28,10 +28,10 @@ public class AnfibioEntity {
     }
 
     public int getNumComedores() {
-        return NumComedores;
+        return numComedores;
     }
 
     public void setNumComedores(int numComedores) {
-        NumComedores = numComedores;
+        numComedores = numComedores;
     }
 }

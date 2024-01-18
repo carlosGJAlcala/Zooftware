@@ -21,6 +21,10 @@ public class ComidaEntity {
         this.tipoComida = tipoComida;
     }
 
+    public ComidaEntity() {
+
+    }
+
     public int getId() {
         return id;
     }

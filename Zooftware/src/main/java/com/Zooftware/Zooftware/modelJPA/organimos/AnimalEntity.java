@@ -1,8 +1,6 @@
 package com.Zooftware.Zooftware.modelJPA.organimos;
 
-import com.Zooftware.Zooftware.modelJPA.ComidaEntity;
 import com.Zooftware.Zooftware.modelJPA.comida.ComidaEntity;
-import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoAnimal;
 import jakarta.persistence.*;
 
@@ -16,24 +14,24 @@ public class AnimalEntity {
     @OneToOne
     @JoinColumn(name = "comida_id")
     private ComidaEntity comida;
-    private int Hambre;
-    private String Nombre;
-    private int NumExtremidades;
-    private int Salud;
-    private int Sed;
-    private int Suenio;
+    private int hambre;
+    private String nombre;
+    private int numExtremidades;
+    private int salud;
+    private int sed;
+    private int suenio;
     @Enumerated(EnumType.STRING)
     private TipoAnimal tipo;
 
     public AnimalEntity(int id, ComidaEntity comida, int hambre, String nombre, int numExtremidades, int salud, int sed, int suenio, TipoAnimal tipo) {
         this.id = id;
         this.comida = comida;
-        Hambre = hambre;
-        Nombre = nombre;
-        NumExtremidades = numExtremidades;
-        Salud = salud;
-        Sed = sed;
-        Suenio = suenio;
+        hambre = hambre;
+        nombre = nombre;
+        numExtremidades = numExtremidades;
+        salud = salud;
+        sed = sed;
+        suenio = suenio;
         this.tipo = tipo;
     }
 
@@ -56,51 +54,51 @@ public class AnimalEntity {
     }
 
     public int getHambre() {
-        return Hambre;
+        return hambre;
     }
 
     public void setHambre(int hambre) {
-        Hambre = hambre;
+        hambre = hambre;
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
-        Nombre = nombre;
+        nombre = nombre;
     }
 
     public int getNumExtremidades() {
-        return NumExtremidades;
+        return numExtremidades;
     }
 
     public void setNumExtremidades(int numExtremidades) {
-        NumExtremidades = numExtremidades;
+        numExtremidades = numExtremidades;
     }
 
     public int getSalud() {
-        return Salud;
+        return salud;
     }
 
     public void setSalud(int salud) {
-        Salud = salud;
+        salud = salud;
     }
 
     public int getSed() {
-        return Sed;
+        return sed;
     }
 
     public void setSed(int sed) {
-        Sed = sed;
+        sed = sed;
     }
 
-    public int getSuenio() {
-        return Suenio;
+    public int getS() {
+        return suenio;
     }
 
-    public void setSuenio(int suenio) {
-        Suenio = suenio;
+    public void setS(int s) {
+        this.suenio = s;
     }
 
     public TipoAnimal getTipo() {

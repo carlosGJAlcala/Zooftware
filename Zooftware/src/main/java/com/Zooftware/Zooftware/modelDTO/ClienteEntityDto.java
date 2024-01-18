@@ -3,6 +3,7 @@ package com.Zooftware.Zooftware.modelDTO;
 import com.Zooftware.Zooftware.modelJPA.persona.ClienteEntity;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Objects;
 
@@ -11,11 +12,11 @@ import java.util.Objects;
  */
 public class ClienteEntityDto implements Serializable {
     private final int id;
-    private final Timestamp fechaRegistro;
-    private final Timestamp fechaUltimaVisita;
+    private final Date fechaRegistro;
+    private final Date fechaUltimaVisita;
     private final int numVisitas;
 
-    public ClienteEntityDto(int id, Timestamp fechaRegistro, Timestamp fechaUltimaVisita, int numVisitas) {
+    public ClienteEntityDto(int id, Date fechaRegistro, Date fechaUltimaVisita, int numVisitas) {
         this.id = id;
         this.fechaRegistro = fechaRegistro;
         this.fechaUltimaVisita = fechaUltimaVisita;
@@ -26,11 +27,11 @@ public class ClienteEntityDto implements Serializable {
         return id;
     }
 
-    public Timestamp getFechaRegistro() {
+    public Date getFechaRegistro() {
         return fechaRegistro;
     }
 
-    public Timestamp getFechaUltimaVisita() {
+    public Date getFechaUltimaVisita() {
         return fechaUltimaVisita;
     }
 
