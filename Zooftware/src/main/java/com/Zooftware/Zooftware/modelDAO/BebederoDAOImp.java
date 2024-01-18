@@ -7,9 +7,11 @@ import com.Zooftware.Zooftware.modelJPA.ClienteEntity;
 import com.Zooftware.Zooftware.repository.BebederoEntityRepository;
 import com.Zooftware.Zooftware.repository.ClienteEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+@Repository
 public class BebederoDAOImp implements IBebederoDAO{
     @Autowired
     BebederoEntityRepository bebederoJPA;

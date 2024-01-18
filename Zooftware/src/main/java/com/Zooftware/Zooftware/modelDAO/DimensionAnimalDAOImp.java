@@ -9,9 +9,10 @@ import com.Zooftware.Zooftware.repository.ComederoEntityRepository;
 import com.Zooftware.Zooftware.repository.DimensionAnimalEntityRepository;
 import com.Zooftware.Zooftware.repository.DimensionEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
-
+@Repository
 public class DimensionAnimalDAOImp implements IDimensionAnimalDAO {
 
     @Autowired

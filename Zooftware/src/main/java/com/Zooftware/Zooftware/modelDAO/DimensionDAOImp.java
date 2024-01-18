@@ -6,9 +6,10 @@ import com.Zooftware.Zooftware.modelJPA.DimensionEntity;
 import com.Zooftware.Zooftware.repository.ClienteEntityRepository;
 import com.Zooftware.Zooftware.repository.DimensionEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
-
+@Repository
 public class DimensionDAOImp implements IDimensionDAO{
     @Autowired
     DimensionEntityRepository dimensionJPA;

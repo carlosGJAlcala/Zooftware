@@ -7,12 +7,11 @@ import java.util.Objects;
  * DTO for {@link com.Zooftware.Zooftware.modelJPA.ContactoEntity}
  */
 public class ContactoEntityDto implements Serializable {
-    private final int id;
+    private int id;
     private final String correo;
-    private final String numeroTlf;
+    private final int numeroTlf;
 
-    public ContactoEntityDto(int id, String correo, String numeroTlf) {
-        this.id = id;
+    public ContactoEntityDto(String correo, int numeroTlf) {
         this.correo = correo;
         this.numeroTlf = numeroTlf;
     }
@@ -25,7 +24,7 @@ public class ContactoEntityDto implements Serializable {
         return correo;
     }
 
-    public String getNumeroTlf() {
+    public int getNumeroTlf() {
         return numeroTlf;
     }
 

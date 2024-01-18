@@ -7,9 +7,10 @@ import com.Zooftware.Zooftware.modelJPA.DimensionAnimalEntity;
 import com.Zooftware.Zooftware.repository.ComidaCarnivoraEntityRepository;
 import com.Zooftware.Zooftware.repository.DimensionAnimalEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
-
+@Repository
 public class ComidaCarnivoraDAOImp implements IComidaCarnivoraDAO{
     @Autowired
     ComidaCarnivoraEntityRepository comidaCarnivoraJPA;

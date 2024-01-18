@@ -12,10 +12,14 @@ public class JefeController {
 
 
     @GetMapping("/mostrar")
+
     public ModelAndView mostrarLogin(){
         ModelAndView modelAndView = new ModelAndView("jefeHome");
         return modelAndView;
     }
+
+
+
 
     @ExceptionHandler(Exception.class)
     public ModelAndView excepcion(Exception exception){

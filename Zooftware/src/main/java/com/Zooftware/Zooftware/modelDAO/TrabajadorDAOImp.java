@@ -7,11 +7,12 @@ import com.Zooftware.Zooftware.modelJPA.TrabajadorEntity;
 import com.Zooftware.Zooftware.repository.PersonaEntityRepository;
 import com.Zooftware.Zooftware.repository.TrabajadorEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+@Repository
 public class TrabajadorDAOImp implements ITrabajadorDAO{
     @Autowired
     TrabajadorEntityRepository trabajadorjpa;

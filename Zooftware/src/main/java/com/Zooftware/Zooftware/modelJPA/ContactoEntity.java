@@ -14,7 +14,7 @@ public class ContactoEntity {
     private String correo;
     @Basic
     @Column(name = "numero_tlf")
-    private String numeroTlf;
+    private int numeroTlf;
 
     public int getId() {
         return id;
@@ -32,11 +32,11 @@ public class ContactoEntity {
         this.correo = correo;
     }
 
-    public String getNumeroTlf() {
+    public int getNumeroTlf() {
         return numeroTlf;
     }
 
-    public void setNumeroTlf(String numeroTlf) {
+    public void setNumeroTlf(int numeroTlf) {
         this.numeroTlf = numeroTlf;
     }
 

@@ -74,12 +74,62 @@
             </div>
         </div>
         <div>
+            <style>
+                .form-group{
+                    width: 300px;
+                    margin-bottom:20px;
+                }
+            </style>
             <h1>Gestion personal</h1>
-            <a href="/personal/mostrarContratarEmpleado" class="btn btn-dark btn-lg btn-block">Contratar empleado</a>
-            <a href="/personal/mostrarTablaEmpleados" class="btn btn-dark btn-lg btn-block">Modificar datos empleado</a>
-            <a href="/personal/mostrarSueldosTotales" class="btn btn-dark btn-lg btn-block">Ver total sueldos</a>
-
-
+            <form action="#" th:action="@{/personal/contratarEmpleado}" method="post"  >
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Nombre</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" th:name="nombre">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Apellidos</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" th:name="apellidos">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput3">DNI</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput3" th:name="dni">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput4">Edad</label>
+                    <input type="number" class="form-control" id="formGroupExampleInput4" th:name="edad">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput5">Username</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput5" th:name="username">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput5">Password</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput6" th:name="password">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput5">Correo</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput7" th:name="correo">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput5">Numero Telefono</label>
+                    <input type="number" class="form-control" id="formGroupExampleInput8" th:name="numeroTLF">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput5">FechaFinContrato</label>
+                    <input type="date" class="form-control" id="formGroupExampleInput9" th:name="fechaFinContrato">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput5">Numero Seguridad Social</label>
+                    <input type="number" class="form-control" id="formGroupExampleInput10" th:name="numSeguridadSocial">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput5">Salario</label>
+                    <input type="number" class="form-control" id="formGroupExampleInput11" th:name="salario">
+                </div>
+                <div class="pt-1 mb-4" style="margin-right:10px">
+                    <button class="btn btn-dark btn-lg btn-block" type="submit" >Dar de alta empleado</button>
+                </div>
+            </form>
 
 
 

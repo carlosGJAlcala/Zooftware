@@ -7,9 +7,7 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper
 public interface ContactoEntityMapper {
-
     ContactoEntityMapper mapper = Mappers.getMapper(ContactoEntityMapper.class);
-
     ContactoEntity toEntity(ContactoEntityDto contactoEntityDto);
 
     ContactoEntityDto toDto(ContactoEntity contactoEntity);
