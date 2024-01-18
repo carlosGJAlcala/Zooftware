@@ -1,5 +1,6 @@
 package com.Zooftware.Zooftware.modelJPA;
 
+import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
 import jakarta.persistence.*;
 
 @Entity
@@ -15,6 +16,17 @@ public class ComederoEntity {
     @Basic
     @Column(name = "cantidad")
     private Integer cantidad;
+
+    @Transient
+    private TipoComida tipo;
+
+    public TipoComida getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoComida tipo) {
+        this.tipo = tipo;
+    }
 
     public Integer getCantidad() {
         return cantidad;
