@@ -1,6 +1,7 @@
 package com.Zooftware.Zooftware.modelJPA.organimos;
 
 import com.Zooftware.Zooftware.modelJPA.ComidaEntity;
+import com.Zooftware.Zooftware.modelJPA.comida.ComidaEntity;
 import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoAnimal;
 import jakarta.persistence.*;
@@ -23,6 +24,20 @@ public class AnimalEntity {
     private int Suenio;
     @Enumerated(EnumType.STRING)
     private TipoAnimal tipo;
+
+    public AnimalEntity(int id, ComidaEntity comida, int hambre, String nombre, int numExtremidades, int salud, int sed, int suenio, TipoAnimal tipo) {
+        this.id = id;
+        this.comida = comida;
+        Hambre = hambre;
+        Nombre = nombre;
+        NumExtremidades = numExtremidades;
+        Salud = salud;
+        Sed = sed;
+        Suenio = suenio;
+        this.tipo = tipo;
+    }
+
+    public AnimalEntity(){}
 
     public int getId() {
         return id;
@@ -96,15 +111,5 @@ public class AnimalEntity {
         this.tipo = tipo;
     }
 
-    public AnimalEntity(int id, ComidaEntity comida, int hambre, String nombre, int numExtremidades, int salud, int sed, int suenio, TipoAnimal tipo) {
-        this.id = id;
-        this.comida = comida;
-        Hambre = hambre;
-        Nombre = nombre;
-        NumExtremidades = numExtremidades;
-        Salud = salud;
-        Sed = sed;
-        Suenio = suenio;
-        this.tipo = tipo;
-    }
+
 }

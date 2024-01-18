@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.ComidaEntityDto;
-import com.Zooftware.Zooftware.modelJPA.ComidaEntity;
+import com.Zooftware.Zooftware.modelJPA.comida.ComidaEntity;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
 import com.Zooftware.Zooftware.repository.ComidaEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;

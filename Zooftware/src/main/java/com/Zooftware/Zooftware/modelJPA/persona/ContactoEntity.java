@@ -11,13 +11,11 @@ public class ContactoEntity {
 
     private int Correo;
     private int NumeroTlf;
-    private String numeroTlf;
 
     public ContactoEntity(int id, int correo, int numeroTlf, String numeroTlf1) {
         this.id = id;
         Correo = correo;
         NumeroTlf = numeroTlf;
-        this.numeroTlf = numeroTlf1;
     }
 
     public ContactoEntity() {
@@ -43,9 +41,6 @@ public class ContactoEntity {
         return NumeroTlf;
     }
 
-    public void setNumeroTlf(String numeroTlf) {
-        this.numeroTlf = numeroTlf;
-    }
 
     public void setNumeroTlf(int numeroTlf) {
         NumeroTlf = numeroTlf;

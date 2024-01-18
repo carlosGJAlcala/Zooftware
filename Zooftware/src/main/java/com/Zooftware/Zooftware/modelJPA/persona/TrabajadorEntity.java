@@ -12,14 +12,6 @@ public class TrabajadorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    //Añadir caracteristicas propias de los trabajadores:
-//	numero seguridad social
-//	fecha inicio contrato
-//	fecha fin contrato
-//	fecha Borrado
-//	Activo
-//
     private long numeroSeguridadSocial;
     private boolean activo;
     private Date fechaInicioContrato;
@@ -34,6 +26,21 @@ public class TrabajadorEntity {
     @JoinColumn(name = "jefe_id")
     private JefeEntity jefe;
 
+
+    public TrabajadorEntity() {
+    }
+
+    public TrabajadorEntity(int id, long numeroSeguridadSocial, boolean activo, Date fechaInicioContrato, Date fechaFinContrato, List<MensajeEntity> mensaje, EmpleadoEntity empleadoZoo, JefeEntity jefe) {
+        this.id = id;
+        this.numeroSeguridadSocial = numeroSeguridadSocial;
+        this.activo = activo;
+        this.fechaInicioContrato = fechaInicioContrato;
+        this.fechaFinContrato = fechaFinContrato;
+        this.mensaje = mensaje;
+        this.empleadoZoo = empleadoZoo;
+        this.jefe = jefe;
+    }
+
     public int getId() {
         return id;
     }
@@ -45,26 +52,18 @@ public class TrabajadorEntity {
     public long getNumeroSeguridadSocial() {
         return numeroSeguridadSocial;
     }
-
-    public TrabajadorEntity() {
-    }
-
     public void setNumeroSeguridadSocial(long numeroSeguridadSocial) {
         this.numeroSeguridadSocial = numeroSeguridadSocial;
     }
-
     public boolean isActivo() {
         return activo;
     }
-
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
-
     public Date getFechaInicioContrato() {
         return fechaInicioContrato;
     }
-
     public void setFechaInicioContrato(Date fechaInicioContrato) {
         this.fechaInicioContrato = fechaInicioContrato;
     }

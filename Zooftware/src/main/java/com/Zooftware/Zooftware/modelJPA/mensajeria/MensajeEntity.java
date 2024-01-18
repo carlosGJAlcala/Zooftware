@@ -10,12 +10,8 @@ public class MensajeEntity {
     private int id;
     private String Asunto;
     private String Destinario;
-    //private IEstadoMensaje Estado;
-    //private IInstalacion Instalacion;
     private String Remitente;
-    //private ITarea Tarea;
     private String Texto;
-    //public ITarea m_ITarea;
 
 
     public MensajeEntity() {

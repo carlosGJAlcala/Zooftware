@@ -13,6 +13,10 @@ public class EmpleadoEntity {
     public EmpleadoEntity() {
     }
 
+    public EmpleadoEntity(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
@@ -21,20 +25,4 @@ public class EmpleadoEntity {
         this.id = id;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        EmpleadoEntity that = (EmpleadoEntity) o;
-
-        if (id != that.id) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return id;
-    }
 }

@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class BebederoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    private int id;
     private int cantidad;
 
     public BebederoEntity(int id, int cantidad) {
@@ -15,10 +15,22 @@ public class BebederoEntity {
         this.cantidad = cantidad;
     }
 
-    public BebederoEntity(int id) {
+    public BebederoEntity() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
         this.id = id;
     }
 
-    public BebederoEntity() {
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 }

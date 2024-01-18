@@ -9,10 +9,10 @@ public class PersonaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String Apellidos;
-    private String Dni;
-    private int Edad;
-    private String Nombre;
+    private String apellidos;
+    private String dni;
+    private int edad;
+    private String nombre;
 
     private String username;
     private String password;
@@ -32,19 +32,16 @@ public class PersonaEntity {
 
     public PersonaEntity(int id, String apellidos, String dni, int edad, String nombre, String username, String password, Rol rol, ContactoEntity contactoImp, TrabajadorEntity trabajador, ClienteEntity clienteZoo) {
         this.id = id;
-        Apellidos = apellidos;
-        Dni = dni;
-        Edad = edad;
-        Nombre = nombre;
+        this.apellidos = apellidos;
+        this.dni = dni;
+        this.edad = edad;
+        this.nombre = nombre;
         this.username = username;
         this.password = password;
         this.rol = rol;
         this.contactoImp = contactoImp;
         this.trabajador = trabajador;
         this.clienteZoo = clienteZoo;
-    }
-
-    public PersonaEntity() {
     }
 
     public int getId() {
@@ -56,35 +53,35 @@ public class PersonaEntity {
     }
 
     public String getApellidos() {
-        return Apellidos;
+        return apellidos;
     }
 
     public void setApellidos(String apellidos) {
-        Apellidos = apellidos;
+        apellidos = apellidos;
     }
 
     public String getDni() {
-        return Dni;
+        return dni;
     }
 
     public void setDni(String dni) {
-        Dni = dni;
+        dni = dni;
     }
 
     public int getEdad() {
-        return Edad;
+        return edad;
     }
 
     public void setEdad(int edad) {
-        Edad = edad;
+        edad = edad;
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
-        Nombre = nombre;
+        nombre = nombre;
     }
 
     public String getUsername() {

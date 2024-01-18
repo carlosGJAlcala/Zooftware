@@ -11,17 +11,10 @@ public class JefeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    //ejemplo composite
 
     @OneToMany
     @JoinColumn(name = "trabajador_id")
     private List<TrabajadorEntity> subordinado;
-
-    //Para el patron composite
-//	@OneToOne
-//	@JoinColumn(name = "trabajador_id")
-//	public Trabajador m_Trabajador;
-
 
     public JefeEntity(int id, List<TrabajadorEntity> subordinado) {
         this.id = id;

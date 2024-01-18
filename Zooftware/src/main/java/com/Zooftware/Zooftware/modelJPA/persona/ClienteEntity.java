@@ -7,21 +7,23 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "cliente", schema = "testbbdd", catalog = "")
 public class ClienteEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Basic
-    @Column(name = "fecha_registro")
     private Timestamp fechaRegistro;
-    @Basic
-    @Column(name = "fecha_ultima_visita")
+
     private Timestamp fechaUltimaVisita;
-    @Basic
-    @Column(name = "num_visitas")
+
     private int numVisitas;
 
     public ClienteEntity() {
+    }
+
+    public ClienteEntity(int id, Timestamp fechaRegistro, Timestamp fechaUltimaVisita, int numVisitas) {
+        this.id = id;
+        this.fechaRegistro = fechaRegistro;
+        this.fechaUltimaVisita = fechaUltimaVisita;
+        this.numVisitas = numVisitas;
     }
 
     public int getId() {
@@ -56,29 +58,4 @@ public class ClienteEntity {
         this.numVisitas = numVisitas;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ClienteEntity that = (ClienteEntity) o;
-
-        if (id != that.id) return false;
-        if (numVisitas != that.numVisitas) return false;
-        if (fechaRegistro != null ? !fechaRegistro.equals(that.fechaRegistro) : that.fechaRegistro != null)
-            return false;
-        if (fechaUltimaVisita != null ? !fechaUltimaVisita.equals(that.fechaUltimaVisita) : that.fechaUltimaVisita != null)
-            return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (fechaRegistro != null ? fechaRegistro.hashCode() : 0);
-        result = 31 * result + (fechaUltimaVisita != null ? fechaUltimaVisita.hashCode() : 0);
-        result = 31 * result + numVisitas;
-        return result;
-    }
 }
