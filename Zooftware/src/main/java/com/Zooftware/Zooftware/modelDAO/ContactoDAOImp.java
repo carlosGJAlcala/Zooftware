@@ -4,9 +4,10 @@ import com.Zooftware.Zooftware.modelDTO.ContactoEntityDto;
 import com.Zooftware.Zooftware.modelJPA.persona.ContactoEntity;
 import com.Zooftware.Zooftware.repository.ContactoEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
-
+@Repository
 public class ContactoDAOImp implements IContactoDAO{
     @Autowired
     ContactoEntityRepository contactoJPA;

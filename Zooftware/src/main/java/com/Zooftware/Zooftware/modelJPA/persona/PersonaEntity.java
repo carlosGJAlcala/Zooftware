@@ -27,8 +27,10 @@ public class PersonaEntity {
     @JoinColumn(name = "trabajador_id")
     private TrabajadorEntity trabajador;
     @OneToOne
-    @JoinColumn(name = "clienteZoo_id")
+    @JoinColumn(name = "cliente_id")
     private ClienteEntity clienteZoo;
+
+    public PersonaEntity(){}
 
     public PersonaEntity(int id, String apellidos, String dni, int edad, String nombre, String username, String password, Rol rol, ContactoEntity contactoImp, TrabajadorEntity trabajador, ClienteEntity clienteZoo) {
         this.id = id;

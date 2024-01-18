@@ -5,11 +5,12 @@ import com.Zooftware.Zooftware.modelJPA.comida.ComidaEntity;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
 import com.Zooftware.Zooftware.repository.ComidaEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+@Repository
 public class ComidaDAOImp implements IComidaDAO{
     @Autowired
     ComidaEntityRepository comidaEntityJPA;

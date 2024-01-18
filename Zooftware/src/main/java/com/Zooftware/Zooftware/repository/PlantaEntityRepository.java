@@ -11,6 +11,5 @@ public interface PlantaEntityRepository extends JpaRepository<PlantaEntity, Inte
     @Override
     Optional<PlantaEntity> findById(Integer integer);
 
-    List<PlantaEntity> findBySueloId(Integer sueloId);
 
 }

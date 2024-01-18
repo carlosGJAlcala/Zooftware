@@ -15,7 +15,7 @@ public class AlmacenComidaDAOImpl implements IAlmacenComidaDAO{
 
     @Autowired
     AlmacenComidaEntityRepository repository;
-    @Autowired
+
     private AlmacenComidaEntityMapper almacenComidaEntityMapper;
 
 

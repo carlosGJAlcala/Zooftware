@@ -16,7 +16,6 @@ public interface MensajeEntityRepository extends JpaRepository<MensajeEntity, In
 
     List<MensajeEntity> findByRemitente(String remitente);
 
-    List<MensajeEntity> findByTareaId(Integer tareaId);
 
     List<MensajeEntity> findByAsunto(String asunto);
 

@@ -4,9 +4,10 @@ import com.Zooftware.Zooftware.modelDTO.EmpleadoEntityDto;
 import com.Zooftware.Zooftware.modelJPA.persona.EmpleadoEntity;
 import com.Zooftware.Zooftware.repository.EmpleadoEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
-
+@Repository
 public class EmpleadoDAOImp implements IEmpleadoDAO{
 
     @Autowired

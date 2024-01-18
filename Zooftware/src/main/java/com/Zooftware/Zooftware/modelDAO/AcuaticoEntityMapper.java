@@ -7,7 +7,7 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper
 public interface AcuaticoEntityMapper {
-    AcuaticoEntityMapper mapper = Mappers.getMapper(AcuaticoEntityMapper.class);
+    AcuaticoEntityMapper mapper= Mappers.getMapper(AcuaticoEntityMapper.class);
     AcuaticoEntity toEntity(AcuaticoEntityDto acuaticoEntityDto);
 
     AcuaticoEntityDto toDto(AcuaticoEntity acuaticoEntity);

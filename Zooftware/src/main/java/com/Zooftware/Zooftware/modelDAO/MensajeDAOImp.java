@@ -4,9 +4,10 @@ import com.Zooftware.Zooftware.modelDTO.MensajeEntityDto;
 import com.Zooftware.Zooftware.modelJPA.mensajeria.MensajeEntity;
 import com.Zooftware.Zooftware.repository.MensajeEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
-
+@Repository
 public class MensajeDAOImp implements IMensajeDAO{
     @Autowired
     MensajeEntityRepository mensajeJPA;

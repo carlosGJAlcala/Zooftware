@@ -4,9 +4,10 @@ import com.Zooftware.Zooftware.modelDTO.ClienteEntityDto;
 import com.Zooftware.Zooftware.modelJPA.persona.ClienteEntity;
 import com.Zooftware.Zooftware.repository.ClienteEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
-
+@Repository
 public class ClienteDAOImp implements IClienteDAO{
 
     @Autowired

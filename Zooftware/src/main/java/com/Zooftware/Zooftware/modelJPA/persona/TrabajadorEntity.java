@@ -20,7 +20,7 @@ public class TrabajadorEntity {
     @JoinColumn(name = "mensaje_id")
     private List<MensajeEntity> mensaje;
     @OneToOne
-    @JoinColumn(name = "empleadoZoo_id")
+    @JoinColumn(name = "empleado_id")
     private EmpleadoEntity empleadoZoo;
     @OneToOne
     @JoinColumn(name = "jefe_id")

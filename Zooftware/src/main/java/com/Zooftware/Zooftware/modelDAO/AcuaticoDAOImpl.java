@@ -15,10 +15,7 @@ import java.util.stream.Collectors;
 public class AcuaticoDAOImpl implements IAcuaticoDAO {
     @Autowired
     AcuaticoEntityRepository acuariojpa;
-   @Autowired
     AcuaticoEntityMapper acuaticoEntityMapper;
-//
-//    @Autowired
 
     @Override
     public AcuaticoEntityDto buscarPorId(Integer id) {

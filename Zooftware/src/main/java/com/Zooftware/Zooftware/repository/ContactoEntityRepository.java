@@ -12,7 +12,7 @@ public interface ContactoEntityRepository extends JpaRepository<ContactoEntity, 
 
     Optional<ContactoEntity> findByCorreo(String correo);
 
-    ContactoEntity findByNumeroTlf(String numeroTlf);
+    ContactoEntity findByNumeroTlf(Integer numeroTlf);
 
 
 }
