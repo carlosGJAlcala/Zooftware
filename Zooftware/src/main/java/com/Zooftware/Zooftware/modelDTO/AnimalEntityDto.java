@@ -2,13 +2,13 @@ package com.Zooftware.Zooftware.modelDTO;
 
 import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoAnimal;
-import com.Zooftware.Zooftware.patrones.state.*;
+import com.Zooftware.Zooftware.modelJPA.organimos.AnimalEntity;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * DTO for {@link com.Zooftware.Zooftware.modelJPA.AnimalEntity}
+ * DTO for {@link AnimalEntity}
  */
 public class AnimalEntityDto implements Serializable {
     private final String nombre;

@@ -1,10 +1,8 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.AnimalEntityDto;
-import com.Zooftware.Zooftware.modelJPA.AnimalEntity;
-import com.Zooftware.Zooftware.modelJPA.ClienteEntity;
+import com.Zooftware.Zooftware.modelJPA.organimos.AnimalEntity;
 import com.Zooftware.Zooftware.repository.AnimalEntityRepository;
-import com.Zooftware.Zooftware.repository.ClienteEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

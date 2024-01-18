@@ -1,10 +1,12 @@
 package com.Zooftware.Zooftware.modelDTO;
 
+import com.Zooftware.Zooftware.modelJPA.mensajeria.MensajeEntity;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * DTO for {@link com.Zooftware.Zooftware.modelJPA.MensajeEntity}
+ * DTO for {@link MensajeEntity}
  */
 public class MensajeEntityDto implements Serializable {
     private final int id;

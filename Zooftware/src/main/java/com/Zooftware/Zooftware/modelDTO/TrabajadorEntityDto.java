@@ -1,5 +1,6 @@
 package com.Zooftware.Zooftware.modelDTO;
 
+import com.Zooftware.Zooftware.modelJPA.persona.TrabajadorEntity;
 import com.Zooftware.Zooftware.patrones.mediator.Mediator;
 
 import java.io.Serializable;
@@ -7,7 +8,7 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 /**
- * DTO for {@link com.Zooftware.Zooftware.modelJPA.TrabajadorEntity}
+ * DTO for {@link TrabajadorEntity}
  */
 public abstract class TrabajadorEntityDto implements Serializable {
     private final int id;

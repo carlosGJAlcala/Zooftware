@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.AcuaticoEntityDto;
-import com.Zooftware.Zooftware.modelJPA.AcuaticoEntity;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.AcuaticoEntity;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 

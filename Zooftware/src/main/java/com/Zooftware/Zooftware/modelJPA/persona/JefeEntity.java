@@ -1,4 +1,4 @@
-package com.Zooftware.Zooftware.modelJPA;
+package com.Zooftware.Zooftware.modelJPA.persona;
 
 import jakarta.persistence.*;
 

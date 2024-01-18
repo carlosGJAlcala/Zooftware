@@ -1,12 +1,13 @@
 package com.Zooftware.Zooftware.modelDTO;
 
 import com.Zooftware.Zooftware.modelJPA.enums.Rol;
+import com.Zooftware.Zooftware.modelJPA.persona.PersonaEntity;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * DTO for {@link com.Zooftware.Zooftware.modelJPA.PersonaEntity}
+ * DTO for {@link PersonaEntity}
  */
 public class PersonaEntityDto implements Serializable {
     private final int id;

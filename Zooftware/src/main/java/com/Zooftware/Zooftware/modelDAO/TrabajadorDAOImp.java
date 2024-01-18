@@ -1,10 +1,7 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.TrabajadorEntityDto;
-import com.Zooftware.Zooftware.modelJPA.AcuaticoEntity;
-import com.Zooftware.Zooftware.modelJPA.PersonaEntity;
-import com.Zooftware.Zooftware.modelJPA.TrabajadorEntity;
-import com.Zooftware.Zooftware.repository.PersonaEntityRepository;
+import com.Zooftware.Zooftware.modelJPA.persona.TrabajadorEntity;
 import com.Zooftware.Zooftware.repository.TrabajadorEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 

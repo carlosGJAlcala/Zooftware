@@ -1,9 +1,7 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.HabitatEntityDto;
-import com.Zooftware.Zooftware.modelJPA.ClienteEntity;
-import com.Zooftware.Zooftware.modelJPA.HabitatEntity;
-import com.Zooftware.Zooftware.repository.ContactoEntityRepository;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.HabitatEntity;
 import com.Zooftware.Zooftware.repository.HabitatEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

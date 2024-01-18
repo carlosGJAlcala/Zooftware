@@ -1,5 +1,7 @@
 package com.Zooftware.Zooftware.modelDTO;
 
+import com.Zooftware.Zooftware.modelJPA.persona.JefeEntity;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -7,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * DTO for {@link com.Zooftware.Zooftware.modelJPA.JefeEntity}
+ * DTO for {@link JefeEntity}
  */
 public class JefeEntityDto  extends  TrabajadorEntityDto implements Serializable {
     private final int id;

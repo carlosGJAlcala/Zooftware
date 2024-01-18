@@ -1,4 +1,4 @@
-package com.Zooftware.Zooftware.modelJPA;
+package com.Zooftware.Zooftware.modelJPA.organimos;
 
 import jakarta.persistence.*;
 
@@ -14,6 +14,9 @@ public class PlantaEntity {
     public PlantaEntity(int id, String nombre) {
         this.id = id;
         Nombre = nombre;
+    }
+
+    public PlantaEntity() {
     }
 
     public int getId() {

@@ -33,6 +33,9 @@ public class ComidaEntity {
         return id;
     }
 
+    public ComidaEntity() {
+    }
+
     public void setId(int id) {
         this.id = id;
     }

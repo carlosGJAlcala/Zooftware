@@ -2,7 +2,7 @@ package com.Zooftware.Zooftware.modelDTO;
 
 import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
-import com.Zooftware.Zooftware.patrones.builder.Cocinero;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.HabitatEntity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * DTO for {@link com.Zooftware.Zooftware.modelJPA.HabitatEntity}
+ * DTO for {@link HabitatEntity}
  */
 public class HabitatEntityDto implements Serializable {
     private final int id;

@@ -1,4 +1,4 @@
-package com.Zooftware.Zooftware.modelJPA;
+package com.Zooftware.Zooftware.modelJPA.persona;
 
 import com.Zooftware.Zooftware.modelJPA.enums.Rol;
 import jakarta.persistence.*;
@@ -42,6 +42,9 @@ public class PersonaEntity {
         this.contactoImp = contactoImp;
         this.trabajador = trabajador;
         this.clienteZoo = clienteZoo;
+    }
+
+    public PersonaEntity() {
     }
 
     public int getId() {

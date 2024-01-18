@@ -1,6 +1,6 @@
 package com.Zooftware.Zooftware.modelDTO;
 
-import com.Zooftware.Zooftware.patrones.builder.IComidaBuilder;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.AlmacenComidaEntity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * DTO for {@link com.Zooftware.Zooftware.modelJPA.AlmacenComidaEntity}
+ * DTO for {@link AlmacenComidaEntity}
  */
 public class AlmacenComidaEntityDto implements Serializable {
     private  int id;
@@ -49,7 +49,7 @@ public class AlmacenComidaEntityDto implements Serializable {
 
 
     /**
-     * DTO for {@link com.Zooftware.Zooftware.modelJPA.AlmacenComidaEntity}
+     * DTO for {@link AlmacenComidaEntity}
      */
     public void setProvisiones(List<ComidaEntityDto> provisiones) {
         this.provisiones = provisiones;

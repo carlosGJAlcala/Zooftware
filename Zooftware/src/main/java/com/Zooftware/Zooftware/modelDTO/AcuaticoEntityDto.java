@@ -1,6 +1,6 @@
 package com.Zooftware.Zooftware.modelDTO;
 
-import com.Zooftware.Zooftware.modelJPA.AcuaticoEntity;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.AcuaticoEntity;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoAgua;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
 

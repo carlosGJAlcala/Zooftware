@@ -1,10 +1,9 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.AcuaticoEntityDto;
-import com.Zooftware.Zooftware.modelJPA.AcuaticoEntity;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.AcuaticoEntity;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoAgua;
 import com.Zooftware.Zooftware.repository.AcuaticoEntityRepository;
-import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

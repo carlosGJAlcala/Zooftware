@@ -1,9 +1,7 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.MensajeEntityDto;
-import com.Zooftware.Zooftware.modelJPA.ClienteEntity;
-import com.Zooftware.Zooftware.modelJPA.MensajeEntity;
-import com.Zooftware.Zooftware.repository.HabitatEntityRepository;
+import com.Zooftware.Zooftware.modelJPA.mensajeria.MensajeEntity;
 import com.Zooftware.Zooftware.repository.MensajeEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 

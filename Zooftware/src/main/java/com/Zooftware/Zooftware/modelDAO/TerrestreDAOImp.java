@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.TerrestreEntityDto;
-import com.Zooftware.Zooftware.modelJPA.TerrestreEntity;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.TerrestreEntity;
 import com.Zooftware.Zooftware.repository.TerrestreEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

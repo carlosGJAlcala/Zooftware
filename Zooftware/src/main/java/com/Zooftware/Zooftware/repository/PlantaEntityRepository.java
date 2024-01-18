@@ -1,6 +1,6 @@
 package com.Zooftware.Zooftware.repository;
 
-import com.Zooftware.Zooftware.modelJPA.PlantaEntity;
+import com.Zooftware.Zooftware.modelJPA.organimos.PlantaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

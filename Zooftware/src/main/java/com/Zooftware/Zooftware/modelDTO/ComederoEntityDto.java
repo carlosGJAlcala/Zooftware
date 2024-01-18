@@ -1,7 +1,6 @@
 package com.Zooftware.Zooftware.modelDTO;
 
-import com.Zooftware.Zooftware.modelJPA.ComederoEntity;
-import com.Zooftware.Zooftware.modelJPA.ComidaEntity;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.ComederoEntity;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
 
 import java.io.Serializable;

@@ -1,4 +1,4 @@
-package com.Zooftware.Zooftware.modelJPA;
+package com.Zooftware.Zooftware.modelJPA.persona;
 
 import jakarta.persistence.*;
 
@@ -20,6 +20,9 @@ public class ClienteEntity {
     @Basic
     @Column(name = "num_visitas")
     private int numVisitas;
+
+    public ClienteEntity() {
+    }
 
     public int getId() {
         return id;

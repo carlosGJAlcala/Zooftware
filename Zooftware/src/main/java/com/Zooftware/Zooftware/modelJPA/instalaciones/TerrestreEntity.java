@@ -1,4 +1,4 @@
-package com.Zooftware.Zooftware.modelJPA;
+package com.Zooftware.Zooftware.modelJPA.instalaciones;
 
 import jakarta.persistence.*;
 
@@ -18,6 +18,9 @@ public class TerrestreEntity {
     @Id
     @Column(name = "id")
     private int id;
+
+    public TerrestreEntity() {
+    }
 
     public int getNumBebederos() {
         return numBebederos;

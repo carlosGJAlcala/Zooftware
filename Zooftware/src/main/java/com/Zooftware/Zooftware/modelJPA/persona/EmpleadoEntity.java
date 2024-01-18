@@ -1,14 +1,17 @@
-package com.Zooftware.Zooftware.modelJPA;
+package com.Zooftware.Zooftware.modelJPA.persona;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "almacen_comida", schema = "testbbdd", catalog = "")
-public class AlmacenComidaEntity {
+@Table(name = "empleado", schema = "testbbdd", catalog = "")
+public class EmpleadoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
     private int id;
+
+    public EmpleadoEntity() {
+    }
 
     public int getId() {
         return id;
@@ -23,7 +26,7 @@ public class AlmacenComidaEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AlmacenComidaEntity that = (AlmacenComidaEntity) o;
+        EmpleadoEntity that = (EmpleadoEntity) o;
 
         if (id != that.id) return false;
 

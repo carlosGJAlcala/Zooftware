@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.PlantaEntityDto;
-import com.Zooftware.Zooftware.modelJPA.PlantaEntity;
+import com.Zooftware.Zooftware.modelJPA.organimos.PlantaEntity;
 import com.Zooftware.Zooftware.repository.PlantaEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 

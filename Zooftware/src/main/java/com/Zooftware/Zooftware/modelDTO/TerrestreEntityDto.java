@@ -2,12 +2,13 @@ package com.Zooftware.Zooftware.modelDTO;
 
 import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.TerrestreEntity;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * DTO for {@link com.Zooftware.Zooftware.modelJPA.TerrestreEntity}
+ * DTO for {@link TerrestreEntity}
  */
 public class TerrestreEntityDto extends HabitatEntityDto implements Serializable {
     private final int numBebederos;

@@ -1,10 +1,12 @@
 package com.Zooftware.Zooftware.modelDTO;
 
+import com.Zooftware.Zooftware.modelJPA.instalaciones.BebederoEntity;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * DTO for {@link com.Zooftware.Zooftware.modelJPA.BebederoEntity}
+ * DTO for {@link BebederoEntity}
  */
 public class BebederoEntityDto implements Serializable {
     private final int id;

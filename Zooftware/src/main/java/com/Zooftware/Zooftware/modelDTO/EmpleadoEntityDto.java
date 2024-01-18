@@ -1,11 +1,13 @@
 package com.Zooftware.Zooftware.modelDTO;
 
+import com.Zooftware.Zooftware.modelJPA.persona.EmpleadoEntity;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 /**
- * DTO for {@link com.Zooftware.Zooftware.modelJPA.EmpleadoEntity}
+ * DTO for {@link EmpleadoEntity}
  */
 public class EmpleadoEntityDto extends  TrabajadorEntityDto implements Serializable {
     private final int id;

@@ -1,10 +1,12 @@
 package com.Zooftware.Zooftware.modelDTO;
 
+import com.Zooftware.Zooftware.modelJPA.organimos.PlantaEntity;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * DTO for {@link com.Zooftware.Zooftware.modelJPA.PlantaEntity}
+ * DTO for {@link PlantaEntity}
  */
 public class PlantaEntityDto implements Serializable {
     private final int id;

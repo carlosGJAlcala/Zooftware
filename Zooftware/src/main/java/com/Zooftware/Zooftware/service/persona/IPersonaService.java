@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.service.persona;
 
 import com.Zooftware.Zooftware.modelDTO.PersonaEntityDto;
-import com.Zooftware.Zooftware.modelJPA.PersonaEntity;
+import com.Zooftware.Zooftware.modelJPA.persona.PersonaEntity;
 import com.Zooftware.Zooftware.modelJPA.enums.Rol;
 
 import java.util.List;

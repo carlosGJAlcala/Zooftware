@@ -1,4 +1,4 @@
-package com.Zooftware.Zooftware.modelJPA;
+package com.Zooftware.Zooftware.modelJPA.persona;
 
 import jakarta.persistence.*;
 
@@ -18,6 +18,9 @@ public class ContactoEntity {
         Correo = correo;
         NumeroTlf = numeroTlf;
         this.numeroTlf = numeroTlf1;
+    }
+
+    public ContactoEntity() {
     }
 
     public int getId() {

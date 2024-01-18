@@ -1,4 +1,4 @@
-package com.Zooftware.Zooftware.modelJPA;
+package com.Zooftware.Zooftware.modelJPA.instalaciones;
 
 import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
 import jakarta.persistence.*;

@@ -1,8 +1,8 @@
-package com.Zooftware.Zooftware.modelJPA;
+package com.Zooftware.Zooftware.modelJPA.persona;
 
+import com.Zooftware.Zooftware.modelJPA.mensajeria.MensajeEntity;
 import jakarta.persistence.*;
 
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -44,6 +44,9 @@ public class TrabajadorEntity {
 
     public long getNumeroSeguridadSocial() {
         return numeroSeguridadSocial;
+    }
+
+    public TrabajadorEntity() {
     }
 
     public void setNumeroSeguridadSocial(long numeroSeguridadSocial) {

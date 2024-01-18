@@ -1,10 +1,8 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.ContactoEntityDto;
-import com.Zooftware.Zooftware.modelJPA.ContactoEntity;
-import com.Zooftware.Zooftware.modelJPA.JefeEntity;
+import com.Zooftware.Zooftware.modelJPA.persona.ContactoEntity;
 import com.Zooftware.Zooftware.repository.ContactoEntityRepository;
-import com.Zooftware.Zooftware.repository.JefeEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Optional;
