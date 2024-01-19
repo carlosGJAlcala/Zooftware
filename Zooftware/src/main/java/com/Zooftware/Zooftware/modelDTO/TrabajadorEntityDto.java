@@ -24,6 +24,9 @@ public abstract class TrabajadorEntityDto implements Serializable {
     private double salario;
 
 
+
+    private  ContactoEntityDto contacto;
+
     public void setMediador(Mediator mediador) {
         this.mediador = mediador;
     }
@@ -127,12 +130,19 @@ public abstract class TrabajadorEntityDto implements Serializable {
         return mediador;
     }
 
-    public void enviar(MensajeEntityDto mensaje, int id) {
-        this.getMediador().enviar(mensaje, id);
+    public void enviar(MensajeEntityDto mensaje, String correo) {
+        this.getMediador().enviar(mensaje, correo);
     }
 
 
     public void recibir(MensajeEntityDto mensaje) {
         System.out.println("# ColegaConcreto " + getId() + " ha recibido el mensaje:\n" + mensaje);
+    }
+    public List<MensajeEntityDto> getMensajes() {
+        return mensajes;
+    }
+
+    public ContactoEntityDto getContacto() {
+        return contacto;
     }
 }

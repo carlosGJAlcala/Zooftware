@@ -3,9 +3,11 @@ package com.Zooftware.Zooftware.patrones.factoryMethod;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoPersona;
 import com.Zooftware.Zooftware.patrones.facade.Zooftware;
 import com.Zooftware.Zooftware.patrones.proxy.*;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Proxy;
 
+@Component
 public class FactoryMethodProxyConcreto  implements FactoryMethodProxy{
     @Override
     public Zooftware devolverProxy(TipoPersona tipo) {

@@ -15,16 +15,16 @@ public interface Mediator {
     /**
      * Devuelve el colega de la lista de la posición pasada como argumento.
      *
-     * @param indice Índice o posición del colega.
+     * @param correo Índice o posición del colega.
      * @return
      */
-    public TrabajadorEntityDto getColega(int indice);
+    public TrabajadorEntityDto getColega(String correo);
 
     /**
      * Envía un mensaje al colega cuyo identificador se pasa como argumento.
      *
      * @param mensaje Mensaje a enviar.
-     * @param id Identificador del colega al que se le envía el mensaje.
+     * @param correo del colega al que se le envía el mensaje.
      */
-    public void enviar(MensajeEntityDto mensaje, int id);
+    public void enviar(MensajeEntityDto mensaje, String correo);
 }

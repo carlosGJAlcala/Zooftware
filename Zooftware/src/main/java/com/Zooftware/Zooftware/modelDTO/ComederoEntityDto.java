@@ -12,7 +12,7 @@ import java.util.Objects;
 public class ComederoEntityDto implements Serializable {
     private final int id;
     private final Integer idHabita;
-    private final Integer cantidad;
+    private  Integer cantidad;
 
 
     private ComidaEntityDto comida;
@@ -74,5 +74,9 @@ public class ComederoEntityDto implements Serializable {
 
     public void setTipo(TipoComida tipo) {
         this.tipo = tipo;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
     }
 }

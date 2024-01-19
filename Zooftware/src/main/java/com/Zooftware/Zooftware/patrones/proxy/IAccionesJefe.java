@@ -22,7 +22,7 @@ public interface IAccionesJefe extends IAccionesEmpleado {
 
 	public void eliminarHabita(int habita_id);
 
-	public Integer verTotalSueldos(int empleado_id);
+	public double verTotalSueldos(int empleado_id);
 	public void despedirEmpleado(int empleado_id);
 
 	public void contratarEmpleado(TrabajadorEntityDto empleadoNuevo, TipoPersona tipo);
