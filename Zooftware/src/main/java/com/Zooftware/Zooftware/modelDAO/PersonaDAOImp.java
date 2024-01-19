@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.PersonaEntityDto;
-import com.Zooftware.Zooftware.modelJPA.enums.TipoEmpleado;
+import com.Zooftware.Zooftware.modelJPA.enums.TipoPersona;
 import com.Zooftware.Zooftware.repository.ClienteEntityRepository;
 import com.Zooftware.Zooftware.repository.PersonaEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,8 +59,8 @@ public class PersonaDAOImp implements IPersonaDAO{
 
     }
 
-    public TipoEmpleado getTipoEmpleadoByUsername(String username){
-        Optional<TipoEmpleado> optional = personajpa.findTipoEmpleadoByUsername(username);
+    public TipoPersona getTipoEmpleadoByUsername(String username){
+        Optional<TipoPersona> optional = personajpa.findTipoPersonaByUsername(username);
         if (optional.isPresent()) {
             return optional.get();
         }

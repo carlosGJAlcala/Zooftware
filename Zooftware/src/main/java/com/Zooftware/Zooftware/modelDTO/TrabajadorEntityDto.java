@@ -1,12 +1,11 @@
 package com.Zooftware.Zooftware.modelDTO;
 
+import com.Zooftware.Zooftware.modelJPA.enums.Rol;
 import com.Zooftware.Zooftware.modelJPA.mensajeria.MensajeEntity;
 import com.Zooftware.Zooftware.modelJPA.persona.TrabajadorEntity;
 import com.Zooftware.Zooftware.patrones.mediator.Mediator;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -25,8 +24,7 @@ public abstract class TrabajadorEntityDto extends PersonaEntityDto implements Se
     private double salario;
 
     public TrabajadorEntityDto(int id, String apellidos, String dni, int edad, String nombre, String password, Rol rol, String username, ClienteEntityDto clienteZooId, ContactoEntityDto contactoId, TrabajadorEntityDto trabajadorId, boolean activo, Date fechaFinContrato, Date fechaInicioContrato, long numeroSeguridadSocial, JefeEntityDto jefeEntityDto, List<MensajeEntityDto> mensajes, double salario) {
-        super(id, apellidos, dni, edad, nombre, password, rol, username, clienteZooId, contactoId, trabajadorId);
-       // this.id = id1;
+        super(id, apellidos, dni, edad, nombre, password, rol, username, contactoId);
         this.activo = activo;
         this.fechaFinContrato = fechaFinContrato;
         this.fechaInicioContrato = fechaInicioContrato;
@@ -78,10 +76,6 @@ public abstract class TrabajadorEntityDto extends PersonaEntityDto implements Se
         this.jefeEntityDto = jefeEntityDto;
     }
 
-    public List<MensajeEntityDto> getMensajes() {
-        return mensajes;
-    }
-
     public void setMensajes(List<MensajeEntityDto> mensajes) {
         this.mensajes = mensajes;
     }
@@ -126,8 +120,6 @@ public abstract class TrabajadorEntityDto extends PersonaEntityDto implements Se
 
     public abstract double getSalarios();
 
-    public abstract String getDescripcion();
-
     public boolean isActivo() {
         return activo;
     }
@@ -153,7 +145,4 @@ public abstract class TrabajadorEntityDto extends PersonaEntityDto implements Se
         return mensajes;
     }
 
-    public ContactoEntityDto getContacto() {
-        return contacto;
-    }
-}
+   }

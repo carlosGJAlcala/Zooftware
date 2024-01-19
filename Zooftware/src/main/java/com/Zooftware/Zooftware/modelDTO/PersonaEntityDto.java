@@ -21,8 +21,9 @@ public abstract class PersonaEntityDto implements Serializable {
     private String password;
     private Rol rol;
     private String username;
+    private ContactoEntityDto contactoEntityDto;
 
-    public PersonaEntityDto(int id, String apellidos, String dni, int edad, String nombre, String password, Rol rol, String username, ClienteEntityDto clienteZooId, ContactoEntityDto contactoId, TrabajadorEntityDto trabajadorId) {
+    public PersonaEntityDto(int id, String apellidos, String dni, int edad, String nombre, String password, Rol rol, String username, ContactoEntityDto contacto) {
         this.id = id;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -31,6 +32,15 @@ public abstract class PersonaEntityDto implements Serializable {
         this.password = password;
         this.rol = rol;
         this.username = username;
+        this.contactoEntityDto = contacto;
+    }
+
+    public ContactoEntityDto getContactoEntityDto() {
+        return contactoEntityDto;
+    }
+
+    public void setContactoEntityDto(ContactoEntityDto contactoEntityDto) {
+        this.contactoEntityDto = contactoEntityDto;
     }
 
     public int getId() {

@@ -32,8 +32,4 @@ public class EmpleadoEntityDto extends  TrabajadorEntityDto implements Serializa
         return 0;
     }
 
-    @Override
-    public String getDescripcion() {
-        return null;
-    }
 }

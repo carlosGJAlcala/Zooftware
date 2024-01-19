@@ -1,6 +1,6 @@
 package com.Zooftware.Zooftware.repository;
 
-import com.Zooftware.Zooftware.modelJPA.enums.TipoEmpleado;
+import com.Zooftware.Zooftware.modelJPA.enums.TipoPersona;
 import com.Zooftware.Zooftware.modelJPA.persona.PersonaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.lang.NonNull;
@@ -15,7 +15,7 @@ public interface PersonaEntityRepository extends JpaRepository<PersonaEntity, In
 
     Optional<PersonaEntity> findPersonaByUsername(String username);
 
-    Optional<TipoEmpleado> findTipoEmpleadoByUsername(String username);
+    Optional<TipoPersona> findTipoPersonaByUsername(String username);
 
     String findPasswordById(Integer integer);
 

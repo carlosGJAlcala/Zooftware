@@ -16,8 +16,8 @@ public class ClienteEntityDto extends PersonaEntityDto implements Serializable {
     private Date fechaUltimaVisita;
     private int numVisitas;
 
-    public ClienteEntityDto(int id, String apellidos, String dni, int edad, String nombre, String password, Rol rol, String username, ClienteEntityDto clienteZooId, ContactoEntityDto contactoId, TrabajadorEntityDto trabajadorId, Date fechaRegistro, Date fechaUltimaVisita, int numVisitas) {
-        super(id, apellidos, dni, edad, nombre, password, rol, username, clienteZooId, contactoId, trabajadorId);
+    public ClienteEntityDto(int id, String apellidos, String dni, int edad, String nombre, String password, Rol rol, String username, ContactoEntityDto contacto, Date fechaRegistro, Date fechaUltimaVisita, int numVisitas) {
+        super(id, apellidos, dni, edad, nombre, password, rol, username, contacto);
         this.fechaRegistro = fechaRegistro;
         this.fechaUltimaVisita = fechaUltimaVisita;
         this.numVisitas = numVisitas;

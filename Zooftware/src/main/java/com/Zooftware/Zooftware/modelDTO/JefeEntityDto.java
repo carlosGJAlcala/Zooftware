@@ -71,13 +71,5 @@ public class JefeEntityDto  extends  TrabajadorEntityDto implements Serializable
         return sum;
     }
 
-    @Override
-    public String getDescripcion() {
-        String desc = this.toString(); //Añade a la cadena el puesto de este empleado
-        for (TrabajadorEntityDto subordinado : subordinados) {
-            //Aniade a la cadena el puesto de su subordinado.
-            desc += "\n\t### " + subordinado.getDescripcion();
-        }
-        return desc;
-    }
+
 }
