@@ -7,39 +7,35 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "trabajador", schema = "testbbdd", catalog = "")
-public class TrabajadorEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public abstract class TrabajadorEntity extends PersonaEntity {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private int id;
     private long numeroSeguridadSocial;
     private boolean activo;
     private Date fechaInicioContrato;
     private Date fechaFinContrato;
-    @OneToMany
-    @JoinColumn(name = "mensaje_id")
+
+    @OneToMany(mappedBy = "trabajador")
     private List<MensajeEntity> mensaje;
-    @OneToOne
-    @JoinColumn(name = "empleado_id")
-    private EmpleadoEntity empleadoZoo;
-    @OneToOne
+
+    private double salario;
+    @ManyToOne
     @JoinColumn(name = "jefe_id")
     private JefeEntity jefe;
 
-    private double salario;
 
     public TrabajadorEntity() {
     }
 
-    public TrabajadorEntity(int id, long numeroSeguridadSocial, boolean activo, Date fechaInicioContrato, Date fechaFinContrato, List<MensajeEntity> mensaje, EmpleadoEntity empleadoZoo, JefeEntity jefe, double salario) {
-        this.id = id;
+    public TrabajadorEntity(long numeroSeguridadSocial, boolean activo, Date fechaInicioContrato, Date fechaFinContrato, List<MensajeEntity> mensaje, double salario) {
         this.numeroSeguridadSocial = numeroSeguridadSocial;
         this.activo = activo;
         this.fechaInicioContrato = fechaInicioContrato;
         this.fechaFinContrato = fechaFinContrato;
         this.mensaje = mensaje;
-        this.empleadoZoo = empleadoZoo;
-        this.jefe = jefe;
         this.salario = salario;
     }
 
@@ -51,13 +47,6 @@ public class TrabajadorEntity {
         this.salario = salario;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public long getNumeroSeguridadSocial() {
         return numeroSeguridadSocial;
@@ -94,19 +83,4 @@ public class TrabajadorEntity {
         this.mensaje = mensaje;
     }
 
-    public EmpleadoEntity getEmpleadoZoo() {
-        return empleadoZoo;
-    }
-
-    public void setEmpleadoZoo(EmpleadoEntity empleadoZoo) {
-        this.empleadoZoo = empleadoZoo;
-    }
-
-    public JefeEntity getJefe() {
-        return jefe;
-    }
-
-    public void setJefe(JefeEntity jefe) {
-        this.jefe = jefe;
-    }
 }

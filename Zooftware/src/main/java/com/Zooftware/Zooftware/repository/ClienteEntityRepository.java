@@ -14,8 +14,7 @@ public interface ClienteEntityRepository extends JpaRepository<ClienteEntity, In
 
     List<ClienteEntity> findByNumVisitas(int numVisitas);
 
-
-
+    ClienteEntity findByUsername(String username);
 
 
 }

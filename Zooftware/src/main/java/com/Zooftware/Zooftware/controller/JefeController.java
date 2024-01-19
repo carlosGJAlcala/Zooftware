@@ -12,7 +12,6 @@ public class JefeController {
 
 
     @GetMapping("/mostrar")
-
     public ModelAndView mostrarLogin(){
         ModelAndView modelAndView = new ModelAndView("jefeHome");
         return modelAndView;

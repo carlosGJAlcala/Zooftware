@@ -1,9 +1,10 @@
 package com.Zooftware.Zooftware.modelJPA.mensajeria;
 
+import com.Zooftware.Zooftware.modelJPA.persona.TrabajadorEntity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "mensaje", schema = "testbbdd", catalog = "")
+@Table(name = "mensaje")
 public class MensajeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,17 +13,28 @@ public class MensajeEntity {
     private String destinario;
     private String remitente;
     private String texto;
-
+    @ManyToOne
+    @JoinColumn(name = "trabajador_id")
+    private TrabajadorEntity trabajador;
 
     public MensajeEntity() {
     }
 
-    public MensajeEntity(int id, String asunto, String destinario, String remitente, String texto) {
+    public MensajeEntity(int id, String asunto, String destinario, String remitente, String texto, TrabajadorEntity trabajador) {
         this.id = id;
         this.asunto = asunto;
         this.destinario = destinario;
         this.remitente = remitente;
         this.texto = texto;
+        this.trabajador = trabajador;
+    }
+
+    public TrabajadorEntity getTrabajador() {
+        return trabajador;
+    }
+
+    public void setTrabajador(TrabajadorEntity trabajador) {
+        this.trabajador = trabajador;
     }
 
     public int getId() {

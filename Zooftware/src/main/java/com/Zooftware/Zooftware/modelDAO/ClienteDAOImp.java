@@ -42,4 +42,10 @@ public class ClienteDAOImp implements IClienteDAO{
     public void eliminarCliente(Integer id) {
         clienteJPA.deleteById(id);
     }
+
+    @Override
+    public ClienteEntityDto getClienteByUsername(String username) {
+        ClienteEntity clienteEntity = clienteJPA.findByUsername(username);
+        return clienteEntityMapper.mapper.toDto(clienteEntity);
+    }
 }

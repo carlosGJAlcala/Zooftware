@@ -6,11 +6,11 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "cliente", schema = "testbbdd", catalog = "")
-public class ClienteEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+@Table(name = "cliente")
+public class ClienteEntity extends PersonaEntity{
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private int id;
     private Date fechaRegistro;
 
     private Date fechaUltimaVisita;
@@ -20,19 +20,10 @@ public class ClienteEntity {
     public ClienteEntity() {
     }
 
-    public ClienteEntity(int id, Date fechaRegistro, Date fechaUltimaVisita, int numVisitas) {
-        this.id = id;
+    public ClienteEntity(Date fechaRegistro, Date fechaUltimaVisita, int numVisitas) {
         this.fechaRegistro = fechaRegistro;
         this.fechaUltimaVisita = fechaUltimaVisita;
         this.numVisitas = numVisitas;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public Date getFechaRegistro() {

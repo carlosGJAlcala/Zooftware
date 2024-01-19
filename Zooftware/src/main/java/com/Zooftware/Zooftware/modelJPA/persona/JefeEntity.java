@@ -6,30 +6,20 @@ import java.util.List;
 
 @Entity
 @Table(name = "jefe", schema = "testbbdd", catalog = "")
-public class JefeEntity {
+public class JefeEntity extends  TrabajadorEntity{
     //Pendiente añadir mas atributos
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private int id;
 
-    @OneToMany
-    @JoinColumn(name = "trabajador_id")
+    @OneToMany(mappedBy = "jefe")
     private List<TrabajadorEntity> subordinado;
 
-    public JefeEntity(int id, List<TrabajadorEntity> subordinado) {
-        this.id = id;
+    public JefeEntity( List<TrabajadorEntity> subordinado) {
         this.subordinado = subordinado;
     }
 
     public JefeEntity() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public List<TrabajadorEntity> getSubordinado() {
