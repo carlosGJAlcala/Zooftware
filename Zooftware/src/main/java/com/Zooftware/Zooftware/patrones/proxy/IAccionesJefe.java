@@ -1,6 +1,13 @@
 package com.Zooftware.Zooftware.patrones.proxy;
 
 
+import com.Zooftware.Zooftware.modelDTO.AnimalEntityDto;
+import com.Zooftware.Zooftware.modelDTO.EmpleadoEntityDto;
+import com.Zooftware.Zooftware.modelDTO.HabitatEntityDto;
+import com.Zooftware.Zooftware.modelDTO.TrabajadorEntityDto;
+import com.Zooftware.Zooftware.modelJPA.enums.TipoEmpleado;
+import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
+
 /**
  * @author carlos
  * @version 1.0
@@ -9,20 +16,16 @@ package com.Zooftware.Zooftware.patrones.proxy;
 public interface IAccionesJefe extends IAccionesEmpleado {
 
 
-	public void comprarAnimal();
+	public void comprarAnimal(AnimalEntityDto animalEntityDto, HabitatEntityDto habita);
 
-	public void comprarPlanta();
 
-	public void contratarEmpleado();
+	public void crearhabita(TipoHabitat tipo);
 
-	public void crearhabita();
+	public void eliminarHabita(int habita_id);
 
-	public void despedirEmpleado();
+	public Integer verTotalSueldos(int empleado_id);
+	public void despedirEmpleado(int empleado_id);
 
-	public void limpiarInstalacion();
-
-	public void rellenarRecipientesInstalacion();
-
-	public void vigilarInstalacion();
-
+	public void contratarEmpleado(TrabajadorEntityDto empleadoNuevo, TipoEmpleado tipo);
+	public void modificarEmpleado(int empleado_id, TipoEmpleado tipo);
 }

@@ -1,68 +1,132 @@
 package com.Zooftware.Zooftware.patrones.proxy;
 
 
+import com.Zooftware.Zooftware.modelDTO.*;
+import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
+import com.Zooftware.Zooftware.modelJPA.enums.TipoEmpleado;
+import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
+
+import java.util.List;
+
 /**
  * @author carlos
  * @version 1.0
  * @created 08-ene.-2024 16:50:13
  */
-public class ProxyJefe implements IAccionesJefe {
+public class ProxyJefe implements IAccionesJefe  {
 
-	private IAccionesJefe AccionesJefe;
-
-	public ProxyJefe(){
-
-	}
-
-	public void cargarZoo(){
+	@Override
+	public void verAnimales() {
 
 	}
 
-	public void comprarAnimal(){
+	@Override
+	public void verInstalaciones() {
 
 	}
 
-	public void comprarPlanta(){
+	@Override
+	public void enviarMensaje(MensajeEntityDto mensaje) {
 
 	}
 
-	public void contratarEmpleado(){
+	@Override
+	public void LeerMensaje(MensajeEntityDto mensaje) {
 
 	}
 
-	public void crearhabita(){
+	@Override
+	public void consultarMensajes(TrabajadorEntityDto trabajador) {
 
 	}
 
-	public void despedirEmpleado(){
+	@Override
+	public EstadoAnimal ComprobarEstadoAnimal(int id) {
+		return null;
+	}
+
+	@Override
+	public void ModificarEstadoAnimal(int id, int salud, int comida, int suenio) {
 
 	}
 
-	public void limpiarInstalacion(){
+	@Override
+	public void ejercitarAnimal(int id, int cantidad) {
 
 	}
 
-	public void mandarMensajes(){
+	@Override
+	public void dormirAnimal(int id, int cantidad) {
 
 	}
 
-	public void rellenarRecipientesInstalacion(){
+	@Override
+	public void darComerAnimal(int id, int cantidad) {
 
 	}
 
-	public void verAnimales(){
+	@Override
+	public void rellenarComederos(int habita_id) {
 
 	}
 
-	public void verInstalaciones(){
+	@Override
+	public void rellenarBebederos(int habita_id) {
 
 	}
 
-	public void verMensajes(){
+	@Override
+	public List<BebederoEntityDto> verBebederos(int habita_id) {
+		return null;
+	}
+
+	@Override
+	public List<ComederoEntityDto> verComederos(int habita_id) {
+		return null;
+	}
+
+	@Override
+	public void modificarEstadoComedero(int cantidad) {
 
 	}
 
-	public void vigilarInstalacion(){
+	@Override
+	public void modificarEstadoBebedero(int cantidad) {
+
+	}
+
+	@Override
+	public void comprarAnimal(AnimalEntityDto animalEntityDto, HabitatEntityDto habita) {
+
+	}
+
+	@Override
+	public void crearhabita(TipoHabitat tipo) {
+
+	}
+
+	@Override
+	public void eliminarHabita(int habita_id) {
+
+	}
+
+	@Override
+	public Integer verTotalSueldos(int empleado_id) {
+		return null;
+	}
+
+	@Override
+	public void despedirEmpleado(int empleado_id) {
+
+	}
+
+	@Override
+	public void contratarEmpleado(TrabajadorEntityDto empleadoNuevo, TipoEmpleado tipo) {
+
+	}
+
+	@Override
+	public void modificarEmpleado(int empleado_id, TipoEmpleado tipo) {
 
 	}
 }//end ProxyJefe
