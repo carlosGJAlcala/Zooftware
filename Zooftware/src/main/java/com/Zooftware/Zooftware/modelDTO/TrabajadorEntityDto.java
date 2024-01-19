@@ -1,6 +1,5 @@
 package com.Zooftware.Zooftware.modelDTO;
 
-import com.Zooftware.Zooftware.modelJPA.enums.Rol;
 import com.Zooftware.Zooftware.modelJPA.mensajeria.MensajeEntity;
 import com.Zooftware.Zooftware.modelJPA.persona.TrabajadorEntity;
 import com.Zooftware.Zooftware.patrones.mediator.Mediator;
@@ -104,6 +103,7 @@ public abstract class TrabajadorEntityDto extends PersonaEntityDto implements Se
         return Objects.hash(isActivo(), getFechaFinContrato(), getFechaInicioContrato(), getNumeroSeguridadSocial(), getJefeEntityDto(), getMensajes(), getSalario());
     }
 
+
     @Override
     public String toString() {
         return "TrabajadorEntityDto{" +
@@ -116,6 +116,9 @@ public abstract class TrabajadorEntityDto extends PersonaEntityDto implements Se
                 ", salario=" + salario +
                 '}';
     }
+
+
+
 
     public abstract void aniadirSubordinado(TrabajadorEntityDto t);
 
@@ -138,12 +141,19 @@ public abstract class TrabajadorEntityDto extends PersonaEntityDto implements Se
         return mediador;
     }
 
-    public void enviar(MensajeEntityDto mensaje, int id) {
-        this.getMediador().enviar(mensaje, id);
+    public void enviar(MensajeEntityDto mensaje, String correo) {
+        this.getMediador().enviar(mensaje, correo);
     }
 
 
     public void recibir(MensajeEntityDto mensaje) {
         System.out.println("# ColegaConcreto " + getId() + " ha recibido el mensaje:\n" + mensaje);
+    }
+    public List<MensajeEntityDto> getMensajes() {
+        return mensajes;
+    }
+
+    public ContactoEntityDto getContacto() {
+        return contacto;
     }
 }

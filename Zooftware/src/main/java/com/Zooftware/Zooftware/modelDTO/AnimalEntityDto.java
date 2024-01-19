@@ -15,12 +15,12 @@ public class AnimalEntityDto implements Serializable {
 
     private final EstadoAnimal estadoAnimal;
     private final TipoAnimal tipo;
-    private final int id;
+    private  int id;
 
 
 
 
-
+@Default
     public AnimalEntityDto( String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, int id) {
         this.nombre = nombre;
         this.estadoAnimal = estadoAnimal;
@@ -31,7 +31,14 @@ public class AnimalEntityDto implements Serializable {
 
     }
 
+    public AnimalEntityDto( String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo) {
+        this.nombre = nombre;
+        this.estadoAnimal = estadoAnimal;
+        this.tipo = tipo;
 
+
+
+    }
     public String getNombre() {
         return nombre;
     }

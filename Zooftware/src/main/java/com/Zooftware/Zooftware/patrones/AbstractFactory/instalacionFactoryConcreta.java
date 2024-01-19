@@ -1,15 +1,14 @@
 package com.Zooftware.Zooftware.patrones.AbstractFactory;
 
 import com.Zooftware.Zooftware.modelDAO.*;
-import com.Zooftware.Zooftware.modelDTO.AcuaticoEntityDto;
-import com.Zooftware.Zooftware.modelDTO.AlmacenComidaEntityDto;
-import com.Zooftware.Zooftware.modelDTO.AnfibioEntityDto;
-import com.Zooftware.Zooftware.modelDTO.TerrestreEntityDto;
+import com.Zooftware.Zooftware.modelDTO.*;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoAgua;
 import com.Zooftware.Zooftware.patrones.Singleton.AlmacenSingleton;
+import com.Zooftware.Zooftware.patrones.factoryMethod.FactoryMethodAnimal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -31,10 +30,14 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
     @Autowired
     IHabitatDAO habita;
 
+    @Autowired
+    FactoryMethodAnimal factoryMethodAnimal;
+
 
 
     @Override
     public AcuaticoEntityDto crerAcuarioAguaDulce() {
+
         do {
             contadorHabita++;
         }
@@ -46,6 +49,16 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
 
 
         AcuaticoEntityDto habita=new AcuaticoEntityDto(contadorHabita, TipoAgua.DULCE,contadorAcuatico);
+
+        List<AnimalEntityDto> animales=new ArrayList<>();
+        List<PlantaEntityDto> plantas=new ArrayList<>();
+        animales.add(factoryMethodAnimal.crearAnimalAcuaticoAguaDulce());
+        animales.add(factoryMethodAnimal.crearAnimalAcuaticoAguaDulce());
+        plantas.add(factoryMethodAnimal.plantaAcuaticaAguaDulce());
+        plantas.add(factoryMethodAnimal.plantaAcuaticaAguaDulce());
+        habita.setAnimales(animales);
+        habita.setPlantas(plantas);
+
         habitaAcuatio.guardarAcuario(habita);
 
         return habita;
@@ -64,6 +77,15 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
 
 
         AcuaticoEntityDto habita=new AcuaticoEntityDto(contadorHabita, TipoAgua.SALADA,contadorAcuatico);
+        List<AnimalEntityDto> animales=new ArrayList<>();
+        List<PlantaEntityDto> plantas=new ArrayList<>();
+        animales.add(factoryMethodAnimal.crearAnimalAcuaticoAguaSalada());
+        animales.add(factoryMethodAnimal.crearAnimalAcuaticoAguaSalada());
+        plantas.add(factoryMethodAnimal.plantaAcuaticaAguaSalada());
+        plantas.add(factoryMethodAnimal.plantaAcuaticaAguaSalada());
+        habita.setAnimales(animales);
+        habita.setPlantas(plantas);
+
         habitaAcuatio.guardarAcuario(habita);
         return habita;
     }
@@ -81,6 +103,19 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
 
 
         AnfibioEntityDto habita=new AnfibioEntityDto(contadorHabita,2,contadorAnfibio);
+
+        List<AnimalEntityDto> animales=new ArrayList<>();
+        List<PlantaEntityDto> plantas=new ArrayList<>();
+
+        animales.add(factoryMethodAnimal.crearAnimalAnfibio());
+        animales.add(factoryMethodAnimal.crearAnimalAnfibio());
+
+        plantas.add(factoryMethodAnimal.plantaAnfibia());
+        plantas.add(factoryMethodAnimal.plantaAnfibia());
+
+        habita.setAnimales(animales);
+        habita.setPlantas(plantas);
+
         habitaanfibio.guardar(habita);
         return habita;
     }
@@ -96,8 +131,22 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
         }
         while(comprobarIdTerrestre(contadorTerrestre));
 
-
         TerrestreEntityDto habita=new TerrestreEntityDto(contadorHabita,2,2,contadorAnfibio);
+
+
+        List<AnimalEntityDto> animales=new ArrayList<>();
+        List<PlantaEntityDto> plantas=new ArrayList<>();
+
+        animales.add(factoryMethodAnimal.crearAnimalTerrestre());
+        animales.add(factoryMethodAnimal.crearAnimalTerrestre());
+
+
+        plantas.add(factoryMethodAnimal.plantaTerrestre());
+        plantas.add(factoryMethodAnimal.plantaTerrestre());
+
+        habita.setAnimales(animales);
+        habita.setPlantas(plantas);
+
         habitaTerrestre.guardarTerrestre(habita);
         return habita;
     }

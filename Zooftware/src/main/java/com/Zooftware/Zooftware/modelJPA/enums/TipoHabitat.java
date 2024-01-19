@@ -1,7 +1,9 @@
 package com.Zooftware.Zooftware.modelJPA.enums;
 
 public enum TipoHabitat {
-    ACTUATICO,
+    ACUATICO,
+    ACTUATICO_DULCE,
+    ACTUATICO_SALADO,
     ANFIBIO,
     TERRESTRE
 }

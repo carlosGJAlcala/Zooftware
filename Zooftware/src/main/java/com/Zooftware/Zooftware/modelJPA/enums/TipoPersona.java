@@ -1,6 +1,6 @@
 package com.Zooftware.Zooftware.modelJPA.enums;
 
-public enum TipoEmpleado {
-JEFE,EMPLEADO
+public enum TipoPersona {
+JEFE,EMPLEADO,CLIENTE
 
 }

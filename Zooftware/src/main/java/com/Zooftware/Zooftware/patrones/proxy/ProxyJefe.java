@@ -1,132 +1,25 @@
 package com.Zooftware.Zooftware.patrones.proxy;
 
 
-import com.Zooftware.Zooftware.modelDTO.*;
-import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
-import com.Zooftware.Zooftware.modelJPA.enums.TipoEmpleado;
-import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
-
-import java.util.List;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
 /**
  * @author carlos
  * @version 1.0
  * @created 08-ene.-2024 16:50:13
  */
-public class ProxyJefe implements IAccionesJefe  {
+public class ProxyJefe implements InvocationHandler {
+	private final IAccionesJefe acciones;
 
-	@Override
-	public void verAnimales() {
-
+	public ProxyJefe(IAccionesJefe acciones) {
+		this.acciones = acciones;
 	}
 
 	@Override
-	public void verInstalaciones() {
-
-	}
-
-	@Override
-	public void enviarMensaje(MensajeEntityDto mensaje) {
-
-	}
-
-	@Override
-	public void LeerMensaje(MensajeEntityDto mensaje) {
-
-	}
-
-	@Override
-	public void consultarMensajes(TrabajadorEntityDto trabajador) {
-
-	}
-
-	@Override
-	public EstadoAnimal ComprobarEstadoAnimal(int id) {
-		return null;
-	}
-
-	@Override
-	public void ModificarEstadoAnimal(int id, int salud, int comida, int suenio) {
-
-	}
-
-	@Override
-	public void ejercitarAnimal(int id, int cantidad) {
-
-	}
-
-	@Override
-	public void dormirAnimal(int id, int cantidad) {
-
-	}
-
-	@Override
-	public void darComerAnimal(int id, int cantidad) {
-
-	}
-
-	@Override
-	public void rellenarComederos(int habita_id) {
-
-	}
-
-	@Override
-	public void rellenarBebederos(int habita_id) {
-
-	}
-
-	@Override
-	public List<BebederoEntityDto> verBebederos(int habita_id) {
-		return null;
-	}
-
-	@Override
-	public List<ComederoEntityDto> verComederos(int habita_id) {
-		return null;
-	}
-
-	@Override
-	public void modificarEstadoComedero(int cantidad) {
-
-	}
-
-	@Override
-	public void modificarEstadoBebedero(int cantidad) {
-
-	}
-
-	@Override
-	public void comprarAnimal(AnimalEntityDto animalEntityDto, HabitatEntityDto habita) {
-
-	}
-
-	@Override
-	public void crearhabita(TipoHabitat tipo) {
-
-	}
-
-	@Override
-	public void eliminarHabita(int habita_id) {
-
-	}
-
-	@Override
-	public Integer verTotalSueldos(int empleado_id) {
-		return null;
-	}
-
-	@Override
-	public void despedirEmpleado(int empleado_id) {
-
-	}
-
-	@Override
-	public void contratarEmpleado(TrabajadorEntityDto empleadoNuevo, TipoEmpleado tipo) {
-
-	}
-
-	@Override
-	public void modificarEmpleado(int empleado_id, TipoEmpleado tipo) {
-
-	}
+	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+		System.out.println("Before execute method = " + method.getName());
+		Object res = method.invoke(acciones, args);
+		System.out.println("After execute method ....");
+		return res;	}
 }//end ProxyJefe

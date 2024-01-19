@@ -14,14 +14,13 @@ import java.util.List;
 public interface IAccionesEmpleado extends IAccionesCliente {
 
 	public void enviarMensaje(MensajeEntityDto mensaje);
-	public void LeerMensaje(MensajeEntityDto mensaje);
 
 
-	public void consultarMensajes(TrabajadorEntityDto trabajador);
+	public List<MensajeEntityDto> consultarMensajes(String trabjadorId);
 
 	public EstadoAnimal ComprobarEstadoAnimal(int id );
 
-	public void ModificarEstadoAnimal(int id, int salud, int comida, int suenio);
+	public void ModificarEstadoAnimal(AnimalEntityDto animal);
 
 	public void ejercitarAnimal(int id ,int cantidad);
 	public void dormirAnimal(int id ,int cantidad);
@@ -33,9 +32,10 @@ public interface IAccionesEmpleado extends IAccionesCliente {
 	public List<BebederoEntityDto> verBebederos(int habita_id);
 	public List<ComederoEntityDto> verComederos(int habita_id);
 
-	public void modificarEstadoComedero(int cantidad);
-	public void modificarEstadoBebedero(int cantidad);
 
+
+	void modificarEstadoComedero(ComederoEntityDto comedero ,int cantidad);
+	void modificarEstadoBebedero(BebederoEntityDto bebedero ,int cantidad);
 
 
 

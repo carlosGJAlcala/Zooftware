@@ -1,6 +1,11 @@
 package com.Zooftware.Zooftware.patrones.proxy;
 
 
+import com.Zooftware.Zooftware.modelDTO.AnimalEntityDto;
+import com.Zooftware.Zooftware.modelDTO.HabitatEntityDto;
+
+import java.util.List;
+
 /**
  * @author carlos
  * @version 1.0
@@ -8,8 +13,8 @@ package com.Zooftware.Zooftware.patrones.proxy;
  */
 public interface IAccionesCliente {
 
-	public void verAnimales();
+	public List<AnimalEntityDto> verAnimales();
 
-	public void verInstalaciones();
+	public List<HabitatEntityDto>  verInstalaciones();
 
 }

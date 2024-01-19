@@ -19,7 +19,8 @@ public class AcuaticoEntityDto extends HabitatEntityDto implements Serializable 
     @Default
 
     public AcuaticoEntityDto(int id,  TipoAgua tipoAgua, int id1) {
-        super(id, TipoHabitat.ACTUATICO);
+
+        super(id, TipoHabitat.ACUATICO);
         this.tipoAgua = tipoAgua;
         this.id = id1;
     }

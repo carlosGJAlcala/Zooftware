@@ -7,6 +7,8 @@ import com.Zooftware.Zooftware.modelDTO.MensajeEntityDto;
 import com.Zooftware.Zooftware.modelDTO.TrabajadorEntityDto;
 import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
 
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 import java.util.List;
 
 /**
@@ -14,86 +16,18 @@ import java.util.List;
  * @version 1.0
  * @created 08-ene.-2024 16:50:12
  */
-public class ProxyEmpleado  implements IAccionesEmpleado {
+public class ProxyEmpleado implements InvocationHandler {
 
+	private final IAccionesEmpleado acciones;
 
-	@Override
-	public void verAnimales() {
-
+	public ProxyEmpleado(IAccionesEmpleado acciones) {
+		this.acciones = acciones;
 	}
 
 	@Override
-	public void verInstalaciones() {
-
-	}
-
-	@Override
-	public void enviarMensaje(MensajeEntityDto mensaje) {
-
-	}
-
-	@Override
-	public void LeerMensaje(MensajeEntityDto mensaje) {
-
-	}
-
-	@Override
-	public void consultarMensajes(TrabajadorEntityDto trabajador) {
-
-	}
-
-	@Override
-	public EstadoAnimal ComprobarEstadoAnimal(int id) {
-		return null;
-	}
-
-	@Override
-	public void ModificarEstadoAnimal(int id, int salud, int comida, int suenio) {
-
-	}
-
-	@Override
-	public void ejercitarAnimal(int id, int cantidad) {
-
-	}
-
-	@Override
-	public void dormirAnimal(int id, int cantidad) {
-
-	}
-
-	@Override
-	public void darComerAnimal(int id, int cantidad) {
-
-	}
-
-	@Override
-	public void rellenarComederos(int habita_id) {
-
-	}
-
-	@Override
-	public void rellenarBebederos(int habita_id) {
-
-	}
-
-	@Override
-	public List<BebederoEntityDto> verBebederos(int habita_id) {
-		return null;
-	}
-
-	@Override
-	public List<ComederoEntityDto> verComederos(int habita_id) {
-		return null;
-	}
-
-	@Override
-	public void modificarEstadoComedero(int cantidad) {
-
-	}
-
-	@Override
-	public void modificarEstadoBebedero(int cantidad) {
-
-	}
+	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+		System.out.println("Before execute method = " + method.getName());
+		Object res = method.invoke(acciones, args);
+		System.out.println("After execute method ....");
+		return res;	}
 }//end ProxyEmpleado

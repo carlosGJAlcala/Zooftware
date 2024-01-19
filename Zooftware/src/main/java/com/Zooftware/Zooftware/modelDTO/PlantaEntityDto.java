@@ -12,6 +12,11 @@ public class PlantaEntityDto implements Serializable {
     private int id;
     private String nombre;
 
+    public PlantaEntityDto(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Default
     public PlantaEntityDto(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
