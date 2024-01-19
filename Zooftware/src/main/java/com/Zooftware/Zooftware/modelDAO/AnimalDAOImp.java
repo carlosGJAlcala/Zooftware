@@ -1,10 +1,9 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.AnimalEntityDto;
-import com.Zooftware.Zooftware.modelJPA.AnimalEntity;
-import com.Zooftware.Zooftware.modelJPA.ClienteEntity;
+import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
+import com.Zooftware.Zooftware.modelJPA.organimos.AnimalEntity;
 import com.Zooftware.Zooftware.repository.AnimalEntityRepository;
-import com.Zooftware.Zooftware.repository.ClienteEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -36,8 +35,8 @@ public class AnimalDAOImp implements  IAnimalDAO{
     }
 
     @Override
-    public List<AnimalEntityDto> buscarPorEstado(String estadoAnimal) {
-        List<AnimalEntity> listaEstado = animalJPA.findByEstadoAnimal(estadoAnimal);
+    public List<AnimalEntityDto> buscarPorEstado(EstadoAnimal estado) {
+        List<AnimalEntity> listaEstado = animalJPA.findByEstadoAnimal(estado);
         return listaEstado.stream().map(animalEntityMapper.mapper::toDto).collect(Collectors.toList());
 
     }

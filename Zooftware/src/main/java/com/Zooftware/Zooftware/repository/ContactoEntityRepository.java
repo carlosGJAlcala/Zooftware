@@ -1,6 +1,6 @@
 package com.Zooftware.Zooftware.repository;
 
-import com.Zooftware.Zooftware.modelJPA.ContactoEntity;
+import com.Zooftware.Zooftware.modelJPA.persona.ContactoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
@@ -12,6 +12,7 @@ public interface ContactoEntityRepository extends JpaRepository<ContactoEntity, 
 
     Optional<ContactoEntity> findByCorreo(String correo);
 
+    ContactoEntity findByNumeroTlf(Integer numeroTlf);
 
 
 }

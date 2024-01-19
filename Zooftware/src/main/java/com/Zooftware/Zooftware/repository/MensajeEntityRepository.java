@@ -1,6 +1,6 @@
 package com.Zooftware.Zooftware.repository;
 
-import com.Zooftware.Zooftware.modelJPA.MensajeEntity;
+import com.Zooftware.Zooftware.modelJPA.mensajeria.MensajeEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -16,7 +16,6 @@ public interface MensajeEntityRepository extends JpaRepository<MensajeEntity, In
 
     List<MensajeEntity> findByRemitente(String remitente);
 
-    List<MensajeEntity> findByTareaId(Integer tareaId);
 
     List<MensajeEntity> findByAsunto(String asunto);
 

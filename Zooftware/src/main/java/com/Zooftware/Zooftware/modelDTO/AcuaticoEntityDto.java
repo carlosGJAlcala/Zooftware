@@ -1,7 +1,8 @@
 package com.Zooftware.Zooftware.modelDTO;
 
-import com.Zooftware.Zooftware.modelJPA.AcuaticoEntity;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.AcuaticoEntity;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoAgua;
+import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -9,13 +10,18 @@ import java.util.Objects;
 /**
  * DTO for {@link AcuaticoEntity}
  */
-public class AcuaticoEntityDto implements Serializable {
+public class AcuaticoEntityDto extends HabitatEntityDto implements Serializable {
     private final TipoAgua tipoAgua;
     private final int id;
 
-    public AcuaticoEntityDto(TipoAgua tipoAgua, int id) {
+
+
+    @Default
+
+    public AcuaticoEntityDto(int id,  TipoAgua tipoAgua, int id1) {
+        super(id, TipoHabitat.ACTUATICO);
         this.tipoAgua = tipoAgua;
-        this.id = id;
+        this.id = id1;
     }
 
     public TipoAgua getTipoAgua() {

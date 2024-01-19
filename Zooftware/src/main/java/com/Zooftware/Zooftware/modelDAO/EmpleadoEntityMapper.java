@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.EmpleadoEntityDto;
-import com.Zooftware.Zooftware.modelJPA.EmpleadoEntity;
+import com.Zooftware.Zooftware.modelJPA.persona.EmpleadoEntity;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 

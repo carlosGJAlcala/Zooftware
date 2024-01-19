@@ -7,7 +7,7 @@ public class EstadoFeliz implements Estado {
 
 
     @Override
-    public void ejecutar(AnimalEntityDto t) {
+    public void ejecutar(Animal t) {
         System.out.println("¡Estoy feliz!");
     }
 }

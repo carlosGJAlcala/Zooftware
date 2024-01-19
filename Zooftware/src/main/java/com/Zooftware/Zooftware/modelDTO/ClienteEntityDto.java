@@ -1,50 +1,37 @@
 package com.Zooftware.Zooftware.modelDTO;
 
-import com.Zooftware.Zooftware.modelJPA.ClienteEntity;
-import com.Zooftware.Zooftware.modelJPA.enums.Rol;
+import com.Zooftware.Zooftware.modelJPA.persona.ClienteEntity;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 /**
  * DTO for {@link ClienteEntity}
  */
-public class ClienteEntityDto extends PersonaEntityDto implements Serializable {
-    private final int id2;
-    private final Timestamp fechaRegistro;
-    private final Timestamp fechaUltimaVisita;
+public class ClienteEntityDto implements Serializable {
+    private final int id;
+    private final Date fechaRegistro;
+    private final Date fechaUltimaVisita;
     private final int numVisitas;
 
-    public ClienteEntityDto(int id, String apellidos, String dni, int edad, String nombre, String password, Rol rol, String username, Integer clienteZooId, Integer contactoId, Integer trabajadorId,
-                            int id2, Timestamp fechaRegistro, Timestamp fechaUltimaVisita, int numVisitas) {
-        super(id, apellidos, dni, edad, nombre, password, rol, username, clienteZooId, contactoId, trabajadorId);
-        this.id2 = id2;
+    public ClienteEntityDto(int id, Date fechaRegistro, Date fechaUltimaVisita, int numVisitas) {
+        this.id = id;
         this.fechaRegistro = fechaRegistro;
         this.fechaUltimaVisita = fechaUltimaVisita;
         this.numVisitas = numVisitas;
     }
 
-//    public ClienteEntityDto(int id, Timestamp fechaRegistro, Timestamp fechaUltimaVisita, int numVisitas) {
-//        this.id = id;
-//        this.fechaRegistro = fechaRegistro;
-//        this.fechaUltimaVisita = fechaUltimaVisita;
-//        this.numVisitas = numVisitas;
-//    }
-
-
-
-
-
     public int getId() {
-        return id2;
+        return id;
     }
 
-    public Timestamp getFechaRegistro() {
+    public Date getFechaRegistro() {
         return fechaRegistro;
     }
 
-    public Timestamp getFechaUltimaVisita() {
+    public Date getFechaUltimaVisita() {
         return fechaUltimaVisita;
     }
 
@@ -57,7 +44,7 @@ public class ClienteEntityDto extends PersonaEntityDto implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ClienteEntityDto entity = (ClienteEntityDto) o;
-        return Objects.equals(this.id2, entity.id2) &&
+        return Objects.equals(this.id, entity.id) &&
                 Objects.equals(this.fechaRegistro, entity.fechaRegistro) &&
                 Objects.equals(this.fechaUltimaVisita, entity.fechaUltimaVisita) &&
                 Objects.equals(this.numVisitas, entity.numVisitas);
@@ -65,13 +52,13 @@ public class ClienteEntityDto extends PersonaEntityDto implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id2, fechaRegistro, fechaUltimaVisita, numVisitas);
+        return Objects.hash(id, fechaRegistro, fechaUltimaVisita, numVisitas);
     }
 
     @Override
     public String toString() {
         return getClass().getSimpleName() + "(" +
-                "id = " + id2 + ", " +
+                "id = " + id + ", " +
                 "fechaRegistro = " + fechaRegistro + ", " +
                 "fechaUltimaVisita = " + fechaUltimaVisita + ", " +
                 "numVisitas = " + numVisitas + ")";

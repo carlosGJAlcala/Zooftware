@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.HabitatEntityDto;
-import com.Zooftware.Zooftware.modelJPA.HabitatEntity;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.HabitatEntity;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 

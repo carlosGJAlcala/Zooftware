@@ -1,6 +1,6 @@
 package com.Zooftware.Zooftware.repository;
 
-import com.Zooftware.Zooftware.modelJPA.PlantaEntity;
+import com.Zooftware.Zooftware.modelJPA.organimos.PlantaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -11,6 +11,5 @@ public interface PlantaEntityRepository extends JpaRepository<PlantaEntity, Inte
     @Override
     Optional<PlantaEntity> findById(Integer integer);
 
-    List<PlantaEntity> findBySueloId(Integer sueloId);
 
 }

@@ -7,7 +7,7 @@ public class EstadoSalud implements Estado {
 
 
     @Override
-    public void ejecutar(AnimalEntityDto t) {
+    public void ejecutar(Animal t) {
         Estado feliz = new EstadoFeliz();
         Estado triste = new EstadoTriste();
         System.out.println("Estado Salud: " + t.toString());

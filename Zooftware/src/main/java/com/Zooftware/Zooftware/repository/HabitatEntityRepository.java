@@ -1,6 +1,6 @@
 package com.Zooftware.Zooftware.repository;
 
-import com.Zooftware.Zooftware.modelJPA.HabitatEntity;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.HabitatEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

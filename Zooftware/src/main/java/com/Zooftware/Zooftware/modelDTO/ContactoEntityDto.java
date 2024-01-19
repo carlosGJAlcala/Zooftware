@@ -1,17 +1,20 @@
 package com.Zooftware.Zooftware.modelDTO;
 
+import com.Zooftware.Zooftware.modelJPA.persona.ContactoEntity;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * DTO for {@link com.Zooftware.Zooftware.modelJPA.ContactoEntity}
+ * DTO for {@link ContactoEntity}
  */
 public class ContactoEntityDto implements Serializable {
     private int id;
-    private final String correo;
-    private final int numeroTlf;
+    private String correo;
+    private int numeroTlf;
 
-    public ContactoEntityDto(String correo, int numeroTlf) {
+    public ContactoEntityDto(int id, String correo, int numeroTlf) {
+        this.id = id;
         this.correo = correo;
         this.numeroTlf = numeroTlf;
     }

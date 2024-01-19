@@ -1,7 +1,7 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.MensajeEntityDto;
-import com.Zooftware.Zooftware.modelJPA.MensajeEntity;
+import com.Zooftware.Zooftware.modelJPA.mensajeria.MensajeEntity;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
