@@ -14,7 +14,7 @@ public class EmpleadoController {
 
     @GetMapping("/mostrar")
     public ModelAndView mostrarLogin(){
-        ModelAndView modelAndView = new ModelAndView("jefeHome");
+        ModelAndView modelAndView = new ModelAndView("empleadoHome");
         return modelAndView;
     }
 

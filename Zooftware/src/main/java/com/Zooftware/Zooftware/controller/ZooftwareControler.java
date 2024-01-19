@@ -34,32 +34,8 @@ public class ZooftwareControler  {
     FactoryMethodProxy factoryMethodProxy;
     TipoPersona tipo;
 
+    @Autowired
     Zooftware zoo;
-
-//    @GetMapping("/validarInicioSesion")
-//    public String validarInicioSesion(@RequestParam(name = "user") String user, @RequestParam(name = "password") String password, HttpSession session){
-//        if(personaService.existePersona(user,password)){
-//            session.setAttribute("user",personaService.getPersonaByUsername(user));
-//            switch (personaService.tipoPersona(user)){
-//                case "JEFE":
-//                    tipo =TipoPersona.JEFE;
-//                    zoo=factoryMethodProxy.devolverProxy(tipo);
-//                    return "redirect:/jefe/home/mostrar";
-//                case "EMPLEADO":
-//                    tipo =TipoPersona.EMPLEADO;
-//                    zoo=factoryMethodProxy.devolverProxy(tipo);
-//                    return "redirect:/empleado/home/mostrar";
-//                case "CLIENTE":
-//                    tipo =TipoPersona.CLIENTE;
-//                    zoo=factoryMethodProxy.devolverProxy(tipo);
-//                    return "redirect:/cliente/home/mostrar";
-//                default:
-//                    throw new ValidacionException();
-//            }
-//        }else{
-//            throw new ValidacionException();
-//        }
-//    }
 
     @GetMapping("/mostrar")
     public ModelAndView mostrarLogin(){
@@ -76,13 +52,13 @@ public class ZooftwareControler  {
 
             switch (rol.toString()){
                 case "JEFE":
-                    session.setAttribute("user",personaService.getJefeByUsername(username));
+                    session.setAttribute("user",(PersonaEntityDto)personaService.getJefeByUsername(username));
                     tipo =TipoPersona.JEFE;
-                    zoo=factoryMethodProxy.devolverProxy(tipo);
+                   // zoo=factoryMethodProxy.devolverProxy(tipo);
                     return "redirect:/jefe/home/mostrar";
                 case "EMPLEADO":
                     tipo =TipoPersona.EMPLEADO;
-                    session.setAttribute("user",personaService.getEmpleadoByUsername(username));
+                    session.setAttribute("user",(PersonaEntityDto)personaService.getEmpleadoByUsername(username));
 //                    zoo=factoryMethodProxy.devolverProxy(tipo);
 
 //                    IAccionesEmpleado accionesEmpleado= (IAccionesEmpleado) Proxy.newProxyInstance(IAccionesEmpleado.class.getClassLoader(),Zooftware.class.getInterfaces(),new ProxyEmpleado(new Zooftware()));
@@ -96,8 +72,8 @@ public class ZooftwareControler  {
                     return "redirect:/empleado/home/mostrar";
                 case "CLIENTE":
                     tipo =TipoPersona.CLIENTE;
-                    session.setAttribute("user",personaService.getClienteByUsername(username));
-                    zoo=factoryMethodProxy.devolverProxy(tipo);
+                    session.setAttribute("user",(PersonaEntityDto)personaService.getClienteByUsername(username));
+                    //zoo=factoryMethodProxy.devolverProxy(tipo);
                     return "redirect:/cliente/home/mostrar";
                 default:
                     throw new ValidacionException();
@@ -148,13 +124,14 @@ public class ZooftwareControler  {
     public void darComerAnimal(@PathVariable("id_animal") int id) {
     zoo.darComerAnimal(id,10);
     }
-    @GetMapping("/habita/comedero/rellenar/{habita_id}")
-    public void rellenarComederos(@PathVariable("habita_id")int habita_id) {
+    @PostMapping("/rellenarComedero")
+    public ModelAndView rellenarComederos(@RequestParam("idHabitat")int habita_id) {
         zoo.rellenarComederos(habita_id);
-
+        ModelAndView model = new ModelAndView();
+        return model;
     }
 
-    @GetMapping("/habita/bebedero/rellenar/{habita_id}")
+    @PostMapping("/habita/bebedero/rellenar/{habita_id}")
     public void rellenarBebederos(@PathVariable("habita_id") int habita_id) {
         zoo.rellenarBebederos(habita_id);
     }
