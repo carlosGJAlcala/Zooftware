@@ -81,9 +81,8 @@ public class Zooftware implements IAccionesJefe {
 	}
 
 
-
 	@Override
-	public List<MensajeEntityDto> consultarMensajes(TrabajadorEntityDto trabajador) {
+	public List<MensajeEntityDto> consultarMensajes(String trabajadorId) {
 		return  null;
 	}
 
@@ -94,8 +93,8 @@ public class Zooftware implements IAccionesJefe {
 	}
 
 	@Override
-	public void ModificarEstadoAnimal(int id, int salud, int comida, int suenio) {
-		AnimalEntityDto animalEntityDto= animalDAO.buscarPorId(id);
+	public void ModificarEstadoAnimal(AnimalEntityDto animal) {
+		animalDAO.actualizarAnimal(animal);
 
 	}
 
