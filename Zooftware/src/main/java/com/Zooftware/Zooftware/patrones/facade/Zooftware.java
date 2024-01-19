@@ -1,9 +1,9 @@
-package com.Zooftware.Zooftware.service;
+package com.Zooftware.Zooftware.patrones.facade;
 
 
 import com.Zooftware.Zooftware.modelDTO.*;
 import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
-import com.Zooftware.Zooftware.modelJPA.enums.TipoEmpleado;
+import com.Zooftware.Zooftware.modelJPA.enums.TipoPersona;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
 import com.Zooftware.Zooftware.patrones.proxy.IAccionesJefe;
 
@@ -123,12 +123,12 @@ public class Zooftware implements IAccionesJefe {
 	}
 
 	@Override
-	public void contratarEmpleado(TrabajadorEntityDto empleadoNuevo, TipoEmpleado tipo) {
+	public void contratarEmpleado(TrabajadorEntityDto empleadoNuevo, TipoPersona tipo) {
 
 	}
 
 	@Override
-	public void modificarEmpleado(int empleado_id, TipoEmpleado tipo) {
+	public void modificarEmpleado(int empleado_id, TipoPersona tipo) {
 
 	}
 }//end Zooftware
