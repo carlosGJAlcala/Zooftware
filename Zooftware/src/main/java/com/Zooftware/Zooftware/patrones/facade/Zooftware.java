@@ -43,6 +43,7 @@ public class Zooftware implements IAccionesJefe {
 	IMensajeDAO mensajeDAO;
 
 	Contexto contextotarea;
+	@Autowired
 	Estrategia estrategia;
 
 	Mediator mediator;
@@ -120,7 +121,7 @@ public class Zooftware implements IAccionesJefe {
 
 	@Override
 	public void rellenarComederos(int habita_id) {
-		estrategia= new Alimentar();
+		//estrategia= new Alimentar();
 		estrategia.ejecutar(habitatDAO.buscarPorId(habita_id));
 	}
 

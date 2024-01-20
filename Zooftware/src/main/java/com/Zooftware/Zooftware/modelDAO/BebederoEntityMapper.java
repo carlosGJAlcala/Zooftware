@@ -7,8 +7,7 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper
 public interface BebederoEntityMapper {
-    BebederoEntityMapper mapper = Mappers.getMapper(BebederoEntityMapper.class);
-
+    BebederoEntityMapper mapper= Mappers.getMapper(BebederoEntityMapper.class);
     BebederoEntity toEntity(BebederoEntityDto bebederoEntityDto);
 
     BebederoEntityDto toDto(BebederoEntity bebederoEntity);

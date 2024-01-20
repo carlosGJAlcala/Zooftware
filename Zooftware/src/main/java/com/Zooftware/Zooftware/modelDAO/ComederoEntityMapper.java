@@ -8,7 +8,6 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface ComederoEntityMapper {
     ComederoEntityMapper mapper= Mappers.getMapper(ComederoEntityMapper.class);
-
     ComederoEntity toEntity(ComederoEntityDto comederoEntityDto);
 
     ComederoEntityDto toDto(ComederoEntity comederoEntity);

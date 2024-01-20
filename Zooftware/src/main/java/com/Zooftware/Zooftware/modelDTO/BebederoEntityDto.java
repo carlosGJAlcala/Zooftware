@@ -1,6 +1,7 @@
 package com.Zooftware.Zooftware.modelDTO;
 
 import com.Zooftware.Zooftware.modelJPA.instalaciones.BebederoEntity;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.HabitatEntity;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -9,50 +10,45 @@ import java.util.Objects;
  * DTO for {@link BebederoEntity}
  */
 public class BebederoEntityDto implements Serializable {
-    private final int id;
-    private final Integer bebederoId;
-
+    private int id;
     private int cantidad;
 
+    private HabitatEntityDto habitatEntityDto;
 
-    public BebederoEntityDto(int id, Integer bebederoId) {
+    public BebederoEntityDto(int id, int cantidad, HabitatEntityDto habitatEntityDto) {
         this.id = id;
-        this.bebederoId = bebederoId;
-    }
-    @Default
-    public BebederoEntityDto(int id, Integer bebederoId, int cantidad) {
-        this.id = id;
-        this.bebederoId = bebederoId;
         this.cantidad = cantidad;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public Integer getBebederoId() {
-        return bebederoId;
+        this.habitatEntityDto = habitatEntityDto;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BebederoEntityDto entity = (BebederoEntityDto) o;
-        return Objects.equals(this.id, entity.id) &&
-                Objects.equals(this.bebederoId, entity.bebederoId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, bebederoId);
+        BebederoEntityDto that = (BebederoEntityDto) o;
+        return getId() == that.getId() && getCantidad() == that.getCantidad() && Objects.equals(getHabitatEntity(), that.getHabitatEntity());
     }
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + "(" +
-                "id = " + id + ", " +
-                "bebederoId = " + bebederoId + ")";
+        return "BebederoEntityDto{" +
+                "id=" + id +
+                ", cantidad=" + cantidad +
+                ", habitatEntity=" + habitatEntityDto +
+                '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getCantidad(), getHabitatEntity());
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getCantidad() {
@@ -61,5 +57,13 @@ public class BebederoEntityDto implements Serializable {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public HabitatEntityDto getHabitatEntity() {
+        return habitatEntityDto;
+    }
+
+    public void setHabitatEntityDto(HabitatEntityDto habitatEntityDto) {
+        this.habitatEntityDto = habitatEntityDto;
     }
 }

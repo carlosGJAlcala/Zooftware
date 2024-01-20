@@ -1,6 +1,7 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.JefeEntityDto;
+import com.Zooftware.Zooftware.modelJPA.enums.Rol;
 import com.Zooftware.Zooftware.modelJPA.persona.JefeEntity;
 import com.Zooftware.Zooftware.repository.JefeEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,34 @@ public class JefeDAOImp implements IJefeDAO{
             return jefeEntityMapper.mapper.toDto(optional.get());
         }
         return null;
+    }
+
+    @Override
+    public void prueba(){
+
+//
+//        Optional<JefeEntity> jefe =  jefeJPA.findById(1);
+//        if (jefe.isPresent()) {
+//            JefeEntityDto j=  jefeEntityMapper.mapper.toDto(jefe.get());
+//
+//            String pass= j.getPassword();
+//
+//            String passs2 = pass;
+//
+//            JefeEntityDto jefePr = new JefeEntityDto(10,"test","3243",34,"sdfds","pass", Rol.EMPLEADO,"test",null,null,null);
+//            JefeEntity jefeE =  jefeEntityMapper.mapper.toEntity(jefePr);
+//            jefeJPA.save(jefeE);
+//
+//        }
+//
+
+
+    }
+
+    @Override
+    public JefeEntityDto getJefeByUsername(String username) {
+        JefeEntity jefeEntity = jefeJPA.findByUsername(username);
+        return jefeEntityMapper.mapper.toDto(jefeEntity);
     }
 
     @Override

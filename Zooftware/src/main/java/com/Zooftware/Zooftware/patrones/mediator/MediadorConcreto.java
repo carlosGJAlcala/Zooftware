@@ -16,7 +16,7 @@ public class MediadorConcreto implements Mediator {
 
     @Override
     public void setColega(TrabajadorEntityDto colega) {
-        colegas.put(colega.getContacto().getCorreo(),colega);
+        colegas.put(colega.getContactoEntityDto().getCorreo(),colega);
     }
 
     @Override
@@ -24,14 +24,14 @@ public class MediadorConcreto implements Mediator {
         return colegas.get(correo);
     }
 
-    /**
-     * Envía un mensaje al colega cuyo identificador se pasa como argumento. Si
-     * el identificador es -1, el mensaje se envía a todos los colegas. En otro
-     * caso, solo se envía al colega concreto.
-     *
-     * @param mensaje Mensaje a enviar.
-     * @param id Identificador del colega al que se le envía el mensaje.
-     */
+//    /**
+//     * Envía un mensaje al colega cuyo identificador se pasa como argumento. Si
+//     * el identificador es -1, el mensaje se envía a todos los colegas. En otro
+//     * caso, solo se envía al colega concreto.
+//     *
+//     * @param mensaje Mensaje a enviar.
+//     * @param id Identificador del colega al que se le envía el mensaje.
+//     **/
     @Override
     public void enviar(MensajeEntityDto mensaje, String correo) {
         if (correo == "all") {

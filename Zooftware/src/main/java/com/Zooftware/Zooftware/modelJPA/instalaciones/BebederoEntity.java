@@ -3,19 +3,22 @@ package com.Zooftware.Zooftware.modelJPA.instalaciones;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "bebedero", schema = "testbbdd", catalog = "")
+@Table(name = "bebedero")
 public class BebederoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int cantidad;
 
-    public BebederoEntity(int id, int cantidad) {
-        this.id = id;
-        this.cantidad = cantidad;
-    }
+    @ManyToOne
+    @JoinColumn(name = "habitat_id")
+    private HabitatEntity habitatEntity;
 
-    public BebederoEntity() {
+    public BebederoEntity(){}
+
+    public BebederoEntity(int cantidad, HabitatEntity habitatEntity) {
+        this.cantidad = cantidad;
+        this.habitatEntity = habitatEntity;
     }
 
     public int getId() {
@@ -32,5 +35,13 @@ public class BebederoEntity {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public HabitatEntity getHabitatEntity() {
+        return habitatEntity;
+    }
+
+    public void setHabitatEntity(HabitatEntity habitatEntity) {
+        this.habitatEntity = habitatEntity;
     }
 }

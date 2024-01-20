@@ -1,5 +1,6 @@
 package com.Zooftware.Zooftware.repository;
 
+import com.Zooftware.Zooftware.modelJPA.persona.ClienteEntity;
 import com.Zooftware.Zooftware.modelJPA.persona.EmpleadoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -10,4 +11,5 @@ public interface EmpleadoEntityRepository extends JpaRepository<EmpleadoEntity, 
     @Override
     Optional<EmpleadoEntity> findById(Integer integer);
 
+    EmpleadoEntity findByUsername(String username);
 }

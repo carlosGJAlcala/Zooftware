@@ -1,6 +1,9 @@
 package com.Zooftware.Zooftware.modelJPA.comida;
 
+import com.Zooftware.Zooftware.modelJPA.enums.EstadoComida;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.AlmacenComidaEntity;
+import com.Zooftware.Zooftware.patrones.state.Estado;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,11 +17,36 @@ public class ComidaEntity {
     @Enumerated(EnumType.STRING)
     private TipoComida tipoComida;
 
-    public ComidaEntity(int id, String nombre, int cantidad, TipoComida tipoComida) {
+    @Enumerated(EnumType.STRING)
+    private EstadoComida estadoComida;
+
+    @ManyToOne
+    @JoinColumn(name = "almacen_id")
+    private AlmacenComidaEntity almacenComidaEntity;
+
+    public ComidaEntity(int id, String nombre, int cantidad, TipoComida tipoComida, EstadoComida estadoComida, AlmacenComidaEntity almacenComidaEntity) {
         this.id = id;
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.tipoComida = tipoComida;
+        this.estadoComida = estadoComida;
+        this.almacenComidaEntity = almacenComidaEntity;
+    }
+
+    public EstadoComida getEstadoComida() {
+        return estadoComida;
+    }
+
+    public void setEstadoComida(EstadoComida estadoComida) {
+        this.estadoComida = estadoComida;
+    }
+
+    public AlmacenComidaEntity getAlmacenComidaEntity() {
+        return almacenComidaEntity;
+    }
+
+    public void setAlmacenComidaEntity(AlmacenComidaEntity almacenComidaEntity) {
+        this.almacenComidaEntity = almacenComidaEntity;
     }
 
     public ComidaEntity() {

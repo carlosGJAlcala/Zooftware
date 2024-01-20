@@ -1,109 +1,114 @@
 package com.Zooftware.Zooftware.modelDTO;
 
+import com.Zooftware.Zooftware.modelJPA.enums.Rol;
 import com.Zooftware.Zooftware.modelJPA.mensajeria.MensajeEntity;
 import com.Zooftware.Zooftware.modelJPA.persona.TrabajadorEntity;
 import com.Zooftware.Zooftware.patrones.mediator.Mediator;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * DTO for {@link TrabajadorEntity}
  */
-public abstract class TrabajadorEntityDto implements Serializable {
-    private int id;
+public abstract class TrabajadorEntityDto extends PersonaEntityDto implements Serializable {
+    //private int id;
     private boolean activo;
-    private Timestamp fechaFinContrato;
-    private Timestamp fechaInicioContrato;
+    private Date fechaFinContrato;
+    private Date fechaInicioContrato;
     private long numeroSeguridadSocial;
-    private EmpleadoEntityDto empleadoZoo;
-    private JefeEntityDto jefeId;
+    private JefeEntityDto jefeEntityDto;
     private List<MensajeEntityDto> mensajes;
     private double salario;
 
-
-
-    private  ContactoEntityDto contacto;
-
-    public void setMediador(Mediator mediador) {
-        this.mediador = mediador;
-    }
-
-
-
-    private Mediator mediador;
-
-    public TrabajadorEntityDto(int id, boolean activo, Timestamp fechaFinContrato, Timestamp fechaInicioContrato, long numeroSeguridadSocial, EmpleadoEntityDto empleadoZooId, JefeEntityDto jefeId, double salario) {
-        this.id = id;
+    public TrabajadorEntityDto(int id, String apellidos, String dni, int edad, String nombre, String password, Rol rol, String username, ClienteEntityDto clienteZooId, ContactoEntityDto contactoId, TrabajadorEntityDto trabajadorId, boolean activo, Date fechaFinContrato, Date fechaInicioContrato, long numeroSeguridadSocial, JefeEntityDto jefeEntityDto, List<MensajeEntityDto> mensajes, double salario) {
+        super(id, apellidos, dni, edad, nombre, password, rol, username, contactoId);
         this.activo = activo;
         this.fechaFinContrato = fechaFinContrato;
         this.fechaInicioContrato = fechaInicioContrato;
         this.numeroSeguridadSocial = numeroSeguridadSocial;
-        this.empleadoZoo = empleadoZooId;
-        this.jefeId = jefeId;
+        this.jefeEntityDto = jefeEntityDto;
+        this.mensajes = mensajes;
         this.salario = salario;
     }
-    public int getId() {
-        return id;
+
+    private Mediator mediador;
+    public void setMediador(Mediator mediador) {
+
+        this.mediador = mediador;
     }
 
-    public boolean getActivo() {
-        return activo;
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
-    public Timestamp getFechaFinContrato() {
+    public Date getFechaFinContrato() {
         return fechaFinContrato;
     }
 
-    public Timestamp getFechaInicioContrato() {
+    public void setFechaFinContrato(Date fechaFinContrato) {
+        this.fechaFinContrato = fechaFinContrato;
+    }
+
+    public Date getFechaInicioContrato() {
         return fechaInicioContrato;
+    }
+
+    public void setFechaInicioContrato(Date fechaInicioContrato) {
+        this.fechaInicioContrato = fechaInicioContrato;
     }
 
     public long getNumeroSeguridadSocial() {
         return numeroSeguridadSocial;
     }
 
-    public EmpleadoEntityDto getEmpleadoZooId() {
-        return empleadoZoo;
+    public void setNumeroSeguridadSocial(long numeroSeguridadSocial) {
+        this.numeroSeguridadSocial = numeroSeguridadSocial;
     }
 
-    public JefeEntityDto getJefeId() {
-        return jefeId;
+    public JefeEntityDto getJefeEntityDto() {
+        return jefeEntityDto;
     }
 
+    public void setJefeEntityDto(JefeEntityDto jefeEntityDto) {
+        this.jefeEntityDto = jefeEntityDto;
+    }
+
+    public void setMensajes(List<MensajeEntityDto> mensajes) {
+        this.mensajes = mensajes;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TrabajadorEntityDto entity = (TrabajadorEntityDto) o;
-        return Objects.equals(this.id, entity.id) &&
-                Objects.equals(this.activo, entity.activo) &&
-                Objects.equals(this.fechaFinContrato, entity.fechaFinContrato) &&
-                Objects.equals(this.fechaInicioContrato, entity.fechaInicioContrato) &&
-                Objects.equals(this.numeroSeguridadSocial, entity.numeroSeguridadSocial) &&
-                Objects.equals(this.empleadoZoo, entity.empleadoZoo) &&
-                Objects.equals(this.jefeId, entity.jefeId);
+        TrabajadorEntityDto that = (TrabajadorEntityDto) o;
+        return isActivo() == that.isActivo() && getNumeroSeguridadSocial() == that.getNumeroSeguridadSocial() && Double.compare(getSalario(), that.getSalario()) == 0 && Objects.equals(getFechaFinContrato(), that.getFechaFinContrato()) && Objects.equals(getFechaInicioContrato(), that.getFechaInicioContrato()) && Objects.equals(getJefeEntityDto(), that.getJefeEntityDto()) && Objects.equals(getMensajes(), that.getMensajes());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, activo, fechaFinContrato, fechaInicioContrato, numeroSeguridadSocial, empleadoZoo, jefeId);
+        return Objects.hash(isActivo(), getFechaFinContrato(), getFechaInicioContrato(), getNumeroSeguridadSocial(), getJefeEntityDto(), getMensajes(), getSalario());
     }
 
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + "(" +
-                "id = " + id + ", " +
-                "activo = " + activo + ", " +
-                "fechaFinContrato = " + fechaFinContrato + ", " +
-                "fechaInicioContrato = " + fechaInicioContrato + ", " +
-                "numeroSeguridadSocial = " + numeroSeguridadSocial + ", " +
-                "empleadoZooId = " + empleadoZoo + ", " +
-                "jefeId = " + jefeId + ")";
+        return "TrabajadorEntityDto{" +
+                "activo=" + activo +
+                ", fechaFinContrato=" + fechaFinContrato +
+                ", fechaInicioContrato=" + fechaInicioContrato +
+                ", numeroSeguridadSocial=" + numeroSeguridadSocial +
+                ", jefeEntityDto=" + jefeEntityDto +
+                ", mensajes=" + mensajes +
+                ", salario=" + salario +
+                '}';
     }
 
 
@@ -114,8 +119,6 @@ public abstract class TrabajadorEntityDto implements Serializable {
     public abstract void eliminarSubordinado(TrabajadorEntityDto t);
 
     public abstract double getSalarios();
-
-    public abstract String getDescripcion();
 
     public boolean isActivo() {
         return activo;
@@ -142,7 +145,4 @@ public abstract class TrabajadorEntityDto implements Serializable {
         return mensajes;
     }
 
-    public ContactoEntityDto getContacto() {
-        return contacto;
-    }
-}
+   }

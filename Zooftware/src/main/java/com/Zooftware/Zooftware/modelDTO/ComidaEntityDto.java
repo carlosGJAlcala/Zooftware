@@ -2,6 +2,7 @@ package com.Zooftware.Zooftware.modelDTO;
 
 import com.Zooftware.Zooftware.modelJPA.enums.EstadoComida;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
+import com.Zooftware.Zooftware.patrones.state.Estado;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -15,20 +16,37 @@ public class ComidaEntityDto implements Serializable {
     private  int cantidad;
     private  TipoComida tipoComida;
 
+    private AlmacenComidaEntityDto almacenComidaEntityDto;
+
     private EstadoComida estadoComida;
-
-
 
     private String IngredientePrincipal,IngredienteSecundario;
 
-    public ComidaEntityDto(int id, String nombre, int cantidad, TipoComida tipoComida, EstadoComida estadoComida, String ingredientePrincipal, String ingredienteSecundario) {
+    public ComidaEntityDto(int id, String nombre, int cantidad, TipoComida tipoComida, AlmacenComidaEntityDto almacenComidaEntityDto, EstadoComida estadoComida, String ingredientePrincipal, String ingredienteSecundario) {
         this.id = id;
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.tipoComida = tipoComida;
+        this.almacenComidaEntityDto = almacenComidaEntityDto;
         this.estadoComida = estadoComida;
         IngredientePrincipal = ingredientePrincipal;
         IngredienteSecundario = ingredienteSecundario;
+    }
+
+    public EstadoComida getEstadoComida() {
+        return estadoComida;
+    }
+
+    public void setEstadoComida(EstadoComida estadoComida) {
+        this.estadoComida = estadoComida;
+    }
+
+    public AlmacenComidaEntityDto getAlmacenComidaEntityDto() {
+        return almacenComidaEntityDto;
+    }
+
+    public void setAlmacenComidaEntityDto(AlmacenComidaEntityDto almacenComidaEntityDto) {
+        this.almacenComidaEntityDto = almacenComidaEntityDto;
     }
 
     public ComidaEntityDto() {
@@ -75,9 +93,6 @@ public class ComidaEntityDto implements Serializable {
                 "nombre = " + nombre + ", " +
                 "cantidad = " + cantidad + ", " +
                 "tipoComida = " + tipoComida ;
-    }
-    public void setEstadoComida(EstadoComida estadoComida) {
-        this.estadoComida = estadoComida;
     }
 
 

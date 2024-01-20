@@ -4,8 +4,9 @@ import com.Zooftware.Zooftware.modelJPA.enums.Rol;
 import jakarta.persistence.*;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "persona", schema = "testbbdd", catalog = "")
-public class PersonaEntity {
+public abstract class PersonaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -22,17 +23,12 @@ public class PersonaEntity {
 
     @OneToOne
     @JoinColumn(name = "contacto_id")
-    private ContactoEntity contactoImp;
-    @OneToOne
-    @JoinColumn(name = "trabajador_id")
-    private TrabajadorEntity trabajador;
-    @OneToOne
-    @JoinColumn(name = "cliente_id")
-    private ClienteEntity clienteZoo;
+    private ContactoEntity contactoEntity;
+
 
     public PersonaEntity(){}
 
-    public PersonaEntity(int id, String apellidos, String dni, int edad, String nombre, String username, String password, Rol rol, ContactoEntity contactoImp, TrabajadorEntity trabajador, ClienteEntity clienteZoo) {
+    public PersonaEntity(int id, String apellidos, String dni, int edad, String nombre, String username, String password, Rol rol, ContactoEntity contactoEntity) {
         this.id = id;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -41,9 +37,7 @@ public class PersonaEntity {
         this.username = username;
         this.password = password;
         this.rol = rol;
-        this.contactoImp = contactoImp;
-        this.trabajador = trabajador;
-        this.clienteZoo = clienteZoo;
+        this.contactoEntity = contactoEntity;
     }
 
     public int getId() {
@@ -110,27 +104,11 @@ public class PersonaEntity {
         this.rol = rol;
     }
 
-    public ContactoEntity getContactoImp() {
-        return contactoImp;
+    public ContactoEntity getContactoEntity() {
+        return contactoEntity;
     }
 
-    public void setContactoImp(ContactoEntity contactoImp) {
-        this.contactoImp = contactoImp;
-    }
-
-    public TrabajadorEntity getTrabajador() {
-        return trabajador;
-    }
-
-    public void setTrabajador(TrabajadorEntity trabajador) {
-        this.trabajador = trabajador;
-    }
-
-    public ClienteEntity getClienteZoo() {
-        return clienteZoo;
-    }
-
-    public void setClienteZoo(ClienteEntity clienteZoo) {
-        this.clienteZoo = clienteZoo;
+    public void setContactoEntity(ContactoEntity contactoEntity) {
+        this.contactoEntity = contactoEntity;
     }
 }

@@ -5,6 +5,10 @@ import com.Zooftware.Zooftware.modelDTO.JefeEntityDto;
 
 public interface IJefeDAO {
     public JefeEntityDto buscarPorId(Integer id);
+
+    void prueba();
+
+    public JefeEntityDto getJefeByUsername(String username);
     void actualizarJefe(JefeEntityDto jefe);
     void guardarJefe(JefeEntityDto jefe);
     public void eliminarJefe(Integer id);

@@ -2,6 +2,7 @@ package com.Zooftware.Zooftware.modelDTO;
 
 import com.Zooftware.Zooftware.modelJPA.instalaciones.ComederoEntity;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.HabitatEntity;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -10,58 +11,25 @@ import java.util.Objects;
  * DTO for {@link ComederoEntity}
  */
 public class ComederoEntityDto implements Serializable {
-    private final int id;
-    private final Integer idHabita;
+    private int id;
+
+    private HabitatEntityDto habitatEntityDto;
+
     private  Integer cantidad;
 
-
-    private ComidaEntityDto comida;
     private TipoComida tipo;
 
+    private ComidaEntityDto comida;
     public TipoComida getTipo() {
         return tipo;
     }
 
-    public ComederoEntityDto(int id, Integer idHabita, Integer cantidad, TipoComida tipo) {
+    public ComederoEntityDto(int id, HabitatEntityDto habitatEntityDto, Integer cantidad, TipoComida tipo, ComidaEntityDto comida) {
         this.id = id;
-        this.idHabita = idHabita;
+        this.habitatEntityDto = habitatEntityDto;
         this.cantidad = cantidad;
         this.tipo = tipo;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public Integer getIdHabita() {
-        return idHabita;
-    }
-
-    public Integer getCantidad() {
-        return cantidad;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ComederoEntityDto entity = (ComederoEntityDto) o;
-        return Objects.equals(this.id, entity.id) &&
-                Objects.equals(this.idHabita, entity.idHabita) &&
-                Objects.equals(this.cantidad, entity.cantidad);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, idHabita, cantidad);
-    }
-
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + "(" +
-                "id = " + id + ", " +
-                "idHabita = " + idHabita + ", " +
-                "cantidad = " + cantidad + ")";
+        this.comida = comida;
     }
 
     public ComidaEntityDto getComida() {
@@ -72,11 +40,55 @@ public class ComederoEntityDto implements Serializable {
         this.comida = comida;
     }
 
-    public void setTipo(TipoComida tipo) {
-        this.tipo = tipo;
+    @Override
+    public String toString() {
+        return "ComederoEntityDto{" +
+                "id=" + id +
+                ", habitatEntityDto=" + habitatEntityDto +
+                ", cantidad=" + cantidad +
+                ", tipo=" + tipo +
+                ", comida=" + comida +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ComederoEntityDto that = (ComederoEntityDto) o;
+        return getId() == that.getId() && Objects.equals(getHabitatEntityDto(), that.getHabitatEntityDto()) && Objects.equals(getCantidad(), that.getCantidad()) && getTipo() == that.getTipo() && Objects.equals(getComida(), that.getComida());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getHabitatEntityDto(), getCantidad(), getTipo(), getComida());
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public HabitatEntityDto getHabitatEntityDto() {
+        return habitatEntityDto;
+    }
+
+    public void setHabitatEntityDto(HabitatEntityDto habitatEntityDto) {
+        this.habitatEntityDto = habitatEntityDto;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
     }
 
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public void setTipo(TipoComida tipo) {
+        this.tipo = tipo;
     }
 }

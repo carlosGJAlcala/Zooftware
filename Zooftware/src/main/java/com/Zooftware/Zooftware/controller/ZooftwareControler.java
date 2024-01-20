@@ -3,21 +3,29 @@ package com.Zooftware.Zooftware.controller;
 import com.Zooftware.Zooftware.exceptions.ValidacionException;
 import com.Zooftware.Zooftware.modelDTO.*;
 import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
+import com.Zooftware.Zooftware.modelJPA.enums.Rol;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoPersona;
 import com.Zooftware.Zooftware.patrones.facade.Zooftware;
 import com.Zooftware.Zooftware.patrones.factoryMethod.FactoryMethodProxy;
+import com.Zooftware.Zooftware.patrones.proxy.IAccionesCliente;
+import com.Zooftware.Zooftware.patrones.proxy.IAccionesEmpleado;
 import com.Zooftware.Zooftware.patrones.proxy.IAccionesJefe;
+import com.Zooftware.Zooftware.patrones.proxy.ProxyEmpleado;
 import com.Zooftware.Zooftware.service.persona.PersonaService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.awt.*;
+import java.lang.reflect.Proxy;
 import java.util.List;
 
-@RestController
+@Controller
+@RequestMapping("/zooftware")
 public class ZooftwareControler  {
     @Autowired
     private PersonaService personaService;
@@ -26,24 +34,46 @@ public class ZooftwareControler  {
     FactoryMethodProxy factoryMethodProxy;
     TipoPersona tipo;
 
+    @Autowired
     Zooftware zoo;
 
+    @GetMapping("/mostrar")
+    public ModelAndView mostrarLogin(){
+        ModelAndView modelAndView = new ModelAndView("login");
+        return modelAndView;
+    }
+
+
     @GetMapping("/validarInicioSesion")
-    public String validarInicioSesion(@RequestParam(name = "user") String user, @RequestParam(name = "password") String password, HttpSession session){
-        if(personaService.existePersona(user,password)){
-            session.setAttribute("user",personaService.getPersonaByUsername(user));
-            switch (personaService.tipoPersona(user)){
+    public String validarInicioSesion(@RequestParam(name = "user") String username, @RequestParam(name = "password") String password, HttpSession session){
+
+        if(personaService.existePersona(username,password)){
+            Rol rol = personaService.getTipoEmpleadoPorUsername(username);
+
+            switch (rol.toString()){
                 case "JEFE":
+                    session.setAttribute("user",(PersonaEntityDto)personaService.getJefeByUsername(username));
                     tipo =TipoPersona.JEFE;
-                    zoo=factoryMethodProxy.devolverProxy(tipo);
+                   // zoo=factoryMethodProxy.devolverProxy(tipo);
                     return "redirect:/jefe/home/mostrar";
                 case "EMPLEADO":
                     tipo =TipoPersona.EMPLEADO;
-                    zoo=factoryMethodProxy.devolverProxy(tipo);
+                    session.setAttribute("user",(PersonaEntityDto)personaService.getEmpleadoByUsername(username));
+//                    zoo=factoryMethodProxy.devolverProxy(tipo);
+
+//                    IAccionesEmpleado accionesEmpleado= (IAccionesEmpleado) Proxy.newProxyInstance(IAccionesEmpleado.class.getClassLoader(),Zooftware.class.getInterfaces(),new ProxyEmpleado(new Zooftware()));
+//                    accionesEmpleado.darComerAnimal(2,4);
+//
+//                    IAccionesCliente clienteAcc = (IAccionesCliente) accionesEmpleado;
+//
+//                    clienteAcc.toString();
+//
+
                     return "redirect:/empleado/home/mostrar";
                 case "CLIENTE":
                     tipo =TipoPersona.CLIENTE;
-                    zoo=factoryMethodProxy.devolverProxy(tipo);
+                    session.setAttribute("user",(PersonaEntityDto)personaService.getClienteByUsername(username));
+                    //zoo=factoryMethodProxy.devolverProxy(tipo);
                     return "redirect:/cliente/home/mostrar";
                 default:
                     throw new ValidacionException();
@@ -94,13 +124,14 @@ public class ZooftwareControler  {
     public void darComerAnimal(@PathVariable("id_animal") int id) {
     zoo.darComerAnimal(id,10);
     }
-    @GetMapping("/habita/comedero/rellenar/{habita_id}")
-    public void rellenarComederos(@PathVariable("habita_id")int habita_id) {
+    @PostMapping("/rellenarComedero")
+    public ModelAndView rellenarComederos(@RequestParam("idHabitat")int habita_id) {
         zoo.rellenarComederos(habita_id);
-
+        ModelAndView model = new ModelAndView();
+        return model;
     }
 
-    @GetMapping("/habita/bebedero/rellenar/{habita_id}")
+    @PostMapping("/habita/bebedero/rellenar/{habita_id}")
     public void rellenarBebederos(@PathVariable("habita_id") int habita_id) {
         zoo.rellenarBebederos(habita_id);
     }

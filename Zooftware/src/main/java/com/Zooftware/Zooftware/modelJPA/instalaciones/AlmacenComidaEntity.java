@@ -18,9 +18,17 @@ public class AlmacenComidaEntity {
     private int id;
 
 
-    @OneToMany
-    @JoinColumn(name = "provisiones_id")
+    @OneToMany(mappedBy = "almacenComidaEntity")
     private List<ComidaEntity> provisiones;
+
+
+    public AlmacenComidaEntity() {
+    }
+
+    public AlmacenComidaEntity(int id, List<ComidaEntity> provisiones) {
+        this.id = id;
+        this.provisiones = provisiones;
+    }
 
     public List<ComidaEntity> getProvisiones() {
         return provisiones;
@@ -30,8 +38,6 @@ public class AlmacenComidaEntity {
         this.provisiones = provisiones;
     }
 
-    public AlmacenComidaEntity() {
-    }
 
     public AlmacenComidaEntity(int id) {
         this.id = id;

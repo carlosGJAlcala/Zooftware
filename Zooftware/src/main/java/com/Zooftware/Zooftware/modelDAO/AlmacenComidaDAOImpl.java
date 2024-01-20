@@ -16,7 +16,7 @@ public class AlmacenComidaDAOImpl implements IAlmacenComidaDAO{
     @Autowired
     AlmacenComidaEntityRepository repository;
 
-    private AlmacenComidaEntityMapper almacenComidaEntityMapper;
+    AlmacenComidaEntityMapper almacenComidaEntityMapper;
 
 
     @Override
@@ -34,24 +34,25 @@ public class AlmacenComidaDAOImpl implements IAlmacenComidaDAO{
 
     @Override
     public List<AlmacenComidaEntityDto> buscarAlmacenes() {
-        List<AlmacenComidaEntity>optional = repository.encontrarAlmacenes();
-
-
+        List<AlmacenComidaEntity>optional = repository.findAll();
         return optional.stream().map(almacenComidaEntityMapper::toDto).collect(Collectors.toList());
     }
 
     @Override
-    public void actualizar(AlmacenComidaEntityDto acuario) {
-
+    public void actualizar(AlmacenComidaEntityDto almacen) {
+        repository.deleteById(almacen.getId());
+        AlmacenComidaEntity almacenComidaEntity=almacenComidaEntityMapper.mapper.toEntity(almacen);
+        repository.save(almacenComidaEntity);
     }
 
     @Override
-    public void guardar(AlmacenComidaEntityDto acuario) {
-
+    public void guardar(AlmacenComidaEntityDto almacen) {
+        AlmacenComidaEntity almacenComidaEntity=almacenComidaEntityMapper.mapper.toEntity(almacen);
+        repository.save(almacenComidaEntity);
     }
 
     @Override
-    public void eliminar(AlmacenComidaEntityDto id) {
-
+    public void eliminar(int id) {
+        repository.deleteById(id);
     }
 }

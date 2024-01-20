@@ -10,5 +10,6 @@ public interface IAlmacenComidaDAO {
     List<AlmacenComidaEntityDto> buscarAlmacenes();
     void actualizar(AlmacenComidaEntityDto acuario);
     void guardar(AlmacenComidaEntityDto acuario);
-    public void eliminar(AlmacenComidaEntityDto id);
+
+    void eliminar(int id);
 }

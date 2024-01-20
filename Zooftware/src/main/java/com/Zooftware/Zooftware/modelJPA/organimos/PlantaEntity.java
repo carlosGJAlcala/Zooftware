@@ -1,5 +1,6 @@
 package com.Zooftware.Zooftware.modelJPA.organimos;
 
+import com.Zooftware.Zooftware.modelJPA.instalaciones.HabitatEntity;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,12 +12,15 @@ public class PlantaEntity {
     private int id;
     private String nombre;
 
-    public PlantaEntity(int id, String nombre) {
-        this.id = id;
-        this.nombre = nombre;
-    }
+    @ManyToOne
+    @JoinColumn(name = "habitat_id")
+    private HabitatEntity habitatEntity;
 
-    public PlantaEntity() {
+    public PlantaEntity(){}
+
+    public PlantaEntity(String nombre, HabitatEntity habitatEntity) {
+        this.nombre = nombre;
+        this.habitatEntity = habitatEntity;
     }
 
     public int getId() {
@@ -33,5 +37,13 @@ public class PlantaEntity {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public HabitatEntity getHabitatEntity() {
+        return habitatEntity;
+    }
+
+    public void setHabitatEntity(HabitatEntity habitatEntity) {
+        this.habitatEntity = habitatEntity;
     }
 }

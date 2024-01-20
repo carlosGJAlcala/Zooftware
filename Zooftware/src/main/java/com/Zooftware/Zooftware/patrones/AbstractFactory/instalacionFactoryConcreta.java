@@ -32,7 +32,8 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
 
     @Autowired
     FactoryMethodAnimal factoryMethodAnimal;
-
+    @Autowired
+    AlmacenSingleton almacenSingleton;
 
 
     @Override
@@ -155,8 +156,9 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
     public AlmacenSingleton crearAlmacen() {
         List<AlmacenComidaEntityDto> almacenes =almacen.buscarAlmacenes();
         AlmacenComidaEntityDto almacenComidaEntityDto1 = almacenes.get(0);
-        AlmacenSingleton almacenSingleton=AlmacenSingleton.getInstancia();
-        almacenSingleton.setProvisiones(almacenComidaEntityDto1.getProvisiones());
+//        //AlmacenSingleton almacenSingleton=AlmacenSingleton.getInstancia();
+//        almacenSingleton.setProvisiones(almacenComidaEntityDto1.getProvisiones());
+//        almacenSingleton.setAlmacenComida(almacenComidaEntityDto1);
         return almacenSingleton;
     }
     public boolean comprobarIdHabita(int id){

@@ -24,6 +24,17 @@ public class EmpleadoDAOImp implements IEmpleadoDAO{
         return null;
     }
 
+
+    @Override
+    public void prueba(){
+
+    }
+    @Override
+    public EmpleadoEntityDto getEmpleadoByUsername(String username) {
+        EmpleadoEntity empleadoEntity = empleadoJPA.findByUsername(username);
+        return empleadoEntityMapper.mapper.toDto(empleadoEntity);
+    }
+
     @Override
     public void actualizarEmpleado(EmpleadoEntityDto empleado) {
         empleadoJPA.deleteById(empleado.getId());

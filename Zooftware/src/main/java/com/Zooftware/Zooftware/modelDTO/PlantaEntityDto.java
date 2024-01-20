@@ -1,5 +1,6 @@
 package com.Zooftware.Zooftware.modelDTO;
 
+import com.Zooftware.Zooftware.modelJPA.instalaciones.HabitatEntity;
 import com.Zooftware.Zooftware.modelJPA.organimos.PlantaEntity;
 
 import java.io.Serializable;
@@ -11,15 +12,42 @@ import java.util.Objects;
 public class PlantaEntityDto implements Serializable {
     private int id;
     private String nombre;
+    private HabitatEntityDto habitatEntityDto;
 
-    public PlantaEntityDto(String nombre) {
+    @Default
+    public PlantaEntityDto(int id, String nombre, HabitatEntityDto habitatEntityDto) {
+        this.id = id;
+        this.nombre = nombre;
+        this.habitatEntityDto = habitatEntityDto;
+    }
+
+    public PlantaEntityDto(String nombre){
         this.nombre = nombre;
     }
 
-    @Default
-    public PlantaEntityDto(int id, String nombre) {
-        this.id = id;
-        this.nombre = nombre;
+
+
+
+    @Override
+    public String toString() {
+        return "PlantaEntityDto{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", habitatEntityDto=" + habitatEntityDto +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PlantaEntityDto that = (PlantaEntityDto) o;
+        return getId() == that.getId() && Objects.equals(getNombre(), that.getNombre()) && Objects.equals(getHabitatEntityDto(), that.getHabitatEntityDto());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getNombre(), getHabitatEntityDto());
     }
 
     public int getId() {
@@ -38,24 +66,11 @@ public class PlantaEntityDto implements Serializable {
         this.nombre = nombre;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PlantaEntityDto entity = (PlantaEntityDto) o;
-        return Objects.equals(this.id, entity.id) &&
-                Objects.equals(this.nombre, entity.nombre);
+    public HabitatEntityDto getHabitatEntityDto() {
+        return habitatEntityDto;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, nombre);
-    }
-
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + "(" +
-                "id = " + id + ", " +
-                "nombre = " + nombre + ")";
+    public void setHabitatEntityDto(HabitatEntityDto habitatEntityDto) {
+        this.habitatEntityDto = habitatEntityDto;
     }
 }

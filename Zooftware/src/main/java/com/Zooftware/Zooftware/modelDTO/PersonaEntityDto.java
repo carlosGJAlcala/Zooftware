@@ -12,7 +12,7 @@ import java.util.Objects;
 /**
  * DTO for {@link PersonaEntity}
  */
-public class PersonaEntityDto implements Serializable {
+public abstract class PersonaEntityDto implements Serializable {
     private int id;
     private String apellidos;
     private String dni;
@@ -21,11 +21,9 @@ public class PersonaEntityDto implements Serializable {
     private String password;
     private Rol rol;
     private String username;
-    private ClienteEntityDto clienteZooId;
-    private ContactoEntityDto contactoId;
-    private TrabajadorEntityDto trabajadorId;
+    private ContactoEntityDto contactoEntityDto;
 
-    public PersonaEntityDto(int id, String apellidos, String dni, int edad, String nombre, String password, Rol rol, String username, ClienteEntityDto clienteZooId, ContactoEntityDto contactoId, TrabajadorEntityDto trabajadorId) {
+    public PersonaEntityDto(int id, String apellidos, String dni, int edad, String nombre, String password, Rol rol, String username, ContactoEntityDto contacto) {
         this.id = id;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -34,9 +32,15 @@ public class PersonaEntityDto implements Serializable {
         this.password = password;
         this.rol = rol;
         this.username = username;
-        this.clienteZooId = clienteZooId;
-        this.contactoId = contactoId;
-        this.trabajadorId = trabajadorId;
+        this.contactoEntityDto = contacto;
+    }
+
+    public ContactoEntityDto getContactoEntityDto() {
+        return contactoEntityDto;
+    }
+
+    public void setContactoEntityDto(ContactoEntityDto contactoEntityDto) {
+        this.contactoEntityDto = contactoEntityDto;
     }
 
     public int getId() {
@@ -103,27 +107,5 @@ public class PersonaEntityDto implements Serializable {
         this.username = username;
     }
 
-    public ClienteEntityDto getClienteZooId() {
-        return clienteZooId;
-    }
 
-    public void setClienteZooId(ClienteEntityDto clienteZooId) {
-        this.clienteZooId = clienteZooId;
-    }
-
-    public ContactoEntityDto getContactoId() {
-        return contactoId;
-    }
-
-    public void setContactoId(ContactoEntityDto contactoId) {
-        this.contactoId = contactoId;
-    }
-
-    public TrabajadorEntityDto getTrabajadorId() {
-        return trabajadorId;
-    }
-
-    public void setTrabajadorId(TrabajadorEntityDto trabajadorId) {
-        this.trabajadorId = trabajadorId;
-    }
 }

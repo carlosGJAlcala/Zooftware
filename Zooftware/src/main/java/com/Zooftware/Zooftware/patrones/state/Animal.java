@@ -1,6 +1,7 @@
 package com.Zooftware.Zooftware.patrones.state;
 
 import com.Zooftware.Zooftware.modelDTO.AnimalEntityDto;
+import com.Zooftware.Zooftware.modelDTO.HabitatEntityDto;
 import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoAnimal;
 
@@ -10,17 +11,32 @@ public class Animal extends AnimalEntityDto {
     int salud;
     int comida;
     int suenio;
-    public Animal(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, int id) {
-        super(nombre, estadoAnimal, tipo, id);
+//    public Animal(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, int id) {
+//        super(nombre, estadoAnimal, tipo, id);
+//        if(estadoAnimal==EstadoAnimal.FELIZ){
+//            estadoActual=new EstadoFeliz();
+//        }else {
+//            estadoActual=new EstadoTriste();
+//        }
+//        comida = 50;
+//        salud = 50;
+//        suenio = 0;
+//    }
+
+
+    public Animal(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, int id, HabitatEntityDto habitatEntityDto, int numExtremidades, int salud, int sed, int suenio, int hambre, Estado estadoActual, int salud1, int comida, int suenio1) {
+        super(nombre, estadoAnimal, tipo, id, habitatEntityDto, numExtremidades, salud, sed, suenio, hambre);
+        this.estadoActual = estadoActual;
         if(estadoAnimal==EstadoAnimal.FELIZ){
-            estadoActual=new EstadoFeliz();
+            this.estadoActual=new EstadoFeliz();
         }else {
-            estadoActual=new EstadoTriste();
+            this.estadoActual=new EstadoTriste();
         }
-        comida = 50;
-        salud = 50;
-        suenio = 0;
+        this.comida = 50;
+        this.salud = 50;
+        this.suenio = 0;
     }
+
     public void darComida(int cantidad) {
         comida += cantidad;
         if (comida > 100) {

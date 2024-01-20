@@ -16,9 +16,10 @@ public class AlmacenComidaEntityDto implements Serializable {
 
     private List<ComidaEntityDto> provisiones ;
 
-    public AlmacenComidaEntityDto(int id) {
+    @Default
+    public AlmacenComidaEntityDto(int id, List<ComidaEntityDto> provisiones) {
         this.id = id;
-        provisiones=new ArrayList<>();
+        this.provisiones = provisiones;
     }
 
     public AlmacenComidaEntityDto() {

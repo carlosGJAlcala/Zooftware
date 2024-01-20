@@ -3,6 +3,7 @@ package com.Zooftware.Zooftware.patrones.factoryMethod;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoPersona;
 import com.Zooftware.Zooftware.patrones.facade.Zooftware;
 import com.Zooftware.Zooftware.patrones.proxy.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Proxy;
