@@ -16,15 +16,7 @@ public class TerrestreEntityDto extends HabitatEntityDto implements Serializable
     private int numComederos;
     private int id;
 
-    public TerrestreEntityDto(int id, int numBebederos, int numComederos, int id1) {
-        super(id, TipoHabitat.TERRESTRE, null, null, null, null);
-        this.numBebederos = numBebederos;
-        this.numComederos = numComederos;
-        super.crearBebederos(numBebederos);
-        super.crearComederos(numComederos, TipoComida.OMNIVORA);
 
-        this.id = id1;
-    }
 
     @Default
     public TerrestreEntityDto(int id, TipoHabitat tipoHabitat, List<BebederoEntityDto> bebederos, List<ComederoEntityDto> comederos, List<AnimalEntityDto> animales, List<PlantaEntityDto> plantas, int numBebederos, int numComederos, int id1) {
@@ -32,6 +24,11 @@ public class TerrestreEntityDto extends HabitatEntityDto implements Serializable
         this.numBebederos = numBebederos;
         this.numComederos = numComederos;
         this.id = id1;
+    }
+
+    public TerrestreEntityDto(TipoHabitat tipoHabitat, int numBebederos) {
+        super(tipoHabitat);
+        this.numBebederos = numBebederos;
     }
 
     @Override

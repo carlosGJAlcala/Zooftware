@@ -1,7 +1,9 @@
 package com.Zooftware.Zooftware.patrones.factoryMethod;
 
+import com.Zooftware.Zooftware.modelDAO.AnimalDAOImp;
 import com.Zooftware.Zooftware.modelDAO.IAnimalDAO;
 import com.Zooftware.Zooftware.modelDAO.IPlantaDAO;
+import com.Zooftware.Zooftware.modelDAO.PlantaDAOImp;
 import com.Zooftware.Zooftware.modelDTO.AnimalEntityDto;
 import com.Zooftware.Zooftware.modelDTO.PlantaEntityDto;
 import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
@@ -10,14 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class FactoryAnimalesConcreto implements FactoryMethodAnimal {
 
-    @Autowired
-    IAnimalDAO animalDAO;
+    IAnimalDAO animalDAO =new AnimalDAOImp();
 
     @Autowired
-    IPlantaDAO plantaDAO;
+    IPlantaDAO plantaDAO = new PlantaDAOImp();
 
     @Override
     public AnimalEntityDto crearAnimalAcuaticoAguaSalada() {

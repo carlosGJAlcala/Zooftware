@@ -3,9 +3,7 @@ package com.Zooftware.Zooftware.patrones.facade;
 
 import com.Zooftware.Zooftware.modelDAO.*;
 import com.Zooftware.Zooftware.modelDTO.*;
-import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
-import com.Zooftware.Zooftware.modelJPA.enums.TipoPersona;
-import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
+import com.Zooftware.Zooftware.modelJPA.enums.*;
 import com.Zooftware.Zooftware.patrones.AbstractFactory.InstalacionFactory;
 import com.Zooftware.Zooftware.patrones.AbstractFactory.instalacionFactoryConcreta;
 import com.Zooftware.Zooftware.patrones.mediator.MediadorConcreto;
@@ -38,7 +36,10 @@ public class Zooftware implements IAccionesJefe {
 	IEmpleadoDAO empleadoDAO;
 	@Autowired
 	IJefeDAO jefeDAO;
-
+	@Autowired
+	IBebederoDAO bebederoDAO;
+	@Autowired
+	IComederoDAO comederoDAO;
 	@Autowired
 	IMensajeDAO mensajeDAO;
 
@@ -61,7 +62,20 @@ public class Zooftware implements IAccionesJefe {
 		fabricadeHabitas= new instalacionFactoryConcreta();
 
 	}
+	@Override
+	public void cargar(){
 
+		//fabricadeHabitas.crearHabitaAnfibio();
+		//AnimalEntityDto animalprueba= new AnimalEntityDto("Leon",EstadoAnimal.FELIZ, TipoAnimal.TERRESTRE,1,4,50,50,50,50);
+/*
+fabricadeHabitas.crearHabitaAnfibio();
+		fabricadeHabitas.crearHabitaAnfibio();
+		fabricadeHabitas.crerAcuarioAguaDulce();*/
+
+
+
+
+	}
 	@Override
 	public List<AnimalEntityDto> verAnimales() {
 
@@ -231,6 +245,9 @@ public class Zooftware implements IAccionesJefe {
 
 
 	}
+
+
+
 
 
 }//end Zooftware

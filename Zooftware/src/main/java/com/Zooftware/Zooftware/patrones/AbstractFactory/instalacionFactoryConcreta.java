@@ -3,7 +3,11 @@ package com.Zooftware.Zooftware.patrones.AbstractFactory;
 import com.Zooftware.Zooftware.modelDAO.*;
 import com.Zooftware.Zooftware.modelDTO.*;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoAgua;
+import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
+import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.ComederoEntity;
 import com.Zooftware.Zooftware.patrones.Singleton.AlmacenSingleton;
+import com.Zooftware.Zooftware.patrones.factoryMethod.FactoryAnimalesConcreto;
 import com.Zooftware.Zooftware.patrones.factoryMethod.FactoryMethodAnimal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,25 +32,20 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
     IAlmacenComidaDAO almacen;
 
     @Autowired
-    IHabitatDAO habita;
+    IBebederoDAO bebederoDAO;
+    @Autowired
+    IComederoDAO comederoDAO;
 
     @Autowired
-    FactoryMethodAnimal factoryMethodAnimal;
+    IHabitatDAO habita;
+
+    FactoryMethodAnimal factoryMethodAnimal=new FactoryAnimalesConcreto();
     @Autowired
     AlmacenSingleton almacenSingleton;
 
 
     @Override
     public AcuaticoEntityDto crerAcuarioAguaDulce() {
-
-        do {
-            contadorHabita++;
-        }
-        while(comprobarIdHabita(contadorHabita));
-        do {
-            contadorAcuatico++;
-        }
-        while(comprobarIdHabita(contadorAcuatico));
 
 
         AcuaticoEntityDto habita=new AcuaticoEntityDto(contadorHabita, TipoAgua.DULCE,contadorAcuatico);
@@ -67,14 +66,6 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
 
     @Override
     public AcuaticoEntityDto crerAcuarioAguaSalada() {
-        do {
-            contadorHabita++;
-        }
-        while(comprobarIdHabita(contadorHabita));
-        do {
-            contadorAcuatico++;
-        }
-        while(comprobarIdAcuario(contadorAcuatico));
 
 
         AcuaticoEntityDto habita=new AcuaticoEntityDto(contadorHabita, TipoAgua.SALADA,contadorAcuatico);
@@ -93,14 +84,7 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
 
     @Override
     public AnfibioEntityDto crearHabitaAnfibio() {
-        do {
-            contadorHabita++;
-        }
-        while(comprobarIdHabita(contadorHabita));
-        do {
-            contadorAnfibio++;
-        }
-        while(comprobarIdAnfibio(contadorAnfibio));
+
 
 
         AnfibioEntityDto habita=new AnfibioEntityDto(contadorHabita,2,contadorAnfibio);
@@ -123,16 +107,9 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
 
     @Override
     public TerrestreEntityDto crearHabitaTerrestre() {
-        do {
-            contadorHabita++;
-        }
-        while(comprobarIdHabita(contadorHabita));
-        do {
-            contadorTerrestre++;
-        }
-        while(comprobarIdTerrestre(contadorTerrestre));
 
-        TerrestreEntityDto habita=new TerrestreEntityDto(contadorHabita,2,2,contadorAnfibio);
+
+        TerrestreEntityDto habita=new TerrestreEntityDto(TipoHabitat.TERRESTRE,2);
 
 
         List<AnimalEntityDto> animales=new ArrayList<>();
@@ -161,17 +138,29 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
 //        almacenSingleton.setAlmacenComida(almacenComidaEntityDto1);
         return almacenSingleton;
     }
-    public boolean comprobarIdHabita(int id){
-        return (habita.buscarPorId(id)!=null)?true:false;
-    }
-    public boolean comprobarIdAcuario(int id){
 
-        return (habitaAcuatio.buscarPorId(id)!=null)?true:false;
+@Override
+    public List<BebederoEntityDto> crearBebederos(int numBebederos){
+    List<BebederoEntityDto> bebederos=new ArrayList<>();
+
+    for(int i=0;i<numBebederos;i++){
+            BebederoEntityDto bebedero = new BebederoEntityDto(50);
+            bebederoDAO.guardarBebedero(bebedero);
+            bebederos.add(bebedero);
+
+        }
+    return bebederos;
     }
-    public boolean comprobarIdTerrestre(int id){
-        return (habitaTerrestre.buscarPorId(id)!=null)?true:false;
+    @Override
+    public List<ComederoEntityDto> crearComederos(int numComederos, TipoComida tipo){
+        List<ComederoEntityDto> comederos=new ArrayList<>();
+        for(int i=0;i<numComederos;i++){
+            ComederoEntityDto comedero=new ComederoEntityDto(50,tipo);
+            comederoDAO.guardarComedero(comedero);
+            comederos.add(comedero);
+
+        }
+        return  comederos;
     }
-    public boolean comprobarIdAnfibio(int id){
-        return (habitaanfibio.encontrarPorId(id)!=null)?true:false;
-    }
+
 }

@@ -27,4 +27,6 @@ public interface IAccionesJefe extends IAccionesEmpleado {
 
 	public void contratarEmpleado(TrabajadorEntityDto empleadoNuevo, TipoPersona tipo);
 	public void modificarEmpleado(int empleado_id, TipoPersona tipo);
+	void cargar();
+
 }

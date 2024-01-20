@@ -11,15 +11,15 @@ import java.lang.reflect.Proxy;
 @Component
 public class FactoryMethodProxyConcreto  implements FactoryMethodProxy{
     @Override
-    public Zooftware devolverProxy(TipoPersona tipo) {
+    public IAccionesJefe devolverProxy(TipoPersona tipo) {
 
         switch (tipo){
             case EMPLEADO :
-                return (Zooftware) Proxy.newProxyInstance(IAccionesEmpleado.class.getClassLoader(),Zooftware.class.getInterfaces(),new ProxyEmpleado(new Zooftware()));
+                return (IAccionesJefe) Proxy.newProxyInstance(IAccionesEmpleado.class.getClassLoader(),Zooftware.class.getInterfaces(),new ProxyEmpleado(new Zooftware()));
             case CLIENTE:
-                return (Zooftware) Proxy.newProxyInstance(IAccionesCliente.class.getClassLoader(),Zooftware.class.getInterfaces(),new ProxyCliente(new Zooftware()));
+                return (IAccionesJefe) Proxy.newProxyInstance(IAccionesCliente.class.getClassLoader(),Zooftware.class.getInterfaces(),new ProxyCliente(new Zooftware()));
             case JEFE:
-                return (Zooftware) Proxy.newProxyInstance(IAccionesJefe.class.getClassLoader(),Zooftware.class.getInterfaces(),new ProxyJefe(new Zooftware()));
+                return (IAccionesJefe) Proxy.newProxyInstance(IAccionesJefe.class.getClassLoader(),Zooftware.class.getInterfaces(),new ProxyJefe(new Zooftware()));
             default:break;
 
         }

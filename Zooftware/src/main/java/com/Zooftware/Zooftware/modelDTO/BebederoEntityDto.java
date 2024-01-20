@@ -13,35 +13,20 @@ public class BebederoEntityDto implements Serializable {
     private int id;
     private int cantidad;
 
-    private HabitatEntityDto habitatEntityDto;
-
-    public BebederoEntityDto(int id, int cantidad, HabitatEntityDto habitatEntityDto) {
+   private HabitatEntityDto habitatEntityDto;
+   @Default
+    public BebederoEntityDto(int id, int cantidad) {
         this.id = id;
         this.cantidad = cantidad;
-        this.habitatEntityDto = habitatEntityDto;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        BebederoEntityDto that = (BebederoEntityDto) o;
-        return getId() == that.getId() && getCantidad() == that.getCantidad() && Objects.equals(getHabitatEntity(), that.getHabitatEntity());
+
+    public BebederoEntityDto(int cantidad) {
+        this.cantidad = cantidad;
     }
 
-    @Override
-    public String toString() {
-        return "BebederoEntityDto{" +
-                "id=" + id +
-                ", cantidad=" + cantidad +
-                ", habitatEntity=" + habitatEntityDto +
-                '}';
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getCantidad(), getHabitatEntity());
-    }
+
 
     public int getId() {
         return id;

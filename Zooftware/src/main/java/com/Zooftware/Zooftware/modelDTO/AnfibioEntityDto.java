@@ -19,7 +19,6 @@ public class AnfibioEntityDto  extends HabitatEntityDto implements Serializable 
         super(id, TipoHabitat.ANFIBIO, null, null, null, null);
         this.numComedores = numComedores;
         this.id = id1;
-        super.crearComederos(numComedores, TipoComida.OMNIVORA);
     }
 
     @Default
@@ -27,6 +26,11 @@ public class AnfibioEntityDto  extends HabitatEntityDto implements Serializable 
         super(id, tipoHabitat, bebederos, comederos, animales, plantas);
         this.numComedores = numComedores;
         this.id = id1;
+    }
+
+    public AnfibioEntityDto(TipoHabitat tipoHabitat, int numComedores) {
+        super(tipoHabitat);
+        this.numComedores = numComedores;
     }
 
     public int getNumComedores() {

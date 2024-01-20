@@ -8,10 +8,7 @@ import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoPersona;
 import com.Zooftware.Zooftware.patrones.facade.Zooftware;
 import com.Zooftware.Zooftware.patrones.factoryMethod.FactoryMethodProxy;
-import com.Zooftware.Zooftware.patrones.proxy.IAccionesCliente;
-import com.Zooftware.Zooftware.patrones.proxy.IAccionesEmpleado;
-import com.Zooftware.Zooftware.patrones.proxy.IAccionesJefe;
-import com.Zooftware.Zooftware.patrones.proxy.ProxyEmpleado;
+import com.Zooftware.Zooftware.patrones.proxy.*;
 import com.Zooftware.Zooftware.service.persona.PersonaService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +21,7 @@ import java.awt.*;
 import java.lang.reflect.Proxy;
 import java.util.List;
 
-@Controller
-@RequestMapping("/zooftware")
+@RestController
 public class ZooftwareControler  {
     @Autowired
     private PersonaService personaService;
@@ -33,17 +29,20 @@ public class ZooftwareControler  {
     @Autowired
     FactoryMethodProxy factoryMethodProxy;
     TipoPersona tipo;
-
     @Autowired
-    Zooftware zoo;
+    IAccionesJefe zoo;
 
     @GetMapping("/mostrar")
     public ModelAndView mostrarLogin(){
         ModelAndView modelAndView = new ModelAndView("login");
         return modelAndView;
     }
-
-
+    @GetMapping("/cargar")
+    public void cargar(){
+        //zoo=(IAccionesJefe) Proxy.newProxyInstance(IAccionesJefe.class.getClassLoader(),Zooftware.class.getInterfaces(),new ProxyJefe(new Zooftware()));
+        zoo=factoryMethodProxy.devolverProxy(TipoPersona.JEFE);
+        zoo.cargar();
+    }
     @GetMapping("/validarInicioSesion")
     public String validarInicioSesion(@RequestParam(name = "user") String username, @RequestParam(name = "password") String password, HttpSession session){
 
@@ -54,7 +53,7 @@ public class ZooftwareControler  {
                 case "JEFE":
                     session.setAttribute("user",(PersonaEntityDto)personaService.getJefeByUsername(username));
                     tipo =TipoPersona.JEFE;
-                   // zoo=factoryMethodProxy.devolverProxy(tipo);
+                    zoo=factoryMethodProxy.devolverProxy(tipo);
                     return "redirect:/jefe/home/mostrar";
                 case "EMPLEADO":
                     tipo =TipoPersona.EMPLEADO;
