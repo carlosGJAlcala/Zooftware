@@ -1,5 +1,6 @@
 package com.Zooftware.Zooftware.modelJPA.persona;
 
+import com.Zooftware.Zooftware.modelJPA.enums.Rol;
 import com.Zooftware.Zooftware.modelJPA.mensajeria.MensajeEntity;
 import jakarta.persistence.*;
 
@@ -30,13 +31,29 @@ public abstract class TrabajadorEntity extends PersonaEntity {
     public TrabajadorEntity() {
     }
 
-    public TrabajadorEntity(long numeroSeguridadSocial, boolean activo, Date fechaInicioContrato, Date fechaFinContrato, List<MensajeEntity> mensaje, double salario) {
+    public TrabajadorEntity(String password,String username,String apellidos,String dni,int edad,String nombre,long numeroSeguridadSocial, boolean activo, Date fechaInicioContrato, Date fechaFinContrato, List<MensajeEntity> mensaje, double salario) {
+        super.setDni(dni);
+        super.setPassword(password);
+        super.setApellidos(apellidos);
+        super.setUsername(username);
         this.numeroSeguridadSocial = numeroSeguridadSocial;
         this.activo = activo;
         this.fechaInicioContrato = fechaInicioContrato;
         this.fechaFinContrato = fechaFinContrato;
         this.mensaje = mensaje;
         this.salario = salario;
+
+    }
+
+    public TrabajadorEntity(int id, String apellidos, String dni, int edad, String nombre, String username, String password, Rol rol, ContactoEntity contactoEntity, long numeroSeguridadSocial, boolean activo, Date fechaInicioContrato, Date fechaFinContrato, List<MensajeEntity> mensaje, double salario, JefeEntity jefe) {
+        super(id, apellidos, dni, edad, nombre, username, password, rol, contactoEntity);
+        this.numeroSeguridadSocial = numeroSeguridadSocial;
+        this.activo = activo;
+        this.fechaInicioContrato = fechaInicioContrato;
+        this.fechaFinContrato = fechaFinContrato;
+        this.mensaje = mensaje;
+        this.salario = salario;
+        this.jefe = jefe;
     }
 
     public double getSalario() {
