@@ -14,13 +14,13 @@ public class PlantaEntity {
 
     @ManyToOne
     @JoinColumn(name = "habitat_id")
-    private HabitatEntity habitatEntity;
+    private HabitatEntity habitat;
 
     public PlantaEntity(){}
 
-    public PlantaEntity(String nombre, HabitatEntity habitatEntity) {
+    public PlantaEntity(String nombre, HabitatEntity habitat) {
         this.nombre = nombre;
-        this.habitatEntity = habitatEntity;
+        this.habitat = habitat;
     }
 
     public int getId() {
@@ -40,10 +40,10 @@ public class PlantaEntity {
     }
 
     public HabitatEntity getHabitatEntity() {
-        return habitatEntity;
+        return habitat;
     }
 
-    public void setHabitatEntity(HabitatEntity habitatEntity) {
-        this.habitatEntity = habitatEntity;
+    public void setHabitatEntity(HabitatEntity habitat) {
+        this.habitat = habitat;
     }
 }

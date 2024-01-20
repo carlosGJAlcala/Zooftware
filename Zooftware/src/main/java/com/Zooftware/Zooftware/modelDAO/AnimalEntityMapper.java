@@ -8,6 +8,8 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface AnimalEntityMapper {
     AnimalEntityMapper mapper= Mappers.getMapper(AnimalEntityMapper.class);
+
+
     AnimalEntity toEntity(AnimalEntityDto animalEntityDto);
 
     AnimalEntityDto toDto(AnimalEntity animalEntity);

@@ -21,7 +21,7 @@ public class AnfibioDAOImpl implements IAnfibioDAO {
 
         Optional<AnfibioEntity> optional = repository.findById(id);
         if (optional.isPresent()) {
-            AnfibioEntityDto anfibio= AnfibioEntityMapper.INSTANCE.toDto((optional.get()));
+            AnfibioEntityDto anfibio= AnfibioEntityMapper.mapper.toDto((optional.get()));
             return anfibio;
         }
 
@@ -31,15 +31,16 @@ public class AnfibioDAOImpl implements IAnfibioDAO {
     @Override
     public void actualizar(AnfibioEntityDto anfibio) {
         repository.deleteById(anfibio.getId());
-        AnfibioEntity anfibioEntity=AnfibioEntityMapper.INSTANCE.toEntity(anfibio);
+        AnfibioEntity anfibioEntity=AnfibioEntityMapper.mapper.toEntity(anfibio);
         repository.save(anfibioEntity);
     }
 
     @Override
-    public void guardar(AnfibioEntityDto anfibio) {
+    public AnfibioEntity guardar(AnfibioEntityDto anfibio) {
+        //guardamos habitat anfibio
 
-        AnfibioEntity anfibioEntity=AnfibioEntityMapper.INSTANCE.toEntity(anfibio);
-        repository.save(anfibioEntity);
+        AnfibioEntity anfibioEntity=AnfibioEntityMapper.mapper.toEntity(anfibio);
+        return repository.save(anfibioEntity);
 
     }
 

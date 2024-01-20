@@ -12,26 +12,24 @@ import java.util.Objects;
  * DTO for {@link AnimalEntity}
  */
 public class AnimalEntityDto implements Serializable {
+    private int id;
     private String nombre;
-
     private EstadoAnimal estadoAnimal;
     private TipoAnimal tipo;
-    private int id;
-
+    private HabitatEntityDto habitat;
     private int numExtremidades;
     private int salud;
     private int sed;
     private int suenio;
     private int hambre;
-    private HabitatEntityDto habitatEntityDto;
 
     @Default
-    public AnimalEntityDto(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, int id, int numExtremidades, int salud, int sed, int suenio, int hambre) {
+    public AnimalEntityDto(int id,String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, HabitatEntityDto habitat, int numExtremidades, int salud, int sed, int suenio, int hambre) {
+        this.id = id;
         this.nombre = nombre;
         this.estadoAnimal = estadoAnimal;
         this.tipo = tipo;
-        this.id = id;
-        this.habitatEntityDto = null;
+        this.habitat = habitat;
         this.numExtremidades = numExtremidades;
         this.salud = salud;
         this.sed = sed;
@@ -49,6 +47,7 @@ public class AnimalEntityDto implements Serializable {
                 ", estadoAnimal=" + estadoAnimal +
                 ", tipo=" + tipo +
                 ", id=" + id +
+                ", habitatEntityDto=" + habitat +
                 ", numExtremidades=" + numExtremidades +
                 ", salud=" + salud +
                 ", sed=" + sed +
@@ -62,12 +61,12 @@ public class AnimalEntityDto implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AnimalEntityDto that = (AnimalEntityDto) o;
-        return getId() == that.getId() && getNumExtremidades() == that.getNumExtremidades() && getSalud() == that.getSalud() && getSed() == that.getSed() && getSuenio() == that.getSuenio() && getHambre() == that.getHambre() && Objects.equals(getNombre(), that.getNombre()) && getEstadoAnimal() == that.getEstadoAnimal() && getTipo() == that.getTipo() && Objects.equals(getHabitatEntityDto(), that.getHabitatEntityDto());
+        return getId() == that.getId() && getNumExtremidades() == that.getNumExtremidades() && getSalud() == that.getSalud() && getSed() == that.getSed() && getSuenio() == that.getSuenio() && getHambre() == that.getHambre() && Objects.equals(getNombre(), that.getNombre()) && getEstadoAnimal() == that.getEstadoAnimal() && getTipo() == that.getTipo() && Objects.equals(getHabitat(), that.getHabitat());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getNombre(), getEstadoAnimal(), getTipo(), getId(), getHabitatEntityDto(), getNumExtremidades(), getSalud(), getSed(), getSuenio(), getHambre());
+        return Objects.hash(getNombre(), getEstadoAnimal(), getTipo(), getId(), getHabitat(), getNumExtremidades(), getSalud(), getSed(), getSuenio(), getHambre());
     }
 
     public String getNombre() {
@@ -102,12 +101,12 @@ public class AnimalEntityDto implements Serializable {
         this.id = id;
     }
 
-    public HabitatEntityDto getHabitatEntityDto() {
-        return habitatEntityDto;
+    public HabitatEntityDto getHabitat() {
+        return habitat;
     }
 
-    public void setHabitatEntityDto(HabitatEntityDto habitatEntityDto) {
-        this.habitatEntityDto = habitatEntityDto;
+    public void setHabitat(HabitatEntityDto habitat) {
+        this.habitat = habitat;
     }
 
     public int getNumExtremidades() {

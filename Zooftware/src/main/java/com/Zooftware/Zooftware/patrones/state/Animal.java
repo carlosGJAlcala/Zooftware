@@ -1,16 +1,19 @@
 package com.Zooftware.Zooftware.patrones.state;
 
 import com.Zooftware.Zooftware.modelDTO.AnimalEntityDto;
+import com.Zooftware.Zooftware.modelDTO.Default;
 import com.Zooftware.Zooftware.modelDTO.HabitatEntityDto;
 import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoAnimal;
 
 public class Animal extends AnimalEntityDto {
 
+    private int id;
     private Estado estadoActual; // Estado actual
     int salud;
     int comida;
     int suenio;
+
 //    public Animal(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, int id) {
 //        super(nombre, estadoAnimal, tipo, id);
 //        if(estadoAnimal==EstadoAnimal.FELIZ){
@@ -23,10 +26,51 @@ public class Animal extends AnimalEntityDto {
 //        suenio = 0;
 //    }
 
+//
+//    public Animal(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, int id, int numExtremidades, int salud, int sed, int suenio, int hambre) {
+//        super(nombre, estadoAnimal, tipo, numExtremidades, salud, sed, suenio, hambre);
+//
+//        if(estadoAnimal==EstadoAnimal.FELIZ){
+//            this.estadoActual=new EstadoFeliz();
+//        }else {
+//            this.estadoActual=new EstadoTriste();
+//        }
+//        this.comida = 50;
+//        this.salud = 50;
+//        this.suenio = 0;
+//    }
+//
+//
+////
+//    public Animal(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, HabitatEntityDto habitatEntityDto,int numExtremidades, int salud, int sed, int suenio, int hambre) {
+//        super(nombre, estadoAnimal, tipo, numExtremidades, salud, sed, suenio, hambre);
+//
+//        if(estadoAnimal==EstadoAnimal.FELIZ){
+//            this.estadoActual=new EstadoFeliz();
+//        }else {
+//            this.estadoActual=new EstadoTriste();
+//        }
+//        this.comida = 50;
+//        this.salud = 50;
+//        this.suenio = 0;
+//    }
 
+
+//    public Animal(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, HabitatEntityDto habitat, int numExtremidades, int salud, int sed, int suenio, int hambre, Estado estadoActual, int salud1, int comida, int suenio1) {
+//        super(nombre, estadoAnimal, tipo, habitat, numExtremidades, salud, sed, suenio, hambre);
+//        if(estadoAnimal==EstadoAnimal.FELIZ){
+//            this.estadoActual=new EstadoFeliz();
+//        }else {
+//            this.estadoActual=new EstadoTriste();
+//        }
+//        this.comida = 50;
+//        this.salud = 50;
+//        this.suenio = 0;
+//    }
+
+    @Default
     public Animal(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, int id, int numExtremidades, int salud, int sed, int suenio, int hambre) {
-        super(nombre, estadoAnimal, tipo, id,  numExtremidades, salud, sed, suenio, hambre);
-
+        super(id, nombre, estadoAnimal, tipo, null, numExtremidades, salud, sed, suenio, hambre);
         if(estadoAnimal==EstadoAnimal.FELIZ){
             this.estadoActual=new EstadoFeliz();
         }else {
@@ -37,6 +81,34 @@ public class Animal extends AnimalEntityDto {
         this.suenio = 0;
     }
 
+    public Animal(int id, Estado estadoActual, int salud, int comida, int suenio) {
+        this.id = id;
+        this.estadoActual = estadoActual;
+        this.salud = salud;
+        this.comida = comida;
+        this.suenio = suenio;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Estado getEstadoActual() {
+        return estadoActual;
+    }
+
+    public Animal(Estado estadoActual, int salud, int comida, int suenio) {
+        this.estadoActual = estadoActual;
+        this.salud = salud;
+        this.comida = comida;
+        this.suenio = suenio;
+    }
     public void darComida(int cantidad) {
         comida += cantidad;
         if (comida > 100) {

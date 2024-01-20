@@ -5,9 +5,10 @@ import com.Zooftware.Zooftware.modelJPA.instalaciones.AnfibioEntity;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+@Mapper
 public interface AnfibioEntityMapper {
-    AnfibioEntityMapper INSTANCE= Mappers.getMapper(AnfibioEntityMapper.class);
+    AnfibioEntityMapper mapper= Mappers.getMapper(AnfibioEntityMapper.class);
+
     AnfibioEntity toEntity(AnfibioEntityDto anfibioEntityDto);
 
     AnfibioEntityDto toDto(AnfibioEntity anfibioEntity);

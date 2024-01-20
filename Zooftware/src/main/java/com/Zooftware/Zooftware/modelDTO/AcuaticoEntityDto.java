@@ -14,18 +14,19 @@ import java.util.Objects;
 public class AcuaticoEntityDto extends HabitatEntityDto implements Serializable {
     private TipoAgua tipoAgua;
     private  int id;
-    @Default
-    public AcuaticoEntityDto(int id, TipoHabitat tipoHabitat, List<BebederoEntityDto> bebederos, List<ComederoEntityDto> comederos, List<AnimalEntityDto> animales, List<PlantaEntityDto> plantas, TipoAgua tipoAgua, int id1) {
-        super(id, tipoHabitat, bebederos, comederos, animales, plantas);
+
+@   Default
+    public AcuaticoEntityDto(TipoHabitat tipoHabitat, TipoAgua tipoAgua) {
+        super(tipoHabitat);
         this.tipoAgua = tipoAgua;
-        this.id = id1;
     }
 
-
-    public AcuaticoEntityDto(int id,  TipoAgua tipoAgua, int id1) {
-        super(id, TipoHabitat.ACUATICO, null, null, null, null);
+    public AcuaticoEntityDto(TipoAgua tipoAgua) {
         this.tipoAgua = tipoAgua;
-        this.id = id1;
+    }
+
+    public TipoAgua getTipoAgua() {
+        return tipoAgua;
     }
 
     public void setTipoAgua(TipoAgua tipoAgua) {
@@ -33,16 +34,13 @@ public class AcuaticoEntityDto extends HabitatEntityDto implements Serializable 
     }
 
     @Override
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public TipoAgua getTipoAgua() {
-        return tipoAgua;
-    }
-
     public int getId() {
         return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

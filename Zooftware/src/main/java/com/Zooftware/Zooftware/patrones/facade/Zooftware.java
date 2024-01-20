@@ -49,9 +49,10 @@ public class Zooftware implements IAccionesJefe {
     @Autowired
     IContactoDAO contactoDAO;
 
-    Contexto contextotarea;
-    @Autowired
-    Estrategia estrategia;
+
+	Contexto contextotarea;
+	@Autowired
+	Estrategia estrategia;
 
     @Autowired
     IAcuaticoDAO habitaAcuatio;
@@ -67,10 +68,14 @@ public class Zooftware implements IAccionesJefe {
     InstalacionFactory fabricadeHabitas;
     Mediator mediator;
 
-    List<TrabajadorEntityDto> trabajadores;
-    List<Animal> animales;
-    List<HabitatEntityDto> habitatEntityDtos;
+	@Autowired
+	InstalacionFactory fabricaHabitas;
+	List<TrabajadorEntityDto> trabajadores;
+	List<Animal> animales;
+	List<HabitatEntityDto> habitatEntityDtos;
+
     private int id_habita;
+
 
     public Zooftware() {
         //fabricaHabitas=new instalacionFactoryConcreta();
@@ -92,12 +97,11 @@ fabricadeHabitas.crearHabitaAnfibio();
 		fabricadeHabitas.crearHabitaAnfibio();
 		fabricadeHabitas.crerAcuarioAguaDulce();*/
 
-
+        fabricadeHabitas.crearHabitaAnfibio();
     }
 
     @Override
     public List<AnimalEntityDto> verAnimales() {
-
         return animalDAO.verAnimales();
     }
 
@@ -195,15 +199,15 @@ fabricadeHabitas.crearHabitaAnfibio();
         switch (tipo) {
             case ANFIBIO:
                 AnfibioEntityDto habita = anfibioDAO.encontrarPorId(id_habita);
-                animal.setHabitatEntityDto(habita);
+                animal.setHabitat(habita);
                 break;
             case ACUATICO:
                 AcuaticoEntityDto habita1 = habitaAcuatio.buscarPorId(id_habita);
-                animal.setHabitatEntityDto(habita1);
+                animal.setHabitat(habita1);
                 break;
             case TERRESTRE:
                 TerrestreEntityDto habita2 = terrestreDAO.buscarPorId(id_habita);
-                animal.setHabitatEntityDto(habita2);
+                animal.setHabitat(habita2);
                 break;
 
         }
@@ -213,36 +217,37 @@ fabricadeHabitas.crearHabitaAnfibio();
 
     }
 
-    @Override
-    public void crearhabita(TipoHabitat tipo) {
+	@Override
+	public void crearhabita(TipoHabitat tipo) {
 
-        HabitatEntityDto habita;
-        switch (tipo) {
-            case ANFIBIO:
-                habita = fabricadeHabitas.crearHabitaAnfibio();
-                habitatEntityDtos.add(habita);
-                //habitatDAO.guardarHabitat(habita);
-                break;
-            case ACTUATICO_DULCE:
-                habita = fabricadeHabitas.crerAcuarioAguaDulce();
-                habitatEntityDtos.add(habita);
-                habitatDAO.guardarHabitat(habita);
-                break;
-            case ACTUATICO_SALADO:
-                habita = fabricadeHabitas.crerAcuarioAguaSalada();
-                habitatEntityDtos.add(habita);
-                habitatDAO.guardarHabitat(habita);
-                break;
-            case TERRESTRE:
-                habita = fabricadeHabitas.crearHabitaTerrestre();
-                habitatEntityDtos.add(habita);
-                habitatDAO.guardarHabitat(habita);
-                break;
+//	HabitatEntityDto habita;
+	switch (tipo){
+		case ANFIBIO :
+			fabricadeHabitas.crearHabitaAnfibio();
+			//habitatEntityDtos.add(habita);
+			//habitatDAO.guardarHabitat(habita);
+			break;
+		case ACTUATICO_DULCE :
+			fabricadeHabitas.crerAcuarioAguaDulce();
+			//habitatEntityDtos.add(habita);
+//			habitatDAO.guardarHabitat(habita);
+			break;
+		case ACTUATICO_SALADO :
+			fabricadeHabitas.crerAcuarioAguaSalada();
+			//habitatEntityDtos.add(habita);
+//			habitatDAO.guardarHabitat(habita);
+			break;
+		case TERRESTRE:
+			fabricadeHabitas.crearHabitaTerrestre();
+			//habitatEntityDtos.add(habita);
+//			habitatDAO.guardarHabitat(habita);
+			break;
 
-        }
+	}
 
 
-    }
+
+	}
 
     @Override
     public void eliminarHabita(int habita_id) {
