@@ -13,7 +13,7 @@ public class AnfibioEntity {
 
     public AnfibioEntity(int id, int numComedores) {
         this.id = id;
-        numComedores = numComedores;
+        this.numComedores = numComedores;
     }
 
     public AnfibioEntity() {

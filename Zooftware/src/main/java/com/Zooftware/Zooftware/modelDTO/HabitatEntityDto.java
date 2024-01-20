@@ -24,17 +24,14 @@ public class HabitatEntityDto implements Serializable {
     private List<PlantaEntityDto> plantas;
 
 
-
-
-    @Default
-    public HabitatEntityDto(int id, TipoHabitat tipoHabitat) {
-        this.id = id;
-        this.tipoHabitat = tipoHabitat;
-        this.comederos= new ArrayList<>();
-        this.bebederos= new ArrayList<>();
-        this.animales = new ArrayList<>();
-        this.plantas = new ArrayList<>();
-    }
+//    public HabitatEntityDto(int id, TipoHabitat tipoHabitat) {
+//        this.id = id;
+//        this.tipoHabitat = tipoHabitat;
+//        this.comederos= new ArrayList<>();
+//        this.bebederos= new ArrayList<>();
+//        this.animales = new ArrayList<>();
+//        this.plantas = new ArrayList<>();
+//    }
 
     public HabitatEntityDto(int id, TipoHabitat tipoHabitat,List<BebederoEntityDto> bebederos, List<ComederoEntityDto> comederos, List<AnimalEntityDto> animales, List<PlantaEntityDto> plantas) {
         this.id = id;
@@ -120,13 +117,13 @@ public class HabitatEntityDto implements Serializable {
 
     void crearBebederos(int numBebederos){
         for(int i=0;i<numBebederos;i++){
-            bebederos.add(new BebederoEntityDto(i,id,0));
+            bebederos.add(new BebederoEntityDto(i,i,this));
 
         }
     }
     void crearComederos(int numComederos, TipoComida tipo){
         for(int i=0;i<numComederos;i++){
-           ComederoEntityDto comedero=new ComederoEntityDto(i,id,numComederos,tipo);
+           ComederoEntityDto comedero=new ComederoEntityDto(i,this,numComederos,tipo, null);
             comederos.add(comedero);
 
         }

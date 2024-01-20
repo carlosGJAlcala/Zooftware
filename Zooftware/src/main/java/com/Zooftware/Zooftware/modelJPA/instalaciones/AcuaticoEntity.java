@@ -28,7 +28,11 @@ public class AcuaticoEntity {
         this.id = id;
     }
 
-    public AcuaticoEntity(int id) {
-        this.id = id;
+    public TipoAgua getTipoAgua() {
+        return tipoAgua;
+    }
+
+    public void setTipoAgua(TipoAgua tipoAgua) {
+        this.tipoAgua = tipoAgua;
     }
 }

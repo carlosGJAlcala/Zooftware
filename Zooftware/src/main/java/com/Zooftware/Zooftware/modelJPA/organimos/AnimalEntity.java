@@ -3,10 +3,11 @@ package com.Zooftware.Zooftware.modelJPA.organimos;
 import com.Zooftware.Zooftware.modelJPA.comida.ComidaEntity;
 import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoAnimal;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.HabitatEntity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "animal", schema = "testbbdd", catalog = "")
+@Table(name = "animal")
 public class AnimalEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,8 +28,13 @@ public class AnimalEntity {
     @Enumerated(EnumType.STRING)
     private EstadoAnimal estadoAnimal;
 
-    public AnimalEntity(int id, ComidaEntity comida, int hambre, String nombre, int numExtremidades, int salud, int sed, int suenio, TipoAnimal tipo, EstadoAnimal estadoAnimal) {
-        this.id = id;
+    @ManyToOne
+    @JoinColumn(name = "habitat_id")
+    private HabitatEntity habitatEntity;
+
+    public AnimalEntity(){}
+
+    public AnimalEntity(ComidaEntity comida, int hambre, String nombre, int numExtremidades, int salud, int sed, int suenio, TipoAnimal tipo, EstadoAnimal estadoAnimal, HabitatEntity habitatEntity) {
         this.comida = comida;
         this.hambre = hambre;
         this.nombre = nombre;
@@ -37,9 +43,9 @@ public class AnimalEntity {
         this.sed = sed;
         this.suenio = suenio;
         this.tipo = tipo;
+        this.estadoAnimal = estadoAnimal;
+        this.habitatEntity = habitatEntity;
     }
-
-    public AnimalEntity(){}
 
     public int getId() {
         return id;
@@ -62,7 +68,7 @@ public class AnimalEntity {
     }
 
     public void setHambre(int hambre) {
-        hambre = hambre;
+        this.hambre = hambre;
     }
 
     public String getNombre() {
@@ -70,11 +76,31 @@ public class AnimalEntity {
     }
 
     public void setNombre(String nombre) {
-        nombre = nombre;
+        this.nombre = nombre;
     }
 
     public int getNumExtremidades() {
         return numExtremidades;
+    }
+
+    public void setNumExtremidades(int numExtremidades) {
+        this.numExtremidades = numExtremidades;
+    }
+
+    public int getSalud() {
+        return salud;
+    }
+
+    public void setSalud(int salud) {
+        this.salud = salud;
+    }
+
+    public int getSed() {
+        return sed;
+    }
+
+    public void setSed(int sed) {
+        this.sed = sed;
     }
 
     public int getSuenio() {
@@ -85,42 +111,6 @@ public class AnimalEntity {
         this.suenio = suenio;
     }
 
-    public EstadoAnimal getEstadoAnimal() {
-        return estadoAnimal;
-    }
-
-    public void setEstadoAnimal(EstadoAnimal estadoAnimal) {
-        this.estadoAnimal = estadoAnimal;
-    }
-
-    public void setNumExtremidades(int numExtremidades) {
-        numExtremidades = numExtremidades;
-    }
-
-    public int getSalud() {
-        return salud;
-    }
-
-    public void setSalud(int salud) {
-        salud = salud;
-    }
-
-    public int getSed() {
-        return sed;
-    }
-
-    public void setSed(int sed) {
-        sed = sed;
-    }
-
-    public int getS() {
-        return suenio;
-    }
-
-    public void setS(int s) {
-        this.suenio = s;
-    }
-
     public TipoAnimal getTipo() {
         return tipo;
     }
@@ -129,5 +119,19 @@ public class AnimalEntity {
         this.tipo = tipo;
     }
 
+    public EstadoAnimal getEstadoAnimal() {
+        return estadoAnimal;
+    }
 
+    public void setEstadoAnimal(EstadoAnimal estadoAnimal) {
+        this.estadoAnimal = estadoAnimal;
+    }
+
+    public HabitatEntity getHabitatEntity() {
+        return habitatEntity;
+    }
+
+    public void setHabitatEntity(HabitatEntity habitatEntity) {
+        this.habitatEntity = habitatEntity;
+    }
 }

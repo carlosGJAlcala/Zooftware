@@ -5,24 +5,36 @@ import com.Zooftware.Zooftware.modelJPA.enums.TipoAgua;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 /**
  * DTO for {@link AcuaticoEntity}
  */
 public class AcuaticoEntityDto extends HabitatEntityDto implements Serializable {
-    private final TipoAgua tipoAgua;
-    private final int id;
-
-
-
+    private TipoAgua tipoAgua;
+    private  int id;
     @Default
-
-    public AcuaticoEntityDto(int id,  TipoAgua tipoAgua, int id1) {
-
-        super(id, TipoHabitat.ACUATICO);
+    public AcuaticoEntityDto(int id, TipoHabitat tipoHabitat, List<BebederoEntityDto> bebederos, List<ComederoEntityDto> comederos, List<AnimalEntityDto> animales, List<PlantaEntityDto> plantas, TipoAgua tipoAgua, int id1) {
+        super(id, tipoHabitat, bebederos, comederos, animales, plantas);
         this.tipoAgua = tipoAgua;
         this.id = id1;
+    }
+
+
+    public AcuaticoEntityDto(int id,  TipoAgua tipoAgua, int id1) {
+        super(id, TipoHabitat.ACUATICO, null, null, null, null);
+        this.tipoAgua = tipoAgua;
+        this.id = id1;
+    }
+
+    public void setTipoAgua(TipoAgua tipoAgua) {
+        this.tipoAgua = tipoAgua;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
     }
 
     public TipoAgua getTipoAgua() {

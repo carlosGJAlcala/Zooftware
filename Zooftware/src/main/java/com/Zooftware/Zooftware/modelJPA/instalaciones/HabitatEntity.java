@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "habitat", schema = "testbbdd", catalog = "")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class HabitatEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,29 +18,23 @@ public class HabitatEntity {
     @Enumerated(EnumType.STRING)
     private TipoHabitat tipoHabitat;
 
-    @OneToMany
-    @JoinColumn(name = "comedero_id")
-    private List<ComederoEntity> comedero;
-    @OneToMany
-    @JoinColumn(name = "bebedero_id")
-    private List<BebederoEntity> bebedero;
-    @OneToMany
-    @JoinColumn(name = "animal_id")
+    @OneToMany(mappedBy = "habitatEntity")
+    private List<ComederoEntity> comederos;
+    @OneToMany(mappedBy = "habitatEntity")
+    private List<BebederoEntity> bebederos;
+    @OneToMany(mappedBy = "habitatEntity")
     private List<AnimalEntity> animales;
-    @OneToMany
-    @JoinColumn(name = "plantas_id")
+    @OneToMany(mappedBy = "habitatEntity")
     private List<PlantaEntity> plantas;
 
-    public HabitatEntity(int id, TipoHabitat tipoHabitat, List<ComederoEntity> comedero, List<BebederoEntity> bebedero, List<AnimalEntity> animales, List<PlantaEntity> plantas) {
-        this.id = id;
+    public HabitatEntity(){}
+
+    public HabitatEntity(TipoHabitat tipoHabitat, List<ComederoEntity> comederos, List<BebederoEntity> bebederos, List<AnimalEntity> animales, List<PlantaEntity> plantas) {
         this.tipoHabitat = tipoHabitat;
-        this.comedero = comedero;
-        this.bebedero = bebedero;
+        this.comederos = comederos;
+        this.bebederos = bebederos;
         this.animales = animales;
         this.plantas = plantas;
-    }
-
-    public HabitatEntity() {
     }
 
     public int getId() {
@@ -58,20 +53,20 @@ public class HabitatEntity {
         this.tipoHabitat = tipoHabitat;
     }
 
-    public List<ComederoEntity> getComedero() {
-        return comedero;
+    public List<ComederoEntity> getComederos() {
+        return comederos;
     }
 
-    public void setComedero(List<ComederoEntity> comedero) {
-        this.comedero = comedero;
+    public void setComedero(List<ComederoEntity> comederos) {
+        this.comederos = comederos;
     }
 
-    public List<BebederoEntity> getBebedero() {
-        return bebedero;
+    public List<BebederoEntity> getBebederos() {
+        return bebederos;
     }
 
-    public void setBebedero(List<BebederoEntity> bebedero) {
-        this.bebedero = bebedero;
+    public void setBebedero(List<BebederoEntity> bebederos) {
+        this.bebederos = bebederos;
     }
 
     public List<AnimalEntity> getAnimales() {

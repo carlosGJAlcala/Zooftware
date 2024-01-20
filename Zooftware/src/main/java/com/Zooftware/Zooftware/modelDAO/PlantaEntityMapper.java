@@ -7,7 +7,7 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper
 public interface PlantaEntityMapper {
-    PlantaEntityMapper mapper = Mappers.getMapper(PlantaEntityMapper.class);
+    PlantaEntityMapper mapper= Mappers.getMapper(PlantaEntityMapper.class);
     PlantaEntity toEntity(PlantaEntityDto plantaEntityDto);
 
     PlantaEntityDto toDto(PlantaEntity plantaEntity);

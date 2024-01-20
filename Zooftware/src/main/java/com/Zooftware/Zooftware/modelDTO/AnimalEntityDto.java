@@ -2,6 +2,7 @@ package com.Zooftware.Zooftware.modelDTO;
 
 import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoAnimal;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.HabitatEntity;
 import com.Zooftware.Zooftware.modelJPA.organimos.AnimalEntity;
 
 import java.io.Serializable;
@@ -11,79 +12,145 @@ import java.util.Objects;
  * DTO for {@link AnimalEntity}
  */
 public class AnimalEntityDto implements Serializable {
-    private final String nombre;
+    private String nombre;
 
-    private final EstadoAnimal estadoAnimal;
-    private final TipoAnimal tipo;
-    private  int id;
+    private EstadoAnimal estadoAnimal;
+    private TipoAnimal tipo;
+    private int id;
 
+    private HabitatEntityDto habitatEntityDto;
+    private int numExtremidades;
+    private int salud;
+    private int sed;
+    private int suenio;
+    private int hambre;
 
-
-
-@Default
-    public AnimalEntityDto( String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, int id) {
+    @Default
+    public AnimalEntityDto(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, int id, HabitatEntityDto habitatEntityDto, int numExtremidades, int salud, int sed, int suenio, int hambre) {
         this.nombre = nombre;
         this.estadoAnimal = estadoAnimal;
         this.tipo = tipo;
         this.id = id;
-
-
-
+        this.habitatEntityDto = habitatEntityDto;
+        this.numExtremidades = numExtremidades;
+        this.salud = salud;
+        this.sed = sed;
+        this.suenio = suenio;
+        this.hambre = hambre;
     }
 
-    public AnimalEntityDto( String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo) {
+    public AnimalEntityDto(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo){
         this.nombre = nombre;
         this.estadoAnimal = estadoAnimal;
         this.tipo = tipo;
-
-
-
-    }
-    public String getNombre() {
-        return nombre;
     }
 
-
-
-
-    public EstadoAnimal getEstadoAnimal() {
-        return estadoAnimal;
+    @Override
+    public String toString() {
+        return "AnimalEntityDto{" +
+                "nombre='" + nombre + '\'' +
+                ", estadoAnimal=" + estadoAnimal +
+                ", tipo=" + tipo +
+                ", id=" + id +
+                ", habitatEntityDto=" + habitatEntityDto +
+                ", numExtremidades=" + numExtremidades +
+                ", salud=" + salud +
+                ", sed=" + sed +
+                ", suenio=" + suenio +
+                ", hambre=" + hambre +
+                '}';
     }
-
-
-    public int getId() {
-        return id;
-    }
-
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AnimalEntityDto entity = (AnimalEntityDto) o;
-        return
-                Objects.equals(this.nombre, entity.nombre) &&
-
-                Objects.equals(this.estadoAnimal, entity.estadoAnimal) &&
-                Objects.equals(this.tipo, entity.tipo) &&
-                Objects.equals(this.id, entity.id);
+        AnimalEntityDto that = (AnimalEntityDto) o;
+        return getId() == that.getId() && getNumExtremidades() == that.getNumExtremidades() && getSalud() == that.getSalud() && getSed() == that.getSed() && getSuenio() == that.getSuenio() && getHambre() == that.getHambre() && Objects.equals(getNombre(), that.getNombre()) && getEstadoAnimal() == that.getEstadoAnimal() && getTipo() == that.getTipo() && Objects.equals(getHabitatEntityDto(), that.getHabitatEntityDto());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( nombre, estadoAnimal, tipo, id);
+        return Objects.hash(getNombre(), getEstadoAnimal(), getTipo(), getId(), getHabitatEntityDto(), getNumExtremidades(), getSalud(), getSed(), getSuenio(), getHambre());
     }
 
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + "(" +
-                "nombre = " + nombre + ", " +
-                "estadoAnimal = " + estadoAnimal + ", " +
-                "tipo = " + tipo + ", " +
-                "id = " + id ;
+    public String getNombre() {
+        return nombre;
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
+    public EstadoAnimal getEstadoAnimal() {
+        return estadoAnimal;
+    }
 
+    public void setEstadoAnimal(EstadoAnimal estadoAnimal) {
+        this.estadoAnimal = estadoAnimal;
+    }
 
+    public TipoAnimal getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoAnimal tipo) {
+        this.tipo = tipo;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public HabitatEntityDto getHabitatEntityDto() {
+        return habitatEntityDto;
+    }
+
+    public void setHabitatEntityDto(HabitatEntityDto habitatEntityDto) {
+        this.habitatEntityDto = habitatEntityDto;
+    }
+
+    public int getNumExtremidades() {
+        return numExtremidades;
+    }
+
+    public void setNumExtremidades(int numExtremidades) {
+        this.numExtremidades = numExtremidades;
+    }
+
+    public int getSalud() {
+        return salud;
+    }
+
+    public void setSalud(int salud) {
+        this.salud = salud;
+    }
+
+    public int getSed() {
+        return sed;
+    }
+
+    public void setSed(int sed) {
+        this.sed = sed;
+    }
+
+    public int getSuenio() {
+        return suenio;
+    }
+
+    public void setSuenio(int suenio) {
+        this.suenio = suenio;
+    }
+
+    public int getHambre() {
+        return hambre;
+    }
+
+    public void setHambre(int hambre) {
+        this.hambre = hambre;
+    }
 }
