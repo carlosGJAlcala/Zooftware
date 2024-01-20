@@ -183,7 +183,7 @@ fabricadeHabitas.crearHabitaAnfibio();
 		case ANFIBIO :
 			habita=fabricadeHabitas.crearHabitaAnfibio();
 			habitatEntityDtos.add(habita);
-			habitatDAO.guardarHabitat(habita);
+			//habitatDAO.guardarHabitat(habita);
 			break;
 		case ACTUATICO_DULCE :
 			habita=fabricadeHabitas.crerAcuarioAguaDulce();

@@ -37,6 +37,11 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
     IComederoDAO comederoDAO;
 
     @Autowired
+    IAnimalDAO iAnimalDAO;
+    @Autowired
+    IPlantaDAO iPlantaDAO;
+
+    @Autowired
     IHabitatDAO habita;
 
     FactoryMethodAnimal factoryMethodAnimal=new FactoryAnimalesConcreto();
@@ -85,23 +90,36 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
     @Override
     public AnfibioEntityDto crearHabitaAnfibio() {
 
-
-
         AnfibioEntityDto habita=new AnfibioEntityDto(contadorHabita,2,contadorAnfibio);
-
         List<AnimalEntityDto> animales=new ArrayList<>();
         List<PlantaEntityDto> plantas=new ArrayList<>();
 
-        animales.add(factoryMethodAnimal.crearAnimalAnfibio());
-        animales.add(factoryMethodAnimal.crearAnimalAnfibio());
+        AnimalEntityDto animal1 = factoryMethodAnimal.crearAnimalAnfibio();
+        animal1.setHabitatEntityDto(habita);
+        animales.add(animal1);
 
-        plantas.add(factoryMethodAnimal.plantaAnfibia());
-        plantas.add(factoryMethodAnimal.plantaAnfibia());
+        AnimalEntityDto animal2 = factoryMethodAnimal.crearAnimalAnfibio();
+        animal1.setHabitatEntityDto(habita);
+        animales.add(animal2);
+
+        PlantaEntityDto planta1 = factoryMethodAnimal.plantaAnfibia();
+        planta1.setHabitatEntityDto(habita);
+        plantas.add(planta1);
+
+        PlantaEntityDto planta2 = factoryMethodAnimal.plantaAnfibia();
+        planta2.setHabitatEntityDto(habita);
+        plantas.add(planta2);
 
         habita.setAnimales(animales);
         habita.setPlantas(plantas);
 
         habitaanfibio.guardar(habita);
+        iAnimalDAO.guardarAnimal(animal1);
+        iAnimalDAO.guardarAnimal(animal2);
+
+        iPlantaDAO.guardarPlanta(planta1);
+        iPlantaDAO.guardarPlanta(planta2);
+
         return habita;
     }
 
