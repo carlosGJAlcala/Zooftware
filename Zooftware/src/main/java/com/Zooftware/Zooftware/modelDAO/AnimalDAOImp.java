@@ -54,6 +54,12 @@ public class AnimalDAOImp implements  IAnimalDAO{
         animalJPA.save(animalEntity);
     }
 
+    public List<AnimalEntityDto> verAnimales(){
+        List<AnimalEntity> animalesentity=  animalJPA.findAll();
+        List<AnimalEntityDto> animalEntityDtoList =animalesentity.stream().map(animalEntityMapper::toDto).collect(Collectors.toList());
+        return animalEntityDtoList;
+    }
+
     @Override
     public void eliminarAnimalPorId(int id) {
         animalJPA.deleteById(id);

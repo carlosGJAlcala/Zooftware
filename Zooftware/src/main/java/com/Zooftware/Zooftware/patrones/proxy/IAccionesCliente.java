@@ -17,4 +17,6 @@ public interface IAccionesCliente {
 
 	public List<HabitatEntityDto>  verInstalaciones();
 
+	AnimalEntityDto VerAnimal( int id_animal);
+
 }

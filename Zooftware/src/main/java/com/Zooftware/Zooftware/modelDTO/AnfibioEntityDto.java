@@ -5,6 +5,7 @@ import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
 import com.Zooftware.Zooftware.modelJPA.instalaciones.AnfibioEntity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,6 +18,9 @@ public class AnfibioEntityDto  extends HabitatEntityDto implements Serializable 
 
     public AnfibioEntityDto(int id, int numComedores, int id1) {
         super(id, TipoHabitat.ANFIBIO, null, null, null, null);
+        super.setAnimales(new ArrayList<>());
+        super.setPlantas(new ArrayList<>());
+
         this.numComedores = numComedores;
         this.id = id1;
     }
@@ -24,12 +28,18 @@ public class AnfibioEntityDto  extends HabitatEntityDto implements Serializable 
     @Default
     public AnfibioEntityDto(int id, TipoHabitat tipoHabitat, List<BebederoEntityDto> bebederos, List<ComederoEntityDto> comederos, List<AnimalEntityDto> animales, List<PlantaEntityDto> plantas, int numComedores, int id1) {
         super(id, tipoHabitat, bebederos, comederos, animales, plantas);
+        super.setAnimales(new ArrayList<>());
+        super.setPlantas(new ArrayList<>());
+
         this.numComedores = numComedores;
         this.id = id1;
     }
 
     public AnfibioEntityDto(TipoHabitat tipoHabitat, int numComedores) {
         super(tipoHabitat);
+        super.setAnimales(new ArrayList<>());
+        super.setPlantas(new ArrayList<>());
+
         this.numComedores = numComedores;
     }
 

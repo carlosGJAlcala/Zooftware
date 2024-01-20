@@ -24,9 +24,9 @@ public class Animal extends AnimalEntityDto {
 //    }
 
 
-    public Animal(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, int id, HabitatEntityDto habitatEntityDto, int numExtremidades, int salud, int sed, int suenio, int hambre, Estado estadoActual, int salud1, int comida, int suenio1) {
-        super(nombre, estadoAnimal, tipo, id, habitatEntityDto, numExtremidades, salud, sed, suenio, hambre);
-        this.estadoActual = estadoActual;
+    public Animal(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, int id, int numExtremidades, int salud, int sed, int suenio, int hambre) {
+        super(nombre, estadoAnimal, tipo, id,  numExtremidades, salud, sed, suenio, hambre);
+
         if(estadoAnimal==EstadoAnimal.FELIZ){
             this.estadoActual=new EstadoFeliz();
         }else {

@@ -22,20 +22,20 @@ public class FactoryAnimalesConcreto implements FactoryMethodAnimal {
 
     @Override
     public AnimalEntityDto crearAnimalAcuaticoAguaSalada() {
-        AnimalEntityDto animal=new AnimalEntityDto("Pez Remo", EstadoAnimal.FELIZ, TipoAnimal.ACUATICO);
+        AnimalEntityDto animal=new AnimalEntityDto("Pez Remo",EstadoAnimal.FELIZ,TipoAnimal.ACUATICO,0,4,20,20,20,20);
         //animalDAO.guardarAnimal(animal);
         return  animal;
     }
     @Override
     public AnimalEntityDto crearAnimalAcuaticoAguaDulce() {
-        AnimalEntityDto animal=new AnimalEntityDto("Raya Gigante", EstadoAnimal.FELIZ, TipoAnimal.ACUATICO);
+        AnimalEntityDto animal=new AnimalEntityDto("Pirania",EstadoAnimal.FELIZ,TipoAnimal.ACUATICO,0,4,20,20,20,20);
         //animalDAO.guardarAnimal(animal);
         return  animal;
     }
 
     @Override
     public AnimalEntityDto crearAnimalAnfibio() {
-        AnimalEntityDto animal=new AnimalEntityDto("Ajolote", EstadoAnimal.FELIZ, TipoAnimal.ANFIBIO);
+        AnimalEntityDto animal=new AnimalEntityDto("Cocodrilo",EstadoAnimal.FELIZ,TipoAnimal.ANFIBIO,0,4,20,20,20,20);
         //animalDAO.guardarAnimal(animal);
 
         return animal;
@@ -43,7 +43,7 @@ public class FactoryAnimalesConcreto implements FactoryMethodAnimal {
 
     @Override
     public AnimalEntityDto crearAnimalTerrestre() {
-        AnimalEntityDto animal=new AnimalEntityDto("Elefante", EstadoAnimal.FELIZ, TipoAnimal.TERRESTRE);
+        AnimalEntityDto animal=new AnimalEntityDto("Elefante",EstadoAnimal.FELIZ,TipoAnimal.TERRESTRE,0,4,20,20,20,20);
         //animalDAO.guardarAnimal(animal);
 
         return animal;
@@ -65,7 +65,7 @@ public class FactoryAnimalesConcreto implements FactoryMethodAnimal {
     }
     @Override
     public PlantaEntityDto plantaAnfibia() {
-        PlantaEntityDto planta=new PlantaEntityDto("Manglar");
+        PlantaEntityDto planta=new PlantaEntityDto("Junco");
         //plantaDAO.guardarPlanta(planta);
 
         return planta;

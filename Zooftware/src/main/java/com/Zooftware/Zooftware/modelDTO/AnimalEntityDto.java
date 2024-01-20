@@ -18,20 +18,20 @@ public class AnimalEntityDto implements Serializable {
     private TipoAnimal tipo;
     private int id;
 
-    private HabitatEntityDto habitatEntityDto;
     private int numExtremidades;
     private int salud;
     private int sed;
     private int suenio;
     private int hambre;
+    private HabitatEntityDto habitatEntityDto;
 
     @Default
-    public AnimalEntityDto(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, int id, HabitatEntityDto habitatEntityDto, int numExtremidades, int salud, int sed, int suenio, int hambre) {
+    public AnimalEntityDto(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, int id, int numExtremidades, int salud, int sed, int suenio, int hambre) {
         this.nombre = nombre;
         this.estadoAnimal = estadoAnimal;
         this.tipo = tipo;
         this.id = id;
-        this.habitatEntityDto = habitatEntityDto;
+        this.habitatEntityDto = null;
         this.numExtremidades = numExtremidades;
         this.salud = salud;
         this.sed = sed;
@@ -39,10 +39,7 @@ public class AnimalEntityDto implements Serializable {
         this.hambre = hambre;
     }
 
-    public AnimalEntityDto(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo){
-        this.nombre = nombre;
-        this.estadoAnimal = estadoAnimal;
-        this.tipo = tipo;
+    public AnimalEntityDto() {
     }
 
     @Override
@@ -52,7 +49,6 @@ public class AnimalEntityDto implements Serializable {
                 ", estadoAnimal=" + estadoAnimal +
                 ", tipo=" + tipo +
                 ", id=" + id +
-                ", habitatEntityDto=" + habitatEntityDto +
                 ", numExtremidades=" + numExtremidades +
                 ", salud=" + salud +
                 ", sed=" + sed +
