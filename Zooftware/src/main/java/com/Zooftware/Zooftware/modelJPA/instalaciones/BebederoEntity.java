@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 public class BebederoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
     private int cantidad;
 
@@ -14,11 +15,14 @@ public class BebederoEntity {
     @JoinColumn(name = "habitat_id")
     private HabitatEntity habitatEntity;
 
-    public BebederoEntity(){}
+
 
     public BebederoEntity(int cantidad, HabitatEntity habitatEntity) {
         this.cantidad = cantidad;
         this.habitatEntity = habitatEntity;
+    }
+
+    public BebederoEntity() {
     }
 
     public int getId() {

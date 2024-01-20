@@ -40,7 +40,7 @@ public class ZooftwareControler  {
     @GetMapping("/cargar")
     public void cargar(){
         //zoo=(IAccionesJefe) Proxy.newProxyInstance(IAccionesJefe.class.getClassLoader(),Zooftware.class.getInterfaces(),new ProxyJefe(new Zooftware()));
-        zoo=factoryMethodProxy.devolverProxy(TipoPersona.JEFE);
+       // zoo=factoryMethodProxy.devolverProxy(TipoPersona.JEFE);
         zoo.cargar();
     }
     @GetMapping("/validarInicioSesion")

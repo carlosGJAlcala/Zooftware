@@ -6,6 +6,8 @@ import com.Zooftware.Zooftware.modelDTO.*;
 import com.Zooftware.Zooftware.modelJPA.enums.*;
 import com.Zooftware.Zooftware.patrones.AbstractFactory.InstalacionFactory;
 import com.Zooftware.Zooftware.patrones.AbstractFactory.instalacionFactoryConcreta;
+import com.Zooftware.Zooftware.patrones.factoryMethod.FactoryAnimalesConcreto;
+import com.Zooftware.Zooftware.patrones.factoryMethod.FactoryMethodAnimal;
 import com.Zooftware.Zooftware.patrones.mediator.MediadorConcreto;
 import com.Zooftware.Zooftware.patrones.mediator.Mediator;
 import com.Zooftware.Zooftware.patrones.proxy.IAccionesJefe;
@@ -17,6 +19,7 @@ import com.Zooftware.Zooftware.patrones.strategy.RellenarBebederos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -47,25 +50,30 @@ public class Zooftware implements IAccionesJefe {
 	@Autowired
 	Estrategia estrategia;
 
+	@Autowired
+	IAcuaticoDAO habitaAcuatio;
+
+
+	@Autowired
+	InstalacionFactory fabricadeHabitas;
 	Mediator mediator;
 
-	InstalacionFactory fabricaHabitas;
 	List<TrabajadorEntityDto> trabajadores;
 	List<Animal> animales;
 	List<HabitatEntityDto> habitatEntityDtos;
-
-	InstalacionFactory fabricadeHabitas;
 	public Zooftware() {
-		fabricaHabitas=new instalacionFactoryConcreta();
+		//fabricaHabitas=new instalacionFactoryConcreta();
 		mediator=new MediadorConcreto();
 		contextotarea=new Contexto();
-		fabricadeHabitas= new instalacionFactoryConcreta();
+		//fabricadeHabitas= new instalacionFactoryConcreta();
 
 	}
 	@Override
 	public void cargar(){
-
-		//fabricadeHabitas.crearHabitaAnfibio();
+	/*	fabricadeHabitas.crearHabitaAnfibio();
+		fabricadeHabitas.crerAcuarioAguaSalada();
+		fabricadeHabitas.crerAcuarioAguaDulce();*/
+		fabricadeHabitas.crearHabitaTerrestre();
 		//AnimalEntityDto animalprueba= new AnimalEntityDto("Leon",EstadoAnimal.FELIZ, TipoAnimal.TERRESTRE,1,4,50,50,50,50);
 /*
 fabricadeHabitas.crearHabitaAnfibio();
