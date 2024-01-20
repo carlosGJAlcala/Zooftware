@@ -126,6 +126,7 @@ public class ZooftwareControler  {
     @PostMapping("/rellenarComedero")
     public ModelAndView rellenarComederos(@RequestParam("idHabitat")int habita_id) {
         zoo.rellenarComederos(habita_id);
+        //zoo.crearhabita(TipoHabitat.ANFIBIO);
         ModelAndView model = new ModelAndView();
         return model;
     }
@@ -161,7 +162,7 @@ public class ZooftwareControler  {
     }
 
     public void crearhabita(TipoHabitat tipo) {
-
+        zoo.crearhabita(TipoHabitat.ANFIBIO);
     }
 
     public void eliminarHabita(int habita_id) {
