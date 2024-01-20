@@ -55,6 +55,8 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
 
     @Override
     public AcuaticoEntityDto crerAcuarioAguaDulce() {
+        int numComederos=2;
+
         AcuaticoEntityDto habita=new AcuaticoEntityDto(TipoHabitat.ACUATICO,TipoAgua.DULCE);
 
         AcuaticoEntity acuatico = habitaAcuatio.guardarAcuario(habita);
@@ -70,37 +72,47 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
         planta1.setHabitatEntity(habita);
         PlantaEntityDto planta2= factoryMethodAnimal.plantaAcuaticaAguaDulce();
         planta2.setHabitatEntity(habita);
-        int numComederos=2;
-        AcuaticoEntityDto habita=new AcuaticoEntityDto(contadorHabita,TipoAgua.DULCE,
-                numComederos);
-        List<AnimalEntityDto> animales=new ArrayList<>();
-        List<PlantaEntityDto> plantas=new ArrayList<>();
 
-        AnimalEntityDto animal1 = factoryMethodAnimal.crearAnimalAcuaticoAguaDulce();
-        animal1.setHabitatEntityDto(habita);
-        animales.add(animal1);
 
-        AnimalEntityDto animal2 = factoryMethodAnimal.crearAnimalAcuaticoAguaDulce();
-        animal1.setHabitatEntityDto(habita);
-        animales.add(animal2);
 
-        PlantaEntityDto planta1 = factoryMethodAnimal.plantaAcuaticaAguaDulce();
-        planta1.setHabitatEntityDto(habita);
-        plantas.add(planta1);
 
-        PlantaEntityDto planta2 = factoryMethodAnimal.plantaAcuaticaAguaDulce();
-        planta2.setHabitatEntityDto(habita);
-        plantas.add(planta2);
+//        AcuaticoEntityDto habita=new AcuaticoEntityDto(contadorHabita,TipoAgua.DULCE,                numComederos);
+//        List<AnimalEntityDto> animales=new ArrayList<>();
+//        List<PlantaEntityDto> plantas=new ArrayList<>();
+//
+//        AnimalEntityDto animal1 = factoryMethodAnimal.crearAnimalAcuaticoAguaDulce();
+//        animal1.setHabitatEntityDto(habita);
+//        animales.add(animal1);
+//
+//        AnimalEntityDto animal2 = factoryMethodAnimal.crearAnimalAcuaticoAguaDulce();
+//        animal1.setHabitatEntityDto(habita);
+//        animales.add(animal2);
+//
+//        PlantaEntityDto planta1 = factoryMethodAnimal.plantaAcuaticaAguaDulce();
+//        planta1.setHabitatEntityDto(habita);
+//        plantas.add(planta1);
+//
+//        PlantaEntityDto planta2 = factoryMethodAnimal.plantaAcuaticaAguaDulce();
+//        planta2.setHabitatEntityDto(habita);
+//        plantas.add(planta2);
 
-        List<ComederoEntityDto> comederos= this.crearComederos(numComederos,TipoComida.CARNIVORA);
-        comederos.stream().forEach(comederoEntityDto -> {
-            comederoEntityDto.setHabitatEntityDto(habita);
-            comederoDAO.guardarComedero(comederoEntityDto);
-        });
 
-        habita.setAnimales(animales);
-        habita.setPlantas(plantas);
-        habita.setComederos(comederos);
+
+        //*****
+//        List<ComederoEntityDto> comederos= this.crearComederos(numComederos,TipoComida.CARNIVORA);
+//        comederos.stream().forEach(comederoEntityDto -> {
+//            comederoEntityDto.setHabitat(habita);
+//            comederoDAO.guardarComedero(comederoEntityDto);
+//        });
+
+
+
+//        habita.setAnimales(animales);
+//        habita.setPlantas(plantas);
+//        habita.setComederos(comederos);
+
+
+
 
         iAnimalDAO.guardarAnimal(animal1);
         iAnimalDAO.guardarAnimal(animal2);
@@ -128,37 +140,42 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
         planta1.setHabitatEntity(habita);
         PlantaEntityDto planta2= factoryMethodAnimal.plantaAcuaticaAguaSalada();
         planta2.setHabitatEntity(habita);
-        int numComederos=2;
-        AcuaticoEntityDto habita=new AcuaticoEntityDto(contadorHabita,TipoAgua.SALADA,
-                numComederos);
-        List<AnimalEntityDto> animales=new ArrayList<>();
-        List<PlantaEntityDto> plantas=new ArrayList<>();
 
-        AnimalEntityDto animal1 = factoryMethodAnimal.crearAnimalAcuaticoAguaSalada();
-        animal1.setHabitatEntityDto(habita);
-        animales.add(animal1);
 
-        AnimalEntityDto animal2 = factoryMethodAnimal.crearAnimalAcuaticoAguaSalada();
-        animal1.setHabitatEntityDto(habita);
-        animales.add(animal2);
 
-        PlantaEntityDto planta1 = factoryMethodAnimal.plantaAcuaticaAguaSalada();
-        planta1.setHabitatEntityDto(habita);
-        plantas.add(planta1);
+//        int numComederos=2;
+//        AcuaticoEntityDto habita=new AcuaticoEntityDto(contadorHabita,TipoAgua.SALADA,
+//                numComederos);
+//        List<AnimalEntityDto> animales=new ArrayList<>();
+//        List<PlantaEntityDto> plantas=new ArrayList<>();
+//
+//        AnimalEntityDto animal1 = factoryMethodAnimal.crearAnimalAcuaticoAguaSalada();
+//        animal1.setHabitatEntityDto(habita);
+//        animales.add(animal1);
+//
+//        AnimalEntityDto animal2 = factoryMethodAnimal.crearAnimalAcuaticoAguaSalada();
+//        animal1.setHabitatEntityDto(habita);
+//        animales.add(animal2);
+//
+//        PlantaEntityDto planta1 = factoryMethodAnimal.plantaAcuaticaAguaSalada();
+//        planta1.setHabitatEntityDto(habita);
+//        plantas.add(planta1);
+//
+//        PlantaEntityDto planta2 = factoryMethodAnimal.plantaAcuaticaAguaSalada();
+//        planta2.setHabitatEntityDto(habita);
+//        plantas.add(planta2);
+//
+//        List<ComederoEntityDto> comederos= this.crearComederos(numComederos,TipoComida.CARNIVORA);
+//        comederos.stream().forEach(comederoEntityDto -> {
+//            comederoEntityDto.setHabitatEntityDto(habita);
+//            comederoDAO.guardarComedero(comederoEntityDto);
+//        });
+//
+//        habita.setAnimales(animales);
+//        habita.setPlantas(plantas);
+//        habita.setComederos(comederos);
 
-        PlantaEntityDto planta2 = factoryMethodAnimal.plantaAcuaticaAguaSalada();
-        planta2.setHabitatEntityDto(habita);
-        plantas.add(planta2);
 
-        List<ComederoEntityDto> comederos= this.crearComederos(numComederos,TipoComida.CARNIVORA);
-        comederos.stream().forEach(comederoEntityDto -> {
-            comederoEntityDto.setHabitatEntityDto(habita);
-            comederoDAO.guardarComedero(comederoEntityDto);
-        });
-
-        habita.setAnimales(animales);
-        habita.setPlantas(plantas);
-        habita.setComederos(comederos);
 
         iAnimalDAO.guardarAnimal(animal1);
         iAnimalDAO.guardarAnimal(animal2);
@@ -171,6 +188,10 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
 
     @Override
     public AnfibioEntityDto crearHabitaAnfibio() {
+        int numBebederos=2;
+        int numComederos=2;
+
+
         //Creacion habitat
         AnfibioEntityDto habita=new AnfibioEntityDto(TipoHabitat.ANFIBIO,3);
 
@@ -192,26 +213,36 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
         PlantaEntityDto planta2 = factoryMethodAnimal.plantaAnfibia();
         planta2.setHabitatEntity(habita);
 
-        List<ComederoEntityDto> comederos= this.crearComederos(numComederos,TipoComida.OMNIVORA);
-        comederos.stream().forEach(comederoEntityDto -> {
-            comederoEntityDto.setHabitatEntityDto(habita);
-            comederoDAO.guardarComedero(comederoEntityDto);
-        });
 
-        habita.setAnimales(animales);
-        habita.setPlantas(plantas);
-        habita.setComederos(comederos);
+        ////
+
+//        List<ComederoEntityDto> comederos= this.crearComederos(numComederos,TipoComida.OMNIVORA);
+//        comederos.stream().forEach(comederoEntityDto -> {
+//            comederoEntityDto.setHabitat(habita);
+//            comederoDAO.guardarComedero(comederoEntityDto);
+//        });
+
+
+
+//
+//        habita.setAnimales(animales);
+//        habita.setPlantas(plantas);
+//        habita.setComederos(comederos);
 
         //Guardamos animales/plantas en BBDD
         iAnimalDAO.guardarAnimal(animal1);
         iAnimalDAO.guardarAnimal(animal2);
         iPlantaDAO.guardarPlanta(planta1);
         iPlantaDAO.guardarPlanta(planta2);
+
         return habita;
     }
 
     @Override
     public TerrestreEntityDto crearHabitaTerrestre() {
+        int numBebederos=2;
+        int numComederos=2;
+
         TerrestreEntityDto habita=new TerrestreEntityDto(TipoHabitat.TERRESTRE,3,3);
 
         //Guardamos habitat en BBDD, y lo recuperamos
@@ -221,9 +252,9 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
         //Creacion animales/plantas
         AnimalEntityDto animal1 = factoryMethodAnimal.crearAnimalTerrestre();
         animal1.setHabitat(habita);
-        int numBebederos=2;
-        int numComederos=2;
-        TerrestreEntityDto habita=new TerrestreEntityDto(TipoHabitat.TERRESTRE,numBebederos,numComederos);
+
+
+//        TerrestreEntityDto habita=new TerrestreEntityDto(TipoHabitat.TERRESTRE,numBebederos,numComederos);
 
         AnimalEntityDto animal2 = factoryMethodAnimal.crearAnimalTerrestre();
         animal2.setHabitat(habita);
@@ -241,11 +272,14 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
         iAnimalDAO.guardarAnimal(animal2);
         iPlantaDAO.guardarPlanta(planta1);
         iPlantaDAO.guardarPlanta(planta2);
-        List<ComederoEntityDto> comederos= this.crearComederos(numComederos,TipoComida.OMNIVORA);
-        comederos.stream().forEach(comederoEntityDto -> {
-            comederoEntityDto.setHabitatEntityDto(habita);
-            comederoDAO.guardarComedero(comederoEntityDto);
-        });
+
+
+        /////
+//        List<ComederoEntityDto> comederos= this.crearComederos(numComederos,TipoComida.OMNIVORA);
+//        comederos.stream().forEach(comederoEntityDto -> {
+//            comederoEntityDto.setHabitat(habita);
+//            comederoDAO.guardarComedero(comederoEntityDto);
+//        });
 /*        List<BebederoEntityDto> bebederos= this.crearBebederos(numBebederos);
         bebederos.stream().forEach(bebederoEntityDto -> {
             bebederoEntityDto.setHabitatEntityDto(habita);
@@ -253,9 +287,9 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
         });
 
         habita.setBebederos(bebederos);*/
-        habita.setComederos(comederos);
-        habita.setAnimales(animales);
-        habita.setPlantas(plantas);
+//        habita.setComederos(comederos);
+//        habita.setAnimales(animales);
+//        habita.setPlantas(plantas);
 
         return habita;
     }

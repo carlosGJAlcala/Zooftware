@@ -16,32 +16,36 @@ public class AnfibioEntityDto  extends HabitatEntityDto implements Serializable 
 
 
     private int numComedores;
-    private int id;
 
-    public AnfibioEntityDto(int id, int numComedores, int id1) {
+    public AnfibioEntityDto(int id, int numComedores) {
         super(id, TipoHabitat.ANFIBIO, null, null, null, null);
         super.setAnimales(new ArrayList<>());
         super.setPlantas(new ArrayList<>());
 
         this.numComedores = numComedores;
-        this.id = id1;
     }
+//
+//    @Default
+//    public AnfibioEntityDto(int id, TipoHabitat tipoHabitat, List<BebederoEntityDto> bebederos, List<ComederoEntityDto> comederos, List<AnimalEntityDto> animales, List<PlantaEntityDto> plantas, int numComedores, int id1) {
+//        super(id, tipoHabitat, bebederos, comederos, animales, plantas);
+//        super.setAnimales(new ArrayList<>());
+//        super.setPlantas(new ArrayList<>());
+//
+//        this.numComedores = numComedores;
+//        this.id = id1;
+//    }
+//
+//    public AnfibioEntityDto(TipoHabitat tipoHabitat, int numComedores) {
+//        super(tipoHabitat);
+//        super.setAnimales(new ArrayList<>());
+//        super.setPlantas(new ArrayList<>());
+//
+//        this.numComedores = numComedores;
+//    }
 
     @Default
-    public AnfibioEntityDto(int id, TipoHabitat tipoHabitat, List<BebederoEntityDto> bebederos, List<ComederoEntityDto> comederos, List<AnimalEntityDto> animales, List<PlantaEntityDto> plantas, int numComedores, int id1) {
-        super(id, tipoHabitat, bebederos, comederos, animales, plantas);
-        super.setAnimales(new ArrayList<>());
-        super.setPlantas(new ArrayList<>());
-
-        this.numComedores = numComedores;
-        this.id = id1;
-    }
-
     public AnfibioEntityDto(TipoHabitat tipoHabitat, int numComedores) {
         super(tipoHabitat);
-        super.setAnimales(new ArrayList<>());
-        super.setPlantas(new ArrayList<>());
-
         this.numComedores = numComedores;
     }
 

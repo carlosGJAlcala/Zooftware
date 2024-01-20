@@ -73,18 +73,10 @@ public class Zooftware implements IAccionesJefe {
 	List<TrabajadorEntityDto> trabajadores;
 	List<Animal> animales;
 	List<HabitatEntityDto> habitatEntityDtos;
-    List<TrabajadorEntityDto> trabajadores;
-    List<Animal> animales;
-    List<HabitatEntityDto> habitatEntityDtos;
+
     private int id_habita;
 
-	@Autowired
-	InstalacionFactory fabricadeHabitas;
-	public Zooftware() {
-		//fabricaHabitas=new instalacionFactoryConcreta();
-		mediator=new MediadorConcreto();
-		contextotarea=new Contexto();
-		//fabricadeHabitas= new instalacionFactoryConcreta();
+
     public Zooftware() {
         //fabricaHabitas=new instalacionFactoryConcreta();
         mediator = new MediadorConcreto();
@@ -105,12 +97,11 @@ fabricadeHabitas.crearHabitaAnfibio();
 		fabricadeHabitas.crearHabitaAnfibio();
 		fabricadeHabitas.crerAcuarioAguaDulce();*/
 
-		fabricadeHabitas.crearHabitaAnfibio();
-
+        fabricadeHabitas.crearHabitaAnfibio();
+    }
 
     @Override
     public List<AnimalEntityDto> verAnimales() {
-
         return animalDAO.verAnimales();
     }
 
@@ -208,15 +199,15 @@ fabricadeHabitas.crearHabitaAnfibio();
         switch (tipo) {
             case ANFIBIO:
                 AnfibioEntityDto habita = anfibioDAO.encontrarPorId(id_habita);
-                animal.setHabitatEntityDto(habita);
+                animal.setHabitat(habita);
                 break;
             case ACUATICO:
                 AcuaticoEntityDto habita1 = habitaAcuatio.buscarPorId(id_habita);
-                animal.setHabitatEntityDto(habita1);
+                animal.setHabitat(habita1);
                 break;
             case TERRESTRE:
                 TerrestreEntityDto habita2 = terrestreDAO.buscarPorId(id_habita);
-                animal.setHabitatEntityDto(habita2);
+                animal.setHabitat(habita2);
                 break;
 
         }

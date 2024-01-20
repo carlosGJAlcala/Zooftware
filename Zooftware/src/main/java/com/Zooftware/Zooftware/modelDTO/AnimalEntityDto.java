@@ -24,7 +24,8 @@ public class AnimalEntityDto implements Serializable {
     private int hambre;
 
     @Default
-    public AnimalEntityDto(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, HabitatEntityDto habitat, int numExtremidades, int salud, int sed, int suenio, int hambre) {
+    public AnimalEntityDto(int id,String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, HabitatEntityDto habitat, int numExtremidades, int salud, int sed, int suenio, int hambre) {
+        this.id = id;
         this.nombre = nombre;
         this.estadoAnimal = estadoAnimal;
         this.tipo = tipo;
