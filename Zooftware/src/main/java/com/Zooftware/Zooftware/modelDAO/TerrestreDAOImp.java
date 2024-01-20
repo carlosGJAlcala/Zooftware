@@ -29,9 +29,9 @@ public class TerrestreDAOImp implements ITerrestreDAO{
     }
 
     @Override
-    public void guardarTerrestre(TerrestreEntityDto terrestre) {
+    public TerrestreEntity guardarTerrestre(TerrestreEntityDto terrestre) {
         TerrestreEntity terrestreEntity=terrestreEntityMapper.mapper.toEntity(terrestre);
-        terrestreJPA.save(terrestreEntity);
+        return terrestreJPA.save(terrestreEntity);
     }
 
     @Override

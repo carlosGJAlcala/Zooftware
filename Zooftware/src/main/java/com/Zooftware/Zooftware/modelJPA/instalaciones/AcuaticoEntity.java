@@ -5,27 +5,17 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "acuatico", schema = "testbbdd", catalog = "")
-public class AcuaticoEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class AcuaticoEntity extends HabitatEntity {
+
+
     @Enumerated(EnumType.STRING)
     private TipoAgua tipoAgua;
 
     public AcuaticoEntity() {
     }
 
-    public AcuaticoEntity(int id, TipoAgua tipoAgua) {
-        this.id = id;
+    public AcuaticoEntity(TipoAgua tipoAgua) {
         this.tipoAgua = tipoAgua;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public TipoAgua getTipoAgua() {

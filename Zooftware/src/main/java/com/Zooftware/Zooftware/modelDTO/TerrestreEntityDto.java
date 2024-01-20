@@ -12,32 +12,34 @@ import java.util.Objects;
  * DTO for {@link TerrestreEntity}
  */
 public class TerrestreEntityDto extends HabitatEntityDto implements Serializable {
+    private int id;
     private int numBebederos;
     private int numComederos;
-    private int id;
-
-
 
     @Default
-    public TerrestreEntityDto(int id, TipoHabitat tipoHabitat, List<BebederoEntityDto> bebederos, List<ComederoEntityDto> comederos, List<AnimalEntityDto> animales, List<PlantaEntityDto> plantas, int numBebederos, int numComederos, int id1) {
-        super(id, tipoHabitat, bebederos, comederos, animales, plantas);
-        this.numBebederos = numBebederos;
-        this.numComederos = numComederos;
-        this.id = id1;
-    }
-
-    public TerrestreEntityDto(TipoHabitat tipoHabitat, int numBebederos) {
+    public TerrestreEntityDto(TipoHabitat tipoHabitat, int numBebederos, int numComederos) {
         super(tipoHabitat);
         this.numBebederos = numBebederos;
+        this.numComederos = numComederos;
+    }
+
+    public TerrestreEntityDto(int numBebederos, int numComederos) {
+        this.numBebederos = numBebederos;
+        this.numComederos = numComederos;
+    }
+
+    public int getNumBebederos() {
+        return numBebederos;
+    }
+
+    @Override
+    public int getId() {
+        return id;
     }
 
     @Override
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getNumBebederos() {
-        return numBebederos;
     }
 
     public void setNumBebederos(int numBebederos) {
@@ -50,33 +52,5 @@ public class TerrestreEntityDto extends HabitatEntityDto implements Serializable
 
     public void setNumComederos(int numComederos) {
         this.numComederos = numComederos;
-    }
-
-    @Override
-    public int getId() {
-        return id;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TerrestreEntityDto entity = (TerrestreEntityDto) o;
-        return Objects.equals(this.numBebederos, entity.numBebederos) &&
-                Objects.equals(this.numComederos, entity.numComederos) &&
-                Objects.equals(this.id, entity.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(numBebederos, numComederos, id);
-    }
-
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + "(" +
-                "numBebederos = " + numBebederos + ", " +
-                "numComederos = " + numComederos + ", " +
-                "id = " + id + ")";
     }
 }

@@ -24,8 +24,8 @@ public class Animal extends AnimalEntityDto {
 //    }
 
 
-    public Animal(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, int id, HabitatEntityDto habitatEntityDto, int numExtremidades, int salud, int sed, int suenio, int hambre, Estado estadoActual, int salud1, int comida, int suenio1) {
-        super(nombre, estadoAnimal, tipo, id, habitatEntityDto, numExtremidades, salud, sed, suenio, hambre);
+    public Animal(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, HabitatEntityDto habitatEntityDto, int numExtremidades, int salud, int sed, int suenio, int hambre, Estado estadoActual, int salud1, int comida, int suenio1) {
+        super(nombre, estadoAnimal, tipo, habitatEntityDto, numExtremidades, salud, sed, suenio, hambre);
         this.estadoActual = estadoActual;
         if(estadoAnimal==EstadoAnimal.FELIZ){
             this.estadoActual=new EstadoFeliz();
@@ -37,6 +37,12 @@ public class Animal extends AnimalEntityDto {
         this.suenio = 0;
     }
 
+    public Animal(Estado estadoActual, int salud, int comida, int suenio) {
+        this.estadoActual = estadoActual;
+        this.salud = salud;
+        this.comida = comida;
+        this.suenio = suenio;
+    }
     public void darComida(int cantidad) {
         comida += cantidad;
         if (comida > 100) {

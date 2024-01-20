@@ -43,23 +43,26 @@ public class Zooftware implements IAccionesJefe {
 	@Autowired
 	IMensajeDAO mensajeDAO;
 
+
 	Contexto contextotarea;
 	@Autowired
 	Estrategia estrategia;
 
 	Mediator mediator;
 
+	@Autowired
 	InstalacionFactory fabricaHabitas;
 	List<TrabajadorEntityDto> trabajadores;
 	List<Animal> animales;
 	List<HabitatEntityDto> habitatEntityDtos;
 
+	@Autowired
 	InstalacionFactory fabricadeHabitas;
 	public Zooftware() {
-		fabricaHabitas=new instalacionFactoryConcreta();
+		//fabricaHabitas=new instalacionFactoryConcreta();
 		mediator=new MediadorConcreto();
 		contextotarea=new Contexto();
-		fabricadeHabitas= new instalacionFactoryConcreta();
+		//fabricadeHabitas= new instalacionFactoryConcreta();
 
 	}
 	@Override
@@ -72,7 +75,7 @@ fabricadeHabitas.crearHabitaAnfibio();
 		fabricadeHabitas.crearHabitaAnfibio();
 		fabricadeHabitas.crerAcuarioAguaDulce();*/
 
-
+		fabricadeHabitas.crearHabitaAnfibio();
 
 
 	}
@@ -178,27 +181,27 @@ fabricadeHabitas.crearHabitaAnfibio();
 	@Override
 	public void crearhabita(TipoHabitat tipo) {
 
-	HabitatEntityDto habita;
+//	HabitatEntityDto habita;
 	switch (tipo){
 		case ANFIBIO :
-			habita=fabricadeHabitas.crearHabitaAnfibio();
-			habitatEntityDtos.add(habita);
+			fabricadeHabitas.crearHabitaAnfibio();
+			//habitatEntityDtos.add(habita);
 			//habitatDAO.guardarHabitat(habita);
 			break;
 		case ACTUATICO_DULCE :
-			habita=fabricadeHabitas.crerAcuarioAguaDulce();
-			habitatEntityDtos.add(habita);
-			habitatDAO.guardarHabitat(habita);
+			fabricadeHabitas.crerAcuarioAguaDulce();
+			//habitatEntityDtos.add(habita);
+//			habitatDAO.guardarHabitat(habita);
 			break;
 		case ACTUATICO_SALADO :
-			habita=fabricadeHabitas.crerAcuarioAguaSalada();
-			habitatEntityDtos.add(habita);
-			habitatDAO.guardarHabitat(habita);
+			fabricadeHabitas.crerAcuarioAguaSalada();
+			//habitatEntityDtos.add(habita);
+//			habitatDAO.guardarHabitat(habita);
 			break;
 		case TERRESTRE:
-			habita=fabricadeHabitas.crearHabitaTerrestre();
-			habitatEntityDtos.add(habita);
-			habitatDAO.guardarHabitat(habita);
+			fabricadeHabitas.crearHabitaTerrestre();
+			//habitatEntityDtos.add(habita);
+//			habitatDAO.guardarHabitat(habita);
 			break;
 
 	}

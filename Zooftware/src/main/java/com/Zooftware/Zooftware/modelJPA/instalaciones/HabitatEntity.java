@@ -22,9 +22,9 @@ public class HabitatEntity {
     private List<ComederoEntity> comederos;
     @OneToMany(mappedBy = "habitatEntity")
     private List<BebederoEntity> bebederos;
-    @OneToMany(mappedBy = "habitatEntity")
+    @OneToMany(mappedBy = "habitat")
     private List<AnimalEntity> animales;
-    @OneToMany(mappedBy = "habitatEntity")
+    @OneToMany(mappedBy = "habitat")
     private List<PlantaEntity> plantas;
 
     public HabitatEntity(){}

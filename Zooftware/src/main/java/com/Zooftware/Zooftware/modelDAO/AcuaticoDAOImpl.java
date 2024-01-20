@@ -44,9 +44,9 @@ public class AcuaticoDAOImpl implements IAcuaticoDAO {
     }
 
     @Override
-    public void guardarAcuario(AcuaticoEntityDto acuario) {
+    public AcuaticoEntity guardarAcuario(AcuaticoEntityDto acuario) {
         AcuaticoEntity acuaticoEntity=acuaticoEntityMapper.mapper.toEntity(acuario);
-        acuariojpa.save(acuaticoEntity);
+        return acuariojpa.save(acuaticoEntity);
 
     }
 

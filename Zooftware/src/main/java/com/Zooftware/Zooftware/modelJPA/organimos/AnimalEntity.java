@@ -24,17 +24,14 @@ public class AnimalEntity {
     private int suenio;
     @Enumerated(EnumType.STRING)
     private TipoAnimal tipo;
-
     @Enumerated(EnumType.STRING)
     private EstadoAnimal estadoAnimal;
-
     @ManyToOne
     @JoinColumn(name = "habitat_id")
-    private HabitatEntity habitatEntity;
+    private HabitatEntity habitat;
 
-    public AnimalEntity(){}
 
-    public AnimalEntity(ComidaEntity comida, int hambre, String nombre, int numExtremidades, int salud, int sed, int suenio, TipoAnimal tipo, EstadoAnimal estadoAnimal, HabitatEntity habitatEntity) {
+    public AnimalEntity(ComidaEntity comida, int hambre, String nombre, int numExtremidades, int salud, int sed, int suenio, TipoAnimal tipo, EstadoAnimal estadoAnimal, HabitatEntity habitat) {
         this.comida = comida;
         this.hambre = hambre;
         this.nombre = nombre;
@@ -44,8 +41,11 @@ public class AnimalEntity {
         this.suenio = suenio;
         this.tipo = tipo;
         this.estadoAnimal = estadoAnimal;
-        this.habitatEntity = habitatEntity;
+        this.habitat = habitat;
     }
+
+    public AnimalEntity(){}
+
 
     public int getId() {
         return id;
@@ -127,11 +127,11 @@ public class AnimalEntity {
         this.estadoAnimal = estadoAnimal;
     }
 
-    public HabitatEntity getHabitatEntity() {
-        return habitatEntity;
+    public HabitatEntity getHabitat() {
+        return habitat;
     }
 
-    public void setHabitatEntity(HabitatEntity habitatEntity) {
-        this.habitatEntity = habitatEntity;
+    public void setHabitat(HabitatEntity habitat) {
+        this.habitat = habitat;
     }
 }

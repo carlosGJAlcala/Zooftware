@@ -23,23 +23,26 @@ public class HabitatEntityDto implements Serializable {
     private List<AnimalEntityDto> animales;
     private List<PlantaEntityDto> plantas;
 
-
-    public HabitatEntityDto( TipoHabitat tipoHabitat) {
+    public HabitatEntityDto(TipoHabitat tipoHabitat) {
 
         this.tipoHabitat = tipoHabitat;
-        this.comederos= new ArrayList<>();
-        this.bebederos= new ArrayList<>();
-        this.animales = new ArrayList<>();
-        this.plantas = new ArrayList<>();
+//        this.comederos= new ArrayList<>();
+//        this.bebederos= new ArrayList<>();
+//        this.animales = new ArrayList<>();
+//        this.plantas = new ArrayList<>();
     }
-@Default
-   public HabitatEntityDto(int id, TipoHabitat tipoHabitat,List<BebederoEntityDto> bebederos, List<ComederoEntityDto> comederos, List<AnimalEntityDto> animales, List<PlantaEntityDto> plantas) {
-        this.id = id;
-        this.tipoHabitat = tipoHabitat;
-        this.bebederos = bebederos;
-        this.comederos = comederos;
-        this.plantas = plantas;
-        this.animales = animales;
+//@Default
+//   public HabitatEntityDto(int id, TipoHabitat tipoHabitat,List<BebederoEntityDto> bebederos, List<ComederoEntityDto> comederos, List<AnimalEntityDto> animales, List<PlantaEntityDto> plantas) {
+//        this.id = id;
+//        this.tipoHabitat = tipoHabitat;
+//        this.bebederos = bebederos;
+//        this.comederos = comederos;
+//        this.plantas = plantas;
+//        this.animales = animales;
+//    }
+
+    public HabitatEntityDto(){
+
     }
 
     public int getId() {
