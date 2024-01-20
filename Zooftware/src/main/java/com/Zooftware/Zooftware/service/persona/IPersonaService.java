@@ -1,6 +1,7 @@
 package com.Zooftware.Zooftware.service.persona;
 
 import com.Zooftware.Zooftware.modelDTO.ClienteEntityDto;
+import com.Zooftware.Zooftware.modelDTO.ComederoEntityDto;
 import com.Zooftware.Zooftware.modelDTO.EmpleadoEntityDto;
 import com.Zooftware.Zooftware.modelDTO.JefeEntityDto;
 import com.Zooftware.Zooftware.modelJPA.persona.PersonaEntity;
@@ -10,6 +11,8 @@ import java.sql.Timestamp;
 import java.util.List;
 
 public interface IPersonaService {
+    List<ComederoEntityDto> getComederosPorIdHabitat(int id);
+
     public String tipoPersona(String username);
     public List<PersonaEntity> buscarTodas();
 

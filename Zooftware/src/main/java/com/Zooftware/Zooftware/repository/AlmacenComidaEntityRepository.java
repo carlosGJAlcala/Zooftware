@@ -13,10 +13,5 @@ public interface AlmacenComidaEntityRepository extends JpaRepository<AlmacenComi
     @Override
     Optional<AlmacenComidaEntity> findById(Integer integer);
 
-
-
-    @Query("select a from AlmacenComidaEntity a")
-    List<AlmacenComidaEntity> encontrarAlmacenes();
-
-
+    List<AlmacenComidaEntity> findAll();
 }

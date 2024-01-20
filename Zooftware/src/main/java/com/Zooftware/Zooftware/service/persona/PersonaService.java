@@ -1,10 +1,8 @@
 package com.Zooftware.Zooftware.service.persona;
 
-import com.Zooftware.Zooftware.modelDAO.IClienteDAO;
-import com.Zooftware.Zooftware.modelDAO.IEmpleadoDAO;
-import com.Zooftware.Zooftware.modelDAO.IJefeDAO;
-import com.Zooftware.Zooftware.modelDAO.IPersonaDAO;
+import com.Zooftware.Zooftware.modelDAO.*;
 import com.Zooftware.Zooftware.modelDTO.ClienteEntityDto;
+import com.Zooftware.Zooftware.modelDTO.ComederoEntityDto;
 import com.Zooftware.Zooftware.modelDTO.EmpleadoEntityDto;
 import com.Zooftware.Zooftware.modelDTO.JefeEntityDto;
 import com.Zooftware.Zooftware.modelJPA.persona.PersonaEntity;
@@ -28,6 +26,13 @@ public class PersonaService implements IPersonaService {
     @Autowired
     IEmpleadoDAO iEmpleadoDAO;
 
+    @Autowired
+    IHabitatDAO iHabitatDAO;
+
+    @Override
+    public List<ComederoEntityDto> getComederosPorIdHabitat(int id){
+        return iHabitatDAO.buscarPorId(id).getComederos();
+    }
 
 
 

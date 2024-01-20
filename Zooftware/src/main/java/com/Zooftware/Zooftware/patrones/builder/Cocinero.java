@@ -2,7 +2,9 @@ package com.Zooftware.Zooftware.patrones.builder;
 
 import com.Zooftware.Zooftware.modelDTO.AlmacenComidaEntityDto;
 import com.Zooftware.Zooftware.modelDTO.ComidaEntityDto;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Cocinero {
 
 
