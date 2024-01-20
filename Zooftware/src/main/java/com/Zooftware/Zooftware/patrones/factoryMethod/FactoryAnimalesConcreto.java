@@ -22,42 +22,37 @@ public class FactoryAnimalesConcreto implements FactoryMethodAnimal {
 
     @Override
     public AnimalEntityDto crearAnimalAcuaticoAguaSalada() {
-        AnimalEntityDto animal=new AnimalEntityDto("Pez Remo", EstadoAnimal.FELIZ, TipoAnimal.ACUATICO,null,1,0,3,2,1);
-//        animalDAO.guardarAnimal(animal);
+        AnimalEntityDto animal=new AnimalEntityDto("Pez Remo",EstadoAnimal.FELIZ,TipoAnimal.ACUATICO,0,4,20,20,20,20);
+        //animalDAO.guardarAnimal(animal);
         return  animal;
-       //return new AnimalEntityDto();
     }
     @Override
     public AnimalEntityDto crearAnimalAcuaticoAguaDulce() {
-        //AnimalEntityDto animal=new AnimalEntityDto("Raya Gigante", EstadoAnimal.FELIZ, TipoAnimal.ACUATICO);
-
-        AnimalEntityDto animal=new AnimalEntityDto("Raya Gigante",EstadoAnimal.FELIZ,TipoAnimal.ACUATICO,null,1,0,0,0,0);
-
+        AnimalEntityDto animal=new AnimalEntityDto("Pirania",EstadoAnimal.FELIZ,TipoAnimal.ACUATICO,0,4,20,20,20,20);
         //animalDAO.guardarAnimal(animal);
         return  animal;
-        //return new AnimalEntityDto();
     }
 
     @Override
     public AnimalEntityDto crearAnimalAnfibio() {
-        AnimalEntityDto animal=new AnimalEntityDto("Ajolote", EstadoAnimal.FELIZ, TipoAnimal.ANFIBIO, null, 4,10,0,1,2);
+        AnimalEntityDto animal=new AnimalEntityDto("Cocodrilo",EstadoAnimal.FELIZ,TipoAnimal.ANFIBIO,0,4,20,20,20,20);
         //animalDAO.guardarAnimal(animal);
+
         return animal;
     }
 
     @Override
     public AnimalEntityDto crearAnimalTerrestre() {
-        AnimalEntityDto animal=new AnimalEntityDto("Elefante", EstadoAnimal.FELIZ, TipoAnimal.TERRESTRE,null,5,10,3,2,1);
-//        animalDAO.guardarAnimal(animal);
-//
-//        return animal;
+        AnimalEntityDto animal=new AnimalEntityDto("Elefante",EstadoAnimal.FELIZ,TipoAnimal.TERRESTRE,0,4,20,20,20,20);
+        //animalDAO.guardarAnimal(animal);
+
         return animal;
     }
 
     @Override
     public PlantaEntityDto plantaAcuaticaAguaDulce() {
         PlantaEntityDto planta=new PlantaEntityDto("Cola de Zorro");
-        //plantaDAO.guardarPlanta(planta);
+       // plantaDAO.guardarPlanta(planta);
 
         return planta;
     }
@@ -70,7 +65,7 @@ public class FactoryAnimalesConcreto implements FactoryMethodAnimal {
     }
     @Override
     public PlantaEntityDto plantaAnfibia() {
-        PlantaEntityDto planta=new PlantaEntityDto("Manglar");
+        PlantaEntityDto planta=new PlantaEntityDto("Junco");
         //plantaDAO.guardarPlanta(planta);
 
         return planta;
@@ -79,7 +74,7 @@ public class FactoryAnimalesConcreto implements FactoryMethodAnimal {
     @Override
     public PlantaEntityDto plantaTerrestre() {
         PlantaEntityDto planta=new PlantaEntityDto("Pino");
-        //plantaDAO.guardarPlanta(planta);
+       //plantaDAO.guardarPlanta(planta);
 
         return planta;
     }

@@ -3,6 +3,7 @@ package com.Zooftware.Zooftware.patrones.proxy;
 
 import com.Zooftware.Zooftware.modelDTO.*;
 import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
+import com.Zooftware.Zooftware.patrones.adapter.BebederoJson;
 
 import java.util.List;
 
@@ -35,7 +36,7 @@ public interface IAccionesEmpleado extends IAccionesCliente {
 
 
 	void modificarEstadoComedero(ComederoEntityDto comedero ,int cantidad);
-	void modificarEstadoBebedero(BebederoEntityDto bebedero ,int cantidad);
+	void modificarEstadoBebedero(BebederoJson bebedero );
 
 
 

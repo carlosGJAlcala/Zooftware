@@ -6,6 +6,10 @@ import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
 import com.Zooftware.Zooftware.modelJPA.enums.Rol;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoPersona;
+import com.Zooftware.Zooftware.patrones.adapter.AnimalJson;
+import com.Zooftware.Zooftware.patrones.adapter.BebederoJson;
+import com.Zooftware.Zooftware.patrones.adapter.EmpleadoJson;
+import com.Zooftware.Zooftware.patrones.adapter.JefeJson;
 import com.Zooftware.Zooftware.patrones.facade.Zooftware;
 import com.Zooftware.Zooftware.patrones.factoryMethod.FactoryMethodProxy;
 import com.Zooftware.Zooftware.patrones.proxy.*;
@@ -84,16 +88,31 @@ public class ZooftwareControler  {
         }
     }
 
-    @GetMapping("/animal")
+    @GetMapping("/animales")
     public List<AnimalEntityDto> verAnimales() {
         return zoo.verAnimales();
     }
+
+//funciona
+    @PostMapping(value = "/animal" ,produces = MediaType.TEXT_PLAIN_VALUE)
+    public void comprarAnimal(@RequestBody AnimalJson animalJson) {
+        zoo.comprarAnimal(animalJson);
+
+    }
+    //funciona
+    @GetMapping("/animal/{id}")
+    public AnimalEntityDto VerAnimal(@PathVariable("id") int id_animal) {
+        return zoo.VerAnimal(id_animal);
+    }
+
+
+
     @GetMapping("/habitas")
     public List<HabitatEntityDto> verInstalaciones() {
         return zoo.verInstalaciones();
     }
 
-    @PostMapping(value = "/mensaje" ,produces = MediaType.TEXT_PLAIN_VALUE)
+    @PostMapping(value = "/mensaje" ,produces = MediaType.APPLICATION_JSON_VALUE)
     public void enviarMensaje(@RequestBody  MensajeEntityDto mensaje) {
         zoo.enviarMensaje(mensaje);
 
@@ -104,39 +123,39 @@ public class ZooftwareControler  {
     public List<MensajeEntityDto> consultarMensajesPorTrabajador(@PathVariable("trabajadorId") String trabajadorId) {
         return zoo.consultarMensajes(trabajadorId);
     }
-    @GetMapping("/animal/{id_anima}")
-    public EstadoAnimal ComprobarEstadoAnimal(@PathVariable("id_animal") int id) {
-        return zoo.ComprobarEstadoAnimal(id);
+    //funciona
+    @GetMapping("/animal/comprobarEstado/{id}")
+    public EstadoAnimal ComprobarEstadoAnimal(@PathVariable("id") int id_animal) {
+        return zoo.ComprobarEstadoAnimal(id_animal);
     }
 
-    @PostMapping(value = "/animal" ,produces = MediaType.TEXT_PLAIN_VALUE)
+    @PostMapping(value = "/animal/comprobarEstado" ,produces = MediaType.TEXT_PLAIN_VALUE)
     public void ModificarEstadoAnimal(@RequestBody  AnimalEntityDto animal) {
         zoo.ModificarEstadoAnimal(animal);
     }
-    @GetMapping("/animal/ejercitarAnimal/{id_anima}")
-    public void ejercitarAnimal(@PathVariable("id_animal") int id) {
+    @GetMapping("/animal/ejercitarAnimal/{id}")
+    public void ejercitarAnimal(@PathVariable("id") int id) {
     zoo.ejercitarAnimal(id,10);
     }
-    @GetMapping("/animal/dormirAnimal/{id_anima}")
-    public void dormirAnimal(@PathVariable("id_animal") int id) {
+    @GetMapping("/animal/dormirAnimal/{id}")
+    public void dormirAnimal(@PathVariable("id") int id) {
     zoo.dormirAnimal(id,10);
     }
-    @GetMapping("/animal/darComerAnimal/{id_anima}")
-    public void darComerAnimal(@PathVariable("id_animal") int id) {
+    @GetMapping("/animal/darComerAnimal/{id}")
+    public void darComerAnimal(@PathVariable("id") int id) {
     zoo.darComerAnimal(id,10);
     }
-    @PostMapping("/rellenarComedero")
-    public ModelAndView rellenarComederos(@RequestParam("idHabitat")int habita_id) {
-        zoo.rellenarComederos(habita_id);
-        //zoo.crearhabita(TipoHabitat.ANFIBIO);
-        ModelAndView model = new ModelAndView();
-        return model;
+    @GetMapping("/habita/comederos/rellenar/{habita_id}")
+    public boolean rellenarComederos(@PathVariable("habita_id")int id) {
+        zoo.rellenarComederos(id);
+        return true;
+    }
+    @GetMapping("/habita/bebederos/rellenar/{habita_id}")
+    public boolean rellenarBebederos(@PathVariable("habita_id")int id) {
+        zoo.rellenarComederos(id);
+        return true;
     }
 
-    @PostMapping("/habita/bebedero/rellenar/{habita_id}")
-    public void rellenarBebederos(@PathVariable("habita_id") int habita_id) {
-        zoo.rellenarBebederos(habita_id);
-    }
     @GetMapping("/habita/bebedero/{habita_id}")
     public List<BebederoEntityDto> verBebederos(@PathVariable("habita_id") int habita_id) {
         return zoo.verBebederos(habita_id);
@@ -147,22 +166,17 @@ public class ZooftwareControler  {
         return zoo.verComederos(habita_id);
     }
 
-    @PostMapping(value = "/habita/comedero/modifcar/" ,produces = MediaType.TEXT_PLAIN_VALUE)
+    @PostMapping(value = "/habita/comedero/modifcar" ,produces = MediaType.TEXT_PLAIN_VALUE)
     public void modificarEstadoComedero(@RequestBody ComederoEntityDto comedero,@RequestBody  int cantidad) {
         zoo.modificarEstadoComedero(comedero,cantidad);
     }
 
-    @PostMapping(value = "/habita/bebedero/modifcar/" ,produces = MediaType.TEXT_PLAIN_VALUE)
-    public void modificarEstadoBebedero(@RequestBody BebederoEntityDto bebedero,@RequestBody  int cantidad) {
-        zoo.modificarEstadoBebedero(bebedero,cantidad);
+    @PostMapping(value = "/habita/bebedero/modifcar" ,produces = MediaType.TEXT_PLAIN_VALUE)
+    public void modificarEstadoBebedero(@RequestBody BebederoJson bebedero) {
+        zoo.modificarEstadoBebedero(bebedero);
     }
 
 
-
-    public void comprarAnimal(AnimalEntityDto animalEntityDto, HabitatEntityDto habita) {
-
-    }
-    @GetMapping("/crearHabita")
     public void crearhabita(TipoHabitat tipo) {
         zoo.crearhabita(TipoHabitat.ANFIBIO);
     }
@@ -178,11 +192,18 @@ public class ZooftwareControler  {
     public void despedirEmpleado(int empleado_id) {
 
     }
+    @PostMapping(value = "/empleado/contratar" ,produces = MediaType.TEXT_PLAIN_VALUE)
 
-    public void contratarEmpleado(TrabajadorEntityDto empleadoNuevo, TipoPersona tipo) {
+    public void contratarEmpleado(@RequestBody EmpleadoJson empleadoNuevo) {
+        zoo.contratarEmpleado(empleadoNuevo);
 
     }
+    @PostMapping(value = "/jefe/contratar" ,produces = MediaType.TEXT_PLAIN_VALUE)
 
+    public void contratarJefe(@RequestBody JefeJson jefeNuevo) {
+        zoo.contratarJefe(jefeNuevo);
+
+    }
     public void modificarEmpleado(int empleado_id, TipoPersona tipo) {
 
     }

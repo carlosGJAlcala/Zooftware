@@ -2,6 +2,7 @@ package com.Zooftware.Zooftware.modelDTO;
 
 import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoAnimal;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.HabitatEntity;
 import com.Zooftware.Zooftware.modelJPA.organimos.AnimalEntity;
 
 import java.io.Serializable;
@@ -35,13 +36,8 @@ public class AnimalEntityDto implements Serializable {
         this.hambre = hambre;
     }
 
-    public AnimalEntityDto(){}
-
-//    public AnimalEntityDto(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo){
-//        this.nombre = nombre;
-//        this.estadoAnimal = estadoAnimal;
-//        this.tipo = tipo;
-//    }
+    public AnimalEntityDto() {
+    }
 
     @Override
     public String toString() {

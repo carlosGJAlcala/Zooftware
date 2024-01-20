@@ -13,7 +13,7 @@ import java.util.Objects;
 public class ComederoEntityDto implements Serializable {
     private int id;
 
-  //  private HabitatEntityDto habitatEntityDto;
+    private HabitatEntityDto habitatEntityDto;
 
     private  Integer cantidad;
 
@@ -23,10 +23,10 @@ public class ComederoEntityDto implements Serializable {
     public TipoComida getTipo() {
         return tipo;
     }
-
     @Default
-    public ComederoEntityDto(int id, Integer cantidad, TipoComida tipo, ComidaEntityDto comida) {
+    public ComederoEntityDto(int id, HabitatEntityDto habitatEntityDto, Integer cantidad, TipoComida tipo, ComidaEntityDto comida) {
         this.id = id;
+        this.habitatEntityDto = habitatEntityDto;
         this.cantidad = cantidad;
         this.tipo = tipo;
         this.comida = comida;
@@ -49,12 +49,25 @@ public class ComederoEntityDto implements Serializable {
     public String toString() {
         return "ComederoEntityDto{" +
                 "id=" + id +
+                ", habitatEntityDto=" + habitatEntityDto +
                 ", cantidad=" + cantidad +
                 ", tipo=" + tipo +
                 ", comida=" + comida +
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ComederoEntityDto that = (ComederoEntityDto) o;
+        return getId() == that.getId() && Objects.equals(getHabitatEntityDto(), that.getHabitatEntityDto()) && Objects.equals(getCantidad(), that.getCantidad()) && getTipo() == that.getTipo() && Objects.equals(getComida(), that.getComida());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getHabitatEntityDto(), getCantidad(), getTipo(), getComida());
+    }
 
     public int getId() {
         return id;
@@ -64,7 +77,6 @@ public class ComederoEntityDto implements Serializable {
         this.id = id;
     }
 
-/*
     public HabitatEntityDto getHabitatEntityDto() {
         return habitatEntityDto;
     }
@@ -72,7 +84,6 @@ public class ComederoEntityDto implements Serializable {
     public void setHabitatEntityDto(HabitatEntityDto habitatEntityDto) {
         this.habitatEntityDto = habitatEntityDto;
     }
-*/
 
     public Integer getCantidad() {
         return cantidad;
@@ -85,4 +96,6 @@ public class ComederoEntityDto implements Serializable {
     public void setTipo(TipoComida tipo) {
         this.tipo = tipo;
     }
+
+
 }

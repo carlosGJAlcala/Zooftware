@@ -14,5 +14,6 @@ public interface IAnimalDAO {
     void guardarAnimal(AnimalEntityDto animal);
     void eliminarAnimalPorId(int id);
     void actualizarAnimal(AnimalEntityDto animal);
+    public List<AnimalEntityDto> verAnimales();
 
 }

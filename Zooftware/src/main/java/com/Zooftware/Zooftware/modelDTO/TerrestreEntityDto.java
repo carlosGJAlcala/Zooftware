@@ -24,6 +24,8 @@ public class TerrestreEntityDto extends HabitatEntityDto implements Serializable
     }
 
     public TerrestreEntityDto(int numBebederos, int numComederos) {
+    public TerrestreEntityDto(TipoHabitat tipoHabitat, int numBebederos,int numComederos) {
+        super(tipoHabitat);
         this.numBebederos = numBebederos;
         this.numComederos = numComederos;
     }

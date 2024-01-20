@@ -36,6 +36,7 @@ public class ComederoEntity {
         this.comidaEntity = comidaEntity;
     }
 
+
     public ComidaEntity getComidaEntity() {
         return comidaEntity;
     }

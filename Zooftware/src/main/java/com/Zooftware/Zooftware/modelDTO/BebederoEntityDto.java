@@ -14,12 +14,17 @@ public class BebederoEntityDto implements Serializable {
     private int cantidad;
 
    private HabitatEntityDto habitatEntityDto;
-   @Default
+
     public BebederoEntityDto(int id, int cantidad) {
         this.id = id;
         this.cantidad = cantidad;
     }
-
+    @Default
+    public BebederoEntityDto(int id, int cantidad, HabitatEntityDto habitatEntityDto) {
+        this.id = id;
+        this.cantidad = cantidad;
+        this.habitatEntityDto = habitatEntityDto;
+    }
 
     public BebederoEntityDto(int cantidad) {
         this.cantidad = cantidad;

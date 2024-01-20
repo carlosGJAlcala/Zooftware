@@ -6,6 +6,9 @@ import com.Zooftware.Zooftware.modelDTO.HabitatEntityDto;
 import com.Zooftware.Zooftware.modelDTO.TrabajadorEntityDto;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoPersona;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
+import com.Zooftware.Zooftware.patrones.adapter.AnimalJson;
+import com.Zooftware.Zooftware.patrones.adapter.EmpleadoJson;
+import com.Zooftware.Zooftware.patrones.adapter.JefeJson;
 
 /**
  * @author carlos
@@ -15,7 +18,7 @@ import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
 public interface IAccionesJefe extends IAccionesEmpleado {
 
 
-	public void comprarAnimal(AnimalEntityDto animalEntityDto, HabitatEntityDto habita);
+	public void comprarAnimal(AnimalJson animalEntityDto);
 
 
 	public void crearhabita(TipoHabitat tipo);
@@ -25,8 +28,10 @@ public interface IAccionesJefe extends IAccionesEmpleado {
 	public double verTotalSueldos(int empleado_id);
 	public void despedirEmpleado(int empleado_id);
 
-	public void contratarEmpleado(TrabajadorEntityDto empleadoNuevo, TipoPersona tipo);
+	void contratarEmpleado(EmpleadoJson empleadoNuevo);
+	void contratarJefe(JefeJson jefe);
 	public void modificarEmpleado(int empleado_id, TipoPersona tipo);
+
 	void cargar();
 
 }

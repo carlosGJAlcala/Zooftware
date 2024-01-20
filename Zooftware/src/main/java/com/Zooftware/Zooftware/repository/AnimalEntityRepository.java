@@ -11,6 +11,7 @@ public interface AnimalEntityRepository extends JpaRepository<AnimalEntity, Inte
 
     @Override
     Optional<AnimalEntity> findById(Integer integer);
+    List<AnimalEntity> findAll();
 
     List<AnimalEntity> findByNombre(String nombre);
 
