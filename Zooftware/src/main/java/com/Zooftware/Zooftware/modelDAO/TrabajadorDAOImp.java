@@ -61,6 +61,8 @@ public class TrabajadorDAOImp implements ITrabajadorDAO{
 
     @Override
     public List<TrabajadorEntity> buscarPorJefe(int id_jefe) {
-        return trabajadorjpa.findByJefe_Id(id_jefe);
+        List<TrabajadorEntity> tr= trabajadorjpa.findByJefe_Id(id_jefe);
+        tr.isEmpty();
+        return tr;
     }
 }

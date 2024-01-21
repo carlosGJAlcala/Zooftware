@@ -8,6 +8,7 @@ import com.Zooftware.Zooftware.modelJPA.instalaciones.BebederoEntity;
 import com.Zooftware.Zooftware.modelJPA.instalaciones.ComederoEntity;
 import com.Zooftware.Zooftware.modelJPA.organimos.AnimalEntity;
 import com.Zooftware.Zooftware.modelJPA.persona.ContactoEntity;
+import com.Zooftware.Zooftware.modelJPA.persona.EmpleadoEntity;
 import com.Zooftware.Zooftware.modelJPA.persona.TrabajadorEntity;
 import com.Zooftware.Zooftware.patrones.AbstractFactory.InstalacionFactory;
 import com.Zooftware.Zooftware.patrones.adapter.*;
@@ -22,6 +23,8 @@ import com.Zooftware.Zooftware.patrones.strategy.RellenarBebederos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -293,20 +296,20 @@ fabricadeHabitas.crearHabitaAnfibio();
 
     }
 
-    @Override
-    public double verTotalSueldos(int empleado_id) {
-
-        TrabajadorEntityDto trabajadorEntityDto = calcularEmpleado(empleado_id);
-        if (trabajadorEntityDto instanceof JefeEntityDto) {
-            JefeEntityDto jefeEntityDto = (JefeEntityDto) trabajadorEntityDto;
-            List<TrabajadorEntity> trabajadores = trabajadorDAO.buscarPorJefe(empleado_id);
-            List<TrabajadorEntityDto> trabajadorEntityDtos = trabajadores.stream().map(trabajador -> this.calcularEmpleado(trabajador.getId())).collect(Collectors.toList());
-            jefeEntityDto.setSubordinados(trabajadorEntityDtos);
-        }
-
-        return trabajadorEntityDto.calcularSalario();
-
-    }
+//    @Override
+//    public double verTotalSueldos(int empleado_id) {
+//
+//        TrabajadorEntityDto trabajadorEntityDto = calcularEmpleado(empleado_id);
+//        if (trabajadorEntityDto instanceof JefeEntityDto) {
+//            JefeEntityDto jefeEntityDto = (JefeEntityDto) trabajadorEntityDto;
+//            List<TrabajadorEntity> trabajadores = trabajadorDAO.buscarPorJefe(empleado_id);
+//            List<TrabajadorEntityDto> trabajadorEntityDtos = trabajadores.stream().map(trabajador -> this.calcularEmpleado(trabajador.getId())).collect(Collectors.toList());
+//            jefeEntityDto.setSubordinados(trabajadorEntityDtos);
+//        }
+//
+//        return trabajadorEntityDto.calcularSalario();
+//
+//    }
 
     public TrabajadorEntityDto calcularEmpleado(int empleado_id) {
         TrabajadorEntity trabajador = trabajadorDAO.buscarPorId(empleado_id);
@@ -322,6 +325,49 @@ fabricadeHabitas.crearHabitaAnfibio();
         }
         return null;
     }
+
+
+    private double obtenerSueldoSubordinados(int idJefe){
+        List<TrabajadorEntity> tr = trabajadorDAO.buscarPorJefe(idJefe);
+        double sueldoTotalSubordinados = 0;
+        for(TrabajadorEntity tra: tr){
+            if (tra.getRol().equals(Rol.EMPLEADO))
+                sueldoTotalSubordinados += tra.getSalario();
+        }
+
+        return sueldoTotalSubordinados;
+    }
+
+    @Override
+    public double verTotalSueldos(int empleadoId) {
+        return calcularSalarioEmpleado(empleadoId);
+    }
+
+    private double calcularSalarioEmpleado(int Id) {
+        TrabajadorEntityDto jefeAlto = jefeDAO.buscarPorId(Id);
+        double salarioTotal = jefeAlto.getSalario();
+        List<TrabajadorEntity> tr = trabajadorDAO.buscarPorJefe(Id);
+        List<TrabajadorEntity> aux = new ArrayList<>();
+        if(tr != null && !tr.isEmpty()){
+            for(TrabajadorEntity tra: tr){
+                if (tra instanceof EmpleadoEntity) {
+                    salarioTotal += tra.getSalario();
+                    aux.add(tra);
+                }
+            }
+            for(TrabajadorEntity auxTrab : aux)
+                tr.remove(auxTrab);
+        }
+        //Jefes
+        if(tr != null && !tr.isEmpty())
+            for(TrabajadorEntity tra: tr)
+                salarioTotal += calcularSalarioEmpleado(tra.getId());
+        return salarioTotal;
+    }
+
+
+
+
 
     @Override
     public void despedirEmpleado(int empleado_id) {
