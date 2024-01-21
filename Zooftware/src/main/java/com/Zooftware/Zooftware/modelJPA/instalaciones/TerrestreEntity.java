@@ -1,14 +1,16 @@
 package com.Zooftware.Zooftware.modelJPA.instalaciones;
 
+import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
+import com.Zooftware.Zooftware.modelJPA.organimos.AnimalEntity;
+import com.Zooftware.Zooftware.modelJPA.organimos.PlantaEntity;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-@Table(name = "terrestre", schema = "testbbdd", catalog = "")
-public class TerrestreEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+@Table(name = "terrestre")
+public class TerrestreEntity extends HabitatEntity{
+
     private int numBebederos;
     private int numComederos;
 
@@ -16,10 +18,15 @@ public class TerrestreEntity {
     public TerrestreEntity() {
     }
 
-    public TerrestreEntity(int numBebederos, int numComederos, int id) {
+    public TerrestreEntity(int numBebederos, int numComederos) {
         this.numBebederos = numBebederos;
         this.numComederos = numComederos;
-        this.id = id;
+    }
+
+    public TerrestreEntity(TipoHabitat tipoHabitat, List<ComederoEntity> comederos, List<BebederoEntity> bebederos, List<AnimalEntity> animales, List<PlantaEntity> plantas, int numBebederos, int numComederos) {
+        super(tipoHabitat, comederos, bebederos, animales, plantas);
+        this.numBebederos = numBebederos;
+        this.numComederos = numComederos;
     }
 
     public int getNumBebederos() {
@@ -37,13 +44,4 @@ public class TerrestreEntity {
     public void setNumComederos(int numComederos) {
         this.numComederos = numComederos;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
 }

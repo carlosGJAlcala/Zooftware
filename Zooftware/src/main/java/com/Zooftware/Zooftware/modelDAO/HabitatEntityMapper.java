@@ -7,19 +7,17 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper
 public interface HabitatEntityMapper {
-    HabitatEntityMapper mapper= Mappers.getMapper(HabitatEntityMapper.class);
+
+    HabitatEntityMapper mapper = Mappers.getMapper(HabitatEntityMapper.class);
+    @Mapping(target = "animales", ignore = true)
+    @Mapping(target = "plantas", ignore = true)
+    @Mapping(target = "bebederos", ignore = true)
+    @Mapping(target = "comederos", ignore = true)
     HabitatEntity toEntity(HabitatEntityDto habitatEntityDto);
-
-    @AfterMapping
-    default void linkAnimales(@MappingTarget HabitatEntity habitatEntity) {
-        habitatEntity.getAnimales().forEach(animale -> animale.setHabitatEntity(habitatEntity));
-    }
-
-    @AfterMapping
-    default void linkPlantas(@MappingTarget HabitatEntity habitatEntity) {
-        habitatEntity.getPlantas().forEach(planta -> planta.setHabitatEntity(habitatEntity));
-    }
-
+    @Mapping(target = "animales", ignore = true)
+    @Mapping(target = "plantas", ignore = true)
+    @Mapping(target = "bebederos", ignore = true)
+    @Mapping(target = "comederos", ignore = true)
     HabitatEntityDto toDto(HabitatEntity habitatEntity);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

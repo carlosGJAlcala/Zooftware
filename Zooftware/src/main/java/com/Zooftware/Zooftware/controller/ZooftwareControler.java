@@ -42,10 +42,12 @@ public class ZooftwareControler  {
         return modelAndView;
     }
     @GetMapping("/cargar")
-    public void cargar(){
+    public void cargar(@RequestParam(name = "tipoHabitat") String tipoHabitat){
         //zoo=(IAccionesJefe) Proxy.newProxyInstance(IAccionesJefe.class.getClassLoader(),Zooftware.class.getInterfaces(),new ProxyJefe(new Zooftware()));
-       // zoo=factoryMethodProxy.devolverProxy(TipoPersona.JEFE);
-        zoo.cargar();
+        //zoo=factoryMethodProxy.devolverProxy(TipoPersona.JEFE);
+//        zoo.cargar();
+
+        zoo.crearhabita(TipoHabitat.valueOf(tipoHabitat));
     }
     @GetMapping("/validarInicioSesion")
     public String validarInicioSesion(@RequestParam(name = "user") String username, @RequestParam(name = "password") String password, HttpSession session){

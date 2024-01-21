@@ -5,10 +5,11 @@ import com.Zooftware.Zooftware.patrones.facade.Zooftware;
 import com.Zooftware.Zooftware.patrones.proxy.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Proxy;
 
-@Component
+@Service
 public class FactoryMethodProxyConcreto  implements FactoryMethodProxy{
     @Override
     public IAccionesJefe devolverProxy(TipoPersona tipo) {

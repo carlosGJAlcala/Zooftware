@@ -12,13 +12,13 @@ import java.util.Objects;
 public class PlantaEntityDto implements Serializable {
     private int id;
     private String nombre;
-    private HabitatEntityDto habitatEntityDto;
+    private HabitatEntityDto habitat;
 
     @Default
-    public PlantaEntityDto(int id, String nombre, HabitatEntityDto habitatEntityDto) {
+    public PlantaEntityDto(int id, String nombre, HabitatEntityDto habitat) {
         this.id = id;
         this.nombre = nombre;
-        this.habitatEntityDto = habitatEntityDto;
+        this.habitat = habitat;
     }
 
     public PlantaEntityDto(String nombre){
@@ -33,7 +33,7 @@ public class PlantaEntityDto implements Serializable {
         return "PlantaEntityDto{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
-                ", habitatEntityDto=" + habitatEntityDto +
+                ", habitatEntityDto=" + habitat +
                 '}';
     }
 
@@ -42,12 +42,12 @@ public class PlantaEntityDto implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PlantaEntityDto that = (PlantaEntityDto) o;
-        return getId() == that.getId() && Objects.equals(getNombre(), that.getNombre()) && Objects.equals(getHabitatEntityDto(), that.getHabitatEntityDto());
+        return getId() == that.getId() && Objects.equals(getNombre(), that.getNombre()) && Objects.equals(getHabitatEntity(), that.getHabitatEntity());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getNombre(), getHabitatEntityDto());
+        return Objects.hash(getId(), getNombre(), getHabitatEntity());
     }
 
     public int getId() {
@@ -66,11 +66,11 @@ public class PlantaEntityDto implements Serializable {
         this.nombre = nombre;
     }
 
-    public HabitatEntityDto getHabitatEntityDto() {
-        return habitatEntityDto;
+    public HabitatEntityDto getHabitatEntity() {
+        return habitat;
     }
 
-    public void setHabitatEntityDto(HabitatEntityDto habitatEntityDto) {
-        this.habitatEntityDto = habitatEntityDto;
+    public void setHabitatEntity(HabitatEntityDto habitat) {
+        this.habitat = habitat;
     }
 }

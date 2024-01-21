@@ -23,8 +23,8 @@ public class HabitatEntityDto implements Serializable {
     private List<AnimalEntityDto> animales;
     private List<PlantaEntityDto> plantas;
 
-
-    public HabitatEntityDto( TipoHabitat tipoHabitat) {
+    @Default
+    public HabitatEntityDto(TipoHabitat tipoHabitat) {
 
         this.tipoHabitat = tipoHabitat;
         this.comederos= new ArrayList<>();
@@ -32,7 +32,7 @@ public class HabitatEntityDto implements Serializable {
         this.animales = new ArrayList<>();
         this.plantas = new ArrayList<>();
     }
-@Default
+//@Default
    public HabitatEntityDto(int id, TipoHabitat tipoHabitat,List<BebederoEntityDto> bebederos, List<ComederoEntityDto> comederos, List<AnimalEntityDto> animales, List<PlantaEntityDto> plantas) {
         this.id = id;
         this.tipoHabitat = tipoHabitat;
@@ -40,6 +40,10 @@ public class HabitatEntityDto implements Serializable {
         this.comederos = comederos;
         this.plantas = plantas;
         this.animales = animales;
+    }
+
+    public HabitatEntityDto(){
+
     }
 
     public int getId() {
