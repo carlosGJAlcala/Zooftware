@@ -148,7 +148,7 @@ fabricadeHabitas.crearHabitaAnfibio();
     public void ejercitarAnimal(int id, int cantidad) {
 		Animal animal = new AnimalDTOToAnimalState(animalDAO.buscarPorId(id));
         animal.hacerEjercicio(cantidad);
-        animalDAO.guardarAnimal(animal);
+        animalDAO.actualizarAnimal(animal);
 
     }
 
@@ -156,35 +156,31 @@ fabricadeHabitas.crearHabitaAnfibio();
     public void dormirAnimal(int id, int cantidad) {
         Animal animal = new AnimalDTOToAnimalState(animalDAO.buscarPorId(id));
         animal.dormir(cantidad);
-        animalDAO.guardarAnimal(animal);
+        animalDAO.actualizarAnimal(animal);
     }
 
     @Override
     public void darComerAnimal(int id, int cantidad) {
 		Animal animal = new AnimalDTOToAnimalState(animalDAO.buscarPorId(id));
         animal.darComida(cantidad);
-        animalDAO.guardarAnimal(animal);
+        animalDAO.actualizarAnimal(animal);
 
     }
 
     @Override
     public void rellenarComederos(int habita_id) {
-        HabitatEntityDto habita =habitatDAO.buscarPorId(habita_id);
-        TipoHabitat tipo = habita.getTipoHabitat();
 
-        switch (tipo){
-            case ANFIBIO -> habita= anfibioDAO.encontrarPorId(habita_id);
-            case TERRESTRE -> habita= terrestreDAO.buscarPorId(habita_id);
-            case ACUATICO -> habita= habitaAcuatio.buscarPorId(habita_id);
-        }
         estrategia = new Alimentar();
-        estrategia.ejecutar(habita);
+        List<ComederoEntityDto> comederoEntityDtos = comederoDAO.verComederos(habita_id);
+        ComederoEntityDto comederoEntityDto =(ComederoEntityDto) estrategia.ejecutar(habita);
+        comederoDAO.actualizarComedero(comederoEntityDto);
     }
 
     @Override
     public void rellenarBebederos(int habita_id) {
         estrategia = new RellenarBebederos();
-        estrategia.ejecutar(habitatDAO.buscarPorId(habita_id));
+        BebederoEntityDto bebederoEntityDto =(BebederoEntityDto) estrategia.ejecutar(habitatDAO.buscarPorId(habita_id));
+        bebederoDAO.actualizarBebedero(bebederoEntityDto);
     }
 
     @Override

@@ -44,7 +44,7 @@ public class ComederoDAOImp implements IComederoDAO {
     }
 
     @Override
-    public List<ComederoEntity> verComederos(int habita_id) {
+    public List<ComederoEntityDto> verComederos(int habita_id) {
         return comederoJPA.findByHabitat_Id(habita_id);
 
 

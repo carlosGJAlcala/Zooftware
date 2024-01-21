@@ -11,10 +11,12 @@ public class Cocinero {
 
     AlmacenComidaEntityDto almacenComidaEntityDto;
     private IComidaBuilder comidadbuilder;
+
     public ComidaEntityDto getComida() {
         return comidadbuilder.getAlimento();
     }
-    public Cocinero(){
+
+    public Cocinero() {
 
     }
 
@@ -24,17 +26,14 @@ public class Cocinero {
     public void crearComida() {
         //Obtener la comida del almacen get0
 
+      //  comidadbuilder.abrirbolsa();
+        comidadbuilder.mezclarTopics();
+        comidadbuilder.calentarComida();
+        comidadbuilder.ponerComidaEnCubo();
 
-        if(comidadbuilder.abrirbolsa(almacenComidaEntityDto.getProvisiones())){
-            comidadbuilder.mezclarTopics();
-            comidadbuilder.calentarComida();
-            comidadbuilder.ponerComidaEnCubo();
-        }else {
-            System.out.println("No quedan provisiones");
-
-        }
 
     }
+
     public void setComidadbuilder(IComidaBuilder comidadbuilder) {
         this.comidadbuilder = comidadbuilder;
     }

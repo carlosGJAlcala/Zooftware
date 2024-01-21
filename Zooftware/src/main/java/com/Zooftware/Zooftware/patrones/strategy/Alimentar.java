@@ -7,9 +7,12 @@ import com.Zooftware.Zooftware.modelDTO.ComederoEntityDto;
 import com.Zooftware.Zooftware.modelDTO.ComidaEntityDto;
 import com.Zooftware.Zooftware.modelDTO.HabitatEntityDto;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.HabitatEntity;
 import com.Zooftware.Zooftware.patrones.Singleton.AlmacenSingleton;
 import com.Zooftware.Zooftware.patrones.builder.Cocinero;
 import com.Zooftware.Zooftware.patrones.builder.ComidaCarnivoraBuilder;
+import com.Zooftware.Zooftware.patrones.builder.ComidaHerviboraBuilder;
+import com.Zooftware.Zooftware.patrones.builder.ComidaOmnivoraBuilder;
 import com.Zooftware.Zooftware.service.persona.IPersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,63 +20,48 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class Alimentar implements Estrategia{
+public class Alimentar implements Estrategia {
 
-    @Autowired
-    AlmacenSingleton almacen;
-
-    @Autowired
-    IComidaDAO iComidaDAO;
-
-    @Autowired
-    IHabitatDAO iHabitatDAO;
 
     @Override
-    public Object ejecutar(HabitatEntityDto habita) {
-
-        //Recibo el habitat al que quiero rellenar sus comederos
-
-        //obtener lista de comederos que tienen el habitat id
-
-        //Crear una instancia de cocinero
+    public Object ejecutar(Object args) {
 
 
-        List<ComederoEntityDto> comederos= habita.getComederos();
-        //almacen= AlmacenSingleton.getInstancia();
-        //Cocinero concinero = almacen.CrearCocinero();
-        Cocinero cocinero= new Cocinero();
-        //almacen.cargarListAlmacen();
+        List<ComederoEntityDto> comederos = (List<ComederoEntityDto>) args;
 
-        for(ComederoEntityDto comedero:comederos){
-            TipoComida tipo =comedero.getTipo();
-            switch (tipo){
-                case CARNIVORA :
+        Cocinero cocinero = new Cocinero();
+        ComidaEntityDto comida;
+
+        for (ComederoEntityDto comedero : comederos) {
+            TipoComida tipo = comedero.getTipo();
+            switch (tipo) {
+                case CARNIVORA:
                     cocinero.setComidadbuilder(new ComidaCarnivoraBuilder());
+                    cocinero.crearComida();
+                    comida = cocinero.getComida();
+                    comedero.setComida(comida);
                     break;
                 case HERVIBORA:
-                    cocinero.setComidadbuilder(new ComidaCarnivoraBuilder());
+                    cocinero.setComidadbuilder(new ComidaHerviboraBuilder());
+                    cocinero.crearComida();
+                    comida = cocinero.getComida();
+                    comedero.setComida(comida);
                     break;
                 case OMNIVORA:
-                    cocinero.setComidadbuilder(new ComidaCarnivoraBuilder());
+                    cocinero.setComidadbuilder(new ComidaOmnivoraBuilder());
+                    cocinero.crearComida();
+                    comida = cocinero.getComida();
+                    comedero.setComida(comida);
                     break;
-                default:break;
+                default:
+                    break;
             }
 
-            //Crear comida
-            //Guardar esta comida en los comederos indicados
-
-
-            cocinero.crearComida();
-            //iComidaDAO.guardarComida(cocinero.getComida());
-
-
-            comedero.setComida( cocinero.getComida());
 
         }
 
 
-    return  comederos;
+        return comederos;
 
     }
 }
