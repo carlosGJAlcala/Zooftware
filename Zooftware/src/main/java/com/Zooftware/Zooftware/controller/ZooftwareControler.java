@@ -188,8 +188,8 @@ public class ZooftwareControler  {
         return true;
     }*/
 
-    @GetMapping("/habitat/comederos/rellenar/{habita_id}")
-    public boolean rellenarComederos(@PathVariable("habita_id")int id) {
+    @GetMapping("/habitat/comederos/rellenar/{id}")
+    public boolean rellenarComederos(@PathVariable("id")int id) {
         zoo.rellenarComederos(id);
         return true;
     }
@@ -201,16 +201,20 @@ public class ZooftwareControler  {
     }
 
     @GetMapping("/habitat/bebedero/{habita_id}")
-    public List<BebederoEntity> verBebederos(@PathVariable("habita_id") int habita_id) {
+    public List<BebederoEntityDto> verBebederos(@PathVariable("habita_id") int habita_id) {
         return zoo.verBebederos(habita_id);
     }
     @GetMapping("/bebedero/{id}")
     public  BebederoEntityDto verBebedero (@PathVariable("id") int id) {
         return zoo.verBebedero(id);
     }
+    @GetMapping("/comedero/{id}")
+    public  BebederoEntityDto verComedero (@PathVariable("id") int id) {
+        return zoo.verBebedero(id);
+    }
     @GetMapping("/habitat/comedero/{habita_id}")
 
-    public List<ComederoEntity> verComederos(@PathVariable("habita_id") int habita_id) {
+    public List<ComederoEntityDto> verComederos(@PathVariable("habita_id") int habita_id) {
         return zoo.verComederos(habita_id);
     }
 

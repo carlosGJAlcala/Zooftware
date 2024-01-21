@@ -35,6 +35,12 @@ public class ComederoEntity {
         this.comidaEntity = comidaEntity;
     }
 
+    public ComederoEntity(int id, Integer cantidad, TipoComida tipo, HabitatEntity habitat) {
+        this.id = id;
+        this.cantidad = cantidad;
+        this.tipo = tipo;
+        this.habitat = habitat;
+    }
 
     public ComidaEntity getComidaEntity() {
         return this.comidaEntity;

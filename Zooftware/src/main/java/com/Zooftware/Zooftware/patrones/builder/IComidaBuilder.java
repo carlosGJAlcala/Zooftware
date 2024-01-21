@@ -9,7 +9,7 @@ public interface IComidaBuilder {
 
 
 
-    boolean abrirbolsa(List<ComidaEntityDto> provisiones);
+    void abrirbolsa();
     void calentarComida();
 
     void mezclarTopics();

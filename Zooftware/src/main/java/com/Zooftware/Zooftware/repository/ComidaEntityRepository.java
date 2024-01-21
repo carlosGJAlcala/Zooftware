@@ -18,5 +18,7 @@ public interface ComidaEntityRepository extends JpaRepository<ComidaEntity, Inte
 
     List<ComidaEntity> findByTipoComida(TipoComida tipoComida);
 
+    Optional<ComidaEntity> findByComederoEntity_Id(int id);
+
 
 }

@@ -52,11 +52,12 @@ public class Zooftware implements IAccionesJefe {
     IMensajeDAO mensajeDAO;
     @Autowired
     IContactoDAO contactoDAO;
+    @Autowired
+    IComidaDAO comidaDAO;
 
 
-	Contexto contextotarea;
-	@Autowired
-	Estrategia estrategia;
+    Contexto contextotarea;
+    Estrategia estrategia;
 
     @Autowired
     IAcuaticoDAO habitaAcuatio;
@@ -72,11 +73,11 @@ public class Zooftware implements IAccionesJefe {
     InstalacionFactory fabricadeHabitas;
     Mediator mediator;
 
-	@Autowired
-	InstalacionFactory fabricaHabitas;
-	List<TrabajadorEntityDto> trabajadores;
-	List<Animal> animales;
-	List<HabitatEntityDto> habitatEntityDtos;
+    @Autowired
+    InstalacionFactory fabricaHabitas;
+    List<TrabajadorEntityDto> trabajadores;
+    List<Animal> animales;
+    List<HabitatEntityDto> habitatEntityDtos;
 
     private int id_habita;
 
@@ -103,8 +104,9 @@ fabricadeHabitas.crearHabitaAnfibio();
 
         fabricadeHabitas.crearHabitaAnfibio();
     }
+
     @Override
-    public void crearAlmacen(){
+    public void crearAlmacen() {
         fabricadeHabitas.crearAlmacen();
     }
 
@@ -147,9 +149,9 @@ fabricadeHabitas.crearHabitaAnfibio();
 
     @Override
     public void ejercitarAnimal(int id, int cantidad) {
-		Animal animal = new AnimalDTOToAnimalState(animalDAO.buscarPorId(id));
+        Animal animal = new AnimalDTOToAnimalState(animalDAO.buscarPorId(id));
         animal.hacerEjercicio(cantidad);
-        animalDAO.guardarAnimal(animal);
+        animalDAO.actualizarAnimal(animal);
 
     }
 
@@ -157,49 +159,62 @@ fabricadeHabitas.crearHabitaAnfibio();
     public void dormirAnimal(int id, int cantidad) {
         Animal animal = new AnimalDTOToAnimalState(animalDAO.buscarPorId(id));
         animal.dormir(cantidad);
-        animalDAO.guardarAnimal(animal);
+        animalDAO.actualizarAnimal(animal);
     }
 
     @Override
     public void darComerAnimal(int id, int cantidad) {
-		Animal animal = new AnimalDTOToAnimalState(animalDAO.buscarPorId(id));
+        Animal animal = new AnimalDTOToAnimalState(animalDAO.buscarPorId(id));
         animal.darComida(cantidad);
-        animalDAO.guardarAnimal(animal);
+        animalDAO.actualizarAnimal(animal);
 
     }
 
     @Override
     public void rellenarComederos(int habita_id) {
+        HabitatEntityDto habita = habitatDAO.buscarPorId(habita_id);
+        ComidaEntityDto comida;
         estrategia = new Alimentar();
-        estrategia.ejecutar(habitatDAO.buscarPorId(habita_id));
-    }
+        List<ComederoEntityDto> comederoEntityDtos = comederoDAO.verComederos(habita_id);
+        List<ComederoEntityDto> comederosRellenos = (List<ComederoEntityDto>) estrategia.ejecutar(comederoEntityDtos);
+        for (ComederoEntityDto comederoEntityDto : comederosRellenos) {
+            comederoEntityDto.setHabitat(habita);
+            comederoEntityDto.setCantidad(100);
+            comida= comederoEntityDto.getComida();
+            comida.setComederoEntity(comederoEntityDto);
+            comederoEntityDto.setComida(comidaDAO.actualizarComida(comida));
+            comederoDAO.actualizarComedero(comederoEntityDto);
+        }
 
+    }
     @Override
     public void rellenarBebederos(int habita_id) {
         estrategia = new RellenarBebederos();
-        estrategia.ejecutar(habitatDAO.buscarPorId(habita_id));
+        List<BebederoEntityDto> bebederoEntityDtos = bebederoDAO.verBebederos(habita_id);
+        List<BebederoEntityDto> bebederosRellenos = (List<BebederoEntityDto>) estrategia.ejecutar(bebederoEntityDtos);
+        bebederosRellenos.stream().forEach(bebederoEntityDto -> bebederoDAO.actualizarBebedero(bebederoEntityDto));
+
     }
 
     @Override
-    public List<BebederoEntity> verBebederos(int habita_id) {
+    public List<BebederoEntityDto> verBebederos(int habita_id) {
 
-        List<BebederoEntity> bebederos= bebederoDAO.verBebederos(habita_id);
-        return bebederos;
+
+        return bebederoDAO.verBebederos(habita_id);
     }
+
     @Override
     public BebederoEntityDto verBebedero(int id) {
-
 
         return bebederoDAO.buscarPorId(id);
     }
 
 
-
     @Override
-    public List<ComederoEntity> verComederos(int habita_id) {
+    public List<ComederoEntityDto> verComederos(int habita_id) {
 
 
-        List<ComederoEntity> comederos= comederoDAO.verComederos(habita_id);
+        List<ComederoEntityDto> comederos = comederoDAO.verComederos(habita_id);
         return comederos;
 
 
@@ -212,7 +227,7 @@ fabricadeHabitas.crearHabitaAnfibio();
 
     @Override
     public void modificarEstadoBebedero(BebederoJson bebedero) {
-        BebederoJsonToDTO bebederoJsonToDTO= new BebederoJsonToDTO(bebedero);
+        BebederoJsonToDTO bebederoJsonToDTO = new BebederoJsonToDTO(bebedero);
         bebederoDAO.actualizarBebedero(bebederoJsonToDTO);
 
     }
@@ -245,30 +260,29 @@ fabricadeHabitas.crearHabitaAnfibio();
 
     }
 
-	@Override
-	public void crearHabitat(TipoHabitat tipo) {
-        switch (tipo){
-		case ANFIBIO :
-			fabricadeHabitas.crearHabitaAnfibio();
-			break;
-		case ACTUATICO_DULCE :
-			fabricadeHabitas.crerAcuarioAguaDulce();
+    @Override
+    public void crearHabitat(TipoHabitat tipo) {
+        switch (tipo) {
+            case ANFIBIO:
+                fabricadeHabitas.crearHabitaAnfibio();
+                break;
+            case ACTUATICO_DULCE:
+                fabricadeHabitas.crerAcuarioAguaDulce();
 
-			break;
-		case ACTUATICO_SALADO :
-			fabricadeHabitas.crerAcuarioAguaSalada();
+                break;
+            case ACTUATICO_SALADO:
+                fabricadeHabitas.crerAcuarioAguaSalada();
 
-			break;
-		case TERRESTRE:
-			fabricadeHabitas.crearHabitaTerrestre();
+                break;
+            case TERRESTRE:
+                fabricadeHabitas.crearHabitaTerrestre();
 
-			break;
+                break;
 
-	}
+        }
 
 
-
-	}
+    }
 
     @Override
     public void eliminarHabita(int habita_id) {
@@ -280,11 +294,11 @@ fabricadeHabitas.crearHabitaAnfibio();
     @Override
     public double verTotalSueldos(int empleado_id) {
 
-        TrabajadorEntityDto trabajadorEntityDto=calcularEmpleado(empleado_id);
-        if(trabajadorEntityDto instanceof JefeEntityDto){
-            JefeEntityDto jefeEntityDto=(JefeEntityDto) trabajadorEntityDto;
-            List<TrabajadorEntity> trabajadores= trabajadorDAO.buscarPorJefe(empleado_id);
-            List<TrabajadorEntityDto> trabajadorEntityDtos=trabajadores.stream().map(trabajador->this.calcularEmpleado(trabajador.getId())).collect(Collectors.toList());
+        TrabajadorEntityDto trabajadorEntityDto = calcularEmpleado(empleado_id);
+        if (trabajadorEntityDto instanceof JefeEntityDto) {
+            JefeEntityDto jefeEntityDto = (JefeEntityDto) trabajadorEntityDto;
+            List<TrabajadorEntity> trabajadores = trabajadorDAO.buscarPorJefe(empleado_id);
+            List<TrabajadorEntityDto> trabajadorEntityDtos = trabajadores.stream().map(trabajador -> this.calcularEmpleado(trabajador.getId())).collect(Collectors.toList());
             jefeEntityDto.setSubordinados(trabajadorEntityDtos);
         }
 
@@ -292,16 +306,17 @@ fabricadeHabitas.crearHabitaAnfibio();
 
     }
 
-    public TrabajadorEntityDto calcularEmpleado(int empleado_id){
+    public TrabajadorEntityDto calcularEmpleado(int empleado_id) {
         TrabajadorEntity trabajador = trabajadorDAO.buscarPorId(empleado_id);
         TrabajadorEntityDto trabajadorEntityDto;
         Rol rol = trabajador.getRol();
-        switch (rol){
+        switch (rol) {
             case EMPLEADO:
                 return empleadoDAO.buscarPorId(empleado_id);
             case JEFE:
                 return jefeDAO.buscarPorId(empleado_id);
-            default:break;
+            default:
+                break;
         }
         return null;
     }
@@ -320,14 +335,15 @@ fabricadeHabitas.crearHabitaAnfibio();
         empleado.setJefe(jefeDAO.getJefeById(empleadoNuevo.getIdJefe()));
 
 
-        ContactoEntityDto contacto = new ContactoEntityDto(empleadoNuevo.getCorreo(),empleadoNuevo.getNumeroTlf());
-        ContactoEntity contactoEntity =  contactoDAO.guardarContacto(contacto);
+        ContactoEntityDto contacto = new ContactoEntityDto(empleadoNuevo.getCorreo(), empleadoNuevo.getNumeroTlf());
+        ContactoEntity contactoEntity = contactoDAO.guardarContacto(contacto);
         contacto = contactoDAO.buscarPorId(contactoEntity.getId());
 
         empleado.setContacto(contacto);
 
         empleadoDAO.guardarEmpleado(empleado);
     }
+
     @Override
     public void contratarJefe(JefeJson jefe) {
         JefeEntityDto jefeDto = new JefeJSONToDTO(jefe);

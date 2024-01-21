@@ -1,11 +1,14 @@
 package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.BebederoEntityDto;
+import com.Zooftware.Zooftware.modelDTO.ComederoEntityDto;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.BebederoEntity;
 import com.Zooftware.Zooftware.modelJPA.instalaciones.BebederoEntity;
 import com.Zooftware.Zooftware.repository.BebederoEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,16 +46,15 @@ public class BebederoDAOImp implements IBebederoDAO {
     }
 
     @Override
-    public List<BebederoEntity> verBebederos(int habita_id) {
+    public List<BebederoEntityDto> verBebederos(int habita_id) {
 
-        List<BebederoEntity> resultados = bebederoJPA.findByHabitat_Id(habita_id);
-        StringBuilder stringBuilder = new StringBuilder();
-        for (BebederoEntity animal : resultados) {
-            stringBuilder.append(animal.toString()).append("\n");
+        List<BebederoEntity> bebederoEntities=  bebederoJPA.findByHabitat_Id(habita_id);
+        List<BebederoEntityDto> bebederoEntityDtos = new ArrayList<>();
+
+        for(BebederoEntity bebedero: bebederoEntities){
+            BebederoEntityDto bebederoDTO = buscarPorId(bebedero.getId());
+            bebederoEntityDtos.add(bebederoDTO);
         }
-        System.out.println(stringBuilder.toString());
-
-
-        return resultados;
+        return bebederoEntityDtos;
     }
 }

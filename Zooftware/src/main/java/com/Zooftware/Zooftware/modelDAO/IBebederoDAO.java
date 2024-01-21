@@ -10,5 +10,5 @@ public interface IBebederoDAO {
     public void actualizarBebedero(BebederoEntityDto bebedero);
     public void guardarBebedero(BebederoEntityDto bebedero);
     public void eliminarBebedero(Integer id);
-    List<BebederoEntity> verBebederos(int habitaId);
+    List<BebederoEntityDto> verBebederos(int habitaId);
 }
