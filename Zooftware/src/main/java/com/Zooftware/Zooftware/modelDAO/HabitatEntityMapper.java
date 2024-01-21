@@ -20,6 +20,10 @@ public interface HabitatEntityMapper {
     @Mapping(target = "comederos", ignore = true)
     HabitatEntityDto toDto(HabitatEntity habitatEntity);
 
+    @Mapping(target = "animales", ignore = true)
+    @Mapping(target = "plantas", ignore = true)
+    @Mapping(target = "bebederos", ignore = true)
+    @Mapping(target = "comederos", ignore = true)
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     HabitatEntity partialUpdate(HabitatEntityDto habitatEntityDto, @MappingTarget HabitatEntity habitatEntity);
 }

@@ -27,7 +27,7 @@ public class ClienteEntity extends PersonaEntity{
     }
 
     public Date getFechaRegistro() {
-        return fechaRegistro;
+        return this.fechaRegistro;
     }
 
     public void setFechaRegistro(Date fechaRegistro) {
@@ -35,7 +35,7 @@ public class ClienteEntity extends PersonaEntity{
     }
 
     public Date getFechaUltimaVisita() {
-        return fechaUltimaVisita;
+        return this.fechaUltimaVisita;
     }
 
     public void setFechaUltimaVisita(Date fechaUltimaVisita) {
@@ -43,7 +43,7 @@ public class ClienteEntity extends PersonaEntity{
     }
 
     public int getNumVisitas() {
-        return numVisitas;
+        return this.numVisitas;
     }
 
     public void setNumVisitas(int numVisitas) {

@@ -23,13 +23,12 @@ public abstract class PersonaEntity {
 
     @OneToOne
     @JoinColumn(name = "contacto_id")
-    private ContactoEntity contactoEntity;
+    private ContactoEntity contacto;
 
 
     public PersonaEntity(){}
 
-    public PersonaEntity(int id, String apellidos, String dni, int edad, String nombre, String username, String password, Rol rol, ContactoEntity contactoEntity) {
-        this.id = id;
+    public PersonaEntity(String apellidos, String dni, int edad, String nombre, String username, String password, Rol rol, ContactoEntity contacto) {
         this.apellidos = apellidos;
         this.dni = dni;
         this.edad = edad;
@@ -37,11 +36,11 @@ public abstract class PersonaEntity {
         this.username = username;
         this.password = password;
         this.rol = rol;
-        this.contactoEntity = contactoEntity;
+        this.contacto = contacto;
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -49,7 +48,7 @@ public abstract class PersonaEntity {
     }
 
     public String getApellidos() {
-        return apellidos;
+        return this.apellidos;
     }
 
     public void setApellidos(String apellidos) {
@@ -57,7 +56,7 @@ public abstract class PersonaEntity {
     }
 
     public String getDni() {
-        return dni;
+        return this.dni;
     }
 
     public void setDni(String dni) {
@@ -65,7 +64,7 @@ public abstract class PersonaEntity {
     }
 
     public int getEdad() {
-        return edad;
+        return this.edad;
     }
 
     public void setEdad(int edad) {
@@ -73,7 +72,7 @@ public abstract class PersonaEntity {
     }
 
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 
     public void setNombre(String nombre) {
@@ -81,7 +80,7 @@ public abstract class PersonaEntity {
     }
 
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
     public void setUsername(String username) {
@@ -89,7 +88,7 @@ public abstract class PersonaEntity {
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public void setPassword(String password) {
@@ -97,18 +96,18 @@ public abstract class PersonaEntity {
     }
 
     public Rol getRol() {
-        return rol;
+        return this.rol;
     }
 
     public void setRol(Rol rol) {
         this.rol = rol;
     }
 
-    public ContactoEntity getContactoEntity() {
-        return contactoEntity;
+    public ContactoEntity getContacto() {
+        return this.contacto;
     }
 
-    public void setContactoEntity(ContactoEntity contactoEntity) {
-        this.contactoEntity = contactoEntity;
+    public void setContacto(ContactoEntity contacto) {
+        this.contacto = contacto;
     }
 }

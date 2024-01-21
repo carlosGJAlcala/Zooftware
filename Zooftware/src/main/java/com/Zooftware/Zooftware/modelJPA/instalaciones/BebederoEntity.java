@@ -32,7 +32,7 @@ public class BebederoEntity {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -40,7 +40,7 @@ public class BebederoEntity {
     }
 
     public int getCantidad() {
-        return cantidad;
+        return this.cantidad;
     }
 
     public void setCantidad(int cantidad) {
@@ -48,7 +48,7 @@ public class BebederoEntity {
     }
 
     public HabitatEntity getHabitat() {
-        return habitat;
+        return this.habitat;
     }
 
     public void setHabitat(HabitatEntity habitat) {

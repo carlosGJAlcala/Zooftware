@@ -9,6 +9,9 @@ public interface IJefeDAO {
     void prueba();
 
     public JefeEntityDto getJefeByUsername(String username);
+
+    JefeEntityDto getJefeById(int id);
+
     void actualizarJefe(JefeEntityDto jefe);
     void guardarJefe(JefeEntityDto jefe);
     public void eliminarJefe(Integer id);

@@ -19,7 +19,7 @@ public class AcuaticoEntity extends HabitatEntity {
     }
 
     public TipoAgua getTipoAgua() {
-        return tipoAgua;
+        return this.tipoAgua;
     }
 
     public void setTipoAgua(TipoAgua tipoAgua) {

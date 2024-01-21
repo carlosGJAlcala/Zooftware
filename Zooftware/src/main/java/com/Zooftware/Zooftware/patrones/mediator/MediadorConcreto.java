@@ -16,7 +16,7 @@ public class MediadorConcreto implements Mediator {
 
     @Override
     public void setColega(TrabajadorEntityDto colega) {
-        colegas.put(colega.getContactoEntityDto().getCorreo(),colega);
+        colegas.put(colega.getContacto().getCorreo(),colega);
     }
 
     @Override

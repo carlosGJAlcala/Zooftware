@@ -18,8 +18,6 @@ public class JefeController {
     }
 
 
-
-
     @ExceptionHandler(Exception.class)
     public ModelAndView excepcion(Exception exception){
         ModelAndView modelAndView = new ModelAndView("error");

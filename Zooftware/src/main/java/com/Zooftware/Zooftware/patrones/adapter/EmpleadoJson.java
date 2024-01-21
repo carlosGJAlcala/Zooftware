@@ -7,6 +7,7 @@ import java.util.Date;
 public class EmpleadoJson {
 
     int id;
+    int idJefe;
     String apellidos;
     String dni;
     String nombre;
@@ -25,7 +26,7 @@ public class EmpleadoJson {
 
     Date fechaFinContrato;
 
-    public EmpleadoJson(String apellidos, String dni, String nombre, String password, String username, int edad, long numeroSeguridadSocial, String correo, int numeroTlf, String usernameJefe, int salario, Date fechaFinContrato) {
+    public EmpleadoJson(String apellidos, String dni, String nombre, String password, String username, int edad, long numeroSeguridadSocial, String correo, int numeroTlf, int salario, Date fechaFinContrato) {
         this.apellidos = apellidos;
         this.dni = dni;
         this.nombre = nombre;
@@ -35,9 +36,16 @@ public class EmpleadoJson {
         this.numeroSeguridadSocial = numeroSeguridadSocial;
         this.correo = correo;
         this.numeroTlf = numeroTlf;
-        this.usernameJefe = usernameJefe;
         this.salario = salario;
         this.fechaFinContrato = fechaFinContrato;
+    }
+
+    public int getIdJefe() {
+        return idJefe;
+    }
+
+    public void setIdJefe(int idJefe) {
+        this.idJefe = idJefe;
     }
 
     public Date getFechaFinContrato() {

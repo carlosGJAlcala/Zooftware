@@ -37,7 +37,7 @@ public class ComederoEntity {
 
 
     public ComidaEntity getComidaEntity() {
-        return comidaEntity;
+        return this.comidaEntity;
     }
 
     public void setComidaEntity(ComidaEntity comidaEntity) {
@@ -45,7 +45,7 @@ public class ComederoEntity {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -53,7 +53,7 @@ public class ComederoEntity {
     }
 
     public Integer getCantidad() {
-        return cantidad;
+        return this.cantidad;
     }
 
     public void setCantidad(Integer cantidad) {
@@ -61,7 +61,7 @@ public class ComederoEntity {
     }
 
     public TipoComida getTipo() {
-        return tipo;
+        return this.tipo;
     }
 
     public void setTipo(TipoComida tipo) {
@@ -69,7 +69,7 @@ public class ComederoEntity {
     }
 
     public HabitatEntity getHabitat() {
-        return habitat;
+        return this.habitat;
     }
 
     public void setHabitat(HabitatEntity habitat) {

@@ -7,6 +7,7 @@ import com.Zooftware.Zooftware.repository.AnimalEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -53,11 +54,16 @@ public class AnimalDAOImp implements  IAnimalDAO{
         AnimalEntity animalEntity=animalEntityMapper.mapper.toEntity(animal);
         animalJPA.save(animalEntity);
     }
-
+    @Override
     public List<AnimalEntityDto> verAnimales(){
         List<AnimalEntity> animalesentity=  animalJPA.findAll();
-        List<AnimalEntityDto> animalEntityDtoList =animalesentity.stream().map(animalEntityMapper::toDto).collect(Collectors.toList());
-        return animalEntityDtoList;
+        List<AnimalEntityDto> animales = new ArrayList<>();
+
+        for(AnimalEntity animal: animalesentity){
+            AnimalEntityDto animalDto = buscarPorId(animal.getId());
+            animales.add(animalDto);
+        }
+         return animales;
     }
 /*
     public List<AnimalEntity> verAnimales(){

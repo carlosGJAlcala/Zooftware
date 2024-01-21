@@ -24,8 +24,7 @@ public class AnimalEntityDto implements Serializable {
     private int hambre;
 
     @Default
-    public AnimalEntityDto(int id,String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, HabitatEntityDto habitat, int numExtremidades, int salud, int sed, int suenio, int hambre) {
-        this.id = id;
+    public AnimalEntityDto(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, HabitatEntityDto habitat, int numExtremidades, int salud, int sed, int suenio, int hambre) {
         this.nombre = nombre;
         this.estadoAnimal = estadoAnimal;
         this.tipo = tipo;
@@ -70,7 +69,7 @@ public class AnimalEntityDto implements Serializable {
     }
 
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 
     public void setNombre(String nombre) {
@@ -78,7 +77,7 @@ public class AnimalEntityDto implements Serializable {
     }
 
     public EstadoAnimal getEstadoAnimal() {
-        return estadoAnimal;
+        return this.estadoAnimal;
     }
 
     public void setEstadoAnimal(EstadoAnimal estadoAnimal) {
@@ -86,7 +85,7 @@ public class AnimalEntityDto implements Serializable {
     }
 
     public TipoAnimal getTipo() {
-        return tipo;
+        return this.tipo;
     }
 
     public void setTipo(TipoAnimal tipo) {
@@ -94,7 +93,7 @@ public class AnimalEntityDto implements Serializable {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -102,7 +101,7 @@ public class AnimalEntityDto implements Serializable {
     }
 
     public HabitatEntityDto getHabitat() {
-        return habitat;
+        return this.habitat;
     }
 
     public void setHabitat(HabitatEntityDto habitat) {
@@ -110,7 +109,7 @@ public class AnimalEntityDto implements Serializable {
     }
 
     public int getNumExtremidades() {
-        return numExtremidades;
+        return this.numExtremidades;
     }
 
     public void setNumExtremidades(int numExtremidades) {
@@ -118,7 +117,7 @@ public class AnimalEntityDto implements Serializable {
     }
 
     public int getSalud() {
-        return salud;
+        return this.salud;
     }
 
     public void setSalud(int salud) {
@@ -126,7 +125,7 @@ public class AnimalEntityDto implements Serializable {
     }
 
     public int getSed() {
-        return sed;
+        return this.sed;
     }
 
     public void setSed(int sed) {
@@ -134,7 +133,7 @@ public class AnimalEntityDto implements Serializable {
     }
 
     public int getSuenio() {
-        return suenio;
+        return this.suenio;
     }
 
     public void setSuenio(int suenio) {
@@ -142,7 +141,7 @@ public class AnimalEntityDto implements Serializable {
     }
 
     public int getHambre() {
-        return hambre;
+        return this.hambre;
     }
 
     public void setHambre(int hambre) {

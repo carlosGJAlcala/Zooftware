@@ -22,6 +22,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -107,9 +109,14 @@ public class ZooftwareControler  {
 
     }
 
-    @GetMapping("/animales")
-    public List<AnimalEntityDto> verAnimales() {
-        return zoo.verAnimales();
+    @GetMapping("/allAnimales")
+    public ModelAndView verAnimales() {
+        List<AnimalEntityDto> animales = zoo.verAnimales();
+        ModelAndView modelAndView = new ModelAndView("tablaAnimalJefe");
+
+        modelAndView.addObject("animales", animales);
+
+         return modelAndView;
     }
 
 //funciona
@@ -229,16 +236,18 @@ public class ZooftwareControler  {
     public void eliminarHabitat(int habita_id) {
 
     }
-    @GetMapping("/trabajador/verTotalSueldos/{id}")
-    public double verTotalSueldos(@PathVariable int id) {
-        return zoo.verTotalSueldos(id);
+    @GetMapping("/trabajador/verTotalSueldos")
+    public ResponseEntity<?> verTotalSueldos(HttpSession session) {
+        return ResponseEntity.ok(zoo.verTotalSueldos(((PersonaEntityDto)session.getAttribute("user")).getId()));
     }
 
     public void despedirEmpleado(int empleado_id) {
 
     }
     @PostMapping(value = "/empleado/contratar" ,produces = MediaType.TEXT_PLAIN_VALUE)
-    public void contratarEmpleado(@RequestBody EmpleadoJson empleadoNuevo) {
+    public void contratarEmpleado(@RequestBody EmpleadoJson empleadoNuevo, HttpSession session) {
+        PersonaEntityDto persona = (PersonaEntityDto) session.getAttribute("user");
+        empleadoNuevo.setIdJefe(persona.getId());
         zoo.contratarEmpleado(empleadoNuevo);
 
     }

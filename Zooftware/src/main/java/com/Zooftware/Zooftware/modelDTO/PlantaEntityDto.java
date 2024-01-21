@@ -51,7 +51,7 @@ public class PlantaEntityDto implements Serializable {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -59,7 +59,7 @@ public class PlantaEntityDto implements Serializable {
     }
 
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 
     public void setNombre(String nombre) {
@@ -67,7 +67,7 @@ public class PlantaEntityDto implements Serializable {
     }
 
     public HabitatEntityDto getHabitatEntity() {
-        return habitat;
+        return this.habitat;
     }
 
     public void setHabitatEntity(HabitatEntityDto habitat) {

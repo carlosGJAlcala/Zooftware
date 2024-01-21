@@ -21,6 +21,7 @@ public class AnimalController {
     @GetMapping("/mostrarTablaAnimalEmpleado")
     public ModelAndView mostrarTablaAnimalEmpleado(){
         ModelAndView modelAndView = new ModelAndView("tablaAnimalEmpleado");
+
         return modelAndView;
     }
 
