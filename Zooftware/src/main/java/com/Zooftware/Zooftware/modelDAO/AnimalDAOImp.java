@@ -2,8 +2,11 @@ package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.AnimalEntityDto;
 import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.HabitatEntity;
 import com.Zooftware.Zooftware.modelJPA.organimos.AnimalEntity;
+import com.Zooftware.Zooftware.patrones.state.Animal;
 import com.Zooftware.Zooftware.repository.AnimalEntityRepository;
+import com.Zooftware.Zooftware.repository.HabitatEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +20,9 @@ public class AnimalDAOImp implements  IAnimalDAO{
     @Autowired
     AnimalEntityRepository animalJPA;
     AnimalEntityMapper animalEntityMapper;
+
+    @Autowired
+    HabitatEntityRepository habitatJPA;
 
     @Override
     public AnimalEntityDto buscarPorId(Integer id) {
@@ -90,8 +96,24 @@ public class AnimalDAOImp implements  IAnimalDAO{
 
     @Override
     public void actualizarAnimal(AnimalEntityDto animal) {
-        animalJPA.deleteById(animal.getId());
-        AnimalEntity clienteEntity=animalEntityMapper.mapper.toEntity(animal);
-        animalJPA.save(clienteEntity);
+        AnimalEntity animalEntity=animalEntityMapper.mapper.toEntity(animal);
+        animalJPA.save(animalEntity);
+    }
+
+    @Override
+    public void actualizarAnimalEstado(AnimalEntityDto animal) {
+//        animalJPA.deleteById( ((Animal)animal).getIdent()  );
+//
+//        animalJPA.
+        AnimalEntity animalEntity=animalEntityMapper.mapper.toEntity(animal);
+        animalEntity.setId( ((Animal)animal).getIdent());
+
+
+        Optional<AnimalEntity> animalEntityHabitat = animalJPA.findById(animalEntity.getId());
+        Optional<HabitatEntity> habitat = habitatJPA.findById(animalEntityHabitat.get().getHabitat().getId());
+
+        animalEntity.setHabitat(habitat.get());
+
+        animalJPA.save(animalEntity);
     }
 }

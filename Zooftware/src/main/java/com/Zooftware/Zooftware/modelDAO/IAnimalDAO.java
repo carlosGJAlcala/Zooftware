@@ -19,4 +19,5 @@ public interface IAnimalDAO {
     public List<AnimalEntityDto> verAnimalesPorHabita(int habita_id);
 
 
+    void actualizarAnimalEstado(AnimalEntityDto animal);
 }

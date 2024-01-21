@@ -4,6 +4,7 @@ import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoAnimal;
 import com.Zooftware.Zooftware.modelJPA.instalaciones.HabitatEntity;
 import com.Zooftware.Zooftware.modelJPA.organimos.AnimalEntity;
+import com.Zooftware.Zooftware.patrones.state.*;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -15,6 +16,7 @@ public class AnimalEntityDto implements Serializable {
     private int id;
     private String nombre;
     private EstadoAnimal estadoAnimal;
+
     private TipoAnimal tipo;
     private HabitatEntityDto habitat;
     private int numExtremidades;
@@ -147,4 +149,36 @@ public class AnimalEntityDto implements Serializable {
     public void setHambre(int hambre) {
         this.hambre = hambre;
     }
+
+    public void darComida(int cantidad) {
+        this.hambre += cantidad;
+        if (this.hambre > 100) {
+            this.hambre = 100;
+        } else if (this.hambre < 0) {
+            this.hambre = 0;
+        }
+        Estado estadoActual = new EstadoComida();
+        estadoActual.ejecutar((Animal) this);
+    }
+    public void hacerEjercicio(int cantidad) {
+        this.salud += cantidad;
+        if (this.salud > 100) {
+            this.salud = 100;
+        } else if (this.salud < 0) {
+            this.salud = 0;
+        }
+        Estado estadoActual = new EstadoSalud();
+        estadoActual.ejecutar((Animal) this);
+    }
+    public void dormir(int cantidad) {
+        this.suenio -= cantidad;
+        if (this.suenio > 100) {
+            this.suenio = 100;
+        } else if (this.suenio < 0) {
+            this.suenio = 0;
+        }
+        Estado estadoActual = new EstadoSuenio();
+        estadoActual.ejecutar((Animal) this);
+    }
+
 }

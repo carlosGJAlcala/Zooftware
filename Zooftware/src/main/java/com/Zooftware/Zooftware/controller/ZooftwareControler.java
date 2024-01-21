@@ -119,8 +119,8 @@ public class ZooftwareControler {
         return modelAndView;
     }
 
-    //funciona
-    @PostMapping(value = "/animal", produces = MediaType.TEXT_PLAIN_VALUE)
+//funciona
+    @PostMapping(value = "/comprarAnimal" ,produces = MediaType.TEXT_PLAIN_VALUE)
     public void comprarAnimal(@RequestBody AnimalJson animalJson) {
         zoo.comprarAnimal(animalJson);
 
@@ -132,29 +132,59 @@ public class ZooftwareControler {
     }
 
     @GetMapping("/animal/ejercitarAnimal/{id}")
-    public void ejercitarAnimal(@PathVariable("id") int id) {
-        zoo.ejercitarAnimal(id, 10);
-    }
+    public ResponseEntity<String> ejercitarAnimal(@PathVariable int id) {
 
+
+        try {
+            // Aquí va la lógica para dar de comer al animal
+            zoo.ejercitarAnimal(id,10);
+
+            // Retorna un mensaje de éxito
+            return ResponseEntity.ok("Acción completada con éxito");
+        } catch (Exception e) {
+            // Manejo de excepciones, retorna un código de error
+            return ResponseEntity.status(500).body("Error al realizar la acción");
+        }
+    }
     @GetMapping("/animal/dormirAnimal/{id}")
-    public void dormirAnimal(@PathVariable("id") int id) {
-        zoo.dormirAnimal(id, 10);
-    }
+    public ResponseEntity<String> dormirAnimal(@PathVariable int id) {
+        try {
+            // Aquí va la lógica para dar de comer al animal
+            zoo.dormirAnimal(id,10);
 
+            // Retorna un mensaje de éxito
+            return ResponseEntity.ok("Acción completada con éxito");
+        } catch (Exception e) {
+            // Manejo de excepciones, retorna un código de error
+            return ResponseEntity.status(500).body("Error al realizar la acción");
+        }
+    }
     @GetMapping("/animal/darComerAnimal/{id}")
-    public void darComerAnimal(@PathVariable("id") int id) {
-        zoo.darComerAnimal(id, 10);
-    }
+    public ResponseEntity<String> darComerAnimal(@PathVariable int id) {
+        try {
+            // Aquí va la lógica para dar de comer al animal
+            zoo.darComerAnimal(id,10);
 
-    @GetMapping("/animal/{id}")
-    public AnimalEntityDto VerAnimal(@PathVariable("id") int id_animal) {
-        return zoo.VerAnimal(id_animal);
-    }
+            // Retorna un mensaje de éxito
+            return ResponseEntity.ok("Acción completada con éxito");
+        } catch (Exception e) {
+            // Manejo de excepciones, retorna un código de error
+            return ResponseEntity.status(500).body("Error al realizar la acción");
+        }
 
-    @GetMapping("/animal/comprobarEstado/{id}")
-    public EstadoAnimal ComprobarEstadoAnimal(@PathVariable("id") int id_animal) {
-        return zoo.ComprobarEstadoAnimal(id_animal);
-    }
+     }
+/*    @PostMapping("/rellenarComederos")
+    public boolean rellenarComederos(@RequestParam("idHabitat")int id, HttpSession session) {
+        //zoo.rellenarComederos(id);
+        PersonaEntityDto persona = (PersonaEntityDto) session.getAttribute("user");
+
+
+        IAccionesJefe test= (IAccionesJefe) session.getAttribute("proxy");
+
+        test.crearHabitat(TipoHabitat.ANFIBIO);
+
+        return true;
+    }*/
 
     @GetMapping("/habitat/comederos/rellenar/{id}")
     public boolean rellenarComederos(@PathVariable("id") int id) {

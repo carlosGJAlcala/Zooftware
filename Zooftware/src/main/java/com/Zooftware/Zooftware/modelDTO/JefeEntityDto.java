@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * DTO for {@link JefeEntity}
@@ -62,11 +63,28 @@ public class JefeEntityDto  extends  TrabajadorEntityDto implements Serializable
 
     @Override
     public double calcularSalario() {
+//        double sum = super.getSalario(); // Suma el salario de este empleado.
+//
+//        Optional<List<TrabajadorEntityDto>> subord = (Optional<List<TrabajadorEntityDto>>) this.subordinados;
+//
+//
+//            if(!subordinados()){
+//                for (TrabajadorEntityDto subordinado : subordinados) {
+//                    sum += subordinado.calcularSalario();// Suma el salario de su subordinado.
+//                }
+//            }
+//            return sum;
+
         double sum = super.getSalario(); // Suma el salario de este empleado.
-        for (TrabajadorEntityDto subordinado : subordinados) {
-            sum += subordinado.calcularSalario();// Suma el salario de su subordinado.
+
+        // Verifica si la lista subordinados no es null y no está vacía antes de iterar.
+        if (this.subordinados != null && !this.subordinados.isEmpty()) {
+            for (TrabajadorEntityDto subordinado : subordinados) {
+                sum += subordinado.calcularSalario(); // Suma el salario de su subordinado.
+            }
         }
         return sum;
+
     }
 
 
