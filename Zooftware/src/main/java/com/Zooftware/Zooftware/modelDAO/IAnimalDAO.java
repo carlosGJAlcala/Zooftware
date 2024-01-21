@@ -2,6 +2,7 @@ package com.Zooftware.Zooftware.modelDAO;
 
 import com.Zooftware.Zooftware.modelDTO.AnimalEntityDto;
 import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
+import com.Zooftware.Zooftware.modelJPA.organimos.AnimalEntity;
 
 import java.util.List;
 
@@ -15,5 +16,7 @@ public interface IAnimalDAO {
     void eliminarAnimalPorId(int id);
     void actualizarAnimal(AnimalEntityDto animal);
     public List<AnimalEntityDto> verAnimales();
+    public List<AnimalEntityDto> verAnimalesPorHabita(int habita_id);
+
 
 }

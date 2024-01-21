@@ -3,6 +3,7 @@ package com.Zooftware.Zooftware.patrones.proxy;
 
 import com.Zooftware.Zooftware.modelDTO.AnimalEntityDto;
 import com.Zooftware.Zooftware.modelDTO.HabitatEntityDto;
+import com.Zooftware.Zooftware.modelJPA.organimos.AnimalEntity;
 
 import java.util.List;
 
@@ -18,5 +19,8 @@ public interface IAccionesCliente {
 	public List<HabitatEntityDto>  verInstalaciones();
 
 	AnimalEntityDto VerAnimal( int id_animal);
+	List<AnimalEntityDto> verAnimalesPorHabita( int id_habita);
+
+
 
 }

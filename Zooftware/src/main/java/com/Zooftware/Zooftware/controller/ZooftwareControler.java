@@ -1,13 +1,14 @@
 package com.Zooftware.Zooftware.controller;
 
-import com.Zooftware.Zooftware.exceptions.ValidacionException;
 import com.Zooftware.Zooftware.modelDTO.*;
 import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
 import com.Zooftware.Zooftware.modelJPA.enums.Rol;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoPersona;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.BebederoEntity;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.ComederoEntity;
+import com.Zooftware.Zooftware.modelJPA.organimos.AnimalEntity;
 import com.Zooftware.Zooftware.patrones.adapter.*;
-import com.Zooftware.Zooftware.patrones.facade.Zooftware;
 import com.Zooftware.Zooftware.patrones.adapter.AnimalJson;
 import com.Zooftware.Zooftware.patrones.adapter.BebederoJson;
 import com.Zooftware.Zooftware.patrones.adapter.EmpleadoJson;
@@ -21,12 +22,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.awt.*;
-import java.lang.reflect.Proxy;
 import java.util.List;
 
 
@@ -126,9 +124,13 @@ public class ZooftwareControler  {
         return zoo.VerAnimal(id_animal);
     }
 
+    @GetMapping("/habitat/animal/{id}")
+    public List<AnimalEntityDto> veAnimalPorHabita(@PathVariable("id") int id) {
+        return zoo.verAnimalesPorHabita(id);
+    }
 
 
-    @GetMapping("/habitas")
+    @GetMapping("/habitats")
     public List<HabitatEntityDto> verInstalaciones() {
         return zoo.verInstalaciones();
     }
@@ -166,7 +168,7 @@ public class ZooftwareControler  {
     public void darComerAnimal(@PathVariable("id") int id) {
     zoo.darComerAnimal(id,10);
     }
-    @PostMapping("/rellenarComederos")
+/*    @PostMapping("/rellenarComederos")
     public boolean rellenarComederos(@RequestParam("idHabitat")int id, HttpSession session) {
         //zoo.rellenarComederos(id);
         PersonaEntityDto persona = (PersonaEntityDto) session.getAttribute("user");
@@ -177,20 +179,31 @@ public class ZooftwareControler  {
         test.crearHabitat(TipoHabitat.ANFIBIO);
 
         return true;
-    }
-    @GetMapping("/habitat/bebederos/rellenar/{habita_id}")
-    public boolean rellenarBebederos(@PathVariable("habita_id")int id) {
+    }*/
+
+    @GetMapping("/habitat/comederos/rellenar/{habita_id}")
+    public boolean rellenarComederos(@PathVariable("habita_id")int id) {
         zoo.rellenarComederos(id);
         return true;
     }
 
+    @GetMapping("/habitat/bebederos/rellenar/{habita_id}")
+    public boolean rellenarBebederos(@PathVariable("habita_id")int id) {
+        zoo.rellenarBebederos(id);
+        return true;
+    }
+
     @GetMapping("/habitat/bebedero/{habita_id}")
-    public List<BebederoEntityDto> verBebederos(@PathVariable("habita_id") int habita_id) {
+    public List<BebederoEntity> verBebederos(@PathVariable("habita_id") int habita_id) {
         return zoo.verBebederos(habita_id);
+    }
+    @GetMapping("/bebedero/{id}")
+    public  BebederoEntityDto verBebedero (@PathVariable("id") int id) {
+        return zoo.verBebedero(id);
     }
     @GetMapping("/habitat/comedero/{habita_id}")
 
-    public List<ComederoEntityDto> verComederos(@PathVariable("habita_id") int habita_id) {
+    public List<ComederoEntity> verComederos(@PathVariable("habita_id") int habita_id) {
         return zoo.verComederos(habita_id);
     }
 
@@ -204,9 +217,9 @@ public class ZooftwareControler  {
         zoo.modificarEstadoBebedero(bebedero);
     }
 
-
-    public void crearhabitat(TipoHabitat tipo) {
-        zoo.crearHabitat(TipoHabitat.ANFIBIO);
+    @GetMapping("/habitat/crear/{tipo}")
+    public void crearhabitat(@PathVariable TipoHabitat tipo) {
+        zoo.crearHabitat(tipo);
     }
 
     public void eliminarHabitat(int habita_id) {
