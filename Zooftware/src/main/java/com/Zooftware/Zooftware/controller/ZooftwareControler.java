@@ -174,7 +174,7 @@ public class ZooftwareControler  {
 
         IAccionesJefe test= (IAccionesJefe) session.getAttribute("proxy");
 
-        test.crearhabita(TipoHabitat.ANFIBIO);
+        test.crearHabitat(TipoHabitat.ANFIBIO);
 
         return true;
     }

@@ -302,7 +302,7 @@ fabricadeHabitas.crearHabitaAnfibio();
     public void contratarEmpleado(EmpleadoJson empleadoNuevo) {
         EmpleadoJSONToDTO empleado = new EmpleadoJSONToDTO(empleadoNuevo);
 
-        empleado.setJefe(jefeDAO.buscarPorId(empleadoNuevo.getJefe_id()));
+        empleado.setJefe(jefeDAO.getJefeByUsername(empleadoNuevo.getUsernameJefe()));
         contactoDAO.guardarContacto(empleado.getContactoEntityDto());
         empleadoDAO.guardarEmpleado(empleado);
 

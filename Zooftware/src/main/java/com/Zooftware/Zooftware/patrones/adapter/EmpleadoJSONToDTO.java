@@ -9,15 +9,15 @@ import java.util.List;
 public class EmpleadoJSONToDTO extends EmpleadoEntityDto {
 
     int contactoId;
-    int jefe_id;
+    String jefeUsername;
 
     ContactoEntityDto contactoEntityDto;
 
     public EmpleadoJSONToDTO(EmpleadoJson empleado) {
         super(empleado.id, empleado.apellidos, empleado.dni, empleado.edad, empleado.nombre, empleado.password, Rol.EMPLEADO, empleado.username, null, null, null, true, new Date(), new Date(), empleado.numeroSeguridadSocial, null, null, empleado.salario);
-        contactoEntityDto=new ContactoEntityDto(1,empleado.correo,empleado.numeroTlf);
+        contactoEntityDto=new ContactoEntityDto(empleado.correo,empleado.numeroTlf);
         contactoId=empleado.id;
-        jefe_id=empleado.jefe_id;
+        jefeUsername=empleado.getUsernameJefe();
 
     }
 
@@ -29,8 +29,8 @@ public class EmpleadoJSONToDTO extends EmpleadoEntityDto {
         return contactoId;
     }
 
-    public int getJefe_id() {
-        return jefe_id;
+    public String getJefeUsername() {
+        return jefeUsername;
     }
 
     @Override
