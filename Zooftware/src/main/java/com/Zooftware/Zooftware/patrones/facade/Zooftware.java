@@ -8,6 +8,8 @@ import com.Zooftware.Zooftware.patrones.AbstractFactory.InstalacionFactory;
 import com.Zooftware.Zooftware.patrones.adapter.*;
 import com.Zooftware.Zooftware.patrones.mediator.MediadorConcreto;
 import com.Zooftware.Zooftware.patrones.mediator.Mediator;
+import com.Zooftware.Zooftware.patrones.proxy.IAccionesCliente;
+import com.Zooftware.Zooftware.patrones.proxy.IAccionesEmpleado;
 import com.Zooftware.Zooftware.patrones.proxy.IAccionesJefe;
 import com.Zooftware.Zooftware.patrones.state.Animal;
 import com.Zooftware.Zooftware.patrones.strategy.Contexto;
@@ -27,6 +29,8 @@ import java.util.List;
 public class Zooftware implements IAccionesJefe {
     @Autowired
     IAnimalDAO animalDAO;
+
+
     @Autowired
     IHabitatDAO habitatDAO;
     @Autowired
