@@ -203,10 +203,10 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
         almacen = iAlmacenComidaDAO.encontrarPorId(almacenComidaEntity.getId());
 
         //crear comida
-        ComidaEntityDto comida = new ComidaEntityDto(0,"Lentejas con chorizo",10,TipoComida.OMNIVORA,almacen, EstadoComida.CRUDA,"Lenteja","Chorizo");
+        ComidaEntityDto comida = new ComidaEntityDto(0,"Lentejas con chorizo",10,TipoComida.OMNIVORA, EstadoComida.CRUDA,"Lenteja","Chorizo",null);
         iComidaDAO.guardarComida(comida);
 
-        ComidaEntityDto comida2 = new ComidaEntityDto(0,"Pollo al ajillo",10,TipoComida.CARNIVORA,almacen, EstadoComida.CRUDA,"Pollo","ajo");
+        ComidaEntityDto comida2 = new ComidaEntityDto(0,"Pollo al ajillo",10,TipoComida.CARNIVORA, EstadoComida.CRUDA,"Pollo","ajo",null);
         iComidaDAO.guardarComida(comida2);
 
 
@@ -227,7 +227,7 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
     }
     @Override
     public void crearComederos(int numComederos, TipoComida tipo, HabitatEntityDto habitat){
-        ComederoEntityDto comedero = new ComederoEntityDto(habitat,numComederos,tipo,null);
+        ComederoEntityDto comedero = new ComederoEntityDto(40,tipo,habitat);
         iComederoDAO.guardarComedero(comedero);
     }
 

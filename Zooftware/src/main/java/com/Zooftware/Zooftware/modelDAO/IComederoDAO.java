@@ -12,5 +12,5 @@ public interface IComederoDAO {
     void guardarComedero(ComederoEntityDto comedero);
     public void eliminarComedero(Integer id);
 
-    List<ComederoEntity> verComederos(int habita_id);
+    List<ComederoEntityDto> verComederos(int habita_id);
 }

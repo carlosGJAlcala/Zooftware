@@ -1,6 +1,9 @@
 package com.Zooftware.Zooftware.patrones.strategy;
 
 import com.Zooftware.Zooftware.modelDTO.HabitatEntityDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 
 public class Contexto {
     private Estrategia estrategia; // Estrategia que se usa.

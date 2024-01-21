@@ -13,16 +13,12 @@ public class ComidaCarnivoraBuilder implements IComidaBuilder{
 
 
     @Override
-    public boolean abrirbolsa(List<ComidaEntityDto> provisiones) {
-        if (!provisiones.isEmpty()){
-            comida=provisiones.get(0);
+    public void abrirbolsa() {
+            comida=new ComidaEntityDto();
             comida.setNombre(" ternera con pavo");
             comida.setEstadoComida(EstadoComida.CRUDA);
             comida.setTipoComida(TipoComida.CARNIVORA);
-            return true;
-        }else {
-            return  false;
-        }
+
 
     }
 
