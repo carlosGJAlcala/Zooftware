@@ -9,7 +9,7 @@ import org.mapstruct.factory.Mappers;
 public interface ComederoEntityMapper {
     ComederoEntityMapper mapper= Mappers.getMapper(ComederoEntityMapper.class);
     ComederoEntity toEntity(ComederoEntityDto comederoEntityDto);
-
+    @Mapping(target = "habitat",ignore = true)
     ComederoEntityDto toDto(ComederoEntity comederoEntity);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

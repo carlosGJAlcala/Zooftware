@@ -22,6 +22,12 @@ public class BebederoEntity {
         this.habitat = habitat;
     }
 
+    public BebederoEntity(int id, int cantidad, HabitatEntity habitat) {
+        this.id = id;
+        this.cantidad = cantidad;
+        this.habitat = habitat;
+    }
+
     public BebederoEntity() {
     }
 
@@ -47,5 +53,14 @@ public class BebederoEntity {
 
     public void setHabitat(HabitatEntity habitat) {
         this.habitat = habitat;
+    }
+
+
+    @Override
+    public String toString() {
+        return "BebederoEntity{" +
+                "id=" + id +
+                ", cantidad=" + cantidad +
+                '}';
     }
 }

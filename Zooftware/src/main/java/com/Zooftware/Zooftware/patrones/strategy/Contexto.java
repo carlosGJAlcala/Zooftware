@@ -4,24 +4,25 @@ import com.Zooftware.Zooftware.modelDTO.HabitatEntityDto;
 
 public class Contexto {
     private Estrategia estrategia; // Estrategia que se usa.
-    private HabitatEntityDto habita;// habita que usa.
+    private HabitatEntityDto habitat;// habita que usa.
 
     public Estrategia getEstrategia() {
         return estrategia;
     }
 
-    public HabitatEntityDto getHabita() {
-        return habita;
+    public HabitatEntityDto getHabitat() {
+        return habitat;
     }
 
-    public void setHabita(HabitatEntityDto habita) {
-        this.habita = habita;
+    public void setHabitat(HabitatEntityDto habitat) {
+        this.habitat = habitat;
     }
 
 
 
 
     public Contexto() {
+
     }
 
     /**
@@ -37,7 +38,7 @@ public class Contexto {
      * Ejecuta la estrategia.
      */
     public void ejecutaEstrategia() {
-        estrategia.ejecutar(habita);
+        estrategia.ejecutar(habitat);
 
     }
 }

@@ -133,5 +133,24 @@ public class AnimalEntity {
 
     public void setHabitat(HabitatEntity habitat) {
         this.habitat = habitat;
+
+
+    }
+
+    @Override
+    public String toString() {
+        return "AnimalEntity{" +
+                "id=" + id +
+                ", comida=" + comida +
+                ", hambre=" + hambre +
+                ", nombre='" + nombre + '\'' +
+                ", numExtremidades=" + numExtremidades +
+                ", salud=" + salud +
+                ", sed=" + sed +
+                ", suenio=" + suenio +
+                ", tipo=" + tipo +
+                ", estadoAnimal=" + estadoAnimal +
+                ", habitat=" + habitat +
+                '}';
     }
 }

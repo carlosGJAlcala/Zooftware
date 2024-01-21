@@ -3,6 +3,8 @@ package com.Zooftware.Zooftware.patrones.proxy;
 
 import com.Zooftware.Zooftware.modelDTO.*;
 import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.BebederoEntity;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.ComederoEntity;
 import com.Zooftware.Zooftware.patrones.adapter.BebederoJson;
 
 import java.util.List;
@@ -30,8 +32,8 @@ public interface IAccionesEmpleado extends IAccionesCliente {
 
 	public void rellenarComederos(int habita_id);
 	public void rellenarBebederos(int habita_id);
-	public List<BebederoEntityDto> verBebederos(int habita_id);
-	public List<ComederoEntityDto> verComederos(int habita_id);
+	public List<BebederoEntity> verBebederos(int habita_id);
+	public List<ComederoEntity> verComederos(int habita_id);
 
 
 
