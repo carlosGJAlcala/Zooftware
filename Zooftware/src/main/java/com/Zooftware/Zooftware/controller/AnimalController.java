@@ -31,7 +31,11 @@ public class AnimalController {
         return modelAndView;
     }
 
-
+    @GetMapping("/mostrarCompraAnimal")
+    public ModelAndView mostrarCompraAnimal(){
+        ModelAndView modelAndView = new ModelAndView("comprarAnimal");
+        return modelAndView;
+    }
 
     @ExceptionHandler(Exception.class)
     public ModelAndView excepcion(Exception exception){

@@ -10,6 +10,7 @@ import com.Zooftware.Zooftware.patrones.state.Estado;
 public class AnimalDTOToAnimalState extends Animal {
 
     public AnimalDTOToAnimalState(AnimalEntityDto animalEntityDto) {
-        super(animalEntityDto.getNombre(), animalEntityDto.getEstadoAnimal(), animalEntityDto.getTipo(), animalEntityDto.getNumExtremidades(), animalEntityDto.getSalud(), animalEntityDto.getSed(), animalEntityDto.getSuenio(), animalEntityDto.getHambre());
+        super(animalEntityDto.getId() ,animalEntityDto.getNombre(), animalEntityDto.getEstadoAnimal(), animalEntityDto.getTipo(), animalEntityDto.getNumExtremidades(), animalEntityDto.getSalud(), animalEntityDto.getSed(),
+                animalEntityDto.getSuenio(), animalEntityDto.getHambre());
     }
 }

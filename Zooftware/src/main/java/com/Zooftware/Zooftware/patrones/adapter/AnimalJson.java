@@ -17,7 +17,7 @@ public class AnimalJson {
     private int suenio;
     private int hambre;
     private int id_habita;
-    public AnimalJson(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, int numExtremidades, int salud, int sed, int suenio, int hambre) {
+    public AnimalJson(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, int numExtremidades, int salud, int sed, int suenio, int hambre, int id_habita) {
         this.nombre = nombre;
         this.estadoAnimal = estadoAnimal;
         this.tipo = tipo;
@@ -26,7 +26,9 @@ public class AnimalJson {
         this.sed = sed;
         this.suenio = suenio;
         this.hambre = hambre;
+        this.id_habita = id_habita;
     }
+
 
     public String getNombre() {
         return nombre;
