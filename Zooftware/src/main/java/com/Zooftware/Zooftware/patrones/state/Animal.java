@@ -69,8 +69,8 @@ public class Animal extends AnimalEntityDto {
 //    }
 
     @Default
-    public Animal(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, int id, int numExtremidades, int salud, int sed, int suenio, int hambre) {
-        super(id, nombre, estadoAnimal, tipo, null, numExtremidades, salud, sed, suenio, hambre);
+    public Animal(String nombre, EstadoAnimal estadoAnimal, TipoAnimal tipo, int numExtremidades, int salud, int sed, int suenio, int hambre) {
+        super(nombre, estadoAnimal, tipo, null, numExtremidades, salud, sed, suenio, hambre);
         if(estadoAnimal==EstadoAnimal.FELIZ){
             this.estadoActual=new EstadoFeliz();
         }else {

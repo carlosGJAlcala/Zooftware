@@ -25,7 +25,7 @@ public class AnfibioEntity extends HabitatEntity{
     }
 
     public int getNumComedores() {
-        return numComedores;
+        return this.numComedores;
     }
 
     public void setNumComedores(int numComedores) {

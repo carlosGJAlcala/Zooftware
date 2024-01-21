@@ -19,15 +19,27 @@ public class ContactoEntityDto implements Serializable {
     }
 
     public int getId() {
-        return id;
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCorreo() {
-        return correo;
+        return this.correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public int getNumeroTlf() {
-        return numeroTlf;
+        return this.numeroTlf;
+    }
+
+    public void setNumeroTlf(int numeroTlf) {
+        this.numeroTlf = numeroTlf;
     }
 
     @Override

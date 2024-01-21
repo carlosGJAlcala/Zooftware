@@ -16,15 +16,15 @@ public class ClienteEntityDto extends PersonaEntityDto implements Serializable {
     private Date fechaUltimaVisita;
     private int numVisitas;
 
-    public ClienteEntityDto(int id, String apellidos, String dni, int edad, String nombre, String password, Rol rol, String username, ContactoEntityDto contacto, Date fechaRegistro, Date fechaUltimaVisita, int numVisitas) {
-        super(id, apellidos, dni, edad, nombre, password, rol, username, contacto);
+    public ClienteEntityDto( String apellidos, String dni, int edad, String nombre, String password, Rol rol, String username, ContactoEntityDto contacto, Date fechaRegistro, Date fechaUltimaVisita, int numVisitas) {
+        super(apellidos, dni, edad, nombre, password, rol, username, contacto);
         this.fechaRegistro = fechaRegistro;
         this.fechaUltimaVisita = fechaUltimaVisita;
         this.numVisitas = numVisitas;
     }
 
     public Date getFechaRegistro() {
-        return fechaRegistro;
+        return this.fechaRegistro;
     }
 
     public void setFechaRegistro(Date fechaRegistro) {
@@ -32,7 +32,7 @@ public class ClienteEntityDto extends PersonaEntityDto implements Serializable {
     }
 
     public Date getFechaUltimaVisita() {
-        return fechaUltimaVisita;
+        return this.fechaUltimaVisita;
     }
 
     public void setFechaUltimaVisita(Date fechaUltimaVisita) {
@@ -40,7 +40,7 @@ public class ClienteEntityDto extends PersonaEntityDto implements Serializable {
     }
 
     public int getNumVisitas() {
-        return numVisitas;
+        return this.numVisitas;
     }
 
     public void setNumVisitas(int numVisitas) {

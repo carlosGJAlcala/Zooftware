@@ -24,8 +24,7 @@ public class ComederoEntityDto implements Serializable {
         return tipo;
     }
     @Default
-    public ComederoEntityDto(int id, HabitatEntityDto habitat, Integer cantidad, TipoComida tipo, ComidaEntityDto comida) {
-        this.id = id;
+    public ComederoEntityDto( HabitatEntityDto habitat, Integer cantidad, TipoComida tipo, ComidaEntityDto comida) {
         this.habitat = habitat;
         this.cantidad = cantidad;
         this.tipo = tipo;
@@ -38,7 +37,7 @@ public class ComederoEntityDto implements Serializable {
     }
 
     public ComidaEntityDto getComida() {
-        return comida;
+        return this.comida;
     }
 
     public void setComida(ComidaEntityDto comida) {
@@ -70,7 +69,7 @@ public class ComederoEntityDto implements Serializable {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -78,7 +77,7 @@ public class ComederoEntityDto implements Serializable {
     }
 
     public HabitatEntityDto getHabitat() {
-        return habitat;
+        return this.habitat;
     }
 
     public void setHabitat(HabitatEntityDto habitat) {
@@ -86,7 +85,7 @@ public class ComederoEntityDto implements Serializable {
     }
 
     public Integer getCantidad() {
-        return cantidad;
+        return this.cantidad;
     }
 
     public void setCantidad(Integer cantidad) {

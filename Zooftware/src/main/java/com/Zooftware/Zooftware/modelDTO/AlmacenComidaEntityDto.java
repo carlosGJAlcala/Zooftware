@@ -24,7 +24,7 @@ public class AlmacenComidaEntityDto implements Serializable {
     public AlmacenComidaEntityDto() {
     }
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {

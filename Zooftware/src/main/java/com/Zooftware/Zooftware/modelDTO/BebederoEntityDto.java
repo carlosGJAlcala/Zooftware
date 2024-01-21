@@ -20,8 +20,7 @@ public class BebederoEntityDto implements Serializable {
         this.cantidad = cantidad;
     }
     @Default
-    public BebederoEntityDto(int id, int cantidad, HabitatEntityDto habitatEntity) {
-        this.id = id;
+    public BebederoEntityDto( int cantidad, HabitatEntityDto habitatEntity) {
         this.cantidad = cantidad;
         this.habitatEntity = habitatEntity;
     }
@@ -34,7 +33,7 @@ public class BebederoEntityDto implements Serializable {
 
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -42,7 +41,7 @@ public class BebederoEntityDto implements Serializable {
     }
 
     public int getCantidad() {
-        return cantidad;
+        return this.cantidad;
     }
 
     public void setCantidad(int cantidad) {
@@ -50,7 +49,7 @@ public class BebederoEntityDto implements Serializable {
     }
 
     public HabitatEntityDto getHabitat() {
-        return habitatEntity;
+        return this. habitatEntity;
     }
 
     public void setHabitat(HabitatEntityDto habitatEntity) {

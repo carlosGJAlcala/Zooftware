@@ -18,7 +18,7 @@ public class AnfibioEntityDto  extends HabitatEntityDto implements Serializable 
     private int numComedores;
 
     public AnfibioEntityDto(int id, int numComedores) {
-        super(id, TipoHabitat.ANFIBIO, null, null, null, null);
+        super(TipoHabitat.ANFIBIO);
         super.setAnimales(new ArrayList<>());
         super.setPlantas(new ArrayList<>());
 

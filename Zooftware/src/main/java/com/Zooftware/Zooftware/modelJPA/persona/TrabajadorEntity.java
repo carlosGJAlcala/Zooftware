@@ -42,11 +42,10 @@ public abstract class TrabajadorEntity extends PersonaEntity {
         this.fechaFinContrato = fechaFinContrato;
         this.mensaje = mensaje;
         this.salario = salario;
-
     }
 
-    public TrabajadorEntity(int id, String apellidos, String dni, int edad, String nombre, String username, String password, Rol rol, ContactoEntity contactoEntity, long numeroSeguridadSocial, boolean activo, Date fechaInicioContrato, Date fechaFinContrato, List<MensajeEntity> mensaje, double salario, JefeEntity jefe) {
-        super(id, apellidos, dni, edad, nombre, username, password, rol, contactoEntity);
+    public TrabajadorEntity(String apellidos, String dni, int edad, String nombre, String username, String password, Rol rol, ContactoEntity contactoEntity, long numeroSeguridadSocial, boolean activo, Date fechaInicioContrato, Date fechaFinContrato, List<MensajeEntity> mensaje, double salario, JefeEntity jefe) {
+        super(apellidos, dni, edad, nombre, username, password, rol, contactoEntity);
         this.numeroSeguridadSocial = numeroSeguridadSocial;
         this.activo = activo;
         this.fechaInicioContrato = fechaInicioContrato;
@@ -57,7 +56,7 @@ public abstract class TrabajadorEntity extends PersonaEntity {
     }
 
     public JefeEntity getJefe() {
-        return jefe;
+        return this.jefe;
     }
 
     public void setJefe(JefeEntity jefe) {
@@ -65,7 +64,7 @@ public abstract class TrabajadorEntity extends PersonaEntity {
     }
 
     public double getSalario() {
-        return salario;
+        return this.salario;
     }
 
     public void setSalario(double salario) {
@@ -74,26 +73,26 @@ public abstract class TrabajadorEntity extends PersonaEntity {
 
 
     public long getNumeroSeguridadSocial() {
-        return numeroSeguridadSocial;
+        return this.numeroSeguridadSocial;
     }
     public void setNumeroSeguridadSocial(long numeroSeguridadSocial) {
         this.numeroSeguridadSocial = numeroSeguridadSocial;
     }
     public boolean isActivo() {
-        return activo;
+        return this.activo;
     }
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
     public Date getFechaInicioContrato() {
-        return fechaInicioContrato;
+        return this.fechaInicioContrato;
     }
     public void setFechaInicioContrato(Date fechaInicioContrato) {
         this.fechaInicioContrato = fechaInicioContrato;
     }
 
     public Date getFechaFinContrato() {
-        return fechaFinContrato;
+        return this.fechaFinContrato;
     }
 
     public void setFechaFinContrato(Date fechaFinContrato) {
@@ -101,7 +100,7 @@ public abstract class TrabajadorEntity extends PersonaEntity {
     }
 
     public List<MensajeEntity> getMensaje() {
-        return mensaje;
+        return this.mensaje;
     }
 
     public void setMensaje(List<MensajeEntity> mensaje) {

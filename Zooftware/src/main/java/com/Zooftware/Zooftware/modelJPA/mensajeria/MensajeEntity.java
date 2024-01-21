@@ -30,7 +30,7 @@ public class MensajeEntity {
     }
 
     public TrabajadorEntity getTrabajador() {
-        return trabajador;
+        return this.trabajador;
     }
 
     public void setTrabajador(TrabajadorEntity trabajador) {
@@ -38,7 +38,7 @@ public class MensajeEntity {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -46,7 +46,7 @@ public class MensajeEntity {
     }
 
     public String getAsunto() {
-        return asunto;
+        return this.asunto;
     }
 
     public void setAsunto(String asunto) {
@@ -54,7 +54,7 @@ public class MensajeEntity {
     }
 
     public String getDestinario() {
-        return destinario;
+        return this.destinario;
     }
 
     public void setDestinario(String destinario) {
@@ -62,7 +62,7 @@ public class MensajeEntity {
     }
 
     public String getRemitente() {
-        return remitente;
+        return this.remitente;
     }
 
     public void setRemitente(String remitente) {
@@ -70,7 +70,7 @@ public class MensajeEntity {
     }
 
     public String getTexto() {
-        return texto;
+        return this.texto;
     }
 
     public void setTexto(String texto) {

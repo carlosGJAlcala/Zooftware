@@ -34,7 +34,7 @@ public class ComidaEntityDto implements Serializable {
     }
 
     public EstadoComida getEstadoComida() {
-        return estadoComida;
+        return this.estadoComida;
     }
 
     public void setEstadoComida(EstadoComida estadoComida) {
@@ -42,7 +42,7 @@ public class ComidaEntityDto implements Serializable {
     }
 
     public AlmacenComidaEntityDto getAlmacenComida() {
-        return almacenComida;
+        return this.almacenComida;
     }
 
     public void setAlmacenComida(AlmacenComidaEntityDto almacenComida) {
@@ -53,19 +53,19 @@ public class ComidaEntityDto implements Serializable {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 
     public int getCantidad() {
-        return cantidad;
+        return this.cantidad;
     }
 
     public TipoComida getTipoComida() {
-        return tipoComida;
+        return this.tipoComida;
     }
 
 

@@ -31,7 +31,7 @@ public class AlmacenComidaEntity {
     }
 
     public List<ComidaEntity> getProvisiones() {
-        return provisiones;
+        return this.provisiones;
     }
 
     public void setProvisiones(List<ComidaEntity> provisiones) {
@@ -44,7 +44,7 @@ public class AlmacenComidaEntity {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {

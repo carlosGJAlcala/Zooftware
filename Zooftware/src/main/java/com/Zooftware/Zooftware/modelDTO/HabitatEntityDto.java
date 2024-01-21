@@ -33,21 +33,21 @@ public class HabitatEntityDto implements Serializable {
         this.plantas = new ArrayList<>();
     }
 //@Default
-   public HabitatEntityDto(int id, TipoHabitat tipoHabitat,List<BebederoEntityDto> bebederos, List<ComederoEntityDto> comederos, List<AnimalEntityDto> animales, List<PlantaEntityDto> plantas) {
-        this.id = id;
-        this.tipoHabitat = tipoHabitat;
-        this.bebederos = bebederos;
-        this.comederos = comederos;
-        this.plantas = plantas;
-        this.animales = animales;
-    }
+//   public HabitatEntityDto(int id, TipoHabitat tipoHabitat,List<BebederoEntityDto> bebederos, List<ComederoEntityDto> comederos, List<AnimalEntityDto> animales, List<PlantaEntityDto> plantas) {
+//        this.id = id;
+//        this.tipoHabitat = tipoHabitat;
+//        this.bebederos = bebederos;
+//        this.comederos = comederos;
+//        this.plantas = plantas;
+//        this.animales = animales;
+//    }
 
     public HabitatEntityDto(){
 
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -55,7 +55,7 @@ public class HabitatEntityDto implements Serializable {
     }
 
     public TipoHabitat getTipoHabitat() {
-        return tipoHabitat;
+        return this.tipoHabitat;
     }
 
     public void setTipoHabitat(TipoHabitat tipoHabitat) {
@@ -63,7 +63,7 @@ public class HabitatEntityDto implements Serializable {
     }
 
     public List<BebederoEntityDto> getBebederos() {
-        return bebederos;
+        return this.bebederos;
     }
 
     public void setBebederos(List<BebederoEntityDto> bebederos) {
@@ -71,7 +71,7 @@ public class HabitatEntityDto implements Serializable {
     }
 
     public List<ComederoEntityDto> getComederos() {
-        return comederos;
+        return this.comederos;
     }
 
     public void setComederos(List<ComederoEntityDto> comederos) {
@@ -79,7 +79,7 @@ public class HabitatEntityDto implements Serializable {
     }
 
     public List<AnimalEntityDto> getAnimales() {
-        return animales;
+        return this.animales;
     }
 
     public void setAnimales(List<AnimalEntityDto> animales) {
@@ -87,7 +87,7 @@ public class HabitatEntityDto implements Serializable {
     }
 
     public List<PlantaEntityDto> getPlantas() {
-        return plantas;
+        return this.plantas;
     }
 
     public void setPlantas(List<PlantaEntityDto> plantas) {

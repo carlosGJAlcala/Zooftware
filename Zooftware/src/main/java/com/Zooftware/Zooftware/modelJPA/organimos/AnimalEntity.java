@@ -48,7 +48,7 @@ public class AnimalEntity {
 
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -56,7 +56,7 @@ public class AnimalEntity {
     }
 
     public ComidaEntity getComida() {
-        return comida;
+        return this.comida;
     }
 
     public void setComida(ComidaEntity comida) {
@@ -64,7 +64,7 @@ public class AnimalEntity {
     }
 
     public int getHambre() {
-        return hambre;
+        return this.hambre;
     }
 
     public void setHambre(int hambre) {
@@ -72,7 +72,7 @@ public class AnimalEntity {
     }
 
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 
     public void setNombre(String nombre) {
@@ -80,7 +80,7 @@ public class AnimalEntity {
     }
 
     public int getNumExtremidades() {
-        return numExtremidades;
+        return this.numExtremidades;
     }
 
     public void setNumExtremidades(int numExtremidades) {
@@ -88,7 +88,7 @@ public class AnimalEntity {
     }
 
     public int getSalud() {
-        return salud;
+        return this.salud;
     }
 
     public void setSalud(int salud) {
@@ -96,7 +96,7 @@ public class AnimalEntity {
     }
 
     public int getSed() {
-        return sed;
+        return this.sed;
     }
 
     public void setSed(int sed) {
@@ -104,7 +104,7 @@ public class AnimalEntity {
     }
 
     public int getSuenio() {
-        return suenio;
+        return this.suenio;
     }
 
     public void setSuenio(int suenio) {
@@ -112,7 +112,7 @@ public class AnimalEntity {
     }
 
     public TipoAnimal getTipo() {
-        return tipo;
+        return this.tipo;
     }
 
     public void setTipo(TipoAnimal tipo) {
@@ -120,7 +120,7 @@ public class AnimalEntity {
     }
 
     public EstadoAnimal getEstadoAnimal() {
-        return estadoAnimal;
+        return this.estadoAnimal;
     }
 
     public void setEstadoAnimal(EstadoAnimal estadoAnimal) {
@@ -128,7 +128,7 @@ public class AnimalEntity {
     }
 
     public HabitatEntity getHabitat() {
-        return habitat;
+        return this.habitat;
     }
 
     public void setHabitat(HabitatEntity habitat) {

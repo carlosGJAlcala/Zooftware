@@ -38,7 +38,7 @@ public class HabitatEntity {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -46,7 +46,7 @@ public class HabitatEntity {
     }
 
     public TipoHabitat getTipoHabitat() {
-        return tipoHabitat;
+        return this.tipoHabitat;
     }
 
     public void setTipoHabitat(TipoHabitat tipoHabitat) {
@@ -54,7 +54,7 @@ public class HabitatEntity {
     }
 
     public List<ComederoEntity> getComederos() {
-        return comederos;
+        return this.comederos;
     }
 
     public void setComedero(List<ComederoEntity> comederos) {
@@ -62,7 +62,7 @@ public class HabitatEntity {
     }
 
     public List<BebederoEntity> getBebederos() {
-        return bebederos;
+        return this.bebederos;
     }
 
     public void setBebedero(List<BebederoEntity> bebederos) {
@@ -70,7 +70,7 @@ public class HabitatEntity {
     }
 
     public List<AnimalEntity> getAnimales() {
-        return animales;
+        return this.animales;
     }
 
     public void setAnimales(List<AnimalEntity> animales) {
@@ -78,7 +78,7 @@ public class HabitatEntity {
     }
 
     public List<PlantaEntity> getPlantas() {
-        return plantas;
+        return this.plantas;
     }
 
     public void setPlantas(List<PlantaEntity> plantas) {

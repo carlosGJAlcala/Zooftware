@@ -4,6 +4,7 @@ package com.Zooftware.Zooftware.patrones.facade;
 import com.Zooftware.Zooftware.modelDAO.*;
 import com.Zooftware.Zooftware.modelDTO.*;
 import com.Zooftware.Zooftware.modelJPA.enums.*;
+import com.Zooftware.Zooftware.modelJPA.persona.ContactoEntity;
 import com.Zooftware.Zooftware.modelJPA.persona.TrabajadorEntity;
 import com.Zooftware.Zooftware.patrones.AbstractFactory.InstalacionFactory;
 import com.Zooftware.Zooftware.patrones.adapter.*;
@@ -302,16 +303,21 @@ fabricadeHabitas.crearHabitaAnfibio();
     public void contratarEmpleado(EmpleadoJson empleadoNuevo) {
         EmpleadoJSONToDTO empleado = new EmpleadoJSONToDTO(empleadoNuevo);
 
-        empleado.setJefe(jefeDAO.getJefeByUsername(empleadoNuevo.getUsernameJefe()));
-        contactoDAO.guardarContacto(empleado.getContactoEntityDto());
+        empleado.setJefe(jefeDAO.getJefeById(empleadoNuevo.getIdJefe()));
+
+
+        ContactoEntityDto contacto = new ContactoEntityDto(empleadoNuevo.getCorreo(),empleadoNuevo.getNumeroTlf());
+        ContactoEntity contactoEntity =  contactoDAO.guardarContacto(contacto);
+        contacto = contactoDAO.buscarPorId(contactoEntity.getId());
+
+        empleado.setContacto(contacto);
+
         empleadoDAO.guardarEmpleado(empleado);
-
-
     }
     @Override
     public void contratarJefe(JefeJson jefe) {
         JefeEntityDto jefeDto = new JefeJSONToDTO(jefe);
-        contactoDAO.guardarContacto(jefeDto.getContactoEntityDto());
+        contactoDAO.guardarContacto(jefeDto.getContacto());
         jefeDAO.guardarJefe(jefeDto);
 
 

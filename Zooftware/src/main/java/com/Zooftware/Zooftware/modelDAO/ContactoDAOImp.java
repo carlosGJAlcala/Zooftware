@@ -30,9 +30,9 @@ public class ContactoDAOImp implements IContactoDAO{
     }
 
     @Override
-    public void guardarContacto(ContactoEntityDto contacto) {
+    public ContactoEntity guardarContacto(ContactoEntityDto contacto) {
         ContactoEntity contactoEntity=contactoEntityMapper.mapper.toEntity(contacto);
-        contactoJPA.save(contactoEntity);
+        return contactoJPA.save(contactoEntity);
     }
 
     @Override

@@ -221,13 +221,13 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
 
     @Override
     public void crearBebederos(int numBebederos, HabitatEntityDto habitat){
-        BebederoEntityDto bebedero = new BebederoEntityDto(0,numBebederos,habitat);
+        BebederoEntityDto bebedero = new BebederoEntityDto(numBebederos,habitat);
         iBebederoDAO.guardarBebedero(bebedero);
 
     }
     @Override
     public void crearComederos(int numComederos, TipoComida tipo, HabitatEntityDto habitat){
-        ComederoEntityDto comedero = new ComederoEntityDto(0,habitat,numComederos,tipo,null);
+        ComederoEntityDto comedero = new ComederoEntityDto(habitat,numComederos,tipo,null);
         iComederoDAO.guardarComedero(comedero);
     }
 

@@ -21,10 +21,9 @@ public abstract class PersonaEntityDto implements Serializable {
     private String password;
     private Rol rol;
     private String username;
-    private ContactoEntityDto contactoEntityDto;
+    private ContactoEntityDto contacto;
 
-    public PersonaEntityDto(int id, String apellidos, String dni, int edad, String nombre, String password, Rol rol, String username, ContactoEntityDto contacto) {
-        this.id = id;
+    public PersonaEntityDto(String apellidos, String dni, int edad, String nombre, String password, Rol rol, String username, ContactoEntityDto contacto) {
         this.apellidos = apellidos;
         this.dni = dni;
         this.edad = edad;
@@ -32,19 +31,19 @@ public abstract class PersonaEntityDto implements Serializable {
         this.password = password;
         this.rol = rol;
         this.username = username;
-        this.contactoEntityDto = contacto;
+        this.contacto = contacto;
     }
 
-    public ContactoEntityDto getContactoEntityDto() {
-        return contactoEntityDto;
+    public ContactoEntityDto getContacto() {
+        return contacto;
     }
 
-    public void setContactoEntityDto(ContactoEntityDto contactoEntityDto) {
-        this.contactoEntityDto = contactoEntityDto;
+    public void setContacto(ContactoEntityDto contacto) {
+        this.contacto = contacto;
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -52,7 +51,7 @@ public abstract class PersonaEntityDto implements Serializable {
     }
 
     public String getApellidos() {
-        return apellidos;
+        return this.apellidos;
     }
 
     public void setApellidos(String apellidos) {
@@ -60,7 +59,7 @@ public abstract class PersonaEntityDto implements Serializable {
     }
 
     public String getDni() {
-        return dni;
+        return this.dni;
     }
 
     public void setDni(String dni) {
@@ -68,7 +67,7 @@ public abstract class PersonaEntityDto implements Serializable {
     }
 
     public int getEdad() {
-        return edad;
+        return this.edad;
     }
 
     public void setEdad(int edad) {
@@ -76,7 +75,7 @@ public abstract class PersonaEntityDto implements Serializable {
     }
 
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 
     public void setNombre(String nombre) {
@@ -84,7 +83,7 @@ public abstract class PersonaEntityDto implements Serializable {
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public void setPassword(String password) {
@@ -92,7 +91,7 @@ public abstract class PersonaEntityDto implements Serializable {
     }
 
     public Rol getRol() {
-        return rol;
+        return this.rol;
     }
 
     public void setRol(Rol rol) {
@@ -100,7 +99,7 @@ public abstract class PersonaEntityDto implements Serializable {
     }
 
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
     public void setUsername(String username) {
