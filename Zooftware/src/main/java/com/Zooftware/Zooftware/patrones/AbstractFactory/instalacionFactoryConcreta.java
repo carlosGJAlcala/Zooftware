@@ -210,13 +210,7 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
         iComidaDAO.guardarComida(comida2);
 
 
-//
-//        List<AlmacenComidaEntityDto> almacenes =almacen.buscarAlmacenes();
-//        AlmacenComidaEntityDto almacenComidaEntityDto1 = almacenes.get(0);
-//        //AlmacenSingleton almacenSingleton=AlmacenSingleton.getInstancia();
-//        almacenSingleton.setProvisiones(almacenComidaEntityDto1.getProvisiones());
-//        almacenSingleton.setAlmacenComida(almacenComidaEntityDto1);
-//        return almacen;
+
     }
 
     @Override

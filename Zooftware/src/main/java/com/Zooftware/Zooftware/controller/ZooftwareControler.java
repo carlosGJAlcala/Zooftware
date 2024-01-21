@@ -30,9 +30,8 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 
-
 @RestController
-public class ZooftwareControler  {
+public class ZooftwareControler {
 
     @Autowired
     private PersonaService personaService;
@@ -46,17 +45,18 @@ public class ZooftwareControler  {
     IAccionesJefe zoo;
 
     @GetMapping("/mostrar")
-    public ModelAndView mostrarLogin(){
+    public ModelAndView mostrarLogin() {
         ModelAndView modelAndView = new ModelAndView("login");
         return modelAndView;
     }
+
     @GetMapping("/cargar")
-    public void cargar(@RequestParam(name = "tipoHabitat") String tipoHabitat, HttpSession session){
+    public void cargar(@RequestParam(name = "tipoHabitat") String tipoHabitat, HttpSession session) {
         //zoo=(IAccionesJefe) Proxy.newProxyInstance(IAccionesJefe.class.getClassLoader(),Zooftware.class.getInterfaces(),new ProxyJefe(new Zooftware()));
 
         IAccionesJefe accionesJefe = (IAccionesJefe) factoryMethodProxy.devolverProxy(TipoPersona.JEFE);
 
-        IAccionesEmpleado accionesEmpleado = (IAccionesEmpleado)  factoryMethodProxy.devolverProxy(TipoPersona.EMPLEADO);
+        IAccionesEmpleado accionesEmpleado = (IAccionesEmpleado) factoryMethodProxy.devolverProxy(TipoPersona.EMPLEADO);
 
         IAccionesCliente accionesCliente = (IAccionesCliente) factoryMethodProxy.devolverProxy(TipoPersona.CLIENTE);
 
@@ -65,35 +65,35 @@ public class ZooftwareControler  {
         //zoo.crearhabita(TipoHabitat.valueOf(tipoHabitat));
 
 
-        session.setAttribute("proxy",(IAccionesJefe) accionesCliente);
+        session.setAttribute("proxy", (IAccionesJefe) accionesCliente);
 
 
     }
 
 
     @PostMapping("/validarInicioSesion")
-    public ResponseEntity<String> validarInicioSesion(@RequestBody LoginJson user, HttpSession session){
+    public ResponseEntity<String> validarInicioSesion(@RequestBody LoginJson user, HttpSession session) {
 
         String redirectUrl;
-        if(personaService.existePersona(user.getUsername(),user.getPassword())){
+        if (personaService.existePersona(user.getUsername(), user.getPassword())) {
             Rol rol = personaService.getTipoEmpleadoPorUsername(user.getUsername());
-            switch (rol.toString()){
+            switch (rol.toString()) {
                 case "JEFE":
-                    tipo =TipoPersona.JEFE;
+                    tipo = TipoPersona.JEFE;
                     IAccionesJefe accionesJefe = (IAccionesJefe) factoryMethodProxy.devolverProxy(TipoPersona.JEFE);
                     session.setAttribute("proxy", accionesJefe);
                     session.setAttribute("user", personaService.getJefeByUsername(user.getUsername()));
-                    redirectUrl="/jefe/home/mostrar";
+                    redirectUrl = "/jefe/home/mostrar";
                     break;
                 case "EMPLEADO":
-                    tipo =TipoPersona.EMPLEADO;
+                    tipo = TipoPersona.EMPLEADO;
                     IAccionesEmpleado accionesEmpleado = (IAccionesEmpleado) factoryMethodProxy.devolverProxy(TipoPersona.EMPLEADO);
-                    session.setAttribute("proxy",accionesEmpleado);
+                    session.setAttribute("proxy", accionesEmpleado);
                     session.setAttribute("user", personaService.getEmpleadoByUsername(user.getUsername()));
-                    redirectUrl="/empleado/home/mostrar";
+                    redirectUrl = "/empleado/home/mostrar";
                     break;
                 case "CLIENTE":
-                    tipo =TipoPersona.CLIENTE;
+                    tipo = TipoPersona.CLIENTE;
                     IAccionesCliente accionesCliente = (IAccionesCliente) factoryMethodProxy.devolverProxy(TipoPersona.CLIENTE);
                     session.setAttribute("proxy", accionesCliente);
                     session.setAttribute("user", personaService.getClienteByUsername(user.getUsername()));
@@ -103,7 +103,7 @@ public class ZooftwareControler  {
                     return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Acceso Denegado");
             }
             return ResponseEntity.ok(redirectUrl);
-        }else{
+        } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuario o contraseña incorrectos");
         }
 
@@ -116,117 +116,80 @@ public class ZooftwareControler  {
 
         modelAndView.addObject("animales", animales);
 
-         return modelAndView;
+        return modelAndView;
     }
 
-//funciona
-    @PostMapping(value = "/animal" ,produces = MediaType.TEXT_PLAIN_VALUE)
+    //funciona
+    @PostMapping(value = "/animal", produces = MediaType.TEXT_PLAIN_VALUE)
     public void comprarAnimal(@RequestBody AnimalJson animalJson) {
         zoo.comprarAnimal(animalJson);
 
     }
-    //funciona
+
+    @PostMapping(value = "/animal/comprobarEstado", produces = MediaType.TEXT_PLAIN_VALUE)
+    public void ModificarEstadoAnimal(@RequestBody AnimalEntityDto animal) {
+        zoo.ModificarEstadoAnimal(animal);
+    }
+
+    @GetMapping("/animal/ejercitarAnimal/{id}")
+    public void ejercitarAnimal(@PathVariable("id") int id) {
+        zoo.ejercitarAnimal(id, 10);
+    }
+
+    @GetMapping("/animal/dormirAnimal/{id}")
+    public void dormirAnimal(@PathVariable("id") int id) {
+        zoo.dormirAnimal(id, 10);
+    }
+
+    @GetMapping("/animal/darComerAnimal/{id}")
+    public void darComerAnimal(@PathVariable("id") int id) {
+        zoo.darComerAnimal(id, 10);
+    }
+
     @GetMapping("/animal/{id}")
     public AnimalEntityDto VerAnimal(@PathVariable("id") int id_animal) {
         return zoo.VerAnimal(id_animal);
     }
 
-    @GetMapping("/habitat/animal/{id}")
-    public List<AnimalEntityDto> veAnimalPorHabita(@PathVariable("id") int id) {
-        return zoo.verAnimalesPorHabita(id);
-    }
-
-
-    @GetMapping("/habitats")
-    public List<HabitatEntityDto> verInstalaciones() {
-        return zoo.verInstalaciones();
-    }
-
-    @PostMapping(value = "/mensaje" ,produces = MediaType.APPLICATION_JSON_VALUE)
-    public void enviarMensaje(@RequestBody  MensajeEntityDto mensaje) {
-        zoo.enviarMensaje(mensaje);
-
-
-    }
-//falta implementar el dao de trabajador
-    @GetMapping("/mensaje/{trabajadorId}")
-    public List<MensajeEntityDto> consultarMensajesPorTrabajador(@PathVariable("trabajadorId") String trabajadorId) {
-        return zoo.consultarMensajes(trabajadorId);
-    }
-    //funciona
     @GetMapping("/animal/comprobarEstado/{id}")
     public EstadoAnimal ComprobarEstadoAnimal(@PathVariable("id") int id_animal) {
         return zoo.ComprobarEstadoAnimal(id_animal);
     }
 
-    @PostMapping(value = "/animal/comprobarEstado" ,produces = MediaType.TEXT_PLAIN_VALUE)
-    public void ModificarEstadoAnimal(@RequestBody  AnimalEntityDto animal) {
-        zoo.ModificarEstadoAnimal(animal);
-    }
-    @GetMapping("/animal/ejercitarAnimal/{id}")
-    public void ejercitarAnimal(@PathVariable("id") int id) {
-    zoo.ejercitarAnimal(id,10);
-    }
-    @GetMapping("/animal/dormirAnimal/{id}")
-    public void dormirAnimal(@PathVariable("id") int id) {
-    zoo.dormirAnimal(id,10);
-    }
-    @GetMapping("/animal/darComerAnimal/{id}")
-    public void darComerAnimal(@PathVariable("id") int id) {
-    zoo.darComerAnimal(id,10);
-    }
-/*    @PostMapping("/rellenarComederos")
-    public boolean rellenarComederos(@RequestParam("idHabitat")int id, HttpSession session) {
-        //zoo.rellenarComederos(id);
-        PersonaEntityDto persona = (PersonaEntityDto) session.getAttribute("user");
-
-
-        IAccionesJefe test= (IAccionesJefe) session.getAttribute("proxy");
-
-        test.crearHabitat(TipoHabitat.ANFIBIO);
-
-        return true;
-    }*/
-
     @GetMapping("/habitat/comederos/rellenar/{id}")
-    public boolean rellenarComederos(@PathVariable("id")int id) {
+    public boolean rellenarComederos(@PathVariable("id") int id) {
         zoo.rellenarComederos(id);
         return true;
     }
 
     @GetMapping("/habitat/bebederos/rellenar/{habita_id}")
-    public boolean rellenarBebederos(@PathVariable("habita_id")int id) {
+    public boolean rellenarBebederos(@PathVariable("habita_id") int id) {
         zoo.rellenarBebederos(id);
         return true;
     }
+
 
     @GetMapping("/habitat/bebedero/{habita_id}")
     public List<BebederoEntityDto> verBebederos(@PathVariable("habita_id") int habita_id) {
         return zoo.verBebederos(habita_id);
     }
+
     @GetMapping("/bebedero/{id}")
-    public  BebederoEntityDto verBebedero (@PathVariable("id") int id) {
+    public BebederoEntityDto verBebedero(@PathVariable("id") int id) {
         return zoo.verBebedero(id);
     }
+
     @GetMapping("/comedero/{id}")
-    public  BebederoEntityDto verComedero (@PathVariable("id") int id) {
+    public BebederoEntityDto verComedero(@PathVariable("id") int id) {
         return zoo.verBebedero(id);
     }
+
     @GetMapping("/habitat/comedero/{habita_id}")
 
     public List<ComederoEntityDto> verComederos(@PathVariable("habita_id") int habita_id) {
         return zoo.verComederos(habita_id);
     }
 
-    @PostMapping(value = "/habitat/comedero/modifcar" ,produces = MediaType.TEXT_PLAIN_VALUE)
-    public void modificarEstadoComedero(@RequestBody ComederoEntityDto comedero,@RequestBody  int cantidad) {
-        zoo.modificarEstadoComedero(comedero,cantidad);
-    }
-
-    @PostMapping(value = "/habitat/bebedero/modifcar" ,produces = MediaType.TEXT_PLAIN_VALUE)
-    public void modificarEstadoBebedero(@RequestBody BebederoJson bebedero) {
-        zoo.modificarEstadoBebedero(bebedero);
-    }
 
     @GetMapping("/habitat/crear/{tipo}")
     public void crearhabitat(@PathVariable TipoHabitat tipo) {
@@ -236,28 +199,66 @@ public class ZooftwareControler  {
     public void eliminarHabitat(int habita_id) {
 
     }
+
     @GetMapping("/trabajador/verTotalSueldos")
     public ResponseEntity<?> verTotalSueldos(HttpSession session) {
-        return ResponseEntity.ok(zoo.verTotalSueldos(((PersonaEntityDto)session.getAttribute("user")).getId()));
+        return ResponseEntity.ok(zoo.verTotalSueldos(((PersonaEntityDto) session.getAttribute("user")).getId()));
     }
 
     public void despedirEmpleado(int empleado_id) {
 
     }
-    @PostMapping(value = "/empleado/contratar" ,produces = MediaType.TEXT_PLAIN_VALUE)
+
+    @PostMapping(value = "/empleado/contratar", produces = MediaType.TEXT_PLAIN_VALUE)
     public void contratarEmpleado(@RequestBody EmpleadoJson empleadoNuevo, HttpSession session) {
         PersonaEntityDto persona = (PersonaEntityDto) session.getAttribute("user");
         empleadoNuevo.setIdJefe(persona.getId());
         zoo.contratarEmpleado(empleadoNuevo);
 
     }
-    @PostMapping(value = "/jefe/contratar" ,produces = MediaType.TEXT_PLAIN_VALUE)
+
+    @PostMapping(value = "/jefe/contratar", produces = MediaType.TEXT_PLAIN_VALUE)
 
     public void contratarJefe(@RequestBody JefeJson jefeNuevo) {
         zoo.contratarJefe(jefeNuevo);
 
     }
-    public void modificarEmpleado(int empleado_id, TipoPersona tipo) {
+
+    //funciona
+//no se usasn
+
+    @GetMapping("/habitat/animal/{id}")
+    public List<AnimalEntityDto> veAnimalPorHabita(@PathVariable("id") int id) {
+        return zoo.verAnimalesPorHabita(id);
+    }
+
+    @GetMapping("/habitats")
+    public List<HabitatEntityDto> verInstalaciones() {
+        return zoo.verInstalaciones();
+    }
+
+    @PostMapping(value = "/mensaje", produces = MediaType.APPLICATION_JSON_VALUE)
+    public void enviarMensaje(@RequestBody MensajeEntityDto mensaje) {
+        zoo.enviarMensaje(mensaje);
+
 
     }
+
+    @GetMapping("/mensaje/{trabajadorId}")
+    public List<MensajeEntityDto> consultarMensajesPorTrabajador(@PathVariable("trabajadorId") String trabajadorId) {
+        return zoo.consultarMensajes(trabajadorId);
+    }
+
+    @PostMapping(value = "/habitat/comedero/modifcar", produces = MediaType.TEXT_PLAIN_VALUE)
+    public void modificarEstadoComedero(@RequestBody ComederoEntityDto comedero, @RequestBody int cantidad) {
+        zoo.modificarEstadoComedero(comedero, cantidad);
+    }
+
+    @PostMapping(value = "/habitat/bebedero/modifcar", produces = MediaType.TEXT_PLAIN_VALUE)
+    public void modificarEstadoBebedero(@RequestBody BebederoJson bebedero) {
+        zoo.modificarEstadoBebedero(bebedero);
+    }
+//no se usasn
+
+
 }

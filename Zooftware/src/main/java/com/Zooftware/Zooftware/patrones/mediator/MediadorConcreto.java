@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class MediadorConcreto implements Mediator {
 
-    // Lista de colegas
+
     private static Map<String ,TrabajadorEntityDto> colegas = new HashMap<String,TrabajadorEntityDto>();
 
     @Override
@@ -24,14 +24,7 @@ public class MediadorConcreto implements Mediator {
         return colegas.get(correo);
     }
 
-//    /**
-//     * Envía un mensaje al colega cuyo identificador se pasa como argumento. Si
-//     * el identificador es -1, el mensaje se envía a todos los colegas. En otro
-//     * caso, solo se envía al colega concreto.
-//     *
-//     * @param mensaje Mensaje a enviar.
-//     * @param id Identificador del colega al que se le envía el mensaje.
-//     **/
+
     @Override
     public void enviar(MensajeEntityDto mensaje, String correo) {
         if (correo == "all") {

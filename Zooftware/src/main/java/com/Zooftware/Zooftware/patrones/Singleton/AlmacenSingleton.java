@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class AlmacenSingleton {
 
@@ -33,23 +34,23 @@ public class AlmacenSingleton {
         //this.almacenesComida = iAlmacenComidaDAO.buscarAlmacenes();
     }
 
-    public void cargarListAlmacen(){
+    public void cargarListAlmacen() {
         if (almacenesComida == null || almacenesComida.isEmpty())
             this.almacenesComida = iAlmacenComidaDAO.buscarAlmacenes();
     }
 
-    public Cocinero crearCocinero(){
+    public Cocinero crearCocinero() {
         if (cocinero == null) {
             this.cocinero = new Cocinero();
             return this.cocinero;
-        }else{
+        } else {
             return this.cocinero;
         }
     }
 
     private static AlmacenSingleton instancia;
 
-    public static synchronized  AlmacenSingleton getInstancia() {
+    public static synchronized AlmacenSingleton getInstancia() {
         if (instancia == null) {// Si la instancia es null, se crea.
             instancia = new AlmacenSingleton();
         }

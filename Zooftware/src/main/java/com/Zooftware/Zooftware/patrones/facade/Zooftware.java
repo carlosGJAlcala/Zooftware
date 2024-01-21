@@ -189,10 +189,15 @@ fabricadeHabitas.crearHabitaAnfibio();
     }
     @Override
     public void rellenarBebederos(int habita_id) {
+        HabitatEntityDto habita = habitatDAO.buscarPorId(habita_id);
         estrategia = new RellenarBebederos();
         List<BebederoEntityDto> bebederoEntityDtos = bebederoDAO.verBebederos(habita_id);
         List<BebederoEntityDto> bebederosRellenos = (List<BebederoEntityDto>) estrategia.ejecutar(bebederoEntityDtos);
-        bebederosRellenos.stream().forEach(bebederoEntityDto -> bebederoDAO.actualizarBebedero(bebederoEntityDto));
+        bebederosRellenos.stream().forEach(bebederoEntityDto -> {
+            bebederoEntityDto.setHabitat(habita);
+            bebederoDAO.guardarBebedero(bebederoEntityDto);
+
+        });
 
     }
 

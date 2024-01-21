@@ -29,7 +29,6 @@ public class BebederoDAOImp implements IBebederoDAO {
 
     @Override
     public void actualizarBebedero(BebederoEntityDto bebedero) {
-        bebederoJPA.deleteById(bebedero.getId());
         BebederoEntity bebederoEntity = bebederoEntityMapper.mapper.toEntity(bebedero);
         bebederoJPA.save(bebederoEntity);
     }

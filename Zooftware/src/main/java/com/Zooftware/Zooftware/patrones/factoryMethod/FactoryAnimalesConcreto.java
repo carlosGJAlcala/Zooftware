@@ -15,66 +15,62 @@ import org.springframework.stereotype.Service;
 @Service
 public class FactoryAnimalesConcreto implements FactoryMethodAnimal {
 
-    IAnimalDAO animalDAO =new AnimalDAOImp();
+    IAnimalDAO animalDAO = new AnimalDAOImp();
 
     @Autowired
     IPlantaDAO plantaDAO = new PlantaDAOImp();
 
     @Override
     public AnimalEntityDto crearAnimalAcuaticoAguaSalada() {
-        AnimalEntityDto animal=new AnimalEntityDto("Pez Remo",EstadoAnimal.FELIZ,TipoAnimal.ACUATICO,null,4,20,20,20,20);
-        //animalDAO.guardarAnimal(animal);
-        return  animal;
+        AnimalEntityDto animal = new AnimalEntityDto("Pez Remo", EstadoAnimal.FELIZ, TipoAnimal.ACUATICO, null, 4, 20, 20, 20, 20);
+        return animal;
     }
+
     @Override
     public AnimalEntityDto crearAnimalAcuaticoAguaDulce() {
-        AnimalEntityDto animal=new AnimalEntityDto("Pirania",EstadoAnimal.FELIZ,TipoAnimal.ACUATICO,null,4,20,20,20,20);
-        //animalDAO.guardarAnimal(animal);
-        return  animal;
+        AnimalEntityDto animal = new AnimalEntityDto("Pirania", EstadoAnimal.FELIZ, TipoAnimal.ACUATICO, null, 4, 20, 20, 20, 20);
+        return animal;
     }
 
     @Override
     public AnimalEntityDto crearAnimalAnfibio() {
-        AnimalEntityDto animal=new AnimalEntityDto("Cocodrilo",EstadoAnimal.FELIZ,TipoAnimal.ANFIBIO,null,4,20,20,20,20);
-        //animalDAO.guardarAnimal(animal);
+        AnimalEntityDto animal = new AnimalEntityDto("Cocodrilo", EstadoAnimal.FELIZ, TipoAnimal.ANFIBIO, null, 4, 20, 20, 20, 20);
 
         return animal;
     }
 
     @Override
     public AnimalEntityDto crearAnimalTerrestre() {
-        AnimalEntityDto animal=new AnimalEntityDto("Elefante",EstadoAnimal.FELIZ,TipoAnimal.TERRESTRE,null,4,20,20,20,20);
-        //animalDAO.guardarAnimal(animal);
+        AnimalEntityDto animal = new AnimalEntityDto("Elefante", EstadoAnimal.FELIZ, TipoAnimal.TERRESTRE, null, 4, 20, 20, 20, 20);
 
         return animal;
     }
 
     @Override
     public PlantaEntityDto plantaAcuaticaAguaDulce() {
-        PlantaEntityDto planta=new PlantaEntityDto("Cola de Zorro");
-       // plantaDAO.guardarPlanta(planta);
+        PlantaEntityDto planta = new PlantaEntityDto("Cola de Zorro");
 
         return planta;
     }
+
     @Override
     public PlantaEntityDto plantaAcuaticaAguaSalada() {
-        PlantaEntityDto planta=new PlantaEntityDto("Alga Kelp");
-        //plantaDAO.guardarPlanta(planta);
+        PlantaEntityDto planta = new PlantaEntityDto("Alga Kelp");
 
         return planta;
     }
+
     @Override
     public PlantaEntityDto plantaAnfibia() {
-        PlantaEntityDto planta=new PlantaEntityDto("Junco");
-        //plantaDAO.guardarPlanta(planta);
+        PlantaEntityDto planta = new PlantaEntityDto("Helecho");
 
         return planta;
     }
 
     @Override
     public PlantaEntityDto plantaTerrestre() {
-        PlantaEntityDto planta=new PlantaEntityDto("Pino");
-       //plantaDAO.guardarPlanta(planta);
+        PlantaEntityDto planta = new PlantaEntityDto("Olmo");
+        //plantaDAO.guardarPlanta(planta);
 
         return planta;
     }

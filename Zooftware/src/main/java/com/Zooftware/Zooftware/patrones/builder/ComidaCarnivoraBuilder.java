@@ -8,16 +8,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ComidaCarnivoraBuilder implements IComidaBuilder{
+public class ComidaCarnivoraBuilder implements IComidaBuilder {
     ComidaEntityDto comida;
 
 
     @Override
     public void abrirbolsa() {
-            comida=new ComidaEntityDto();
-            comida.setNombre(" ternera con pavo");
-            comida.setEstadoComida(EstadoComida.CRUDA);
-            comida.setTipoComida(TipoComida.CARNIVORA);
+        comida = new ComidaEntityDto();
+        comida.setNombre(" ternera con pavo");
+        comida.setEstadoComida(EstadoComida.CRUDA);
+        comida.setTipoComida(TipoComida.CARNIVORA);
 
 
     }
