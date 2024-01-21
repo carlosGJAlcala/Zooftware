@@ -32,8 +32,8 @@ public interface IAccionesEmpleado extends IAccionesCliente {
 
 	public void rellenarComederos(int habita_id);
 	public void rellenarBebederos(int habita_id);
-	public List<BebederoEntity> verBebederos(int habita_id);
-	public List<ComederoEntity> verComederos(int habita_id);
+	public List<BebederoEntityDto> verBebederos(int habita_id);
+	public List<ComederoEntityDto> verComederos(int habita_id);
 
 
 

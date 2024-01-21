@@ -26,7 +26,7 @@ public class Cocinero {
     public void crearComida() {
         //Obtener la comida del almacen get0
 
-      //  comidadbuilder.abrirbolsa();
+         comidadbuilder.abrirbolsa();
         comidadbuilder.mezclarTopics();
         comidadbuilder.calentarComida();
         comidadbuilder.ponerComidaEnCubo();

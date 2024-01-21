@@ -6,21 +6,17 @@ import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
 
 import java.util.List;
 
-public class ComidaHerviboraBuilder implements IComidaBuilder{
+public class ComidaHerviboraBuilder implements IComidaBuilder {
     ComidaEntityDto comida;
 
 
     @Override
-    public boolean abrirbolsa(List<ComidaEntityDto> provisiones) {
-        if (!provisiones.isEmpty()){
-            comida=provisiones.get(0);
-            comida.setNombre("Coles de Bruselas con guisantes");
-            comida.setEstadoComida(EstadoComida.CRUDA);
-            comida.setTipoComida(TipoComida.HERVIBORA);
-            return true;
-        }else {
-            return  false;
-        }
+    public void abrirbolsa() {
+
+        comida = new ComidaEntityDto();
+        comida.setNombre("Coles de Bruselas con guisantes");
+        comida.setEstadoComida(EstadoComida.CRUDA);
+        comida.setTipoComida(TipoComida.HERVIBORA);
 
     }
 

@@ -1,11 +1,14 @@
 package com.Zooftware.Zooftware.modelDAO;
 
+import com.Zooftware.Zooftware.modelDTO.AnimalEntityDto;
 import com.Zooftware.Zooftware.modelDTO.ComederoEntityDto;
 import com.Zooftware.Zooftware.modelJPA.instalaciones.ComederoEntity;
+import com.Zooftware.Zooftware.modelJPA.organimos.AnimalEntity;
 import com.Zooftware.Zooftware.repository.ComederoEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -45,7 +48,15 @@ public class ComederoDAOImp implements IComederoDAO {
 
     @Override
     public List<ComederoEntityDto> verComederos(int habita_id) {
-        return comederoJPA.findByHabitat_Id(habita_id);
+
+        List<ComederoEntity> comederoEntities=  comederoJPA.findByHabitat_Id(habita_id);
+        List<ComederoEntityDto> comederoEntitiesDtos = new ArrayList<>();
+
+        for(ComederoEntity comedero: comederoEntities){
+            ComederoEntityDto animalDto = buscarPorId(comedero.getId());
+            comederoEntitiesDtos.add(animalDto);
+        }
+        return comederoEntitiesDtos;
 
 
 

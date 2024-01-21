@@ -201,7 +201,7 @@ public class ZooftwareControler  {
     }
 
     @GetMapping("/habitat/bebedero/{habita_id}")
-    public List<BebederoEntity> verBebederos(@PathVariable("habita_id") int habita_id) {
+    public List<BebederoEntityDto> verBebederos(@PathVariable("habita_id") int habita_id) {
         return zoo.verBebederos(habita_id);
     }
     @GetMapping("/bebedero/{id}")
@@ -214,7 +214,7 @@ public class ZooftwareControler  {
     }
     @GetMapping("/habitat/comedero/{habita_id}")
 
-    public List<ComederoEntity> verComederos(@PathVariable("habita_id") int habita_id) {
+    public List<ComederoEntityDto> verComederos(@PathVariable("habita_id") int habita_id) {
         return zoo.verComederos(habita_id);
     }
 

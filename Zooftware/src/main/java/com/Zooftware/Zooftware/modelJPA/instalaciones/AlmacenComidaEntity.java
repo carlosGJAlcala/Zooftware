@@ -18,30 +18,20 @@ public class AlmacenComidaEntity {
     private int id;
 
 
-    @OneToMany(mappedBy = "almacenComida")
-    private List<ComidaEntity> provisiones;
+    //@OneToMany(mappedBy = "almacenComida")
+
+  /*  private List<ComidaEntity> provisiones;*/
 
 
     public AlmacenComidaEntity() {
     }
 
-    public AlmacenComidaEntity(int id, List<ComidaEntity> provisiones) {
-        this.id = id;
-        this.provisiones = provisiones;
-    }
-
-    public List<ComidaEntity> getProvisiones() {
-        return this.provisiones;
-    }
-
-    public void setProvisiones(List<ComidaEntity> provisiones) {
-        this.provisiones = provisiones;
-    }
-
-
     public AlmacenComidaEntity(int id) {
         this.id = id;
+
     }
+
+
 
     public int getId() {
         return this.id;

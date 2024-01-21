@@ -11,16 +11,12 @@ public class ComidaOmnivoraBuilder implements IComidaBuilder{
 
 
     @Override
-    public boolean abrirbolsa(List<ComidaEntityDto> provisiones) {
-        if (!provisiones.isEmpty()){
-            comida=provisiones.get(0);
+    public void abrirbolsa() {
+
+            comida=new ComidaEntityDto();
             comida.setNombre("SalteadoDeVerduraConPavo");
             comida.setEstadoComida(EstadoComida.CRUDA);
             comida.setTipoComida(TipoComida.OMNIVORA);
-            return true;
-        }else {
-            return  false;
-        }
 
     }
 

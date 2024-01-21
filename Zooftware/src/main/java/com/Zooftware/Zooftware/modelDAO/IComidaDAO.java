@@ -12,7 +12,7 @@ public interface IComidaDAO {
     public ComidaEntityDto buscarPorNombre(String nombre);
     public ComidaEntityDto buscarPorId(Integer id);
     void actualizarComida(ComidaEntityDto comida);
-    void guardarComida(ComidaEntityDto comida);
+    ComidaEntityDto guardarComida(ComidaEntityDto comida);
     public void eliminarComida(Integer id);
 
 }

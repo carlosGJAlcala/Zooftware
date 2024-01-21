@@ -55,9 +55,11 @@ public class ComidaDAOImp implements IComidaDAO{
     }
 
     @Override
-    public void guardarComida(ComidaEntityDto comida) {
+    public ComidaEntityDto guardarComida(ComidaEntityDto comida) {
         ComidaEntity comidaEntity=comidaEntityMapper.mapper.toEntity(comida);
-        comidaEntityJPA.save(comidaEntity);
+        ComidaEntity comidaEntity1 =comidaEntityJPA.save(comidaEntity);
+        return comidaEntityMapper.mapper.toDto(comidaEntity1);
+
     }
 
     @Override
