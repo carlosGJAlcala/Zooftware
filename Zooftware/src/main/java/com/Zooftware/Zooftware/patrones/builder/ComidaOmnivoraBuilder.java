@@ -6,23 +6,23 @@ import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
 
 import java.util.List;
 
-public class ComidaOmnivoraBuilder implements IComidaBuilder{
+public class ComidaOmnivoraBuilder implements IComidaBuilder {
     ComidaEntityDto comida;
 
 
     @Override
     public void abrirbolsa() {
 
-            comida=new ComidaEntityDto();
-            comida.setNombre("SalteadoDeVerduraConPavo");
-            comida.setEstadoComida(EstadoComida.CRUDA);
-            comida.setTipoComida(TipoComida.OMNIVORA);
+        comida = new ComidaEntityDto();
+        comida.setNombre("SalteadoDeVerduraConPavo");
+        comida.setEstadoComida(EstadoComida.CRUDA);
+        comida.setTipoComida(TipoComida.OMNIVORA);
 
     }
 
     @Override
     public void calentarComida() {
-    comida.setEstadoComida(EstadoComida.HACIENDOSE);
+        comida.setEstadoComida(EstadoComida.HACIENDOSE);
     }
 
     @Override

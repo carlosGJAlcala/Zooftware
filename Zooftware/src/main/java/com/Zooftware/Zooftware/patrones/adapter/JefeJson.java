@@ -6,7 +6,8 @@ public class JefeJson {
 
     int id;
     String apellidos;
-    String dni;String nombre;
+    String dni;
+    String nombre;
     String password;
 
     String username;
@@ -20,10 +21,7 @@ public class JefeJson {
     int salario;
 
 
-
-
-
-    public JefeJson(int id, String apellidos, String dni, String nombre, String password, String username, int edad, long numeroSeguridadSocial, String correo, int numeroTlf,  Rol rol) {
+    public JefeJson(int id, String apellidos, String dni, String nombre, String password, String username, int edad, long numeroSeguridadSocial, String correo, int numeroTlf, Rol rol) {
         this.id = id;
         this.apellidos = apellidos;
         this.dni = dni;

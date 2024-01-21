@@ -7,13 +7,14 @@ import java.util.List;
 public interface IComidaBuilder {
 
 
-
-
     void abrirbolsa();
+
     void calentarComida();
 
     void mezclarTopics();
+
     ComidaEntityDto getAlimento();
+
     void ponerComidaEnCubo();
 
 
