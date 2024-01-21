@@ -2,10 +2,12 @@ package com.Zooftware.Zooftware.patrones.AbstractFactory;
 
 import com.Zooftware.Zooftware.modelDAO.*;
 import com.Zooftware.Zooftware.modelDTO.*;
+import com.Zooftware.Zooftware.modelJPA.enums.EstadoComida;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoAgua;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
 import com.Zooftware.Zooftware.modelJPA.instalaciones.AcuaticoEntity;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.AlmacenComidaEntity;
 import com.Zooftware.Zooftware.modelJPA.instalaciones.AnfibioEntity;
 import com.Zooftware.Zooftware.modelJPA.instalaciones.TerrestreEntity;
 import com.Zooftware.Zooftware.patrones.Singleton.AlmacenSingleton;
@@ -13,9 +15,6 @@ import com.Zooftware.Zooftware.patrones.factoryMethod.FactoryAnimalesConcreto;
 import com.Zooftware.Zooftware.patrones.factoryMethod.FactoryMethodAnimal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class instalacionFactoryConcreta implements InstalacionFactory{
@@ -28,6 +27,14 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
     IAnfibioDAO habitaanfibio;
     @Autowired
     IAcuaticoDAO habitaAcuatio;
+    @Autowired
+    IComidaDAO iComidaDAO;
+
+    @Autowired
+    IAlmacenComidaDAO iAlmacenComidaDAO;
+    @Autowired
+    IComederoDAO iComederoDAO;
+
     @Autowired
     ITerrestreDAO habitaTerrestre;
     @Autowired
@@ -42,6 +49,9 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
     IAnimalDAO iAnimalDAO;
     @Autowired
     IPlantaDAO iPlantaDAO;
+
+    @Autowired
+    IBebederoDAO iBebederoDAO;
 
     @Autowired
     IHabitatDAO habita;
@@ -74,46 +84,6 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
         planta2.setHabitatEntity(habita);
 
 
-
-
-//        AcuaticoEntityDto habita=new AcuaticoEntityDto(contadorHabita,TipoAgua.DULCE,                numComederos);
-//        List<AnimalEntityDto> animales=new ArrayList<>();
-//        List<PlantaEntityDto> plantas=new ArrayList<>();
-//
-//        AnimalEntityDto animal1 = factoryMethodAnimal.crearAnimalAcuaticoAguaDulce();
-//        animal1.setHabitatEntityDto(habita);
-//        animales.add(animal1);
-//
-//        AnimalEntityDto animal2 = factoryMethodAnimal.crearAnimalAcuaticoAguaDulce();
-//        animal1.setHabitatEntityDto(habita);
-//        animales.add(animal2);
-//
-//        PlantaEntityDto planta1 = factoryMethodAnimal.plantaAcuaticaAguaDulce();
-//        planta1.setHabitatEntityDto(habita);
-//        plantas.add(planta1);
-//
-//        PlantaEntityDto planta2 = factoryMethodAnimal.plantaAcuaticaAguaDulce();
-//        planta2.setHabitatEntityDto(habita);
-//        plantas.add(planta2);
-
-
-
-        //*****
-//        List<ComederoEntityDto> comederos= this.crearComederos(numComederos,TipoComida.CARNIVORA);
-//        comederos.stream().forEach(comederoEntityDto -> {
-//            comederoEntityDto.setHabitat(habita);
-//            comederoDAO.guardarComedero(comederoEntityDto);
-//        });
-
-
-
-//        habita.setAnimales(animales);
-//        habita.setPlantas(plantas);
-//        habita.setComederos(comederos);
-
-
-
-
         iAnimalDAO.guardarAnimal(animal1);
         iAnimalDAO.guardarAnimal(animal2);
 
@@ -140,42 +110,6 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
         planta1.setHabitatEntity(habita);
         PlantaEntityDto planta2= factoryMethodAnimal.plantaAcuaticaAguaSalada();
         planta2.setHabitatEntity(habita);
-
-
-
-//        int numComederos=2;
-//        AcuaticoEntityDto habita=new AcuaticoEntityDto(contadorHabita,TipoAgua.SALADA,
-//                numComederos);
-//        List<AnimalEntityDto> animales=new ArrayList<>();
-//        List<PlantaEntityDto> plantas=new ArrayList<>();
-//
-//        AnimalEntityDto animal1 = factoryMethodAnimal.crearAnimalAcuaticoAguaSalada();
-//        animal1.setHabitatEntityDto(habita);
-//        animales.add(animal1);
-//
-//        AnimalEntityDto animal2 = factoryMethodAnimal.crearAnimalAcuaticoAguaSalada();
-//        animal1.setHabitatEntityDto(habita);
-//        animales.add(animal2);
-//
-//        PlantaEntityDto planta1 = factoryMethodAnimal.plantaAcuaticaAguaSalada();
-//        planta1.setHabitatEntityDto(habita);
-//        plantas.add(planta1);
-//
-//        PlantaEntityDto planta2 = factoryMethodAnimal.plantaAcuaticaAguaSalada();
-//        planta2.setHabitatEntityDto(habita);
-//        plantas.add(planta2);
-//
-//        List<ComederoEntityDto> comederos= this.crearComederos(numComederos,TipoComida.CARNIVORA);
-//        comederos.stream().forEach(comederoEntityDto -> {
-//            comederoEntityDto.setHabitatEntityDto(habita);
-//            comederoDAO.guardarComedero(comederoEntityDto);
-//        });
-//
-//        habita.setAnimales(animales);
-//        habita.setPlantas(plantas);
-//        habita.setComederos(comederos);
-
-
 
         iAnimalDAO.guardarAnimal(animal1);
         iAnimalDAO.guardarAnimal(animal2);
@@ -213,21 +147,7 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
         PlantaEntityDto planta2 = factoryMethodAnimal.plantaAnfibia();
         planta2.setHabitatEntity(habita);
 
-
-        ////
-
-//        List<ComederoEntityDto> comederos= this.crearComederos(numComederos,TipoComida.OMNIVORA);
-//        comederos.stream().forEach(comederoEntityDto -> {
-//            comederoEntityDto.setHabitat(habita);
-//            comederoDAO.guardarComedero(comederoEntityDto);
-//        });
-
-
-
-//
-//        habita.setAnimales(animales);
-//        habita.setPlantas(plantas);
-//        habita.setComederos(comederos);
+        crearComederos(numComederos,TipoComida.OMNIVORA,habita);
 
         //Guardamos animales/plantas en BBDD
         iAnimalDAO.guardarAnimal(animal1);
@@ -253,9 +173,6 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
         AnimalEntityDto animal1 = factoryMethodAnimal.crearAnimalTerrestre();
         animal1.setHabitat(habita);
 
-
-//        TerrestreEntityDto habita=new TerrestreEntityDto(TipoHabitat.TERRESTRE,numBebederos,numComederos);
-
         AnimalEntityDto animal2 = factoryMethodAnimal.crearAnimalTerrestre();
         animal2.setHabitat(habita);
 
@@ -267,64 +184,51 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
         planta2.setHabitatEntity(habita);
 
 
+        crearBebederos(numBebederos,habita);
+        crearComederos(numComederos,TipoComida.CARNIVORA,habita);
+
         //Guardamos animales/plantas en BBDD
         iAnimalDAO.guardarAnimal(animal1);
         iAnimalDAO.guardarAnimal(animal2);
         iPlantaDAO.guardarPlanta(planta1);
         iPlantaDAO.guardarPlanta(planta2);
 
-
-        /////
-//        List<ComederoEntityDto> comederos= this.crearComederos(numComederos,TipoComida.OMNIVORA);
-//        comederos.stream().forEach(comederoEntityDto -> {
-//            comederoEntityDto.setHabitat(habita);
-//            comederoDAO.guardarComedero(comederoEntityDto);
-//        });
-/*        List<BebederoEntityDto> bebederos= this.crearBebederos(numBebederos);
-        bebederos.stream().forEach(bebederoEntityDto -> {
-            bebederoEntityDto.setHabitatEntityDto(habita);
-            bebederoDAO.guardarBebedero(bebederoEntityDto);
-        });
-
-        habita.setBebederos(bebederos);*/
-//        habita.setComederos(comederos);
-//        habita.setAnimales(animales);
-//        habita.setPlantas(plantas);
-
         return habita;
     }
 
     @Override
-    public AlmacenSingleton crearAlmacen() {
-        List<AlmacenComidaEntityDto> almacenes =almacen.buscarAlmacenes();
-        AlmacenComidaEntityDto almacenComidaEntityDto1 = almacenes.get(0);
+    public void crearAlmacen() {
+        AlmacenComidaEntityDto almacen = new AlmacenComidaEntityDto(0);
+        AlmacenComidaEntity almacenComidaEntity = iAlmacenComidaDAO.guardar(almacen);
+        almacen = iAlmacenComidaDAO.encontrarPorId(almacenComidaEntity.getId());
+
+        //crear comida
+        ComidaEntityDto comida = new ComidaEntityDto(0,"Lentejas",10,TipoComida.OMNIVORA,almacen, EstadoComida.CRUDA,"Lenteja","Chorizo");
+        iComidaDAO.guardarComida(comida);
+
+        ComidaEntityDto comida2 = new ComidaEntityDto(0,"Pollo al ajillo",10,TipoComida.CARNIVORA,almacen, EstadoComida.CRUDA,"Pollo","ajo");
+        iComidaDAO.guardarComida(comida2);
+
+
+//
+//        List<AlmacenComidaEntityDto> almacenes =almacen.buscarAlmacenes();
+//        AlmacenComidaEntityDto almacenComidaEntityDto1 = almacenes.get(0);
 //        //AlmacenSingleton almacenSingleton=AlmacenSingleton.getInstancia();
 //        almacenSingleton.setProvisiones(almacenComidaEntityDto1.getProvisiones());
 //        almacenSingleton.setAlmacenComida(almacenComidaEntityDto1);
-        return almacenSingleton;
+//        return almacen;
     }
 
-@Override
-    public List<BebederoEntityDto> crearBebederos(int numBebederos){
-    List<BebederoEntityDto> bebederos=new ArrayList<>();
+    @Override
+    public void crearBebederos(int numBebederos, HabitatEntityDto habitat){
+        BebederoEntityDto bebedero = new BebederoEntityDto(0,numBebederos,habitat);
+        iBebederoDAO.guardarBebedero(bebedero);
 
-    for(int i=0;i<numBebederos;i++){
-            BebederoEntityDto bebedero = new BebederoEntityDto(50);
-            bebederos.add(bebedero);
-
-        }
-    return bebederos;
     }
     @Override
-    public List<ComederoEntityDto> crearComederos(int numComederos, TipoComida tipo){
-        List<ComederoEntityDto> comederos=new ArrayList<>();
-        for(int i=0;i<numComederos;i++){
-            ComederoEntityDto comedero=new ComederoEntityDto(50,tipo);
-
-            comederos.add(comedero);
-
-        }
-        return  comederos;
+    public void crearComederos(int numComederos, TipoComida tipo, HabitatEntityDto habitat){
+        ComederoEntityDto comedero = new ComederoEntityDto(0,habitat,numComederos,tipo,null);
+        iComederoDAO.guardarComedero(comedero);
     }
 
 }

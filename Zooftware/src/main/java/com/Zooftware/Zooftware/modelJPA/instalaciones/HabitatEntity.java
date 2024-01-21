@@ -18,9 +18,9 @@ public class HabitatEntity {
     @Enumerated(EnumType.STRING)
     private TipoHabitat tipoHabitat;
 
-    @OneToMany(mappedBy = "habitatEntity")
+    @OneToMany(mappedBy = "habitat")
     private List<ComederoEntity> comederos;
-    @OneToMany(mappedBy = "habitatEntity")
+    @OneToMany(mappedBy = "habitat")
     private List<BebederoEntity> bebederos;
     @OneToMany(mappedBy = "habitat")
     private List<AnimalEntity> animales;

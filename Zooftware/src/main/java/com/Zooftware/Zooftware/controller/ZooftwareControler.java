@@ -47,7 +47,10 @@ public class ZooftwareControler  {
         //zoo=factoryMethodProxy.devolverProxy(TipoPersona.JEFE);
 //        zoo.cargar();
 
-        zoo.crearhabita(TipoHabitat.valueOf(tipoHabitat));
+        //zoo.crearhabita(TipoHabitat.valueOf(tipoHabitat));
+
+        zoo.crearAlmacen();
+
     }
     @GetMapping("/validarInicioSesion")
     public String validarInicioSesion(@RequestParam(name = "user") String username, @RequestParam(name = "password") String password, HttpSession session){

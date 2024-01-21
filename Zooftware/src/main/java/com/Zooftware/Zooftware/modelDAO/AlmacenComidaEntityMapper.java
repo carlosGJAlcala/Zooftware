@@ -7,14 +7,10 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper
 public interface AlmacenComidaEntityMapper {
+
     AlmacenComidaEntityMapper mapper= Mappers.getMapper(AlmacenComidaEntityMapper.class);
 
     AlmacenComidaEntity toEntity(AlmacenComidaEntityDto almacenComidaEntityDto);
-
-    @AfterMapping
-    default void linkProvisiones(@MappingTarget AlmacenComidaEntity almacenComidaEntity) {
-        almacenComidaEntity.getProvisiones().forEach(provisione -> provisione.setAlmacenComidaEntity(almacenComidaEntity));
-    }
 
     AlmacenComidaEntityDto toDto(AlmacenComidaEntity almacenComidaEntity);
 

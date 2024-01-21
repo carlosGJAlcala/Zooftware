@@ -18,6 +18,8 @@ import com.Zooftware.Zooftware.patrones.adapter.JefeJson;
 public interface IAccionesJefe extends IAccionesEmpleado {
 
 
+	void crearAlmacen();
+
 	public void comprarAnimal(AnimalJson animalEntityDto);
 
 

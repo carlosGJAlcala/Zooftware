@@ -16,18 +16,18 @@ public class ComidaEntityDto implements Serializable {
     private  int cantidad;
     private  TipoComida tipoComida;
 
-    private AlmacenComidaEntityDto almacenComidaEntityDto;
+    private AlmacenComidaEntityDto almacenComida;
 
     private EstadoComida estadoComida;
 
     private String IngredientePrincipal,IngredienteSecundario;
 
-    public ComidaEntityDto(int id, String nombre, int cantidad, TipoComida tipoComida, AlmacenComidaEntityDto almacenComidaEntityDto, EstadoComida estadoComida, String ingredientePrincipal, String ingredienteSecundario) {
+    public ComidaEntityDto(int id, String nombre, int cantidad, TipoComida tipoComida, AlmacenComidaEntityDto almacenComida, EstadoComida estadoComida, String ingredientePrincipal, String ingredienteSecundario) {
         this.id = id;
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.tipoComida = tipoComida;
-        this.almacenComidaEntityDto = almacenComidaEntityDto;
+        this.almacenComida = almacenComida;
         this.estadoComida = estadoComida;
         IngredientePrincipal = ingredientePrincipal;
         IngredienteSecundario = ingredienteSecundario;
@@ -41,12 +41,12 @@ public class ComidaEntityDto implements Serializable {
         this.estadoComida = estadoComida;
     }
 
-    public AlmacenComidaEntityDto getAlmacenComidaEntityDto() {
-        return almacenComidaEntityDto;
+    public AlmacenComidaEntityDto getAlmacenComida() {
+        return almacenComida;
     }
 
-    public void setAlmacenComidaEntityDto(AlmacenComidaEntityDto almacenComidaEntityDto) {
-        this.almacenComidaEntityDto = almacenComidaEntityDto;
+    public void setAlmacenComida(AlmacenComidaEntityDto almacenComida) {
+        this.almacenComida = almacenComida;
     }
 
     public ComidaEntityDto() {

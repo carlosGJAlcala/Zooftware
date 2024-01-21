@@ -17,16 +17,18 @@ public class AlmacenComidaEntityDto implements Serializable {
     private List<ComidaEntityDto> provisiones ;
 
     @Default
-    public AlmacenComidaEntityDto(int id, List<ComidaEntityDto> provisiones) {
+    public AlmacenComidaEntityDto(int id) {
         this.id = id;
-        this.provisiones = provisiones;
     }
 
     public AlmacenComidaEntityDto() {
-        provisiones=new ArrayList<>();
     }
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

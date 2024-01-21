@@ -5,22 +5,17 @@ import com.Zooftware.Zooftware.modelDAO.*;
 import com.Zooftware.Zooftware.modelDTO.*;
 import com.Zooftware.Zooftware.modelJPA.enums.*;
 import com.Zooftware.Zooftware.patrones.AbstractFactory.InstalacionFactory;
-import com.Zooftware.Zooftware.patrones.AbstractFactory.instalacionFactoryConcreta;
 import com.Zooftware.Zooftware.patrones.adapter.*;
-import com.Zooftware.Zooftware.patrones.factoryMethod.FactoryAnimalesConcreto;
-import com.Zooftware.Zooftware.patrones.factoryMethod.FactoryMethodAnimal;
 import com.Zooftware.Zooftware.patrones.mediator.MediadorConcreto;
 import com.Zooftware.Zooftware.patrones.mediator.Mediator;
 import com.Zooftware.Zooftware.patrones.proxy.IAccionesJefe;
 import com.Zooftware.Zooftware.patrones.state.Animal;
-import com.Zooftware.Zooftware.patrones.strategy.Alimentar;
 import com.Zooftware.Zooftware.patrones.strategy.Contexto;
 import com.Zooftware.Zooftware.patrones.strategy.Estrategia;
 import com.Zooftware.Zooftware.patrones.strategy.RellenarBebederos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -99,6 +94,11 @@ fabricadeHabitas.crearHabitaAnfibio();
 
         fabricadeHabitas.crearHabitaAnfibio();
     }
+    @Override
+    public void crearAlmacen(){
+        fabricadeHabitas.crearAlmacen();
+    }
+
 
     @Override
     public List<AnimalEntityDto> verAnimales() {
