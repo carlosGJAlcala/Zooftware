@@ -12,8 +12,7 @@ public class ContactoEntity {
     private String correo;
     private int numeroTlf;
 
-    public ContactoEntity(int id, String correo, int numeroTlf) {
-        this.id = id;
+    public ContactoEntity(String correo, int numeroTlf) {
         this.correo = correo;
         this.numeroTlf = numeroTlf;
     }

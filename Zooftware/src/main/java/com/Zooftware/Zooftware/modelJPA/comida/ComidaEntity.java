@@ -22,15 +22,15 @@ public class ComidaEntity {
 
     @ManyToOne
     @JoinColumn(name = "almacen_id")
-    private AlmacenComidaEntity almacenComidaEntity;
+    private AlmacenComidaEntity almacenComida;
 
-    public ComidaEntity(int id, String nombre, int cantidad, TipoComida tipoComida, EstadoComida estadoComida, AlmacenComidaEntity almacenComidaEntity) {
+    public ComidaEntity(int id, String nombre, int cantidad, TipoComida tipoComida, EstadoComida estadoComida, AlmacenComidaEntity almacenComida) {
         this.id = id;
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.tipoComida = tipoComida;
         this.estadoComida = estadoComida;
-        this.almacenComidaEntity = almacenComidaEntity;
+        this.almacenComida = almacenComida;
     }
 
     public EstadoComida getEstadoComida() {
@@ -41,12 +41,12 @@ public class ComidaEntity {
         this.estadoComida = estadoComida;
     }
 
-    public AlmacenComidaEntity getAlmacenComidaEntity() {
-        return almacenComidaEntity;
+    public AlmacenComidaEntity getAlmacenComida() {
+        return almacenComida;
     }
 
-    public void setAlmacenComidaEntity(AlmacenComidaEntity almacenComidaEntity) {
-        this.almacenComidaEntity = almacenComidaEntity;
+    public void setAlmacenComida(AlmacenComidaEntity almacenComida) {
+        this.almacenComida = almacenComida;
     }
 
     public ComidaEntity() {

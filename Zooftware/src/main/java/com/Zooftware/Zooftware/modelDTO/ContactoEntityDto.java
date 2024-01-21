@@ -13,8 +13,7 @@ public class ContactoEntityDto implements Serializable {
     private String correo;
     private int numeroTlf;
 
-    public ContactoEntityDto(int id, String correo, int numeroTlf) {
-        this.id = id;
+    public ContactoEntityDto( String correo, int numeroTlf) {
         this.correo = correo;
         this.numeroTlf = numeroTlf;
     }

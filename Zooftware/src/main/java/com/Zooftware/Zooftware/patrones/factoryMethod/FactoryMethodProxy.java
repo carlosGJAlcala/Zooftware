@@ -5,5 +5,6 @@ import com.Zooftware.Zooftware.patrones.facade.Zooftware;
 import com.Zooftware.Zooftware.patrones.proxy.IAccionesJefe;
 
 public interface FactoryMethodProxy {
-    IAccionesJefe devolverProxy(TipoPersona tipo);
+    Object devolverProxy(TipoPersona tipo);
+
 }

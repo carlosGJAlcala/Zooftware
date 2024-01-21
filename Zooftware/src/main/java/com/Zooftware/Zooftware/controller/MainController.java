@@ -8,7 +8,7 @@ public class MainController {
 
     @GetMapping("/")
     public String ventana_inicial(){
-        return "redirect:/zooftware/mostrar";
+        return "redirect:/login/mostrar";
     }
 
 

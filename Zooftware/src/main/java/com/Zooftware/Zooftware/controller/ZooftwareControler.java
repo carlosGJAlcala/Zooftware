@@ -6,25 +6,38 @@ import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
 import com.Zooftware.Zooftware.modelJPA.enums.Rol;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoPersona;
+import com.Zooftware.Zooftware.patrones.adapter.*;
+import com.Zooftware.Zooftware.patrones.facade.Zooftware;
 import com.Zooftware.Zooftware.patrones.adapter.AnimalJson;
 import com.Zooftware.Zooftware.patrones.adapter.BebederoJson;
 import com.Zooftware.Zooftware.patrones.adapter.EmpleadoJson;
 import com.Zooftware.Zooftware.patrones.adapter.JefeJson;
 import com.Zooftware.Zooftware.patrones.factoryMethod.FactoryMethodProxy;
+import com.Zooftware.Zooftware.patrones.factoryMethod.FactoryMethodProxyConcreto;
 import com.Zooftware.Zooftware.patrones.proxy.*;
 import com.Zooftware.Zooftware.service.persona.PersonaService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.awt.*;
+import java.lang.reflect.Proxy;
 import java.util.List;
+
+
 
 @RestController
 public class ZooftwareControler  {
+
     @Autowired
     private PersonaService personaService;
+    @Autowired
+    FactoryMethodProxyConcreto factoryMethodProxyConcreto;
 
     @Autowired
     FactoryMethodProxy factoryMethodProxy;
@@ -38,50 +51,62 @@ public class ZooftwareControler  {
         return modelAndView;
     }
     @GetMapping("/cargar")
-    public void cargar(@RequestParam(name = "tipoHabitat") String tipoHabitat){
+    public void cargar(@RequestParam(name = "tipoHabitat") String tipoHabitat, HttpSession session){
         //zoo=(IAccionesJefe) Proxy.newProxyInstance(IAccionesJefe.class.getClassLoader(),Zooftware.class.getInterfaces(),new ProxyJefe(new Zooftware()));
-        //zoo=factoryMethodProxy.devolverProxy(TipoPersona.JEFE);
+
+        IAccionesJefe accionesJefe = (IAccionesJefe) factoryMethodProxy.devolverProxy(TipoPersona.JEFE);
+
+        IAccionesEmpleado accionesEmpleado = (IAccionesEmpleado)  factoryMethodProxy.devolverProxy(TipoPersona.EMPLEADO);
+
+        IAccionesCliente accionesCliente = (IAccionesCliente) factoryMethodProxy.devolverProxy(TipoPersona.CLIENTE);
+
 //        zoo.cargar();
 
-        zoo.crearHabitat(TipoHabitat.valueOf(tipoHabitat));
+        //zoo.crearhabita(TipoHabitat.valueOf(tipoHabitat));
+
+
+        session.setAttribute("proxy",(IAccionesJefe) accionesCliente);
+
+
     }
-    @GetMapping("/validarInicioSesion")
-    public String validarInicioSesion(@RequestParam(name = "user") String username, @RequestParam(name = "password") String password, HttpSession session){
 
-        if(personaService.existePersona(username,password)){
-            Rol rol = personaService.getTipoEmpleadoPorUsername(username);
 
+    @PostMapping("/validarInicioSesion")
+    public ResponseEntity<String> validarInicioSesion(@RequestBody LoginJson user, HttpSession session){
+
+        String redirectUrl;
+        if(personaService.existePersona(user.getUsername(),user.getPassword())){
+            Rol rol = personaService.getTipoEmpleadoPorUsername(user.getUsername());
             switch (rol.toString()){
                 case "JEFE":
-                    session.setAttribute("user",(PersonaEntityDto)personaService.getJefeByUsername(username));
                     tipo =TipoPersona.JEFE;
-                    zoo=factoryMethodProxy.devolverProxy(tipo);
-                    return "redirect:/jefe/home/mostrar";
+                    IAccionesJefe accionesJefe = (IAccionesJefe) factoryMethodProxy.devolverProxy(TipoPersona.JEFE);
+                    session.setAttribute("proxy", accionesJefe);
+                    session.setAttribute("user", personaService.getJefeByUsername(user.getUsername()));
+                    redirectUrl="/jefe/home/mostrar";
+                    break;
                 case "EMPLEADO":
                     tipo =TipoPersona.EMPLEADO;
-                    session.setAttribute("user",(PersonaEntityDto)personaService.getEmpleadoByUsername(username));
-//                    zoo=factoryMethodProxy.devolverProxy(tipo);
-
-//                    IAccionesEmpleado accionesEmpleado= (IAccionesEmpleado) Proxy.newProxyInstance(IAccionesEmpleado.class.getClassLoader(),Zooftware.class.getInterfaces(),new ProxyEmpleado(new Zooftware()));
-//                    accionesEmpleado.darComerAnimal(2,4);
-//
-//                    IAccionesCliente clienteAcc = (IAccionesCliente) accionesEmpleado;
-//
-//                    clienteAcc.toString();
-//
-
-                    return "redirect:/empleado/home/mostrar";
+                    IAccionesEmpleado accionesEmpleado = (IAccionesEmpleado) factoryMethodProxy.devolverProxy(TipoPersona.EMPLEADO);
+                    session.setAttribute("proxy",accionesEmpleado);
+                    session.setAttribute("user", personaService.getEmpleadoByUsername(user.getUsername()));
+                    redirectUrl="/empleado/home/mostrar";
+                    break;
                 case "CLIENTE":
                     tipo =TipoPersona.CLIENTE;
-                    session.setAttribute("user",(PersonaEntityDto)personaService.getClienteByUsername(username));
-                    //zoo=factoryMethodProxy.devolverProxy(tipo);
-                    return "redirect:/cliente/home/mostrar";
+                    IAccionesCliente accionesCliente = (IAccionesCliente) factoryMethodProxy.devolverProxy(TipoPersona.CLIENTE);
+                    session.setAttribute("proxy", accionesCliente);
+                    session.setAttribute("user", personaService.getClienteByUsername(user.getUsername()));
+                    redirectUrl = "/cliente/home/mostrar";
+                    break;
                 default:
-                    throw new ValidacionException();
+                    return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Acceso Denegado");
             }
+            return ResponseEntity.ok(redirectUrl);
         }else{
-            throw new ValidacionException();
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuario o contraseña incorrectos");
         }
+
     }
 
     @GetMapping("/animales")
@@ -141,9 +166,16 @@ public class ZooftwareControler  {
     public void darComerAnimal(@PathVariable("id") int id) {
     zoo.darComerAnimal(id,10);
     }
-    @GetMapping("/habitat/comederos/rellenar/{habita_id}")
-    public boolean rellenarComederos(@PathVariable("habita_id")int id) {
-        zoo.rellenarComederos(id);
+    @PostMapping("/rellenarComederos")
+    public boolean rellenarComederos(@RequestParam("idHabitat")int id, HttpSession session) {
+        //zoo.rellenarComederos(id);
+        PersonaEntityDto persona = (PersonaEntityDto) session.getAttribute("user");
+
+
+        IAccionesJefe test= (IAccionesJefe) session.getAttribute("proxy");
+
+        test.crearHabitat(TipoHabitat.ANFIBIO);
+
         return true;
     }
     @GetMapping("/habitat/bebederos/rellenar/{habita_id}")
@@ -189,7 +221,6 @@ public class ZooftwareControler  {
 
     }
     @PostMapping(value = "/empleado/contratar" ,produces = MediaType.TEXT_PLAIN_VALUE)
-
     public void contratarEmpleado(@RequestBody EmpleadoJson empleadoNuevo) {
         zoo.contratarEmpleado(empleadoNuevo);
 

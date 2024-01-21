@@ -1,8 +1,10 @@
 package com.Zooftware.Zooftware.patrones.strategy;
 
 import com.Zooftware.Zooftware.modelDAO.HabitatDAOImp;
+import com.Zooftware.Zooftware.modelDAO.IComidaDAO;
 import com.Zooftware.Zooftware.modelDAO.IHabitatDAO;
 import com.Zooftware.Zooftware.modelDTO.ComederoEntityDto;
+import com.Zooftware.Zooftware.modelDTO.ComidaEntityDto;
 import com.Zooftware.Zooftware.modelDTO.HabitatEntityDto;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
 import com.Zooftware.Zooftware.patrones.Singleton.AlmacenSingleton;
@@ -22,17 +24,26 @@ public class Alimentar implements Estrategia{
     AlmacenSingleton almacen;
 
     @Autowired
+    IComidaDAO iComidaDAO;
+
+    @Autowired
     IHabitatDAO iHabitatDAO;
 
     @Override
     public void ejecutar(HabitatEntityDto habita) {
 
-        iHabitatDAO.buscarPorId(1);
+        //Recibo el habitat al que quiero rellenar sus comederos
+
+        //obtener lista de comederos que tienen el habitat id
+
+        //Crear una instancia de cocinero
+
 
         List<ComederoEntityDto> comederos= habita.getComederos();
         //almacen= AlmacenSingleton.getInstancia();
-        Cocinero cocinero=almacen.crearCocinero();
-        almacen.cargarListAlmacen();
+        //Cocinero concinero = almacen.CrearCocinero();
+        Cocinero cocinero= new Cocinero();
+        //almacen.cargarListAlmacen();
 
         for(ComederoEntityDto comedero:comederos){
             TipoComida tipo =comedero.getTipo();
@@ -49,10 +60,14 @@ public class Alimentar implements Estrategia{
                 default:break;
             }
 
-
+            //Crear comida
+            //Guardar esta comida en los comederos indicados
 
 
             cocinero.crearComida();
+            //iComidaDAO.guardarComida(cocinero.getComida());
+
+
             comedero.setComida( cocinero.getComida());
 
         }

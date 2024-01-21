@@ -3,8 +3,9 @@ package com.Zooftware.Zooftware.patrones.builder;
 import com.Zooftware.Zooftware.modelDTO.AlmacenComidaEntityDto;
 import com.Zooftware.Zooftware.modelDTO.ComidaEntityDto;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class Cocinero {
 
 
@@ -21,6 +22,9 @@ public class Cocinero {
      * Construye el producto Pizza paso a paso.
      */
     public void crearComida() {
+        //Obtener la comida del almacen get0
+
+
         if(comidadbuilder.abrirbolsa(almacenComidaEntityDto.getProvisiones())){
             comidadbuilder.mezclarTopics();
             comidadbuilder.calentarComida();

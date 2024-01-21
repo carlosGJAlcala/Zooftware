@@ -46,9 +46,9 @@ public class AlmacenComidaDAOImpl implements IAlmacenComidaDAO{
     }
 
     @Override
-    public void guardar(AlmacenComidaEntityDto almacen) {
+    public AlmacenComidaEntity guardar(AlmacenComidaEntityDto almacen) {
         AlmacenComidaEntity almacenComidaEntity=almacenComidaEntityMapper.mapper.toEntity(almacen);
-        repository.save(almacenComidaEntity);
+        return repository.save(almacenComidaEntity);
     }
 
     @Override

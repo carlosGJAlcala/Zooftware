@@ -18,7 +18,7 @@ public class AlmacenComidaEntity {
     private int id;
 
 
-    @OneToMany(mappedBy = "almacenComidaEntity")
+    @OneToMany(mappedBy = "almacenComida")
     private List<ComidaEntity> provisiones;
 
 

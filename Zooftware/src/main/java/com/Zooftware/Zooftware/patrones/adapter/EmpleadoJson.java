@@ -2,11 +2,14 @@ package com.Zooftware.Zooftware.patrones.adapter;
 
 import com.Zooftware.Zooftware.modelJPA.enums.Rol;
 
+import java.util.Date;
+
 public class EmpleadoJson {
 
     int id;
     String apellidos;
-    String dni;String nombre;
+    String dni;
+    String nombre;
     String password;
 
     String username;
@@ -16,13 +19,13 @@ public class EmpleadoJson {
     public String correo;
     public int numeroTlf;
 
-    int jefe_id;
+    String usernameJefe;
 
     int salario;
 
+    Date fechaFinContrato;
 
-    public EmpleadoJson(int id, String apellidos, String dni, String nombre, String password, String username, int edad, long numeroSeguridadSocial, String correo, int numeroTlf, int jefe_id, int salario) {
-        this.id = id;
+    public EmpleadoJson(String apellidos, String dni, String nombre, String password, String username, int edad, long numeroSeguridadSocial, String correo, int numeroTlf, String usernameJefe, int salario, Date fechaFinContrato) {
         this.apellidos = apellidos;
         this.dni = dni;
         this.nombre = nombre;
@@ -32,9 +35,13 @@ public class EmpleadoJson {
         this.numeroSeguridadSocial = numeroSeguridadSocial;
         this.correo = correo;
         this.numeroTlf = numeroTlf;
-        this.jefe_id = jefe_id;
+        this.usernameJefe = usernameJefe;
         this.salario = salario;
+        this.fechaFinContrato = fechaFinContrato;
+    }
 
+    public Date getFechaFinContrato() {
+        return fechaFinContrato;
     }
 
     public String getCorreo() {
@@ -77,9 +84,8 @@ public class EmpleadoJson {
         return numeroSeguridadSocial;
     }
 
-
-    public int getJefe_id() {
-        return jefe_id;
+    public String getUsernameJefe() {
+        return usernameJefe;
     }
 
     public int getSalario() {

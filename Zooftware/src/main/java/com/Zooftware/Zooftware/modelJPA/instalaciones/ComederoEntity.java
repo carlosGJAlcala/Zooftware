@@ -1,6 +1,5 @@
 package com.Zooftware.Zooftware.modelJPA.instalaciones;
 
-import com.Zooftware.Zooftware.modelDTO.ComidaEntityDto;
 import com.Zooftware.Zooftware.modelJPA.comida.ComidaEntity;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
 import jakarta.persistence.*;
@@ -25,14 +24,14 @@ public class ComederoEntity {
 
     @ManyToOne
     @JoinColumn(name = "habitat_id")
-    private HabitatEntity habitatEntity;
+    private HabitatEntity habitat;
 
     public ComederoEntity(){}
 
-    public ComederoEntity(Integer cantidad, TipoComida tipo, HabitatEntity habitatEntity, ComidaEntity comidaEntity) {
+    public ComederoEntity(Integer cantidad, TipoComida tipo, HabitatEntity habitat, ComidaEntity comidaEntity) {
         this.cantidad = cantidad;
         this.tipo = tipo;
-        this.habitatEntity = habitatEntity;
+        this.habitat = habitat;
         this.comidaEntity = comidaEntity;
     }
 
@@ -69,11 +68,11 @@ public class ComederoEntity {
         this.tipo = tipo;
     }
 
-    public HabitatEntity getHabitatEntity() {
-        return habitatEntity;
+    public HabitatEntity getHabitat() {
+        return habitat;
     }
 
-    public void setHabitatEntity(HabitatEntity habitatEntity) {
-        this.habitatEntity = habitatEntity;
+    public void setHabitat(HabitatEntity habitat) {
+        this.habitat = habitat;
     }
 }
