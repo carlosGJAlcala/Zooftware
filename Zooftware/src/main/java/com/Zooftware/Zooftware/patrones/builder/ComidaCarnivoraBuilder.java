@@ -3,9 +3,11 @@ package com.Zooftware.Zooftware.patrones.builder;
 import com.Zooftware.Zooftware.modelDTO.ComidaEntityDto;
 import com.Zooftware.Zooftware.modelJPA.enums.EstadoComida;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoComida;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ComidaCarnivoraBuilder implements IComidaBuilder{
     ComidaEntityDto comida;
 

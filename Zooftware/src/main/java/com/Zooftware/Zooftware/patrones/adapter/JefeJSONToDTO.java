@@ -18,7 +18,7 @@ public class JefeJSONToDTO extends JefeEntityDto {
     public JefeJSONToDTO(JefeJson jefe) {
         //(int id, String apellidos, String dni, int edad, String nombre, String password, Rol rol, String username, ClienteEntityDto clienteZooId, ContactoEntityDto contactoId, TrabajadorEntityDto trabajadorId, boolean activo, Date fechaFinContrato, Date fechaInicioContrato, long numeroSeguridadSocial, JefeEntityDto jefeEntityDto, List<MensajeEntityDto> mensajes, double salario, List<TrabajadorEntityDto> subordinados, int contactoId1, int jefe_id, ContactoEntityDto contactoEntityDto) {
         super(jefe.id, jefe.apellidos, jefe.dni, jefe.edad, jefe.nombre, jefe.password, Rol.JEFE, jefe.username, null, null, null, true, null, new Date(), jefe.numeroSeguridadSocial, null, null, jefe.salario, null);
-        contactoEntityDto=new ContactoEntityDto(1,jefe.correo,jefe.numeroTlf);
+        contactoEntityDto=new ContactoEntityDto(jefe.correo,jefe.numeroTlf);
     }
 
 
