@@ -149,7 +149,7 @@ fabricadeHabitas.crearHabitaAnfibio();
     public void ejercitarAnimal(int id, int cantidad) {
 		Animal animal = new AnimalDTOToAnimalState(animalDAO.buscarPorId(id));
         animal.hacerEjercicio(cantidad);
-        animalDAO.guardarAnimal(animal);
+        animalDAO.actualizarAnimalEstado(animal);
 
     }
 
@@ -157,14 +157,15 @@ fabricadeHabitas.crearHabitaAnfibio();
     public void dormirAnimal(int id, int cantidad) {
         Animal animal = new AnimalDTOToAnimalState(animalDAO.buscarPorId(id));
         animal.dormir(cantidad);
-        animalDAO.guardarAnimal(animal);
+        animalDAO.actualizarAnimalEstado(animal);
     }
 
     @Override
     public void darComerAnimal(int id, int cantidad) {
 		Animal animal = new AnimalDTOToAnimalState(animalDAO.buscarPorId(id));
+
         animal.darComida(cantidad);
-        animalDAO.guardarAnimal(animal);
+        animalDAO.actualizarAnimalEstado(animal);
 
     }
 
@@ -223,22 +224,23 @@ fabricadeHabitas.crearHabitaAnfibio();
         int id_habita = animal.getId_habita();
         TipoAnimal tipo = animal.getTipo();
 
-
-        switch (tipo) {
-            case ANFIBIO:
-                AnfibioEntityDto habita = anfibioDAO.encontrarPorId(id_habita);
-                animal.setHabitat(habita);
-                break;
-            case ACUATICO:
-                AcuaticoEntityDto habita1 = habitaAcuatio.buscarPorId(id_habita);
-                animal.setHabitat(habita1);
-                break;
-            case TERRESTRE:
-                TerrestreEntityDto habita2 = terrestreDAO.buscarPorId(id_habita);
-                animal.setHabitat(habita2);
-                break;
-
-        }
+//
+//        switch (tipo) {
+//            case ANFIBIO:
+//                AnfibioEntityDto habita = (AnfibioEntityDto) habitatDAO.buscarPorId(id_habita);
+//                animal.setHabitat(habita);
+//                break;
+//            case ACUATICO:
+//                AcuaticoEntityDto habita1 = (AcuaticoEntityDto) habitatDAO.buscarPorId(id_habita);
+//                animal.setHabitat(habita1);
+//                break;
+//            case TERRESTRE:
+//                TerrestreEntityDto habita2 =(TerrestreEntityDto) habitatDAO.buscarPorId(id_habita);
+//                animal.setHabitat(habita2);
+//                break;
+//        }
+        HabitatEntityDto habita = habitatDAO.buscarPorId(id_habita);
+        animal.setHabitat(habita);
 
         animalDAO.guardarAnimal(animal);
 

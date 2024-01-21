@@ -43,7 +43,7 @@ public class FactoryAnimalesConcreto implements FactoryMethodAnimal {
 
     @Override
     public AnimalEntityDto crearAnimalTerrestre() {
-        AnimalEntityDto animal=new AnimalEntityDto("Elefante",EstadoAnimal.FELIZ,TipoAnimal.TERRESTRE,null,4,20,20,20,20);
+        AnimalEntityDto animal=new AnimalEntityDto("Elefante",EstadoAnimal.TRISTE,TipoAnimal.TERRESTRE,null,4,5,5,5,5);
         //animalDAO.guardarAnimal(animal);
 
         return animal;

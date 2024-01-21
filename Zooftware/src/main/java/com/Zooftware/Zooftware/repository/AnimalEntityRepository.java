@@ -22,7 +22,8 @@ public interface AnimalEntityRepository extends JpaRepository<AnimalEntity, Inte
     List<AnimalEntity> findByTipo(String tipo);
 
     @Query("select a from AnimalEntity a where a.habitat.id = ?1")
-    List<AnimalEntity> findByHabitat_Id(int id);
+    List<AnimalEntity> findByHabitat_Id(Integer id);
 
+    void deleteById(int id);
 
 }
