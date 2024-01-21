@@ -23,7 +23,7 @@ public class JefeEntity extends  TrabajadorEntity{
     }
 
     public List<TrabajadorEntity> getSubordinado() {
-        return subordinado;
+        return this.subordinado;
     }
 
     public void setSubordinado(List<TrabajadorEntity> subordinado) {

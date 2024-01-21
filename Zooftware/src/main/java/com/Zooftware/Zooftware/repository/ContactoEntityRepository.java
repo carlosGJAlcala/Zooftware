@@ -7,8 +7,8 @@ import java.util.Optional;
 
 public interface ContactoEntityRepository extends JpaRepository<ContactoEntity, Integer> {
 
-    @Override
-    Optional<ContactoEntity> findById(Integer integer);
+
+    Optional<ContactoEntity> findById(int integer);
 
     Optional<ContactoEntity> findByCorreo(String correo);
 

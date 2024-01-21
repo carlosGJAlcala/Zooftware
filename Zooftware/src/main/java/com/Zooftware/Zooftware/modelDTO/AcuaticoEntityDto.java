@@ -26,7 +26,7 @@ public class AcuaticoEntityDto extends HabitatEntityDto implements Serializable 
     }
 
     public TipoAgua getTipoAgua() {
-        return tipoAgua;
+        return this.tipoAgua;
     }
 
     public void setTipoAgua(TipoAgua tipoAgua) {
@@ -35,7 +35,7 @@ public class AcuaticoEntityDto extends HabitatEntityDto implements Serializable 
 
     @Override
     public int getId() {
-        return id;
+        return this.id;
     }
 
     @Override

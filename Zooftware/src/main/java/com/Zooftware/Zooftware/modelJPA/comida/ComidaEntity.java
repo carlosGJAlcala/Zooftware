@@ -34,7 +34,7 @@ public class ComidaEntity {
     }
 
     public EstadoComida getEstadoComida() {
-        return estadoComida;
+        return this.estadoComida;
     }
 
     public void setEstadoComida(EstadoComida estadoComida) {
@@ -42,7 +42,7 @@ public class ComidaEntity {
     }
 
     public AlmacenComidaEntity getAlmacenComida() {
-        return almacenComida;
+        return this.almacenComida;
     }
 
     public void setAlmacenComida(AlmacenComidaEntity almacenComida) {
@@ -54,7 +54,7 @@ public class ComidaEntity {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -62,7 +62,7 @@ public class ComidaEntity {
     }
 
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 
     public void setNombre(String nombre) {
@@ -70,7 +70,7 @@ public class ComidaEntity {
     }
 
     public int getCantidad() {
-        return cantidad;
+        return this.cantidad;
     }
 
     public void setCantidad(int cantidad) {
@@ -78,7 +78,7 @@ public class ComidaEntity {
     }
 
     public TipoComida getTipoComida() {
-        return tipoComida;
+        return this.tipoComida;
     }
 
     public void setTipoComida(TipoComida tipoComida) {

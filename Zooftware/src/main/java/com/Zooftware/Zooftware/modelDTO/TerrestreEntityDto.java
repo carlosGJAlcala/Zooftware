@@ -30,12 +30,12 @@ public class TerrestreEntityDto extends HabitatEntityDto implements Serializable
     }
 
     public int getNumBebederos() {
-        return numBebederos;
+        return this.numBebederos;
     }
 
     @Override
     public int getId() {
-        return id;
+        return this.id;
     }
 
     @Override
@@ -48,7 +48,7 @@ public class TerrestreEntityDto extends HabitatEntityDto implements Serializable
     }
 
     public int getNumComederos() {
-        return numComederos;
+        return this.numComederos;
     }
 
     public void setNumComederos(int numComederos) {

@@ -1,10 +1,106 @@
 <!DOCTYPE html>
+<!-- Thymeleaf -->
+<html xmlns:th="https://www.thymeleaf.org">
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Home Tutor</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Iconos Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 <body>
 
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-3 px-sm-3 px-0 bg-dark">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <span class="fs-5 d-none d-sm-inline">Menú Principal Jefe</span>
+                <br>
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li class="nav-item">
+                        <a href="/jefe/home/mostrar" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house-fill"></i> <span class="ms-4 d-none d-sm-inline">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/organismo/mostrar" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-plus-circle-fill"></i> <span class="ms-4 d-none d-sm-inline">Gestionar animales/plantas</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/instalacion/mostrar" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-plus-square-fill"></i> <span class="ms-4 d-none d-sm-inline">Gestionar instalaciones</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/personal/mostrar" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-dash-circle-fill"></i> <span class="ms-4 d-none d-sm-inline">Gestionar personal</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/mensaje/mostrarGestionMensajeJefe" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-dash-square-fill"></i> <span class="ms-4 d-none d-sm-inline">Gestionar mensajes</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/instalacion/mostrarTablaInstalacionesJefe" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-pencil-square"></i> <span class="ms-4 d-none d-sm-inline">Ver instalaciones</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/animal/mostrarTablaAnimalJefe" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-pencil-square"></i> <span class="ms-4 d-none d-sm-inline">Ver Animales</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="dropdown pb-4">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fs-4 bi-person-circle"></i>
+                        <span class="d-none d-sm-inline mx-1" th:text="${session.user.nombre} + ' ' + ${session.user.apellidos}"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                        <li><a class="dropdown-item" href="#">Usuario: <span th:text="${session.user.username}"/></a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/login/cerrarSesion">Cerrar Sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h1>Calculo sueldo total empleados</h1>
+
+            <div id="resultadoCalculo">Resultado: <span id="valorCalculo"></span> €</div>
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+<script>
+    // Función para realizar la petición AJAX
+    function obtenerCalculo() {
+        fetch('/trabajador/verTotalSueldos')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('valorCalculo').innerText = data;
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    // Ejecutar la función al cargar la ventana
+    window.onload = obtenerCalculo;
+</script>
+<!-- Script Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

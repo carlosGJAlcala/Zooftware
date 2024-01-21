@@ -24,7 +24,7 @@ public class PlantaEntity {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -32,7 +32,7 @@ public class PlantaEntity {
     }
 
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 
     public void setNombre(String nombre) {
@@ -40,7 +40,7 @@ public class PlantaEntity {
     }
 
     public HabitatEntity getHabitatEntity() {
-        return habitat;
+        return this.habitat;
     }
 
     public void setHabitatEntity(HabitatEntity habitat) {

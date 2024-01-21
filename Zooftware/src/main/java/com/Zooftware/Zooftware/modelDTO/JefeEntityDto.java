@@ -15,8 +15,8 @@ public class JefeEntityDto  extends  TrabajadorEntityDto implements Serializable
 
     private List<TrabajadorEntityDto> subordinados;
 
-    public JefeEntityDto(int id, String apellidos, String dni, int edad, String nombre, String password, Rol rol, String username, ClienteEntityDto clienteZooId, ContactoEntityDto contactoId, TrabajadorEntityDto trabajadorId, boolean activo, Date fechaFinContrato, Date fechaInicioContrato, long numeroSeguridadSocial, JefeEntityDto jefeEntityDto, List<MensajeEntityDto> mensajes, double salario, List<TrabajadorEntityDto> subordinados) {
-        super(id, apellidos, dni, edad, nombre, password, rol, username, clienteZooId, contactoId, trabajadorId, activo, fechaFinContrato, fechaInicioContrato, numeroSeguridadSocial, jefeEntityDto, mensajes, salario);
+    public JefeEntityDto( String apellidos, String dni, int edad, String nombre, String password, Rol rol, String username, ClienteEntityDto clienteZooId, ContactoEntityDto contactoId, TrabajadorEntityDto trabajadorId, boolean activo, Date fechaFinContrato, Date fechaInicioContrato, long numeroSeguridadSocial, JefeEntityDto jefeEntityDto, List<MensajeEntityDto> mensajes, double salario, List<TrabajadorEntityDto> subordinados) {
+        super(apellidos, dni, edad, nombre, password, rol, username, clienteZooId, contactoId, trabajadorId, activo, fechaFinContrato, fechaInicioContrato, numeroSeguridadSocial, jefeEntityDto, mensajes, salario);
         this.subordinados = subordinados;
     }
 
@@ -42,7 +42,7 @@ public class JefeEntityDto  extends  TrabajadorEntityDto implements Serializable
     }
 
     public List<TrabajadorEntityDto> getSubordinados() {
-        return subordinados;
+        return this.subordinados;
     }
 
     public void setSubordinados(List<TrabajadorEntityDto> subordinados) {

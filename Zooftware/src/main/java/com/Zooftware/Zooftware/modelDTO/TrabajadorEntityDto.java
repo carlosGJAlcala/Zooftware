@@ -22,8 +22,8 @@ public abstract class TrabajadorEntityDto extends PersonaEntityDto implements Se
     private List<MensajeEntityDto> mensajes;
     private double salario;
 
-    public TrabajadorEntityDto(int id, String apellidos, String dni, int edad, String nombre, String password, Rol rol, String username, ClienteEntityDto clienteZooId, ContactoEntityDto contactoId, TrabajadorEntityDto trabajadorId, boolean activo, Date fechaFinContrato, Date fechaInicioContrato, long numeroSeguridadSocial, JefeEntityDto jefeEntityDto, List<MensajeEntityDto> mensajes, double salario) {
-        super(id, apellidos, dni, edad, nombre, password, rol, username, contactoId);
+    public TrabajadorEntityDto( String apellidos, String dni, int edad, String nombre, String password, Rol rol, String username, ClienteEntityDto clienteZooId, ContactoEntityDto contactoId, TrabajadorEntityDto trabajadorId, boolean activo, Date fechaFinContrato, Date fechaInicioContrato, long numeroSeguridadSocial, JefeEntityDto jefeEntityDto, List<MensajeEntityDto> mensajes, double salario) {
+        super(apellidos, dni, edad, nombre, password, rol, username, contactoId);
         this.activo = activo;
         this.fechaFinContrato = fechaFinContrato;
         this.fechaInicioContrato = fechaInicioContrato;
@@ -44,7 +44,7 @@ public abstract class TrabajadorEntityDto extends PersonaEntityDto implements Se
     }
 
     public Date getFechaFinContrato() {
-        return fechaFinContrato;
+        return this.fechaFinContrato;
     }
 
     public void setFechaFinContrato(Date fechaFinContrato) {
@@ -52,7 +52,7 @@ public abstract class TrabajadorEntityDto extends PersonaEntityDto implements Se
     }
 
     public Date getFechaInicioContrato() {
-        return fechaInicioContrato;
+        return this.fechaInicioContrato;
     }
 
     public void setFechaInicioContrato(Date fechaInicioContrato) {
@@ -60,7 +60,7 @@ public abstract class TrabajadorEntityDto extends PersonaEntityDto implements Se
     }
 
     public long getNumeroSeguridadSocial() {
-        return numeroSeguridadSocial;
+        return this.numeroSeguridadSocial;
     }
 
     public void setNumeroSeguridadSocial(long numeroSeguridadSocial) {
@@ -68,7 +68,7 @@ public abstract class TrabajadorEntityDto extends PersonaEntityDto implements Se
     }
 
     public JefeEntityDto getJefe() {
-        return jefe;
+        return this.jefe;
     }
 
     public void setJefe(JefeEntityDto jefe) {
@@ -120,16 +120,16 @@ public abstract class TrabajadorEntityDto extends PersonaEntityDto implements Se
     public abstract double calcularSalario();
 
     public boolean isActivo() {
-        return activo;
+        return this.activo;
     }
 
     public double getSalario() {
-        return salario;
+        return this.salario;
     }
 
 
     public Mediator getMediador() {
-        return mediador;
+        return this.mediador;
     }
 
     public void enviar(MensajeEntityDto mensaje, String correo) {

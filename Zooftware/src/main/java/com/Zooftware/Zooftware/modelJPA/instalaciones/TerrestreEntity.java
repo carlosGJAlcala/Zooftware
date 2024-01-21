@@ -30,7 +30,7 @@ public class TerrestreEntity extends HabitatEntity{
     }
 
     public int getNumBebederos() {
-        return numBebederos;
+        return this.numBebederos;
     }
 
     public void setNumBebederos(int numBebederos) {
@@ -38,7 +38,7 @@ public class TerrestreEntity extends HabitatEntity{
     }
 
     public int getNumComederos() {
-        return numComederos;
+        return this.numComederos;
     }
 
     public void setNumComederos(int numComederos) {
