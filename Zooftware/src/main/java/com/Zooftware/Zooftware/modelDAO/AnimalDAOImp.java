@@ -59,6 +59,23 @@ public class AnimalDAOImp implements  IAnimalDAO{
         List<AnimalEntityDto> animalEntityDtoList =animalesentity.stream().map(animalEntityMapper::toDto).collect(Collectors.toList());
         return animalEntityDtoList;
     }
+/*
+    public List<AnimalEntity> verAnimales(){
+    List<AnimalEntity> resultados = animalJPA.findAll();
+        StringBuilder  stringBuilder = new StringBuilder();
+        for(AnimalEntity animal:resultados){
+            stringBuilder.append(animal.toString()).append("\n");
+        }
+        System.out.println(stringBuilder.toString());
+        return animalJPA.findAll();
+
+    }
+ */
+    @Override
+    public List<AnimalEntityDto> verAnimalesPorHabita(int habita_id) {
+        List<AnimalEntity> animalesentity=  animalJPA.findByHabitat_Id(habita_id);
+        return animalesentity.stream().map(animalEntityMapper::toDto).collect(Collectors.toList());
+    }
 
     @Override
     public void eliminarAnimalPorId(int id) {

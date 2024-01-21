@@ -12,6 +12,7 @@ public interface AnimalEntityMapper {
 
     AnimalEntity toEntity(AnimalEntityDto animalEntityDto);
 
+    @Mapping(target = "habitat",ignore = true)
     AnimalEntityDto toDto(AnimalEntity animalEntity);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

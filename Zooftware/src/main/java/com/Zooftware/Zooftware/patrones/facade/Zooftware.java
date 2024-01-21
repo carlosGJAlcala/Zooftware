@@ -4,15 +4,17 @@ package com.Zooftware.Zooftware.patrones.facade;
 import com.Zooftware.Zooftware.modelDAO.*;
 import com.Zooftware.Zooftware.modelDTO.*;
 import com.Zooftware.Zooftware.modelJPA.enums.*;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.BebederoEntity;
+import com.Zooftware.Zooftware.modelJPA.instalaciones.ComederoEntity;
+import com.Zooftware.Zooftware.modelJPA.organimos.AnimalEntity;
 import com.Zooftware.Zooftware.modelJPA.persona.TrabajadorEntity;
 import com.Zooftware.Zooftware.patrones.AbstractFactory.InstalacionFactory;
 import com.Zooftware.Zooftware.patrones.adapter.*;
 import com.Zooftware.Zooftware.patrones.mediator.MediadorConcreto;
 import com.Zooftware.Zooftware.patrones.mediator.Mediator;
-import com.Zooftware.Zooftware.patrones.proxy.IAccionesCliente;
-import com.Zooftware.Zooftware.patrones.proxy.IAccionesEmpleado;
 import com.Zooftware.Zooftware.patrones.proxy.IAccionesJefe;
 import com.Zooftware.Zooftware.patrones.state.Animal;
+import com.Zooftware.Zooftware.patrones.strategy.Alimentar;
 import com.Zooftware.Zooftware.patrones.strategy.Contexto;
 import com.Zooftware.Zooftware.patrones.strategy.Estrategia;
 import com.Zooftware.Zooftware.patrones.strategy.RellenarBebederos;
@@ -146,6 +148,7 @@ fabricadeHabitas.crearHabitaAnfibio();
     public void ejercitarAnimal(int id, int cantidad) {
 		Animal animal = new AnimalDTOToAnimalState(animalDAO.buscarPorId(id));
         animal.hacerEjercicio(cantidad);
+        animalDAO.guardarAnimal(animal);
 
     }
 
@@ -153,17 +156,20 @@ fabricadeHabitas.crearHabitaAnfibio();
     public void dormirAnimal(int id, int cantidad) {
         Animal animal = new AnimalDTOToAnimalState(animalDAO.buscarPorId(id));
         animal.dormir(cantidad);
+        animalDAO.guardarAnimal(animal);
     }
 
     @Override
     public void darComerAnimal(int id, int cantidad) {
 		Animal animal = new AnimalDTOToAnimalState(animalDAO.buscarPorId(id));
         animal.darComida(cantidad);
+        animalDAO.guardarAnimal(animal);
 
     }
 
     @Override
     public void rellenarComederos(int habita_id) {
+        estrategia = new Alimentar();
         estrategia.ejecutar(habitatDAO.buscarPorId(habita_id));
     }
 
@@ -174,13 +180,28 @@ fabricadeHabitas.crearHabitaAnfibio();
     }
 
     @Override
-    public List<BebederoEntityDto> verBebederos(int habita_id) {
-        return habitatDAO.buscarPorId(habita_id).getBebederos();
+    public List<BebederoEntity> verBebederos(int habita_id) {
+
+        List<BebederoEntity> bebederos= bebederoDAO.verBebederos(habita_id);
+        return bebederos;
+    }
+    @Override
+    public BebederoEntityDto verBebedero(int id) {
+
+
+        return bebederoDAO.buscarPorId(id);
     }
 
+
+
     @Override
-    public List<ComederoEntityDto> verComederos(int habita_id) {
-        return habitatDAO.buscarPorId(habita_id).getComederos();
+    public List<ComederoEntity> verComederos(int habita_id) {
+
+
+        List<ComederoEntity> comederos= comederoDAO.verComederos(habita_id);
+        return comederos;
+
+
     }
 
     @Override
@@ -225,28 +246,21 @@ fabricadeHabitas.crearHabitaAnfibio();
 
 	@Override
 	public void crearHabitat(TipoHabitat tipo) {
-
-//	HabitatEntityDto habita;
-	switch (tipo){
+        switch (tipo){
 		case ANFIBIO :
 			fabricadeHabitas.crearHabitaAnfibio();
-			//habitatEntityDtos.add(habita);
-			//habitatDAO.guardarHabitat(habita);
 			break;
 		case ACTUATICO_DULCE :
 			fabricadeHabitas.crerAcuarioAguaDulce();
-			//habitatEntityDtos.add(habita);
-//			habitatDAO.guardarHabitat(habita);
+
 			break;
 		case ACTUATICO_SALADO :
 			fabricadeHabitas.crerAcuarioAguaSalada();
-			//habitatEntityDtos.add(habita);
-//			habitatDAO.guardarHabitat(habita);
+
 			break;
 		case TERRESTRE:
 			fabricadeHabitas.crearHabitaTerrestre();
-			//habitatEntityDtos.add(habita);
-//			habitatDAO.guardarHabitat(habita);
+
 			break;
 
 	}
@@ -326,6 +340,11 @@ fabricadeHabitas.crearHabitaAnfibio();
     @Override
     public AnimalEntityDto VerAnimal(int id_animal) {
         return animalDAO.buscarPorId(id_animal);
+    }
+
+    @Override
+    public List<AnimalEntityDto> verAnimalesPorHabita(int id_habita) {
+        return animalDAO.verAnimalesPorHabita(id_habita);
     }
 
 

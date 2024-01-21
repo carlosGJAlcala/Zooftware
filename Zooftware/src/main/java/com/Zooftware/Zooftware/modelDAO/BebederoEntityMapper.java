@@ -10,6 +10,7 @@ public interface BebederoEntityMapper {
     BebederoEntityMapper mapper= Mappers.getMapper(BebederoEntityMapper.class);
     BebederoEntity toEntity(BebederoEntityDto bebederoEntityDto);
 
+    @Mapping(target = "habitat",ignore = true)
     BebederoEntityDto toDto(BebederoEntity bebederoEntity);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
