@@ -17,20 +17,20 @@ import java.util.stream.Collectors;
 @Repository
 public class TrabajadorDAOImp implements ITrabajadorDAO{
 //    EmpleadoEntityMapper mapper = Mappers.getMapper(EmpleadoEntityMapper.class);
-//    @Autowired
-//    TrabajadorEntityRepository trabajadorjpa;
+    @Autowired
+    TrabajadorEntityRepository trabajadorjpa;
 //    @Autowired
 //    EmpleadoEntityRepository empleadoEntityRepository;
 //
 //    TrabajadorEntityMapper trabajadorEntityMapper;
 
     @Override
-    public TrabajadorEntityDto buscarPorId(Integer id) {
+    public TrabajadorEntity buscarPorId(Integer id) {
 
-//        Optional<TrabajadorEntity> optional = trabajadorjpa.findById(id);
-//        if (optional.isPresent()) {
-//            return trabajadorEntityMapper.mapper.toDto(optional.get());
-//        }
+       Optional<TrabajadorEntity> optional = trabajadorjpa.findById(id);
+       if (optional.isPresent()) {
+            return optional.get();
+        }
         return null;
     }
 
@@ -57,5 +57,10 @@ public class TrabajadorDAOImp implements ITrabajadorDAO{
     @Override
     public void eliminarTrabajador(Integer id) {
 //        trabajadorjpa.deleteById(id);
+    }
+
+    @Override
+    public List<TrabajadorEntity> buscarPorJefe(int id_jefe) {
+        return trabajadorjpa.findByJefe_Id(id_jefe);
     }
 }

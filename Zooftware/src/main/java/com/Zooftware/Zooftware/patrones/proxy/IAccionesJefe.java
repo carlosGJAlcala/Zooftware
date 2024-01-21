@@ -1,9 +1,6 @@
 package com.Zooftware.Zooftware.patrones.proxy;
 
 
-import com.Zooftware.Zooftware.modelDTO.AnimalEntityDto;
-import com.Zooftware.Zooftware.modelDTO.HabitatEntityDto;
-import com.Zooftware.Zooftware.modelDTO.TrabajadorEntityDto;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoPersona;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
 import com.Zooftware.Zooftware.patrones.adapter.AnimalJson;
@@ -23,7 +20,7 @@ public interface IAccionesJefe extends IAccionesEmpleado {
 	public void comprarAnimal(AnimalJson animalEntityDto);
 
 
-	public void crearhabita(TipoHabitat tipo);
+	public void crearHabitat(TipoHabitat tipo);
 
 	public void eliminarHabita(int habita_id);
 

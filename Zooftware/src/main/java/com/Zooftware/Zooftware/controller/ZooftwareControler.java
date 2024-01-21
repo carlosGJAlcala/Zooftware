@@ -8,6 +8,10 @@ import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoPersona;
 import com.Zooftware.Zooftware.patrones.adapter.*;
 import com.Zooftware.Zooftware.patrones.facade.Zooftware;
+import com.Zooftware.Zooftware.patrones.adapter.AnimalJson;
+import com.Zooftware.Zooftware.patrones.adapter.BebederoJson;
+import com.Zooftware.Zooftware.patrones.adapter.EmpleadoJson;
+import com.Zooftware.Zooftware.patrones.adapter.JefeJson;
 import com.Zooftware.Zooftware.patrones.factoryMethod.FactoryMethodProxy;
 import com.Zooftware.Zooftware.patrones.factoryMethod.FactoryMethodProxyConcreto;
 import com.Zooftware.Zooftware.patrones.proxy.*;
@@ -174,43 +178,43 @@ public class ZooftwareControler  {
 
         return true;
     }
-    @GetMapping("/habita/bebederos/rellenar/{habita_id}")
+    @GetMapping("/habitat/bebederos/rellenar/{habita_id}")
     public boolean rellenarBebederos(@PathVariable("habita_id")int id) {
         zoo.rellenarComederos(id);
         return true;
     }
 
-    @GetMapping("/habita/bebedero/{habita_id}")
+    @GetMapping("/habitat/bebedero/{habita_id}")
     public List<BebederoEntityDto> verBebederos(@PathVariable("habita_id") int habita_id) {
         return zoo.verBebederos(habita_id);
     }
-    @GetMapping("/habita/comedero/{habita_id}")
+    @GetMapping("/habitat/comedero/{habita_id}")
 
     public List<ComederoEntityDto> verComederos(@PathVariable("habita_id") int habita_id) {
         return zoo.verComederos(habita_id);
     }
 
-    @PostMapping(value = "/habita/comedero/modifcar" ,produces = MediaType.TEXT_PLAIN_VALUE)
+    @PostMapping(value = "/habitat/comedero/modifcar" ,produces = MediaType.TEXT_PLAIN_VALUE)
     public void modificarEstadoComedero(@RequestBody ComederoEntityDto comedero,@RequestBody  int cantidad) {
         zoo.modificarEstadoComedero(comedero,cantidad);
     }
 
-    @PostMapping(value = "/habita/bebedero/modifcar" ,produces = MediaType.TEXT_PLAIN_VALUE)
+    @PostMapping(value = "/habitat/bebedero/modifcar" ,produces = MediaType.TEXT_PLAIN_VALUE)
     public void modificarEstadoBebedero(@RequestBody BebederoJson bebedero) {
         zoo.modificarEstadoBebedero(bebedero);
     }
 
 
-    public void crearhabita(TipoHabitat tipo) {
-        zoo.crearhabita(TipoHabitat.ANFIBIO);
+    public void crearhabitat(TipoHabitat tipo) {
+        zoo.crearHabitat(TipoHabitat.ANFIBIO);
     }
 
-    public void eliminarHabita(int habita_id) {
+    public void eliminarHabitat(int habita_id) {
 
     }
-
-    public double verTotalSueldos(int empleado_id) {
-        return 0;
+    @GetMapping("/trabajador/verTotalSueldos/{id}")
+    public double verTotalSueldos(@PathVariable int id) {
+        return zoo.verTotalSueldos(id);
     }
 
     public void despedirEmpleado(int empleado_id) {

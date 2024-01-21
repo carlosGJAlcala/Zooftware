@@ -56,6 +56,14 @@ public abstract class TrabajadorEntity extends PersonaEntity {
         this.jefe = jefe;
     }
 
+    public JefeEntity getJefe() {
+        return jefe;
+    }
+
+    public void setJefe(JefeEntity jefe) {
+        this.jefe = jefe;
+    }
+
     public double getSalario() {
         return salario;
     }

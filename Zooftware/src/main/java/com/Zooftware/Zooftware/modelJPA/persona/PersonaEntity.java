@@ -53,7 +53,7 @@ public abstract class PersonaEntity {
     }
 
     public void setApellidos(String apellidos) {
-        apellidos = apellidos;
+        this.apellidos = apellidos;
     }
 
     public String getDni() {
@@ -61,7 +61,7 @@ public abstract class PersonaEntity {
     }
 
     public void setDni(String dni) {
-        dni = dni;
+        this.dni = dni;
     }
 
     public int getEdad() {
@@ -69,7 +69,7 @@ public abstract class PersonaEntity {
     }
 
     public void setEdad(int edad) {
-        edad = edad;
+        this.edad = edad;
     }
 
     public String getNombre() {
@@ -77,7 +77,7 @@ public abstract class PersonaEntity {
     }
 
     public void setNombre(String nombre) {
-        nombre = nombre;
+        this.nombre = nombre;
     }
 
     public String getUsername() {
