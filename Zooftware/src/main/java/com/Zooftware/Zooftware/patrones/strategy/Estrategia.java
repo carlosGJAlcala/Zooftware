@@ -5,5 +5,5 @@ import com.Zooftware.Zooftware.modelDTO.HabitatEntityDto;
 
 public interface Estrategia {
 
-    void ejecutar(HabitatEntityDto habita);
+    Object ejecutar(HabitatEntityDto habita);
 }

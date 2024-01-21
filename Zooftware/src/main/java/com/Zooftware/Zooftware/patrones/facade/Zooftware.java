@@ -169,8 +169,16 @@ fabricadeHabitas.crearHabitaAnfibio();
 
     @Override
     public void rellenarComederos(int habita_id) {
+        HabitatEntityDto habita =habitatDAO.buscarPorId(habita_id);
+        TipoHabitat tipo = habita.getTipoHabitat();
+
+        switch (tipo){
+            case ANFIBIO -> habita= anfibioDAO.encontrarPorId(habita_id);
+            case TERRESTRE -> habita= terrestreDAO.buscarPorId(habita_id);
+            case ACUATICO -> habita= habitaAcuatio.buscarPorId(habita_id);
+        }
         estrategia = new Alimentar();
-        estrategia.ejecutar(habitatDAO.buscarPorId(habita_id));
+        estrategia.ejecutar(habita);
     }
 
     @Override

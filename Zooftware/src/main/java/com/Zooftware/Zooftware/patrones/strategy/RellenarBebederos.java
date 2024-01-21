@@ -10,7 +10,7 @@ public class RellenarBebederos implements Estrategia {
 
 
     @Override
-    public void ejecutar(HabitatEntityDto habita) {
+    public Object ejecutar(HabitatEntityDto habita) {
 
         List<BebederoEntityDto> bebederos= habita.getBebederos();
 
@@ -18,6 +18,6 @@ public class RellenarBebederos implements Estrategia {
 
             bebedero.setCantidad(100);
         }
-
+        return null;
     }
 }

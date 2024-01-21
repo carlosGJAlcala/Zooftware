@@ -181,8 +181,8 @@ public class ZooftwareControler  {
         return true;
     }*/
 
-    @GetMapping("/habitat/comederos/rellenar/{habita_id}")
-    public boolean rellenarComederos(@PathVariable("habita_id")int id) {
+    @GetMapping("/habitat/comederos/rellenar/{id}")
+    public boolean rellenarComederos(@PathVariable("id")int id) {
         zoo.rellenarComederos(id);
         return true;
     }

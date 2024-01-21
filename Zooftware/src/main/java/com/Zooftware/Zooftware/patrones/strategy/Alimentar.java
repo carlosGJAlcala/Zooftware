@@ -30,7 +30,7 @@ public class Alimentar implements Estrategia{
     IHabitatDAO iHabitatDAO;
 
     @Override
-    public void ejecutar(HabitatEntityDto habita) {
+    public Object ejecutar(HabitatEntityDto habita) {
 
         //Recibo el habitat al que quiero rellenar sus comederos
 
@@ -73,7 +73,7 @@ public class Alimentar implements Estrategia{
         }
 
 
-
+    return  comederos;
 
     }
 }
