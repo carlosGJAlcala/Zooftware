@@ -4,24 +4,21 @@ package com.Zooftware.Zooftware.patrones.facade;
 import com.Zooftware.Zooftware.modelDAO.*;
 import com.Zooftware.Zooftware.modelDTO.*;
 import com.Zooftware.Zooftware.modelJPA.enums.*;
+import com.Zooftware.Zooftware.modelJPA.persona.TrabajadorEntity;
 import com.Zooftware.Zooftware.patrones.AbstractFactory.InstalacionFactory;
-import com.Zooftware.Zooftware.patrones.AbstractFactory.instalacionFactoryConcreta;
 import com.Zooftware.Zooftware.patrones.adapter.*;
-import com.Zooftware.Zooftware.patrones.factoryMethod.FactoryAnimalesConcreto;
-import com.Zooftware.Zooftware.patrones.factoryMethod.FactoryMethodAnimal;
 import com.Zooftware.Zooftware.patrones.mediator.MediadorConcreto;
 import com.Zooftware.Zooftware.patrones.mediator.Mediator;
 import com.Zooftware.Zooftware.patrones.proxy.IAccionesJefe;
 import com.Zooftware.Zooftware.patrones.state.Animal;
-import com.Zooftware.Zooftware.patrones.strategy.Alimentar;
 import com.Zooftware.Zooftware.patrones.strategy.Contexto;
 import com.Zooftware.Zooftware.patrones.strategy.Estrategia;
 import com.Zooftware.Zooftware.patrones.strategy.RellenarBebederos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author carlos
@@ -218,7 +215,7 @@ fabricadeHabitas.crearHabitaAnfibio();
     }
 
 	@Override
-	public void crearhabita(TipoHabitat tipo) {
+	public void crearHabitat(TipoHabitat tipo) {
 
 //	HabitatEntityDto habita;
 	switch (tipo){
@@ -258,10 +255,31 @@ fabricadeHabitas.crearHabitaAnfibio();
 
     @Override
     public double verTotalSueldos(int empleado_id) {
-        TrabajadorEntityDto trabajador = trabajadorDAO.buscarPorId(empleado_id);
 
-        return trabajador.getSalarios();
+        TrabajadorEntityDto trabajadorEntityDto=calcularEmpleado(empleado_id);
+        if(trabajadorEntityDto instanceof JefeEntityDto){
+            JefeEntityDto jefeEntityDto=(JefeEntityDto) trabajadorEntityDto;
+            List<TrabajadorEntity> trabajadores= trabajadorDAO.buscarPorJefe(empleado_id);
+            List<TrabajadorEntityDto> trabajadorEntityDtos=trabajadores.stream().map(trabajador->this.calcularEmpleado(trabajador.getId())).collect(Collectors.toList());
+            jefeEntityDto.setSubordinados(trabajadorEntityDtos);
+        }
 
+        return trabajadorEntityDto.calcularSalario();
+
+    }
+
+    public TrabajadorEntityDto calcularEmpleado(int empleado_id){
+        TrabajadorEntity trabajador = trabajadorDAO.buscarPorId(empleado_id);
+        TrabajadorEntityDto trabajadorEntityDto;
+        Rol rol = trabajador.getRol();
+        switch (rol){
+            case EMPLEADO:
+                return empleadoDAO.buscarPorId(empleado_id);
+            case JEFE:
+                return jefeDAO.buscarPorId(empleado_id);
+            default:break;
+        }
+        return null;
     }
 
     @Override
@@ -274,6 +292,8 @@ fabricadeHabitas.crearHabitaAnfibio();
     @Override
     public void contratarEmpleado(EmpleadoJson empleadoNuevo) {
         EmpleadoJSONToDTO empleado = new EmpleadoJSONToDTO(empleadoNuevo);
+
+        empleado.setJefe(jefeDAO.buscarPorId(empleadoNuevo.getJefe_id()));
         contactoDAO.guardarContacto(empleado.getContactoEntityDto());
         empleadoDAO.guardarEmpleado(empleado);
 

@@ -16,6 +16,9 @@ public class EmpleadoJSONToDTO extends EmpleadoEntityDto {
     public EmpleadoJSONToDTO(EmpleadoJson empleado) {
         super(empleado.id, empleado.apellidos, empleado.dni, empleado.edad, empleado.nombre, empleado.password, Rol.EMPLEADO, empleado.username, null, null, null, true, new Date(), new Date(), empleado.numeroSeguridadSocial, null, null, empleado.salario);
         contactoEntityDto=new ContactoEntityDto(1,empleado.correo,empleado.numeroTlf);
+        contactoId=empleado.id;
+        jefe_id=empleado.jefe_id;
+
     }
 
     public EmpleadoJSONToDTO(int id, String apellidos, String dni, int edad, String nombre, String password, Rol rol, String username, ClienteEntityDto clienteZooId, ContactoEntityDto contactoId, TrabajadorEntityDto trabajadorId, boolean activo, Date fechaFinContrato, Date fechaInicioContrato, long numeroSeguridadSocial, JefeEntityDto jefeEntityDto, List<MensajeEntityDto> mensajes, double salario) {

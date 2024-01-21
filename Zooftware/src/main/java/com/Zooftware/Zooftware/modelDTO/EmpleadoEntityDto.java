@@ -4,10 +4,8 @@ import com.Zooftware.Zooftware.modelJPA.enums.Rol;
 import com.Zooftware.Zooftware.modelJPA.persona.EmpleadoEntity;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * DTO for {@link EmpleadoEntity}
@@ -28,8 +26,8 @@ public class EmpleadoEntityDto extends  TrabajadorEntityDto implements Serializa
     }
 
     @Override
-    public double getSalarios() {
-        return 0;
+    public double calcularSalario() {
+        return super.getSalario();
     }
 
 }

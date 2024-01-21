@@ -1,7 +1,6 @@
 package com.Zooftware.Zooftware.modelDTO;
 
 import com.Zooftware.Zooftware.modelJPA.enums.Rol;
-import com.Zooftware.Zooftware.modelJPA.mensajeria.MensajeEntity;
 import com.Zooftware.Zooftware.modelJPA.persona.TrabajadorEntity;
 import com.Zooftware.Zooftware.patrones.mediator.Mediator;
 
@@ -19,7 +18,7 @@ public abstract class TrabajadorEntityDto extends PersonaEntityDto implements Se
     private Date fechaFinContrato;
     private Date fechaInicioContrato;
     private long numeroSeguridadSocial;
-    private JefeEntityDto jefeEntityDto;
+    private JefeEntityDto jefe;
     private List<MensajeEntityDto> mensajes;
     private double salario;
 
@@ -29,7 +28,7 @@ public abstract class TrabajadorEntityDto extends PersonaEntityDto implements Se
         this.fechaFinContrato = fechaFinContrato;
         this.fechaInicioContrato = fechaInicioContrato;
         this.numeroSeguridadSocial = numeroSeguridadSocial;
-        this.jefeEntityDto = jefeEntityDto;
+        this.jefe = jefeEntityDto;
         this.mensajes = mensajes;
         this.salario = salario;
     }
@@ -68,12 +67,12 @@ public abstract class TrabajadorEntityDto extends PersonaEntityDto implements Se
         this.numeroSeguridadSocial = numeroSeguridadSocial;
     }
 
-    public JefeEntityDto getJefeEntityDto() {
-        return jefeEntityDto;
+    public JefeEntityDto getJefe() {
+        return jefe;
     }
 
-    public void setJefeEntityDto(JefeEntityDto jefeEntityDto) {
-        this.jefeEntityDto = jefeEntityDto;
+    public void setJefe(JefeEntityDto jefe) {
+        this.jefe = jefe;
     }
 
     public void setMensajes(List<MensajeEntityDto> mensajes) {
@@ -89,12 +88,12 @@ public abstract class TrabajadorEntityDto extends PersonaEntityDto implements Se
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TrabajadorEntityDto that = (TrabajadorEntityDto) o;
-        return isActivo() == that.isActivo() && getNumeroSeguridadSocial() == that.getNumeroSeguridadSocial() && Double.compare(getSalario(), that.getSalario()) == 0 && Objects.equals(getFechaFinContrato(), that.getFechaFinContrato()) && Objects.equals(getFechaInicioContrato(), that.getFechaInicioContrato()) && Objects.equals(getJefeEntityDto(), that.getJefeEntityDto()) && Objects.equals(getMensajes(), that.getMensajes());
+        return isActivo() == that.isActivo() && getNumeroSeguridadSocial() == that.getNumeroSeguridadSocial() && Double.compare(getSalario(), that.getSalario()) == 0 && Objects.equals(getFechaFinContrato(), that.getFechaFinContrato()) && Objects.equals(getFechaInicioContrato(), that.getFechaInicioContrato()) && Objects.equals(getJefe(), that.getJefe()) && Objects.equals(getMensajes(), that.getMensajes());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(isActivo(), getFechaFinContrato(), getFechaInicioContrato(), getNumeroSeguridadSocial(), getJefeEntityDto(), getMensajes(), getSalario());
+        return Objects.hash(isActivo(), getFechaFinContrato(), getFechaInicioContrato(), getNumeroSeguridadSocial(), getJefe(), getMensajes(), getSalario());
     }
 
 
@@ -105,7 +104,7 @@ public abstract class TrabajadorEntityDto extends PersonaEntityDto implements Se
                 ", fechaFinContrato=" + fechaFinContrato +
                 ", fechaInicioContrato=" + fechaInicioContrato +
                 ", numeroSeguridadSocial=" + numeroSeguridadSocial +
-                ", jefeEntityDto=" + jefeEntityDto +
+                ", jefeEntityDto=" + jefe +
                 ", mensajes=" + mensajes +
                 ", salario=" + salario +
                 '}';
@@ -118,7 +117,7 @@ public abstract class TrabajadorEntityDto extends PersonaEntityDto implements Se
 
     public abstract void eliminarSubordinado(TrabajadorEntityDto t);
 
-    public abstract double getSalarios();
+    public abstract double calcularSalario();
 
     public boolean isActivo() {
         return activo;

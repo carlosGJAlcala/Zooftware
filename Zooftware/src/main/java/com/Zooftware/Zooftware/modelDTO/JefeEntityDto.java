@@ -4,8 +4,6 @@ import com.Zooftware.Zooftware.modelJPA.enums.Rol;
 import com.Zooftware.Zooftware.modelJPA.persona.JefeEntity;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -63,10 +61,10 @@ public class JefeEntityDto  extends  TrabajadorEntityDto implements Serializable
     }
 
     @Override
-    public double getSalarios() {
-        double sum = getSalario(); // Suma el salario de este empleado.
+    public double calcularSalario() {
+        double sum = super.getSalario(); // Suma el salario de este empleado.
         for (TrabajadorEntityDto subordinado : subordinados) {
-            sum += subordinado.getSalarios();// Suma el salario de su subordinado.
+            sum += subordinado.calcularSalario();// Suma el salario de su subordinado.
         }
         return sum;
     }

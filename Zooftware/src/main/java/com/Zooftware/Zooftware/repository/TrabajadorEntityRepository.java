@@ -13,5 +13,7 @@ public interface TrabajadorEntityRepository extends JpaRepository<TrabajadorEnti
 
     List<TrabajadorEntity> findByActivoTrue();
 
+    List<TrabajadorEntity> findByJefe_Id(int id);
+
 
 }
