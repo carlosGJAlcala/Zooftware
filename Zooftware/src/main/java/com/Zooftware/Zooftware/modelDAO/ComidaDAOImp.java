@@ -48,17 +48,32 @@ public class ComidaDAOImp implements IComidaDAO{
     }
 
     @Override
-    public void actualizarComida(ComidaEntityDto comida) {
-        comidaEntityJPA.deleteById(comida.getId());
+    public ComidaEntityDto actualizarComida(ComidaEntityDto comida) {
+        Optional<ComidaEntity> optional = comidaEntityJPA.findByComederoEntity_Id(comida.getComederoEntity().getId());
+        if (optional.isPresent()) {
+            comidaEntityJPA.deleteById(optional.get().getId());
+        }
         ComidaEntity comidaEntity=comidaEntityMapper.mapper.toEntity(comida);
-        comidaEntityJPA.save(comidaEntity);
+        comidaEntity=comidaEntityJPA.save(comidaEntity);
+        return  comidaEntityMapper.mapper.toDto(comidaEntity);
+
+
     }
 
     @Override
     public ComidaEntityDto guardarComida(ComidaEntityDto comida) {
         ComidaEntity comidaEntity=comidaEntityMapper.mapper.toEntity(comida);
-        ComidaEntity comidaEntity1 =comidaEntityJPA.save(comidaEntity);
-        return comidaEntityMapper.mapper.toDto(comidaEntity1);
+        try {
+            ComidaEntity comidaEntity1 =comidaEntityJPA.save(comidaEntity);
+            return comidaEntityMapper.mapper.toDto(comidaEntity1);
+        }catch (Exception e){
+            System.err.println(e.getMessage().toString());
+            return comida;
+
+        }
+
+
+
 
     }
 

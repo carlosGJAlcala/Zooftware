@@ -227,7 +227,7 @@ public class instalacionFactoryConcreta implements InstalacionFactory{
     }
     @Override
     public void crearComederos(int numComederos, TipoComida tipo, HabitatEntityDto habitat){
-        ComederoEntityDto comedero = new ComederoEntityDto(40,tipo);
+        ComederoEntityDto comedero = new ComederoEntityDto(40,tipo,habitat);
         iComederoDAO.guardarComedero(comedero);
     }
 

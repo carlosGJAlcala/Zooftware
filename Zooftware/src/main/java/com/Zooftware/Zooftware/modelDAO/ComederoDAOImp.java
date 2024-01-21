@@ -30,9 +30,9 @@ public class ComederoDAOImp implements IComederoDAO {
 
     @Override
     public void actualizarComedero(ComederoEntityDto comedero) {
-        comederoJPA.deleteById(comedero.getId());
-        ComederoEntity clienteEntity = comederoEntityMapper.mapper.toEntity(comedero);
-        comederoJPA.save(clienteEntity);
+      //  this.eliminarComedero(comedero.getId());
+        this.guardarComedero(comedero);
+
     }
 
     @Override

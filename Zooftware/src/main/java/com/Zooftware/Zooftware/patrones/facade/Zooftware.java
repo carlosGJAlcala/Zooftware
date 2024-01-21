@@ -172,13 +172,17 @@ fabricadeHabitas.crearHabitaAnfibio();
 
     @Override
     public void rellenarComederos(int habita_id) {
+        HabitatEntityDto habita = habitatDAO.buscarPorId(habita_id);
         ComidaEntityDto comida;
         estrategia = new Alimentar();
         List<ComederoEntityDto> comederoEntityDtos = comederoDAO.verComederos(habita_id);
         List<ComederoEntityDto> comederosRellenos = (List<ComederoEntityDto>) estrategia.ejecutar(comederoEntityDtos);
         for (ComederoEntityDto comederoEntityDto : comederosRellenos) {
+            comederoEntityDto.setHabitat(habita);
+            comederoEntityDto.setCantidad(100);
             comida= comederoEntityDto.getComida();
-            comederoEntityDto.setComida(comidaDAO.guardarComida(comida));
+            comida.setComederoEntity(comederoEntityDto);
+            comederoEntityDto.setComida(comidaDAO.actualizarComida(comida));
             comederoDAO.actualizarComedero(comederoEntityDto);
         }
 
