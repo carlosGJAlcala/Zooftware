@@ -13,4 +13,6 @@ public interface HabitatEntityRepository extends JpaRepository<HabitatEntity, In
 
     List<HabitatEntity> findByTipoHabitat(String tipoHabitat);
 
+    List<HabitatEntity> findAll();
+
 }

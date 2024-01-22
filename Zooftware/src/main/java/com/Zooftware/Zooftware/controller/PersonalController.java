@@ -34,6 +34,13 @@ public class PersonalController {
         return modelAndView;
     }
 
+    @GetMapping("/mostrarContratarJefe")
+    public ModelAndView mostrarContratarJefe(){
+        ModelAndView modelAndView = new ModelAndView("contratarJefe");
+        return modelAndView;
+    }
+
+
     @GetMapping("/mostrarTablaEmpleados")
     public ModelAndView mostrarModificacionEmpleado(){
         ModelAndView modelAndView = new ModelAndView("tablaEmpleados");

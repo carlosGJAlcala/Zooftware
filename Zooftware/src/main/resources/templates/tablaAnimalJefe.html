@@ -36,7 +36,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="/instalacion/mostrar" class="nav-link align-middle px-0">
-                                    <i class="fs-4 bi-plus-square-fill"></i> <span class="ms-4 d-none d-sm-inline">Gestionar instalaciones</span>
+                                    <i class="fs-4 bi-plus-square-fill"></i> <span class="ms-4 d-none d-sm-inline">Gestionar habitats</span>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -44,18 +44,14 @@
                                     <i class="fs-4 bi-dash-circle-fill"></i> <span class="ms-4 d-none d-sm-inline">Gestionar personal</span>
                                 </a>
                             </li>
+
                             <li class="nav-item">
-                                <a href="/mensaje/mostrarGestionMensajeJefe" class="nav-link align-middle px-0">
-                                    <i class="fs-4 bi-dash-square-fill"></i> <span class="ms-4 d-none d-sm-inline">Gestionar mensajes</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/instalacion/mostrarTablaInstalacionesJefe" class="nav-link align-middle px-0">
+                                <a href="/habitatsJefe" class="nav-link align-middle px-0">
                                     <i class="fs-4 bi-pencil-square"></i> <span class="ms-4 d-none d-sm-inline">Ver instalaciones</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/animal/mostrarTablaAnimalJefe" class="nav-link align-middle px-0">
+                                <a href="/allAnimalesJefe" class="nav-link align-middle px-0">
                                     <i class="fs-4 bi-pencil-square"></i> <span class="ms-4 d-none d-sm-inline">Ver Animales</span>
                                 </a>
                             </li>
@@ -80,9 +76,9 @@
                     <div class="col-12 col-md-9">
                         <h1>Lista organismos</h1>
                         <div class="mb-2">
-                            <button onclick="accionConId('darComida')" class="btn btn-primary">Dar de comer</button>
-                            <button onclick="accionConId('dormirAnimal')" class="btn btn-secondary">Dormir animal</button>
-                            <button onclick="accionConId('ejercitarAnimal')" class="btn btn-success">Ejercitar animal</button>
+                            <button onclick="accionConId('darComidaJefe')" class="btn btn-primary">Dar de comer</button>
+                            <button onclick="accionConId('dormirAnimalJefe')" class="btn btn-secondary">Dormir animal</button>
+                            <button onclick="accionConId('ejercitarAnimalJefe')" class="btn btn-success">Ejercitar animal</button>
                         </div>
 
                         <div class="table-responsive">
@@ -143,14 +139,14 @@
                     if (idSeleccionado) {
                         var url;
                         switch (accion) {
-                            case 'darComida':
-                                url = '/animal/darComerAnimal/' + idSeleccionado;
+                            case 'darComidaJefe':
+                                url = '/animal/darComerAnimalJefe/' + idSeleccionado;
                                 break;
-                            case 'dormirAnimal':
-                                url = '/animal/dormirAnimal/' + idSeleccionado;
+                            case 'dormirAnimalJefe':
+                                url = '/animal/dormirAnimalJefe/' + idSeleccionado;
                                 break;
-                            case 'ejercitarAnimal':
-                                url = '/animal/ejercitarAnimal/' + idSeleccionado;
+                            case 'ejercitarAnimalJefe':
+                                url = '/animal/ejercitarAnimalJefe/' + idSeleccionado;
                                 break;
                             default:
                                  return;

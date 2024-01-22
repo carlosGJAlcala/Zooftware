@@ -4,9 +4,6 @@ package com.Zooftware.Zooftware.patrones.facade;
 import com.Zooftware.Zooftware.modelDAO.*;
 import com.Zooftware.Zooftware.modelDTO.*;
 import com.Zooftware.Zooftware.modelJPA.enums.*;
-import com.Zooftware.Zooftware.modelJPA.instalaciones.BebederoEntity;
-import com.Zooftware.Zooftware.modelJPA.instalaciones.ComederoEntity;
-import com.Zooftware.Zooftware.modelJPA.organimos.AnimalEntity;
 import com.Zooftware.Zooftware.modelJPA.persona.ContactoEntity;
 import com.Zooftware.Zooftware.modelJPA.persona.EmpleadoEntity;
 import com.Zooftware.Zooftware.modelJPA.persona.TrabajadorEntity;
@@ -24,9 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author carlos
@@ -37,8 +32,8 @@ import java.util.stream.Collectors;
 public class Zooftware implements IAccionesJefe {
     @Autowired
     IAnimalDAO animalDAO;
-
-
+    @Autowired
+    IPlantaDAO plantaDAO;
     @Autowired
     IHabitatDAO habitatDAO;
     @Autowired
@@ -121,7 +116,7 @@ fabricadeHabitas.crearHabitaAnfibio();
 
     @Override
     public List<HabitatEntityDto> verInstalaciones() {
-        return null;
+        return habitatDAO.buscarTodos();
     }
 
 
@@ -214,7 +209,6 @@ fabricadeHabitas.crearHabitaAnfibio();
 
     @Override
     public BebederoEntityDto verBebedero(int id) {
-
         return bebederoDAO.buscarPorId(id);
     }
 
@@ -240,6 +234,8 @@ fabricadeHabitas.crearHabitaAnfibio();
         bebederoDAO.actualizarBebedero(bebederoJsonToDTO);
 
     }
+
+
 
     @Override
     public void comprarAnimal(AnimalJson animalJson) {
@@ -400,10 +396,16 @@ fabricadeHabitas.crearHabitaAnfibio();
     @Override
     public void contratarJefe(JefeJson jefe) {
         JefeEntityDto jefeDto = new JefeJSONToDTO(jefe);
-        contactoDAO.guardarContacto(jefeDto.getContacto());
+
+        jefeDto.setJefe(jefeDAO.getJefeById(jefe.getIdJefe()));
+
+        ContactoEntityDto contacto = new ContactoEntityDto(jefe.getCorreo(),jefe.getNumeroTlf());
+        ContactoEntity contactoEntity = contactoDAO.guardarContacto(contacto);
+        contacto = contactoDAO.buscarPorId(contactoEntity.getId());
+
+        jefeDto.setContacto(contacto);
+
         jefeDAO.guardarJefe(jefeDto);
-
-
     }
 
     @Override
@@ -421,6 +423,12 @@ fabricadeHabitas.crearHabitaAnfibio();
     public List<AnimalEntityDto> verAnimalesPorHabita(int id_habita) {
         return animalDAO.verAnimalesPorHabita(id_habita);
     }
+
+    @Override
+    public List<PlantaEntityDto> verPlantasPorHabita(int id_habita) {
+        return  plantaDAO.verPlantasPorHabita(id_habita);
+    }
+
 
 
 }//end Zooftware

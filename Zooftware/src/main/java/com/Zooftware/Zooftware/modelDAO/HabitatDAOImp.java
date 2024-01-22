@@ -6,6 +6,8 @@ import com.Zooftware.Zooftware.repository.HabitatEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -34,6 +36,18 @@ public class HabitatDAOImp implements IHabitatDAO{
     public void guardarHabitat(HabitatEntityDto habitat) {
         HabitatEntity habitatEntity=habitatEntityMapper.mapper.toEntity(habitat);
         habitatJPA.save(habitatEntity);
+    }
+
+    @Override
+    public List<HabitatEntityDto> buscarTodos() {
+        List<HabitatEntity> habitats = habitatJPA.findAll();
+        List<HabitatEntityDto> habitatsDTO = new ArrayList<>();
+
+        for (HabitatEntity habitat : habitats) {
+            HabitatEntityDto animalDto = buscarPorId(habitat.getId());
+            habitatsDTO.add(animalDto);
+        }
+        return habitatsDTO;
     }
 
     @Override
