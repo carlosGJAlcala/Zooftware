@@ -272,11 +272,11 @@ fabricadeHabitas.crearHabitaAnfibio();
             case ANFIBIO:
                 fabricadeHabitas.crearHabitaAnfibio();
                 break;
-            case ACTUATICO_DULCE:
+            case ACUATICO_DULCE:
                 fabricadeHabitas.crerAcuarioAguaDulce();
 
                 break;
-            case ACTUATICO_SALADO:
+            case ACUATICO_SALADO:
                 fabricadeHabitas.crerAcuarioAguaSalada();
 
                 break;
