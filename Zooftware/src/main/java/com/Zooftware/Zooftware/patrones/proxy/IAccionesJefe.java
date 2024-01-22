@@ -40,5 +40,5 @@ public interface IAccionesJefe extends IAccionesEmpleado {
 
 	BebederoEntityDto verBebedero(int habitaId);
 
-	List<PlantaEntityDto> verPlantasPorHabita(int id_habita);
+
 }

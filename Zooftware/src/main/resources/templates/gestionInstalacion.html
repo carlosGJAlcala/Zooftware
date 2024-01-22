@@ -33,7 +33,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="/instalacion/mostrar" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-plus-square-fill"></i> <span class="ms-4 d-none d-sm-inline">Gestionar instalaciones</span>
+                            <i class="fs-4 bi-plus-square-fill"></i> <span class="ms-4 d-none d-sm-inline">Gestionar habitats</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -41,18 +41,14 @@
                             <i class="fs-4 bi-dash-circle-fill"></i> <span class="ms-4 d-none d-sm-inline">Gestionar personal</span>
                         </a>
                     </li>
+
                     <li class="nav-item">
-                        <a href="/mensaje/mostrarGestionMensajeJefe" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-dash-square-fill"></i> <span class="ms-4 d-none d-sm-inline">Gestionar mensajes</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/instalacion/mostrarTablaInstalaciones" class="nav-link align-middle px-0">
+                        <a href="/habitatsJefe" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-pencil-square"></i> <span class="ms-4 d-none d-sm-inline">Ver instalaciones</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/animal/mostrarTablaAnimalJefe" class="nav-link align-middle px-0">
+                        <a href="/allAnimalesJefe" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-pencil-square"></i> <span class="ms-4 d-none d-sm-inline">Ver Animales</span>
                         </a>
                     </li>
@@ -95,7 +91,7 @@
                 </div>
             </form>
 
-            <form action="#" th:action="@{/habitats}" method="get"  >
+            <form action="#" th:action="@{/habitatsJefe}" method="get"  >
                 <div class="pt-1 mb-4" style="margin-right:10px">
                     <button class="btn btn-dark btn-lg btn-block" type="submit" >Ver todas las instalaciones</button>
                 </div>
