@@ -125,17 +125,17 @@
         if (idSeleccionado) {
             var url;
             switch (accion) {
-                case 'verBebederosJefe':
+                case 'verBebederosEmpleado':
                     url = '/habitat/bebederoEmpleado/' + idSeleccionado;
                     break;
-                case 'verComederosJefe':
+                case 'verComederosEmpleado':
                     url = '/habitat/comederoEmpleado/' + idSeleccionado;
                     break;
-                case 'verAnimalesHabitatJefe':
-                    url = '/habitat/animalJefe/' + idSeleccionado;
+                case 'verAnimalesHabitatEmpleado':
+                    url = '/habitat/animalEmpleado/' + idSeleccionado;
                     break;
-                case 'verPlantasHabitatJefe':
-                    url = '/habitat/plantaJefe/' + idSeleccionado;
+                case 'verPlantasHabitatEmpleado':
+                    url = '/habitat/plantaEmpleado/' + idSeleccionado;
                     break;
                 default:
                      return;
