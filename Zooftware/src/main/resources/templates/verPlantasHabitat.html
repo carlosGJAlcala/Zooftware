@@ -33,7 +33,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="/instalacion/mostrar" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-plus-square-fill"></i> <span class="ms-4 d-none d-sm-inline">Gestionar habitats</span>
+                            <i class="fs-4 bi-plus-square-fill"></i> <span class="ms-4 d-none d-sm-inline">Gestionar instalaciones</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -41,9 +41,13 @@
                             <i class="fs-4 bi-dash-circle-fill"></i> <span class="ms-4 d-none d-sm-inline">Gestionar personal</span>
                         </a>
                     </li>
-
                     <li class="nav-item">
-                        <a href="/habitats" class="nav-link align-middle px-0">
+                        <a href="/mensaje/mostrarGestionMensajeJefe" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-dash-square-fill"></i> <span class="ms-4 d-none d-sm-inline">Gestionar mensajes</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/instalacion/mostrarTablaInstalacionesJefe" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-pencil-square"></i> <span class="ms-4 d-none d-sm-inline">Ver instalaciones</span>
                         </a>
                     </li>
@@ -74,8 +78,25 @@
 
 
 
+            <h1>Lista instalaciones</h1>
 
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
 
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="plantaHabi : ${plantasHabitat}">
+                        <td th:text="${plantaHabi.id}"></td>
+                        <td th:text="${plantaHabi.nombre}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
 
 

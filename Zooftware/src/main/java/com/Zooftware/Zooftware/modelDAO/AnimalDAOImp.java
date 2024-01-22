@@ -86,7 +86,13 @@ public class AnimalDAOImp implements  IAnimalDAO{
     @Override
     public List<AnimalEntityDto> verAnimalesPorHabita(int habita_id) {
         List<AnimalEntity> animalesentity=  animalJPA.findByHabitat_Id(habita_id);
-        return animalesentity.stream().map(animalEntityMapper::toDto).collect(Collectors.toList());
+        List<AnimalEntityDto> animales = new ArrayList<>();
+
+        for(AnimalEntity animal: animalesentity){
+            AnimalEntityDto animalDto = buscarPorId(animal.getId());
+            animales.add(animalDto);
+        }
+        return animales;    
     }
 
     @Override

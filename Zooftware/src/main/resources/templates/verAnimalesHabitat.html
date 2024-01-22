@@ -33,7 +33,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="/instalacion/mostrar" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-plus-square-fill"></i> <span class="ms-4 d-none d-sm-inline">Gestionar habitats</span>
+                            <i class="fs-4 bi-plus-square-fill"></i> <span class="ms-4 d-none d-sm-inline">Gestionar instalaciones</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -41,9 +41,13 @@
                             <i class="fs-4 bi-dash-circle-fill"></i> <span class="ms-4 d-none d-sm-inline">Gestionar personal</span>
                         </a>
                     </li>
-
                     <li class="nav-item">
-                        <a href="/habitats" class="nav-link align-middle px-0">
+                        <a href="/mensaje/mostrarGestionMensajeJefe" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-dash-square-fill"></i> <span class="ms-4 d-none d-sm-inline">Gestionar mensajes</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/instalacion/mostrarTablaInstalacionesJefe" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-pencil-square"></i> <span class="ms-4 d-none d-sm-inline">Ver instalaciones</span>
                         </a>
                     </li>
@@ -70,16 +74,43 @@
         </div>
         <div>
             <h1>¡Bienvenido!</h1>
+            <h1>Lista instalaciones</h1>
 
+            <div>
+                <div class="col-12 col-md-9">
+                    <h1>Lista animales</h1>
 
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>TipoAnimal</th>
+                                <th>EstadoAnimal</th>
+                                <th>Numero Extremidades</th>
+                                <th>Salud</th>
+                                <th>Sed</th>
+                                <th>Suenio</th>
+                                <th>Hambre</th>
 
-
-
-
-
-
-
-
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="aniHabitat : ${animalesHabitat}">
+                                <td th:text="${aniHabitat.nombre}"></td>
+                                <td th:text="${aniHabitat.tipo}"></td>
+                                <td th:text="${aniHabitat.estadoAnimal}"></td>
+                                <td th:text="${aniHabitat.numExtremidades}"></td>
+                                <td th:text="${aniHabitat.salud}"></td>
+                                <td th:text="${aniHabitat.sed}"></td>
+                                <td th:text="${aniHabitat.suenio}"></td>
+                                <td th:text="${aniHabitat.hambre}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

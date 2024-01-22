@@ -200,8 +200,11 @@ public class ZooftwareControler {
 
 
     @GetMapping("/habitat/bebedero/{habita_id}")
-    public List<BebederoEntityDto> verBebederos(@PathVariable("habita_id") int habita_id) {
-        return zoo.verBebederos(habita_id);
+    public ModelAndView verBebederos(@PathVariable int habita_id) {
+        List<BebederoEntityDto> bebederos = zoo.verBebederos(habita_id);
+        ModelAndView modelAndView = new ModelAndView("verBebederosHabitat");
+        modelAndView.addObject("bebederos", bebederos);
+        return modelAndView;
     }
 
     @GetMapping("/bebedero/{id}")
@@ -215,14 +218,18 @@ public class ZooftwareControler {
     }
 
     @GetMapping("/habitat/comedero/{habita_id}")
+    public ModelAndView verComederos(@PathVariable int habita_id) {
+        List<ComederoEntityDto> comederos = zoo.verComederos(habita_id);
+        ModelAndView modelAndView = new ModelAndView("verComederosHabitat");
+        modelAndView.addObject("comederos", comederos);
+        return modelAndView;
 
-    public List<ComederoEntityDto> verComederos(@PathVariable("habita_id") int habita_id) {
-        return zoo.verComederos(habita_id);
+
     }
 
 
-    @GetMapping("/habitat/crear/{tipo}")
-    public void crearhabitat(@PathVariable TipoHabitat tipo) {
+    @GetMapping("/habitat/crear")
+    public void crearhabitat(@RequestParam(name = "tipoHabitat") TipoHabitat tipo) {
         zoo.crearHabitat(tipo);
     }
 
@@ -248,8 +255,9 @@ public class ZooftwareControler {
     }
 
     @PostMapping(value = "/jefe/contratar", produces = MediaType.TEXT_PLAIN_VALUE)
-
-    public void contratarJefe(@RequestBody JefeJson jefeNuevo) {
+    public void contratarJefe(@RequestBody JefeJson jefeNuevo, HttpSession session) {
+        PersonaEntityDto persona = (PersonaEntityDto) session.getAttribute("user");
+        jefeNuevo.setIdJefe(persona.getId());
         zoo.contratarJefe(jefeNuevo);
 
     }
@@ -258,13 +266,28 @@ public class ZooftwareControler {
 //no se usasn
 
     @GetMapping("/habitat/animal/{id}")
-    public List<AnimalEntityDto> veAnimalPorHabita(@PathVariable("id") int id) {
-        return zoo.verAnimalesPorHabita(id);
+    public ModelAndView veAnimalPorHabita(@PathVariable int id) {
+        List<AnimalEntityDto> animalesHabitat = zoo.verAnimalesPorHabita(id);
+        ModelAndView modelAndView = new ModelAndView("verAnimalesHabitat");
+        modelAndView.addObject("animalesHabitat", animalesHabitat);
+        return modelAndView;
+
+    }
+
+    @GetMapping("/habitat/planta/{id}")
+    public ModelAndView verPlantasPorHabitat(@PathVariable int id) {
+        List<PlantaEntityDto> plantasHabitat = zoo.verPlantasPorHabita(id);
+        ModelAndView modelAndView = new ModelAndView("verPlantasHabitat");
+        modelAndView.addObject("plantasHabitat", plantasHabitat);
+        return modelAndView;
     }
 
     @GetMapping("/habitats")
-    public List<HabitatEntityDto> verInstalaciones() {
-        return zoo.verInstalaciones();
+    public ModelAndView verInstalaciones() {
+        List<HabitatEntityDto> habitats = zoo.verInstalaciones();
+        ModelAndView modelAndView = new ModelAndView("tablaInstalacionJefe");
+        modelAndView.addObject("habitats", habitats);
+        return modelAndView;
     }
 
     @PostMapping(value = "/mensaje", produces = MediaType.APPLICATION_JSON_VALUE)
