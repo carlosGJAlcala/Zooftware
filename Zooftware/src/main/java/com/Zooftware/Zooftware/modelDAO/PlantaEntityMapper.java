@@ -11,6 +11,7 @@ public interface PlantaEntityMapper {
     PlantaEntity toEntity(PlantaEntityDto plantaEntityDto);
 
     @Mapping(target = "habitat",ignore = true)
+    @Mapping(target = "habitatEntity",ignore = true)
     PlantaEntityDto toDto(PlantaEntity plantaEntity);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
