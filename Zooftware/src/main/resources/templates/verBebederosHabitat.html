@@ -79,7 +79,7 @@
                 <div class="col-12 col-md-9">
                     <h1>Lista organismos</h1>
                     <div class="mb-2">
-                        <button onclick="accionConId('verBebederos')" class="btn btn-primary">Rellenar bebederos</button>
+                        <button onclick="accionConId('rellenarBebederoJefe')" class="btn btn-primary">Rellenar bebederos</button>
 
                     </div>
                     <div class="table-responsive">
@@ -130,7 +130,7 @@
 
     function accionConId(accion) {
         if (idSeleccionado) {
-            var url = '/habitat/bebederos/rellenar/'+idSeleccionado;
+            var url = '/habitat/bebederos/rellenarJefe/'+idSeleccionado;
 
             fetch(url, {
                 method: 'GET'
