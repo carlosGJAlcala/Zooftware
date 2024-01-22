@@ -6,6 +6,8 @@ import com.Zooftware.Zooftware.repository.PlantaEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 @Repository
 public class PlantaDAOImp implements IPlantaDAO{
@@ -21,6 +23,17 @@ public class PlantaDAOImp implements IPlantaDAO{
         return null;
     }
 
+    @Override
+    public List<PlantaEntityDto> verPlantasPorHabita(int idHabitat){
+        List<PlantaEntity> plantaEntities=  plantaJPA.findByHabitat_Id(idHabitat);
+        List<PlantaEntityDto> planta = new ArrayList<>();
+
+        for(PlantaEntity pla: plantaEntities){
+            PlantaEntityDto plaDto = buscarPorId(pla.getId());
+            planta.add(plaDto);
+        }
+        return planta;
+    }
     @Override
     public void actualizarPlanta(PlantaEntityDto planta) {
         plantaJPA.deleteById(planta.getId());

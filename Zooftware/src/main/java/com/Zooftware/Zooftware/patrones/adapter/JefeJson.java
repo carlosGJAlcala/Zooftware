@@ -2,9 +2,12 @@ package com.Zooftware.Zooftware.patrones.adapter;
 
 import com.Zooftware.Zooftware.modelJPA.enums.Rol;
 
+import java.util.Date;
+
 public class JefeJson {
 
     int id;
+    int idJefe;
     String apellidos;
     String dni;
     String nombre;
@@ -20,8 +23,9 @@ public class JefeJson {
 
     int salario;
 
+    Date fechaFinContrato;
 
-    public JefeJson(int id, String apellidos, String dni, String nombre, String password, String username, int edad, long numeroSeguridadSocial, String correo, int numeroTlf, Rol rol) {
+    public JefeJson(int id, String apellidos, String dni, String nombre, String password, String username, int edad, long numeroSeguridadSocial, String correo, int numeroTlf, int salario, Date fechaFinContrato) {
         this.id = id;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -33,7 +37,19 @@ public class JefeJson {
         this.correo = correo;
         this.numeroTlf = numeroTlf;
         this.salario = salario;
+        this.fechaFinContrato = fechaFinContrato;
+    }
 
+    public int getIdJefe() {
+        return idJefe;
+    }
+
+    public void setIdJefe(int idJefe) {
+        this.idJefe = idJefe;
+    }
+
+    public Date getFechaFinContrato() {
+        return fechaFinContrato;
     }
 
     public String getCorreo() {

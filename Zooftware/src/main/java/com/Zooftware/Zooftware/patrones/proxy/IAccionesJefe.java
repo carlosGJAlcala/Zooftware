@@ -2,12 +2,15 @@ package com.Zooftware.Zooftware.patrones.proxy;
 
 
 import com.Zooftware.Zooftware.modelDTO.BebederoEntityDto;
+import com.Zooftware.Zooftware.modelDTO.PlantaEntityDto;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoPersona;
 import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
 import com.Zooftware.Zooftware.modelJPA.instalaciones.BebederoEntity;
 import com.Zooftware.Zooftware.patrones.adapter.AnimalJson;
 import com.Zooftware.Zooftware.patrones.adapter.EmpleadoJson;
 import com.Zooftware.Zooftware.patrones.adapter.JefeJson;
+
+import java.util.List;
 
 /**
  * @author carlos
@@ -36,4 +39,6 @@ public interface IAccionesJefe extends IAccionesEmpleado {
 	void cargar();
 
 	BebederoEntityDto verBebedero(int habitaId);
+
+
 }
