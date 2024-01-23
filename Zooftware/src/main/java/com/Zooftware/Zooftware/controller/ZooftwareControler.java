@@ -1,30 +1,27 @@
 package com.Zooftware.Zooftware.controller;
 
-import com.Zooftware.Zooftware.modelDTO.*;
-import com.Zooftware.Zooftware.modelJPA.enums.EstadoAnimal;
-import com.Zooftware.Zooftware.modelJPA.enums.Rol;
-import com.Zooftware.Zooftware.modelJPA.enums.TipoHabitat;
-import com.Zooftware.Zooftware.modelJPA.enums.TipoPersona;
-import com.Zooftware.Zooftware.modelJPA.instalaciones.BebederoEntity;
-import com.Zooftware.Zooftware.modelJPA.instalaciones.ComederoEntity;
-import com.Zooftware.Zooftware.modelJPA.instalaciones.HabitatEntity;
-import com.Zooftware.Zooftware.modelJPA.organimos.AnimalEntity;
-import com.Zooftware.Zooftware.patrones.adapter.*;
-import com.Zooftware.Zooftware.patrones.adapter.AnimalJson;
-import com.Zooftware.Zooftware.patrones.adapter.BebederoJson;
-import com.Zooftware.Zooftware.patrones.adapter.EmpleadoJson;
-import com.Zooftware.Zooftware.patrones.adapter.JefeJson;
-import com.Zooftware.Zooftware.patrones.factoryMethod.FactoryMethodProxy;
-import com.Zooftware.Zooftware.patrones.factoryMethod.FactoryMethodProxyConcreto;
-import com.Zooftware.Zooftware.patrones.proxy.*;
-import com.Zooftware.Zooftware.service.persona.PersonaService;
+
+import com.Zooftware.Zooftware.model.dto.comida.BebederoEntityDto;
+import com.Zooftware.Zooftware.model.dto.comida.ComederoEntityDto;
+import com.Zooftware.Zooftware.model.dto.instalaciones.HabitatEntityDto;
+import com.Zooftware.Zooftware.model.dto.organismo.AnimalEntityDto;
+import com.Zooftware.Zooftware.model.dto.organismo.PlantaEntityDto;
+import com.Zooftware.Zooftware.model.dto.persona.PersonaEntityDto;
+import com.Zooftware.Zooftware.model.services.patrones.adapter.*;
+import com.Zooftware.Zooftware.model.services.patrones.proxy.IAccionesCliente;
+import com.Zooftware.Zooftware.model.services.patrones.proxy.IAccionesEmpleado;
+import com.Zooftware.Zooftware.model.services.patrones.proxy.IAccionesJefe;
+import com.Zooftware.Zooftware.model.entities.enums.Rol;
+import com.Zooftware.Zooftware.model.entities.enums.TipoHabitat;
+import com.Zooftware.Zooftware.model.entities.enums.TipoPersona;
+import com.Zooftware.Zooftware.model.services.patrones.factoryMethod.FactoryMethodProxy;
+import com.Zooftware.Zooftware.model.services.patrones.factoryMethod.FactoryMethodProxyConcreto;
+import com.Zooftware.Zooftware.model.services.persona.PersonaService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -51,25 +48,7 @@ public class ZooftwareControler {
         return modelAndView;
     }
 
-    @GetMapping("/cargar")
-    public void cargar(@RequestParam(name = "tipoHabitat") String tipoHabitat, HttpSession session) {
-        //zoo=(IAccionesJefe) Proxy.newProxyInstance(IAccionesJefe.class.getClassLoader(),Zooftware.class.getInterfaces(),new ProxyJefe(new Zooftware()));
 
-//        IAccionesJefe accionesJefe = (IAccionesJefe) factoryMethodProxy.devolverProxy(TipoPersona.JEFE);
-//
-//        IAccionesEmpleado accionesEmpleado = (IAccionesEmpleado) factoryMethodProxy.devolverProxy(TipoPersona.EMPLEADO);
-//
-//        IAccionesCliente accionesCliente = (IAccionesCliente) factoryMethodProxy.devolverProxy(TipoPersona.CLIENTE);
-
-//        zoo.cargar();
-
-        //zoo.crearhabita(TipoHabitat.valueOf(tipoHabitat));
-
-//
-//        session.setAttribute("proxy", (IAccionesJefe) accionesCliente);
-
-
-    }
 
 
     @PostMapping("/validarInicioSesion")
@@ -357,9 +336,6 @@ public class ZooftwareControler {
         return ResponseEntity.ok(proxyJefe.verTotalSueldos(((PersonaEntityDto) session.getAttribute("user")).getId()));
     }
 
-    public void despedirEmpleado(int empleado_id) {
-
-    }
 
     @PostMapping(value = "/empleado/contratar", produces = MediaType.TEXT_PLAIN_VALUE)
     public void contratarEmpleado(@RequestBody EmpleadoJson empleadoNuevo, HttpSession session) {
@@ -461,26 +437,6 @@ public class ZooftwareControler {
 
 
 
-    @PostMapping(value = "/mensaje", produces = MediaType.APPLICATION_JSON_VALUE)
-    public void enviarMensaje(@RequestBody MensajeEntityDto mensaje) {
-        zoo.enviarMensaje(mensaje);
-    }
-
-    @GetMapping("/mensaje/{trabajadorId}")
-    public List<MensajeEntityDto> consultarMensajesPorTrabajador(@PathVariable("trabajadorId") String trabajadorId) {
-        return zoo.consultarMensajes(trabajadorId);
-    }
-
-    @PostMapping(value = "/habitat/comedero/modifcar", produces = MediaType.TEXT_PLAIN_VALUE)
-    public void modificarEstadoComedero(@RequestBody ComederoEntityDto comedero, @RequestBody int cantidad) {
-        zoo.modificarEstadoComedero(comedero, cantidad);
-    }
-
-    @PostMapping(value = "/habitat/bebedero/modifcar", produces = MediaType.TEXT_PLAIN_VALUE)
-    public void modificarEstadoBebedero(@RequestBody BebederoJson bebedero) {
-        zoo.modificarEstadoBebedero(bebedero);
-    }
-//no se usasn
 
 
 }
