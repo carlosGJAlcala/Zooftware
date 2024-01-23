@@ -22,26 +22,25 @@ public class FactoryAnimalesConcreto implements FactoryMethodAnimal {
 
     @Override
     public AnimalEntityDto crearAnimalAcuaticoAguaSalada() {
-        AnimalEntityDto animal = new AnimalEntityDto("Pez Remo", EstadoAnimal.FELIZ, TipoAnimal.ACUATICO, null, 4, 20, 20, 20, 20);
+        AnimalEntityDto animal = new AnimalEntityDto("Pez Remo", EstadoAnimal.TRISTE, TipoAnimal.ACUATICO, null, 4, 20, 20, 20, 20);
         return animal;
     }
 
     @Override
     public AnimalEntityDto crearAnimalAcuaticoAguaDulce() {
-        AnimalEntityDto animal = new AnimalEntityDto("Pirania", EstadoAnimal.FELIZ, TipoAnimal.ACUATICO, null, 4, 20, 20, 20, 20);
+        AnimalEntityDto animal = new AnimalEntityDto("Pirania", EstadoAnimal.TRISTE, TipoAnimal.ACUATICO, null, 4, 20, 20, 20, 20);
         return animal;
     }
 
     @Override
     public AnimalEntityDto crearAnimalAnfibio() {
-        AnimalEntityDto animal = new AnimalEntityDto("Cocodrilo", EstadoAnimal.FELIZ, TipoAnimal.ANFIBIO, null, 4, 20, 20, 20, 20);
-
+        AnimalEntityDto animal = new AnimalEntityDto("Cocodrilo", EstadoAnimal.TRISTE, TipoAnimal.ANFIBIO, null, 4, 20, 20, 20, 20);
         return animal;
     }
 
     @Override
     public AnimalEntityDto crearAnimalTerrestre() {
-        AnimalEntityDto animal = new AnimalEntityDto("Elefante", EstadoAnimal.FELIZ, TipoAnimal.TERRESTRE, null, 4, 20, 20, 20, 20);
+        AnimalEntityDto animal = new AnimalEntityDto("Elefante", EstadoAnimal.TRISTE, TipoAnimal.TERRESTRE, null, 4, 20, 20, 20, 20);
 
         return animal;
     }

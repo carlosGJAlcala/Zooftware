@@ -250,24 +250,27 @@ public class ZooftwareControler {
     }
 
     @GetMapping("/habitat/comederos/rellenarJefe/{id}")
-    public boolean rellenarComederosJefe(@PathVariable("id") int id, HttpSession session) {
+    public ModelAndView rellenarComederosJefe(@PathVariable("id") int id, HttpSession session) {
+        ModelAndView model = new ModelAndView("tablaInstalacionJefe");
         IAccionesJefe proxyJefe = (IAccionesJefe)  session.getAttribute("proxy");
         proxyJefe.rellenarComederos(id);
-        return true;
+        return model;
     }
 
     @GetMapping("/habitat/comederos/rellenarEmpleado/{id}")
-    public boolean rellenarComederosEmpleado(@PathVariable("id") int id, HttpSession session) {
+    public ModelAndView rellenarComederosEmpleado(@PathVariable("id") int id, HttpSession session) {
+        ModelAndView model = new ModelAndView("tablaInstalacionJefe");
         IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado)  session.getAttribute("proxy");
         proxyEmpleado.rellenarComederos(id);
-        return true;
+        return model;
     }
 
     @GetMapping("/habitat/bebederos/rellenarJefe/{habita_id}")
-    public boolean rellenarBebederosJefe(@PathVariable("habita_id") int id, HttpSession session) {
+    public ModelAndView rellenarBebederosJefe(@PathVariable("habita_id") int id, HttpSession session) {
+        ModelAndView model = new ModelAndView("tablaInstalacionJefe");
         IAccionesJefe proxyJefe= (IAccionesJefe)  session.getAttribute("proxy");
         proxyJefe.rellenarBebederos(id);
-        return true;
+        return model;
     }
 
     @GetMapping("/habitat/bebederos/rellenarEmpleado/{habita_id}")
