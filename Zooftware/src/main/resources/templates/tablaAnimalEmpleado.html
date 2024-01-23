@@ -27,17 +27,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/mensaje/mostrarGestionMensajeEmpleado" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-dash-square-fill"></i> <span class="ms-4 d-none d-sm-inline">Gestionar mensajes</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/instalacion/mostrarTablaInstalacionesEmpleado" class="nav-link align-middle px-0">
+                        <a href="/allAnimalesEmpleado" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-pencil-square"></i> <span class="ms-4 d-none d-sm-inline">Ver instalaciones</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/animal/mostrarTablaAnimalEmpleado" class="nav-link align-middle px-0">
+                        <a href="/habitatsEmpleado" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-pencil-square"></i> <span class="ms-4 d-none d-sm-inline">Ver Animales</span>
                         </a>
                     </li>
@@ -58,20 +53,106 @@
                 </div>
             </div>
         </div>
-
         <div>
+            <div class="col-12 col-md-9">
+                <h1>Lista animales</h1>
+                <div class="mb-2">
+                    <button onclick="accionConId('darComidaEmpleado')" class="btn btn-success">Dar de comer</button>
+                    <button onclick="accionConId('dormirAnimalEmpleado')" class="btn btn-success">Dormir animal</button>
+                    <button onclick="accionConId('ejercitarAnimalEmpleado')" class="btn btn-success">Ejercitar animal</button>
+                </div>
 
-
-            <h1>Lista de animales</h1>
-
-
-
-
-
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>TipoAnimal</th>
+                            <th>EstadoAnimal</th>
+                            <th>Numero Extremidades</th>
+                            <th>Salud</th>
+                            <th>Sed</th>
+                            <th>Suenio</th>
+                            <th>Hambre</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="animal : ${animales}" th:id="${'fila-' + animal.id}" onclick="seleccionarFila(this.id)">
+                            <td th:text="${animal.nombre}"></td>
+                            <td th:text="${animal.tipo}"></td>
+                            <td th:text="${animal.estadoAnimal}"></td>
+                            <td th:text="${animal.numExtremidades}"></td>
+                            <td th:text="${animal.salud}"></td>
+                            <td th:text="${animal.sed}"></td>
+                            <td th:text="${animal.suenio}"></td>
+                            <td th:text="${animal.hambre}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<script>
+    var idSeleccionado = null;
+    var filaSeleccionada = null;
 
+    function seleccionarFila(idFila) {
+        var fila = document.getElementById(idFila);
+        var id = idFila.split('-')[1]; // Obtiene el ID del animal
+
+        if (filaSeleccionada === fila) {
+            fila.classList.remove('table-active');
+            idSeleccionado = null;
+            filaSeleccionada = null;
+        } else {
+            if (filaSeleccionada) {
+                filaSeleccionada.classList.remove('table-active');
+            }
+            fila.classList.add('table-active');
+            idSeleccionado = id;
+            filaSeleccionada = fila;
+        }
+    }
+
+
+    function accionConId(accion) {
+        if (idSeleccionado) {
+            var url;
+            switch (accion) {
+                case 'darComidaEmpleado':
+                    url = '/animal/darComerAnimalEmpleado/' + idSeleccionado;
+                    break;
+                case 'dormirAnimalEmpleado':
+                    url = '/animal/dormirAnimalEmpleado/' + idSeleccionado;
+                    break;
+                case 'ejercitarAnimalJefe':
+                    url = '/animal/ejercitarAnimalEmpleado/' + idSeleccionado;
+                    break;
+                default:
+                     return;
+             }
+
+            fetch(url, {
+                method: 'GET'
+            })
+            .then(response => {
+                if(response.ok) {
+                    // Recargar la página
+                    window.location.reload();
+                } else {
+                    alert("Hubo un error al realizar la acción.");
+                }
+            })
+            .catch(error => {
+                alert("Error de conexión con el servidor.");
+            });
+        } else {
+            alert("Por favor selecciona un elemento de la tabla primero.");
+        }
+    }
+</script>
 <!-- Script Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>

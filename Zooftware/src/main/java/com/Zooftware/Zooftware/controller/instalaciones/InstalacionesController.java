@@ -11,6 +11,7 @@ import com.Zooftware.Zooftware.model.services.patrones.proxy.IAccionesEmpleado;
 import com.Zooftware.Zooftware.model.services.patrones.proxy.IAccionesJefe;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,6 +28,7 @@ public class InstalacionesController {
     @GetMapping("/mostrar")
     public ModelAndView mostrarLogin() {
         ModelAndView modelAndView = new ModelAndView("gestionInstalacion");
+        modelAndView.addObject("tiposHabitat", TipoHabitat.values());
         return modelAndView;
     }
 
@@ -102,7 +104,7 @@ public class InstalacionesController {
     public ModelAndView verBebederosEmpleado(@PathVariable int habita_id, HttpSession session) {
         IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado) session.getAttribute("proxy");
         List<BebederoEntityDto> bebederos = proxyEmpleado.verBebederos(habita_id);
-        ModelAndView modelAndView = new ModelAndView("verBebederosHabitat");
+        ModelAndView modelAndView = new ModelAndView("verBebederosHabitatEmpleado");
         modelAndView.addObject("bebederos", bebederos);
         return modelAndView;
     }
@@ -111,7 +113,7 @@ public class InstalacionesController {
     public ModelAndView verBebederosCliente(@PathVariable int habita_id, HttpSession session) {
         IAccionesCliente proxyCliente = (IAccionesCliente) session.getAttribute("proxy");
         List<BebederoEntityDto> bebederos = zoo.verBebederos(habita_id);
-        ModelAndView modelAndView = new ModelAndView("verBebederosHabitat");
+        ModelAndView modelAndView = new ModelAndView("verBebederosHabitatCliente");
         modelAndView.addObject("bebederos", bebederos);
         return modelAndView;
     }
@@ -129,7 +131,7 @@ public class InstalacionesController {
     public ModelAndView verComederosEmpleado(@PathVariable int habita_id, HttpSession session) {
         IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado) session.getAttribute("proxy");
         List<ComederoEntityDto> comederos = proxyEmpleado.verComederos(habita_id);
-        ModelAndView modelAndView = new ModelAndView("verComederosHabitat");
+        ModelAndView modelAndView = new ModelAndView("verComederosHabitatEmpleado");
         modelAndView.addObject("comederos", comederos);
         return modelAndView;
     }
@@ -138,7 +140,7 @@ public class InstalacionesController {
     public ModelAndView verComederosCliente(@PathVariable int habita_id, HttpSession session) {
         IAccionesCliente proxyCliente = (IAccionesCliente) session.getAttribute("proxy");
         List<ComederoEntityDto> comederos = proxyCliente.verComederos(habita_id);
-        ModelAndView modelAndView = new ModelAndView("verComederosHabitat");
+        ModelAndView modelAndView = new ModelAndView("verComederosHabitatCliente");
         modelAndView.addObject("comederos", comederos);
         return modelAndView;
     }
@@ -162,7 +164,7 @@ public class InstalacionesController {
     public ModelAndView veAnimalPorHabitaEmpleado(@PathVariable int id, HttpSession session) {
         IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado) session.getAttribute("proxy");
         List<AnimalEntityDto> animalesHabitat = proxyEmpleado.verAnimalesPorHabita(id);
-        ModelAndView modelAndView = new ModelAndView("verAnimalesHabitat");
+        ModelAndView modelAndView = new ModelAndView("verAnimalesHabitatEmpleado");
         modelAndView.addObject("animalesHabitat", animalesHabitat);
         return modelAndView;
     }
@@ -171,7 +173,7 @@ public class InstalacionesController {
     public ModelAndView veAnimalPorHabitaCliente(@PathVariable int id, HttpSession session) {
         IAccionesCliente proxyCliente = (IAccionesCliente) session.getAttribute("proxy");
         List<AnimalEntityDto> animalesHabitat = proxyCliente.verAnimalesPorHabita(id);
-        ModelAndView modelAndView = new ModelAndView("verAnimalesHabitat");
+        ModelAndView modelAndView = new ModelAndView("verAnimalesHabitatCliente");
         modelAndView.addObject("animalesHabitat", animalesHabitat);
         return modelAndView;
     }
@@ -202,7 +204,6 @@ public class InstalacionesController {
         modelAndView.addObject("plantasHabitat", plantasHabitat);
         return modelAndView;
     }
-
 
     @GetMapping("/habitatsJefe")
     public ModelAndView verInstalacionesJefe(HttpSession session) {

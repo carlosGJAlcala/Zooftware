@@ -3,7 +3,7 @@ package com.Zooftware.Zooftware.model.entities.persona;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "empleado", schema = "testbbdd", catalog = "")
+@Table(name = "empleado")
 public class EmpleadoEntity extends TrabajadorEntity{
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @Id

@@ -70,7 +70,6 @@
             </div>
         </div>
         <div>
-            <h1>Gestion instalaciones</h1>
 
             <style>
                 .form-group{
@@ -79,11 +78,16 @@
                 }
             </style>
             <h1>Gestion habitats</h1>
-            <form action="#" th:action="@{/habitat/crear}" method="get"  >
-
+            <form action="#" th:action="@{/habitat/crear}" method="get">
                 <div class="form-group">
-                    <label for="formGroupExampleInput3">Tipo habitat a crear</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput3" th:name="tipoHabitat">
+                    <label for="tipoHabitatSelect">Tipo de hábitat a crear</label>
+                    <select class="form-control" id="tipoHabitatSelect" name="tipoHabitat">
+                        <option th:each="tipoHabitat : ${tiposHabitat}"
+                                th:value="${tipoHabitat.name()}"
+                                th:text="${tipoHabitat}">
+                        </option>
+                    </select>
+
                 </div>
 
                 <div class="pt-1 mb-4" style="margin-right:10px">

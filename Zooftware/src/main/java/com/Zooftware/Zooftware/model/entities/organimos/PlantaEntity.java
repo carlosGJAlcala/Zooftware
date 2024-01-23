@@ -4,7 +4,7 @@ import com.Zooftware.Zooftware.model.entities.instalaciones.HabitatEntity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "planta", schema = "testbbdd", catalog = "")
+@Table(name = "planta")
 public class PlantaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

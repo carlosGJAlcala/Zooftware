@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "habitat", schema = "testbbdd", catalog = "")
+@Table(name = "habitat")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class HabitatEntity {
     @Id

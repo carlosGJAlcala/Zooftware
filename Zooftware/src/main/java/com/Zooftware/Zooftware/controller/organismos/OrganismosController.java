@@ -1,5 +1,7 @@
 package com.Zooftware.Zooftware.controller.organismos;
 
+import com.Zooftware.Zooftware.model.entities.enums.TipoHabitat;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +14,7 @@ public class OrganismosController {
 
 
     @GetMapping("/mostrar")
-    public ModelAndView mostrarLogin(){
+    public ModelAndView mostrarLogin(HttpSession session){
         ModelAndView modelAndView = new ModelAndView("gestionOrganismo");
         return modelAndView;
     }
