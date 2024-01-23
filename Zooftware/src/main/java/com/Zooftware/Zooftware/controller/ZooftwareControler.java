@@ -49,8 +49,6 @@ public class ZooftwareControler {
     }
 
 
-
-
     @PostMapping("/validarInicioSesion")
     public ResponseEntity<String> validarInicioSesion(@RequestBody LoginJson user, HttpSession session) {
 
@@ -63,6 +61,9 @@ public class ZooftwareControler {
                     IAccionesJefe accionesJefe = (IAccionesJefe) factoryMethodProxy.devolverProxy(TipoPersona.JEFE);
                     session.setAttribute("proxy", accionesJefe);
                     session.setAttribute("user", personaService.getJefeByUsername(user.getUsername()));
+                    session.setAttribute("tipoPersona", tipo);
+
+
                     redirectUrl = "/jefe/home/mostrar";
                     break;
                 case "EMPLEADO":
@@ -70,6 +71,8 @@ public class ZooftwareControler {
                     IAccionesEmpleado accionesEmpleado = (IAccionesEmpleado) factoryMethodProxy.devolverProxy(TipoPersona.EMPLEADO);
                     session.setAttribute("proxy", accionesEmpleado);
                     session.setAttribute("user", personaService.getEmpleadoByUsername(user.getUsername()));
+                    session.setAttribute("tipoPersona", tipo);
+
                     redirectUrl = "/empleado/home/mostrar";
                     break;
                 case "CLIENTE":
@@ -77,6 +80,7 @@ public class ZooftwareControler {
                     IAccionesCliente accionesCliente = (IAccionesCliente) factoryMethodProxy.devolverProxy(TipoPersona.CLIENTE);
                     session.setAttribute("proxy", accionesCliente);
                     session.setAttribute("user", personaService.getClienteByUsername(user.getUsername()));
+                    session.setAttribute("tipoPersona", tipo);
                     redirectUrl = "/cliente/home/mostrar";
                     break;
                 default:
@@ -90,7 +94,7 @@ public class ZooftwareControler {
 
     @GetMapping("/allAnimalesJefe")
     public ModelAndView verAnimalesJefe(HttpSession session) {
-        IAccionesJefe proxyJefe = (IAccionesJefe)  session.getAttribute("proxy");
+        IAccionesJefe proxyJefe = (IAccionesJefe) session.getAttribute("proxy");
         List<AnimalEntityDto> animales = proxyJefe.verAnimales();
         ModelAndView modelAndView = new ModelAndView("tablaAnimalJefe");
         modelAndView.addObject("animales", animales);
@@ -99,7 +103,7 @@ public class ZooftwareControler {
 
     @GetMapping("/allAnimalesEmpleado")
     public ModelAndView verAnimalesEmpleado(HttpSession session) {
-        IAccionesEmpleado proxyJefe = (IAccionesEmpleado)  session.getAttribute("proxy");
+        IAccionesEmpleado proxyJefe = (IAccionesEmpleado) session.getAttribute("proxy");
         List<AnimalEntityDto> animales = proxyJefe.verAnimales();
         ModelAndView modelAndView = new ModelAndView("tablaAnimalEmpleado");
         modelAndView.addObject("animales", animales);
@@ -108,19 +112,43 @@ public class ZooftwareControler {
 
     @GetMapping("/allAnimalesCliente")
     public ModelAndView verAnimalesCliente(HttpSession session) {
-        IAccionesCliente proxyJefe = (IAccionesCliente)  session.getAttribute("proxy");
+        IAccionesCliente proxyJefe = (IAccionesCliente) session.getAttribute("proxy");
         List<AnimalEntityDto> animales = proxyJefe.verAnimales();
         ModelAndView modelAndView = new ModelAndView("tablaAnimalCliente");
         modelAndView.addObject("animales", animales);
         return modelAndView;
     }
 
+    @GetMapping("/allAnimales")
+    public ModelAndView verAnimales(HttpSession session) {
+        IAccionesCliente proxy = (IAccionesCliente) session.getAttribute("proxy");
+        List<AnimalEntityDto> animales = proxy.verAnimales();
+        ModelAndView modelAndView = devolverVistaAnimal(session);
+        modelAndView.addObject("animales", animales);
+        return modelAndView;
+    }
+
+    public ModelAndView devolverVistaAnimal(HttpSession session) {
+        TipoPersona tipo = (TipoPersona) session.getAttribute("tipoPersona");
+        switch (tipo) {
+            case JEFE:
+                return new ModelAndView("tablaAnimalJefe");
+            case EMPLEADO:
+                return new ModelAndView("tablaAnimalEmpleado");
+
+            case CLIENTE:
+                return new ModelAndView("tablaAnimalCliente");
+
+            default:
+                return null;
+        }
+    }
 
 
-//funciona
-    @PostMapping(value = "/comprarAnimal" ,produces = MediaType.TEXT_PLAIN_VALUE)
+    //funciona
+    @PostMapping(value = "/comprarAnimal", produces = MediaType.TEXT_PLAIN_VALUE)
     public void comprarAnimal(@RequestBody AnimalJson animalJson, HttpSession session) {
-        IAccionesJefe proxyJefe = (IAccionesJefe)  session.getAttribute("proxy");
+        IAccionesJefe proxyJefe = (IAccionesJefe) session.getAttribute("proxy");
         proxyJefe.comprarAnimal(animalJson);
 
     }
@@ -134,9 +162,9 @@ public class ZooftwareControler {
     @GetMapping("/animal/ejercitarAnimalJefe/{id}")
     public ResponseEntity<String> ejercitarAnimalJefe(@PathVariable int id, HttpSession session) {
         try {
-            IAccionesJefe proxyJefe = (IAccionesJefe)  session.getAttribute("proxy");
+            IAccionesJefe proxyJefe = (IAccionesJefe) session.getAttribute("proxy");
             // Aquí va la lógica para dar de comer al animal
-            proxyJefe.ejercitarAnimal(id,10);
+            proxyJefe.ejercitarAnimal(id, 10);
 
             // Retorna un mensaje de éxito
             return ResponseEntity.ok("Acción completada con éxito");
@@ -149,9 +177,9 @@ public class ZooftwareControler {
     @GetMapping("/animal/ejercitarAnimalEmpleado/{id}")
     public ResponseEntity<String> ejercitarAnimalEmpleado(@PathVariable int id, HttpSession session) {
         try {
-            IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado)  session.getAttribute("proxy");
+            IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado) session.getAttribute("proxy");
             // Aquí va la lógica para dar de comer al animal
-            proxyEmpleado.ejercitarAnimal(id,10);
+            proxyEmpleado.ejercitarAnimal(id, 10);
 
             // Retorna un mensaje de éxito
             return ResponseEntity.ok("Acción completada con éxito");
@@ -165,10 +193,10 @@ public class ZooftwareControler {
     @GetMapping("/animal/dormirAnimalJefe/{id}")
     public ResponseEntity<String> dormirAnimalJefe(@PathVariable int id, HttpSession session) {
         try {
-            IAccionesJefe proxyJefe = (IAccionesJefe)  session.getAttribute("proxy");
+            IAccionesJefe proxyJefe = (IAccionesJefe) session.getAttribute("proxy");
 
             // Aquí va la lógica para dar de comer al animal
-            proxyJefe.dormirAnimal(id,10);
+            proxyJefe.dormirAnimal(id, 10);
 
             // Retorna un mensaje de éxito
             return ResponseEntity.ok("Acción completada con éxito");
@@ -177,13 +205,14 @@ public class ZooftwareControler {
             return ResponseEntity.status(500).body("Error al realizar la acción");
         }
     }
+
     @GetMapping("/animal/dormirAnimalEmpleado/{id}")
     public ResponseEntity<String> dormirAnimalEmpleado(@PathVariable int id, HttpSession session) {
         try {
-            IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado)  session.getAttribute("proxy");
+            IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado) session.getAttribute("proxy");
 
             // Aquí va la lógica para dar de comer al animal
-            proxyEmpleado.dormirAnimal(id,10);
+            proxyEmpleado.dormirAnimal(id, 10);
 
             // Retorna un mensaje de éxito
             return ResponseEntity.ok("Acción completada con éxito");
@@ -197,10 +226,10 @@ public class ZooftwareControler {
     @GetMapping("/animal/darComerAnimalEmpleado/{id}")
     public ResponseEntity<String> darComerAnimalEmpleado(@PathVariable int id, HttpSession session) {
         try {
-            IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado)  session.getAttribute("proxy");
+            IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado) session.getAttribute("proxy");
 
             // Aquí va la lógica para dar de comer al animal
-            proxyEmpleado.darComerAnimal(id,10);
+            proxyEmpleado.darComerAnimal(id, 10);
 
             // Retorna un mensaje de éxito
             return ResponseEntity.ok("Acción completada con éxito");
@@ -209,15 +238,15 @@ public class ZooftwareControler {
             return ResponseEntity.status(500).body("Error al realizar la acción");
         }
 
-     }
+    }
 
     @GetMapping("/animal/darComerAnimalJefe/{id}")
     public ResponseEntity<String> darComerAnimalJefe(@PathVariable int id, HttpSession session) {
         try {
-            IAccionesJefe proxyJefe = (IAccionesJefe)  session.getAttribute("proxy");
+            IAccionesJefe proxyJefe = (IAccionesJefe) session.getAttribute("proxy");
 
             // Aquí va la lógica para dar de comer al animal
-            proxyJefe.darComerAnimal(id,10);
+            proxyJefe.darComerAnimal(id, 10);
 
             // Retorna un mensaje de éxito
             return ResponseEntity.ok("Acción completada con éxito");
@@ -231,7 +260,7 @@ public class ZooftwareControler {
     @GetMapping("/habitat/comederos/rellenarJefe/{id}")
     public ModelAndView rellenarComederosJefe(@PathVariable("id") int id, HttpSession session) {
         ModelAndView model = new ModelAndView("tablaInstalacionJefe");
-        IAccionesJefe proxyJefe = (IAccionesJefe)  session.getAttribute("proxy");
+        IAccionesJefe proxyJefe = (IAccionesJefe) session.getAttribute("proxy");
         proxyJefe.rellenarComederos(id);
         return model;
     }
@@ -239,7 +268,7 @@ public class ZooftwareControler {
     @GetMapping("/habitat/comederos/rellenarEmpleado/{id}")
     public ModelAndView rellenarComederosEmpleado(@PathVariable("id") int id, HttpSession session) {
         ModelAndView model = new ModelAndView("tablaInstalacionJefe");
-        IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado)  session.getAttribute("proxy");
+        IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado) session.getAttribute("proxy");
         proxyEmpleado.rellenarComederos(id);
         return model;
     }
@@ -247,14 +276,14 @@ public class ZooftwareControler {
     @GetMapping("/habitat/bebederos/rellenarJefe/{habita_id}")
     public ModelAndView rellenarBebederosJefe(@PathVariable("habita_id") int id, HttpSession session) {
         ModelAndView model = new ModelAndView("tablaInstalacionJefe");
-        IAccionesJefe proxyJefe= (IAccionesJefe)  session.getAttribute("proxy");
+        IAccionesJefe proxyJefe = (IAccionesJefe) session.getAttribute("proxy");
         proxyJefe.rellenarBebederos(id);
         return model;
     }
 
     @GetMapping("/habitat/bebederos/rellenarEmpleado/{habita_id}")
     public boolean rellenarBebederosEmpleado(@PathVariable("habita_id") int id, HttpSession session) {
-        IAccionesEmpleado proxyEmpleado= (IAccionesEmpleado)  session.getAttribute("proxy");
+        IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado) session.getAttribute("proxy");
         proxyEmpleado.rellenarBebederos(id);
         return true;
     }
@@ -262,23 +291,25 @@ public class ZooftwareControler {
 
     @GetMapping("/habitat/bebederoJefe/{habita_id}")
     public ModelAndView verBebederosJefe(@PathVariable int habita_id, HttpSession session) {
-        IAccionesJefe proxyJefe= (IAccionesJefe)  session.getAttribute("proxy");
+        IAccionesJefe proxyJefe = (IAccionesJefe) session.getAttribute("proxy");
         List<BebederoEntityDto> bebederos = proxyJefe.verBebederos(habita_id);
         ModelAndView modelAndView = new ModelAndView("verBebederosHabitat");
         modelAndView.addObject("bebederos", bebederos);
         return modelAndView;
     }
+
     @GetMapping("/habitat/bebederoEmpleado/{habita_id}")
     public ModelAndView verBebederosEmpleado(@PathVariable int habita_id, HttpSession session) {
-        IAccionesEmpleado proxyEmpleado= (IAccionesEmpleado)  session.getAttribute("proxy");
+        IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado) session.getAttribute("proxy");
         List<BebederoEntityDto> bebederos = proxyEmpleado.verBebederos(habita_id);
         ModelAndView modelAndView = new ModelAndView("verBebederosHabitat");
         modelAndView.addObject("bebederos", bebederos);
         return modelAndView;
     }
+
     @GetMapping("/habitat/bebederoCliente/{habita_id}")
     public ModelAndView verBebederosCliente(@PathVariable int habita_id, HttpSession session) {
-        IAccionesCliente proxyCliente= (IAccionesCliente)  session.getAttribute("proxy");
+        IAccionesCliente proxyCliente = (IAccionesCliente) session.getAttribute("proxy");
         List<BebederoEntityDto> bebederos = zoo.verBebederos(habita_id);
         ModelAndView modelAndView = new ModelAndView("verBebederosHabitat");
         modelAndView.addObject("bebederos", bebederos);
@@ -297,23 +328,25 @@ public class ZooftwareControler {
 
     @GetMapping("/habitat/comederoJefe/{habita_id}")
     public ModelAndView verComederosJefe(@PathVariable int habita_id, HttpSession session) {
-        IAccionesJefe proxyJefe= (IAccionesJefe)  session.getAttribute("proxy");
+        IAccionesJefe proxyJefe = (IAccionesJefe) session.getAttribute("proxy");
         List<ComederoEntityDto> comederos = proxyJefe.verComederos(habita_id);
         ModelAndView modelAndView = new ModelAndView("verComederosHabitat");
         modelAndView.addObject("comederos", comederos);
         return modelAndView;
     }
+
     @GetMapping("/habitat/comederoEmpleado/{habita_id}")
     public ModelAndView verComederosEmpleado(@PathVariable int habita_id, HttpSession session) {
-        IAccionesEmpleado proxyEmpleado= (IAccionesEmpleado)  session.getAttribute("proxy");
+        IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado) session.getAttribute("proxy");
         List<ComederoEntityDto> comederos = proxyEmpleado.verComederos(habita_id);
         ModelAndView modelAndView = new ModelAndView("verComederosHabitat");
         modelAndView.addObject("comederos", comederos);
         return modelAndView;
     }
+
     @GetMapping("/habitat/comederoCliente/{habita_id}")
     public ModelAndView verComederosCliente(@PathVariable int habita_id, HttpSession session) {
-        IAccionesCliente proxyCliente= (IAccionesCliente)  session.getAttribute("proxy");
+        IAccionesCliente proxyCliente = (IAccionesCliente) session.getAttribute("proxy");
         List<ComederoEntityDto> comederos = proxyCliente.verComederos(habita_id);
         ModelAndView modelAndView = new ModelAndView("verComederosHabitat");
         modelAndView.addObject("comederos", comederos);
@@ -323,7 +356,7 @@ public class ZooftwareControler {
 
     @GetMapping("/habitat/crear")
     public void crearhabitat(@RequestParam(name = "tipoHabitat") TipoHabitat tipo, HttpSession session) {
-        IAccionesJefe proxyJefe = (IAccionesJefe)  session.getAttribute("proxy");
+        IAccionesJefe proxyJefe = (IAccionesJefe) session.getAttribute("proxy");
         proxyJefe.crearHabitat(tipo);
     }
 
@@ -332,7 +365,7 @@ public class ZooftwareControler {
 
     @GetMapping("/trabajador/verTotalSueldos")
     public ResponseEntity<?> verTotalSueldos(HttpSession session) {
-        IAccionesJefe proxyJefe = (IAccionesJefe)  session.getAttribute("proxy");
+        IAccionesJefe proxyJefe = (IAccionesJefe) session.getAttribute("proxy");
         return ResponseEntity.ok(proxyJefe.verTotalSueldos(((PersonaEntityDto) session.getAttribute("user")).getId()));
     }
 
@@ -340,7 +373,7 @@ public class ZooftwareControler {
     @PostMapping(value = "/empleado/contratar", produces = MediaType.TEXT_PLAIN_VALUE)
     public void contratarEmpleado(@RequestBody EmpleadoJson empleadoNuevo, HttpSession session) {
         PersonaEntityDto persona = (PersonaEntityDto) session.getAttribute("user");
-        IAccionesJefe proxyJefe = (IAccionesJefe)  session.getAttribute("proxy");
+        IAccionesJefe proxyJefe = (IAccionesJefe) session.getAttribute("proxy");
         empleadoNuevo.setIdJefe(persona.getId());
         proxyJefe.contratarEmpleado(empleadoNuevo);
 
@@ -348,7 +381,7 @@ public class ZooftwareControler {
 
     @PostMapping(value = "/jefe/contratar", produces = MediaType.TEXT_PLAIN_VALUE)
     public void contratarJefe(@RequestBody JefeJson jefeNuevo, HttpSession session) {
-        IAccionesJefe proxyJefe = (IAccionesJefe)  session.getAttribute("proxy");
+        IAccionesJefe proxyJefe = (IAccionesJefe) session.getAttribute("proxy");
         PersonaEntityDto persona = (PersonaEntityDto) session.getAttribute("user");
         jefeNuevo.setIdJefe(persona.getId());
         proxyJefe.contratarJefe(jefeNuevo);
@@ -360,23 +393,25 @@ public class ZooftwareControler {
 
     @GetMapping("/habitat/animalJefe/{id}")
     public ModelAndView veAnimalPorHabitaJefe(@PathVariable int id, HttpSession session) {
-        IAccionesJefe proxyJefe = (IAccionesJefe)  session.getAttribute("proxy");
+        IAccionesJefe proxyJefe = (IAccionesJefe) session.getAttribute("proxy");
         List<AnimalEntityDto> animalesHabitat = proxyJefe.verAnimalesPorHabita(id);
         ModelAndView modelAndView = new ModelAndView("verAnimalesHabitat");
         modelAndView.addObject("animalesHabitat", animalesHabitat);
         return modelAndView;
     }
+
     @GetMapping("/habitat/animalEmpleado/{id}")
     public ModelAndView veAnimalPorHabitaEmpleado(@PathVariable int id, HttpSession session) {
-        IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado)  session.getAttribute("proxy");
+        IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado) session.getAttribute("proxy");
         List<AnimalEntityDto> animalesHabitat = proxyEmpleado.verAnimalesPorHabita(id);
         ModelAndView modelAndView = new ModelAndView("verAnimalesHabitat");
         modelAndView.addObject("animalesHabitat", animalesHabitat);
         return modelAndView;
     }
+
     @GetMapping("/habitat/animalCliente/{id}")
     public ModelAndView veAnimalPorHabitaCliente(@PathVariable int id, HttpSession session) {
-        IAccionesCliente proxyCliente = (IAccionesCliente)  session.getAttribute("proxy");
+        IAccionesCliente proxyCliente = (IAccionesCliente) session.getAttribute("proxy");
         List<AnimalEntityDto> animalesHabitat = proxyCliente.verAnimalesPorHabita(id);
         ModelAndView modelAndView = new ModelAndView("verAnimalesHabitat");
         modelAndView.addObject("animalesHabitat", animalesHabitat);
@@ -385,15 +420,16 @@ public class ZooftwareControler {
 
     @GetMapping("/habitat/plantaJefe/{id}")
     public ModelAndView verPlantasPorHabitatJefe(@PathVariable int id, HttpSession session) {
-        IAccionesJefe proxyJefe = (IAccionesJefe)  session.getAttribute("proxy");
+        IAccionesJefe proxyJefe = (IAccionesJefe) session.getAttribute("proxy");
         List<PlantaEntityDto> plantasHabitat = proxyJefe.verPlantasPorHabita(id);
         ModelAndView modelAndView = new ModelAndView("verPlantasHabitat");
         modelAndView.addObject("plantasHabitat", plantasHabitat);
         return modelAndView;
     }
+
     @GetMapping("/habitat/plantaEmpleado/{id}")
     public ModelAndView verPlantasPorHabitatEmpleado(@PathVariable int id, HttpSession session) {
-        IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado)  session.getAttribute("proxy");
+        IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado) session.getAttribute("proxy");
         List<PlantaEntityDto> plantasHabitat = proxyEmpleado.verPlantasPorHabita(id);
         ModelAndView modelAndView = new ModelAndView("verPlantasHabitat");
         modelAndView.addObject("plantasHabitat", plantasHabitat);
@@ -402,7 +438,7 @@ public class ZooftwareControler {
 
     @GetMapping("/habitat/plantaCliente/{id}")
     public ModelAndView verPlantasPorHabitatCliente(@PathVariable int id, HttpSession session) {
-        IAccionesCliente proxyCliente= (IAccionesCliente)  session.getAttribute("proxy");
+        IAccionesCliente proxyCliente = (IAccionesCliente) session.getAttribute("proxy");
         List<PlantaEntityDto> plantasHabitat = proxyCliente.verPlantasPorHabita(id);
         ModelAndView modelAndView = new ModelAndView("verPlantasHabitat");
         modelAndView.addObject("plantasHabitat", plantasHabitat);
@@ -412,31 +448,30 @@ public class ZooftwareControler {
 
     @GetMapping("/habitatsJefe")
     public ModelAndView verInstalacionesJefe(HttpSession session) {
-        IAccionesJefe proxyJefe = (IAccionesJefe)  session.getAttribute("proxy");
+        IAccionesJefe proxyJefe = (IAccionesJefe) session.getAttribute("proxy");
         List<HabitatEntityDto> habitats = proxyJefe.verInstalaciones();
         ModelAndView modelAndView = new ModelAndView("tablaInstalacionJefe");
         modelAndView.addObject("habitats", habitats);
         return modelAndView;
     }
+
     @GetMapping("/habitatsEmpleado")
     public ModelAndView verInstalacionesEmpleado(HttpSession session) {
-        IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado)  session.getAttribute("proxy");
+        IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado) session.getAttribute("proxy");
         List<HabitatEntityDto> habitats = proxyEmpleado.verInstalaciones();
         ModelAndView modelAndView = new ModelAndView("tablaInstalacionEmpleado");
         modelAndView.addObject("habitats", habitats);
         return modelAndView;
     }
+
     @GetMapping("/habitatsCliente")
     public ModelAndView verInstalacionesCliente(HttpSession session) {
-        IAccionesCliente proxyCliente = (IAccionesCliente)  session.getAttribute("proxy");
+        IAccionesCliente proxyCliente = (IAccionesCliente) session.getAttribute("proxy");
         List<HabitatEntityDto> habitats = proxyCliente.verInstalaciones();
         ModelAndView modelAndView = new ModelAndView("tablaInstalacionCliente");
         modelAndView.addObject("habitats", habitats);
         return modelAndView;
     }
-
-
-
 
 
 }
