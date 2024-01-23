@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "jefe", schema = "testbbdd", catalog = "")
+@Table(name = "jefe")
 public class JefeEntity extends  TrabajadorEntity{
     //Pendiente añadir mas atributos
 //    @Id

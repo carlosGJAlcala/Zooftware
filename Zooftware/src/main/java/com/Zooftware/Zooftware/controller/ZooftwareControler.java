@@ -267,7 +267,7 @@ public class ZooftwareControler {
 
     @GetMapping("/habitat/comederos/rellenarEmpleado/{id}")
     public ModelAndView rellenarComederosEmpleado(@PathVariable("id") int id, HttpSession session) {
-        ModelAndView model = new ModelAndView("tablaInstalacionJefe");
+        ModelAndView model = new ModelAndView("tablaInstalacionEmpleado");
         IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado) session.getAttribute("proxy");
         proxyEmpleado.rellenarComederos(id);
         return model;
@@ -302,7 +302,7 @@ public class ZooftwareControler {
     public ModelAndView verBebederosEmpleado(@PathVariable int habita_id, HttpSession session) {
         IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado) session.getAttribute("proxy");
         List<BebederoEntityDto> bebederos = proxyEmpleado.verBebederos(habita_id);
-        ModelAndView modelAndView = new ModelAndView("verBebederosHabitat");
+        ModelAndView modelAndView = new ModelAndView("verBebederosHabitatEmpleado");
         modelAndView.addObject("bebederos", bebederos);
         return modelAndView;
     }
@@ -311,7 +311,7 @@ public class ZooftwareControler {
     public ModelAndView verBebederosCliente(@PathVariable int habita_id, HttpSession session) {
         IAccionesCliente proxyCliente = (IAccionesCliente) session.getAttribute("proxy");
         List<BebederoEntityDto> bebederos = zoo.verBebederos(habita_id);
-        ModelAndView modelAndView = new ModelAndView("verBebederosHabitat");
+        ModelAndView modelAndView = new ModelAndView("verBebederosHabitatCliente");
         modelAndView.addObject("bebederos", bebederos);
         return modelAndView;
     }
@@ -404,7 +404,7 @@ public class ZooftwareControler {
     public ModelAndView veAnimalPorHabitaEmpleado(@PathVariable int id, HttpSession session) {
         IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado) session.getAttribute("proxy");
         List<AnimalEntityDto> animalesHabitat = proxyEmpleado.verAnimalesPorHabita(id);
-        ModelAndView modelAndView = new ModelAndView("verAnimalesHabitat");
+        ModelAndView modelAndView = new ModelAndView("verAnimalesHabitatEmpleado");
         modelAndView.addObject("animalesHabitat", animalesHabitat);
         return modelAndView;
     }
@@ -413,7 +413,7 @@ public class ZooftwareControler {
     public ModelAndView veAnimalPorHabitaCliente(@PathVariable int id, HttpSession session) {
         IAccionesCliente proxyCliente = (IAccionesCliente) session.getAttribute("proxy");
         List<AnimalEntityDto> animalesHabitat = proxyCliente.verAnimalesPorHabita(id);
-        ModelAndView modelAndView = new ModelAndView("verAnimalesHabitat");
+        ModelAndView modelAndView = new ModelAndView("verAnimalesHabitatCliente");
         modelAndView.addObject("animalesHabitat", animalesHabitat);
         return modelAndView;
     }
@@ -431,7 +431,7 @@ public class ZooftwareControler {
     public ModelAndView verPlantasPorHabitatEmpleado(@PathVariable int id, HttpSession session) {
         IAccionesEmpleado proxyEmpleado = (IAccionesEmpleado) session.getAttribute("proxy");
         List<PlantaEntityDto> plantasHabitat = proxyEmpleado.verPlantasPorHabita(id);
-        ModelAndView modelAndView = new ModelAndView("verPlantasHabitat");
+        ModelAndView modelAndView = new ModelAndView("verPlantasHabitatEmpleado");
         modelAndView.addObject("plantasHabitat", plantasHabitat);
         return modelAndView;
     }
@@ -440,7 +440,7 @@ public class ZooftwareControler {
     public ModelAndView verPlantasPorHabitatCliente(@PathVariable int id, HttpSession session) {
         IAccionesCliente proxyCliente = (IAccionesCliente) session.getAttribute("proxy");
         List<PlantaEntityDto> plantasHabitat = proxyCliente.verPlantasPorHabita(id);
-        ModelAndView modelAndView = new ModelAndView("verPlantasHabitat");
+        ModelAndView modelAndView = new ModelAndView("verPlantasHabitatCliente");
         modelAndView.addObject("plantasHabitat", plantasHabitat);
         return modelAndView;
     }

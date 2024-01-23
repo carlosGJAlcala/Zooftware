@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "anfibio", schema = "testbbdd", catalog = "")
+@Table(name = "anfibio")
 public class AnfibioEntity extends HabitatEntity{
 
 

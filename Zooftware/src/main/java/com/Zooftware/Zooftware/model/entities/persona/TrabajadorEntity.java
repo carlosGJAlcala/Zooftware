@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "trabajador", schema = "testbbdd", catalog = "")
+@Table(name = "trabajador")
 public abstract class TrabajadorEntity extends PersonaEntity {
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)

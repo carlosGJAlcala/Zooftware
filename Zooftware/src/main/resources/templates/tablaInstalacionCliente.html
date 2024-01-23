@@ -17,7 +17,7 @@
     <div class="row flex-nowrap">
         <div class="col-auto col-md-3 col-xl-3 px-sm-3 px-0 bg-dark">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <span class="fs-5 d-none d-sm-inline">Menú Principal Jefe</span>
+                <span class="fs-5 d-none d-sm-inline">Menú Principal Cliente</span>
                 <br>
                 </a>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
@@ -27,12 +27,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/instalacion/mostrarTablaInstalacionesCliente" class="nav-link align-middle px-0">
+                        <a href="/habitatsCliente" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-pencil-square"></i> <span class="ms-4 d-none d-sm-inline">Ver instalaciones</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/animal/mostrarTablaAnimalCliente" class="nav-link align-middle px-0">
+                        <a href="/allAnimalesCliente" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-pencil-square"></i> <span class="ms-4 d-none d-sm-inline">Ver Animales</span>
                         </a>
                     </li>
@@ -53,15 +53,14 @@
                 </div>
             </div>
         </div>
-
         <div>
-
             <h1>Lista de instalaciones</h1>
-
             <div>
                 <div class="col-12 col-md-9">
                     <div class="mb-2">
-                        <button onclick="accionConId('verAnimalesHabitatCliente)" class="btn btn-success">Ver animales del habitat</button>
+
+                        <button onclick="accionConId('verAnimalesHabitatCliente')" class="btn btn-success">Ver animales del habitat</button>
+
                         <button onclick="accionConId('verPlantasHabitatCliente')" class="btn btn-success">Ver plantas del habitat</button>
 
                     </div>
@@ -71,7 +70,6 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Tipo habitat</th>
-
                             </tr>
                             </thead>
                             <tbody>
@@ -84,58 +82,53 @@
                     </div>
                 </div>
             </div>
-
-
-
-
         </div>
-
-
     </div>
-</div>
-</div>
-<script>
-    var idSeleccionado = null;
-    var filaSeleccionada = null;
+    <script>
+        var idSeleccionado = null;
+        var filaSeleccionada = null;
 
-    function seleccionarFila(idFila) {
-        var fila = document.getElementById(idFila);
-        var id = idFila.split('-')[1]; // Obtiene el ID del animal
+        function seleccionarFila(idFila) {
+            var fila = document.getElementById(idFila);
+            var id = idFila.split('-')[1]; // Obtiene el ID del animal
 
-        if (filaSeleccionada === fila) {
-            fila.classList.remove('table-active');
-            idSeleccionado = null;
-            filaSeleccionada = null;
-        } else {
-            if (filaSeleccionada) {
-                filaSeleccionada.classList.remove('table-active');
+            if (filaSeleccionada === fila) {
+                fila.classList.remove('table-active');
+                idSeleccionado = null;
+                filaSeleccionada = null;
+            } else {
+                if (filaSeleccionada) {
+                    filaSeleccionada.classList.remove('table-active');
+                }
+                fila.classList.add('table-active');
+                idSeleccionado = id;
+                filaSeleccionada = fila;
             }
-            fila.classList.add('table-active');
-            idSeleccionado = id;
-            filaSeleccionada = fila;
         }
-    }
 
 
-    function accionConId(accion) {
-        if (idSeleccionado) {
-            var url;
-            switch (accion) {
-                case 'verAnimalesHabitatCliente':
-                    url = '/habitat/animalCliente/' + idSeleccionado;
-                    break;
-                case 'verPlantasHabitatJefe':
-                    url = '/habitat/plantaCliente/' + idSeleccionado;
-                    break;
-                default:
-                     return;
-             }
-            window.location.href = url;
-        } else {
-            alert("Por favor selecciona un elemento de la tabla primero.");
+        function accionConId(accion) {
+            if (idSeleccionado) {
+                var url;
+                switch (accion) {
+                    case 'verAnimalesHabitatCliente':
+                        url = '/habitat/animalCliente/' + idSeleccionado;
+                        break;
+                    case 'verPlantasHabitatCliente':
+                        url = '/habitat/plantaCliente/' + idSeleccionado;
+                        break;
+                    default:
+                         return;
+                 }
+                window.location.href = url;
+            } else {
+                alert("Por favor selecciona un elemento de la tabla primero.");
+            }
         }
-    }
-</script>
+    </script>
+</div>
+</div>
+
 <!-- Script Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>

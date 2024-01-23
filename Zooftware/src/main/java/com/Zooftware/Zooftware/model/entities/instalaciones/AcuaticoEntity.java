@@ -4,7 +4,7 @@ import com.Zooftware.Zooftware.model.entities.enums.TipoAgua;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "acuatico", schema = "testbbdd", catalog = "")
+@Table(name = "acuatico")
 public class AcuaticoEntity extends HabitatEntity {
 
 
